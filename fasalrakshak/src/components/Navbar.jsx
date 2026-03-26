@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Menu, X, Leaf, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import UserMenu from './auth/UserMenu';
 
@@ -10,6 +10,10 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lang, setLang] = useState('EN');
   const { user } = useContext(AuthContext);
+  const location = useLocation();
+
+  const isHomePage = location.pathname === '/';
+  const shouldShowSolid = isScrolled || !isHomePage;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,7 +26,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Disease Detect', href: '/detect' },
-    { name: 'Disease Library', href: '#' },
+    { name: 'Disease Library', href: '/diseases' },
     { name: 'Blog', href: '#' },
     { name: 'About', href: '#' },
     { name: 'Contact', href: '#' },
@@ -31,7 +35,7 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
+        shouldShowSolid ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">

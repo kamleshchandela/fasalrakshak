@@ -1,0 +1,148 @@
+import React, { useState, useMemo, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Search } from 'lucide-react';
+import allDiseases from '../data/diseases.json';
+import DiseaseCard from '../components/diseases/DiseaseCard';
+import SearchFilterBar from '../components/diseases/SearchFilterBar';
+import CropCategorySection from '../components/diseases/CropCategorySection';
+import LibraryCTABanner from '../components/diseases/LibraryCTABanner';
+
+const SORT_OPTIONS = [
+  { value: 'az', label: 'A–Z' },
+  { value: 'za', label: 'Z–A' },
+  { value: 'severe_first', label: 'Most Severe First' },
+  { value: 'mild_first', label: 'Least Severe First' },
+  { value: 'common_first', label: 'Gujarat Common First' },
+];
+
+const SEVERITY_RANK = { severe: 0, moderate: 1, mild: 2 };
+
+const filterAndSort = (diseases, filters, sort) => {
+  let result = diseases.filter(d => {
+    if (filters.search) {
+      const q = filters.search.toLowerCase();
+      const haystack = [d.name, d.localName, d.cropName, ...(d.symptoms || []), ...(d.tags || [])].join(' ').toLowerCase();
+      if (!haystack.includes(q)) return false;
+    }
+    if (filters.crop && d.cropName !== filters.crop) return false;
+    if (filters.type && d.diseaseType !== filters.type) return false;
+    if (filters.severity && d.severity !== filters.severity) return false;
+    if (filters.gujarat && !d.commonInGujarat) return false;
+    if (filters.fast && d.spreadRate !== 'fast') return false;
+    return true;
+  });
+
+  if (sort === 'az') result.sort((a, b) => a.name.localeCompare(b.name));
+  else if (sort === 'za') result.sort((a, b) => b.name.localeCompare(a.name));
+  else if (sort === 'severe_first') result.sort((a, b) => (SEVERITY_RANK[a.severity] ?? 2) - (SEVERITY_RANK[b.severity] ?? 2));
+  else if (sort === 'mild_first') result.sort((a, b) => (SEVERITY_RANK[b.severity] ?? 2) - (SEVERITY_RANK[a.severity] ?? 2));
+  else if (sort === 'common_first') result.sort((a, b) => (b.commonInGujarat ? 1 : 0) - (a.commonInGujarat ? 1 : 0));
+
+  return result;
+};
+
+const INIT_FILTERS = { search: '', crop: '', type: '', severity: '', gujarat: false, fast: false };
+
+export default function DiseaseLibrary() {
+  const [filters, setFilters] = useState(INIT_FILTERS);
+  const [sort, setSort] = useState('az');
+  const gridRef = useRef(null);
+
+  const diseases = useMemo(() => filterAndSort(allDiseases, filters, sort), [filters, sort]);
+
+  const handleSelectCrop = (cropName) => {
+    setFilters(f => ({ ...f, crop: f.crop === cropName ? '' : cropName }));
+  };
+
+  return (
+    <div className="min-h-screen bg-white font-nunito">
+      {/* HEADER */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
+        className="relative pt-24 pb-16 overflow-hidden"
+        style={{ background: '#1A6B2F' }}
+      >
+        <div
+          className="absolute inset-0 bg-center bg-cover after:absolute after:inset-0 after:bg-[#1A6B2F]/70"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200')" }}
+        />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
+          <span className="inline-flex items-center gap-2 bg-white/20 text-white font-nunito font-bold px-4 py-1.5 rounded-full text-sm mb-5">
+            📚 Complete Disease Reference
+          </span>
+          <h1 className="font-playfair font-extrabold text-4xl md:text-5xl text-white mb-4 leading-tight">
+            Crop Disease Library
+          </h1>
+          <p className="font-nunito text-white/85 text-[17px] mb-8">
+            Identify, understand, and treat 40+ crop diseases affecting Indian farmers
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {['🌿 40 Diseases', '🌾 10 Crops Covered', '💊 Treatment for Each'].map(s => (
+              <span key={s} className="bg-white/20 text-white font-nunito font-bold text-sm px-4 py-2 rounded-full border border-white/30">{s}</span>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* SEARCH + FILTER BAR */}
+      <SearchFilterBar filters={filters} onChange={setFilters} totalCount={allDiseases.length} />
+
+      {/* RESULTS COUNT + SORT */}
+      <div className="px-4 md:px-6 py-3 border-b border-[#F0F0F0] flex items-center justify-between" ref={gridRef}>
+        <span className="font-nunito text-[14px] text-gray-500">
+          Showing <strong className="text-[#1C1C1C]">{diseases.length}</strong> disease{diseases.length !== 1 ? 's' : ''}
+        </span>
+        <select
+          value={sort}
+          onChange={e => setSort(e.target.value)}
+          className="font-nunito text-[13px] border border-[#E0EDD5] rounded-lg h-9 px-3 bg-white text-[#1C1C1C] focus:outline-none focus:border-[#1A6B2F]"
+        >
+          {SORT_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+        </select>
+      </div>
+
+      {/* DISEASE CARDS GRID */}
+      <div className="max-w-[1440px] mx-auto px-4 md:px-6 py-6 min-h-[300px]">
+        <AnimatePresence mode="popLayout">
+          {diseases.length === 0 ? (
+            <motion.div
+              key="empty"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="flex flex-col items-center justify-center py-24 gap-4"
+            >
+              <Search className="w-20 h-20 text-[#E0EDD5]" />
+              <h3 className="font-playfair font-bold text-[24px] text-[#1C1C1C]">No diseases found</h3>
+              <p className="font-nunito text-[16px] text-gray-400 text-center">Try searching with different keywords or clear your filters</p>
+              <div className="flex gap-3 mt-2">
+                <button
+                  onClick={() => setFilters(INIT_FILTERS)}
+                  className="bg-[#1A6B2F] text-white font-nunito font-bold px-6 py-3 rounded-xl hover:bg-[#155824] transition-colors"
+                >
+                  Clear All Filters
+                </button>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="grid"
+              layout
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+            >
+              {diseases.map((disease, i) => (
+                <DiseaseCard key={disease.id} disease={disease} index={i} />
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* CROP CATEGORY SECTION */}
+      <CropCategorySection onSelectCrop={handleSelectCrop} gridRef={gridRef} />
+
+      {/* CTA BANNER */}
+      <LibraryCTABanner />
+    </div>
+  );
+}

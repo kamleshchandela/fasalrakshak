@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import allDiseases from '../../data/diseases.json';
 
 const ResultStatusBanner = ({ result }) => {
   if (!result) return null;
@@ -59,6 +61,15 @@ const ResultStatusBanner = ({ result }) => {
             📊 AI Confidence: {result.confidencePercent || 90}%
           </span>
         </div>
+        {(() => {
+          const matched = allDiseases.find(d => d.name.toLowerCase().includes((result.diseaseName || '').toLowerCase()) || (result.diseaseName || '').toLowerCase().includes(d.name.toLowerCase()));
+          const href = matched ? `/diseases/${matched.slug}` : '/diseases';
+          return (
+            <Link to={href} className="font-nunito font-bold text-[14px] underline underline-offset-2 opacity-80 hover:opacity-100 mt-1">
+              📚 Learn more about {result.diseaseName || 'this disease'} →
+            </Link>
+          );
+        })()}
       </div>
     );
   }
