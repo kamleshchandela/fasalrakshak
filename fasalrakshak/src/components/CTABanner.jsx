@@ -1,6 +1,9 @@
 import React from 'react';
 import { Camera } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+
+const MotionLink = motion(Link);
 
 const CTABanner = () => {
   return (
@@ -30,15 +33,15 @@ const CTABanner = () => {
               No registration required — just take a photo and get results instantly
             </p>
 
-            <motion.a
-              href="#detect"
+            <MotionLink
+              to="/detect"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center gap-3 bg-white text-[#1A6B2F] font-nunito font-extrabold text-xl px-10 py-5 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-200"
             >
               <Camera className="w-7 h-7" />
               📷 Upload Photo Now
-            </motion.a>
+            </MotionLink>
 
             {/* App store placeholders */}
             <div className="mt-10 flex justify-center gap-4 flex-wrap">

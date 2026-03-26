@@ -77,6 +77,15 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  const incrementTotalScans = () => {
+    setUser((prev) => {
+      if (!prev) return prev;
+      const updatedUser = { ...prev, totalScans: (prev.totalScans || 0) + 1 };
+      localStorage.setItem('fasalrakshak_user', JSON.stringify(updatedUser));
+      return updatedUser;
+    });
+  };
+
   return (
     <AuthContext.Provider value={{
       user,
@@ -84,7 +93,8 @@ export const AuthProvider = ({ children }) => {
       isLoggedIn: !!user,
       login: loginContext,
       logout: logoutContext,
-      updateUser
+      updateUser,
+      incrementTotalScans
     }}>
       {children}
     </AuthContext.Provider>

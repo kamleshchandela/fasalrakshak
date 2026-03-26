@@ -8,12 +8,7 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 
-// Placeholder Detect page
-const DetectPlaceholder = () => (
-  <div className="pt-24 min-h-[60vh] flex items-center justify-center text-primary-green font-playfair text-3xl font-bold bg-primary-lightGreen">
-    Disease Detection Coming Soon
-  </div>
-);
+import Detect from './pages/Detect';
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -59,7 +54,7 @@ function App() {
             path="/detect" 
             element={
               <ProtectedRoute>
-                <DetectPlaceholder />
+                <Detect />
               </ProtectedRoute>
             } 
           />

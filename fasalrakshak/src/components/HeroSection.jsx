@@ -1,6 +1,9 @@
 import React from 'react';
 import { Camera, Star, CheckCircle, Shield, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+
+const MotionLink = motion(Link);
 
 // Use kisan2 as the main hero image — more relatable, farmer in field
 import kisan2    from '../images/kisan2.png';
@@ -45,16 +48,16 @@ const HeroSection = () => {
             </p>
 
             {/* Clean solid CTA */}
-            <motion.a
-              href="#detect"
+            <MotionLink
+              to="/detect"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="inline-flex items-center gap-3 bg-[#1A6B2F] text-white font-nunito font-extrabold text-lg px-8 py-4 rounded-2xl shadow-lg hover:bg-[#155824] hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+              className="inline-flex items-center gap-3 bg-[#1A6B2F] text-white font-nunito font-extrabold text-lg px-8 py-4 rounded-2xl shadow-lg hover:bg-[#155824] hover:shadow-xl transition-all duration-200"
             >
               <Camera className="w-6 h-6" />
               📷 Take Photo — Start Now
-            </motion.a>
+            </MotionLink>
             <p className="mt-3 text-sm text-gray-400 font-nunito font-semibold ml-1">No sign-up needed • Completely free</p>
 
             {/* Trust badges */}
