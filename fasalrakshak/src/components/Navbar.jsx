@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Menu, X, Leaf, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import UserMenu from './auth/UserMenu';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lang, setLang] = useState('EN');
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,8 +20,8 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Disease Detect', href: '#' },
+    { name: 'Home', href: '/' },
+    { name: 'Disease Detect', href: '/detect' },
     { name: 'Disease Library', href: '#' },
     { name: 'Blog', href: '#' },
     { name: 'About', href: '#' },
@@ -32,7 +36,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer">
+        <Link to="/" className="flex items-center gap-2 cursor-pointer">
           <div className="bg-primary-lightGreen p-2 rounded-full">
             <Leaf className="w-8 h-8 text-primary-green" />
           </div>
@@ -44,18 +48,18 @@ const Navbar = () => {
               Smart Kheti, Healthy Crop
             </span>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.href}
               className="text-text-charcoal font-nunito font-semibold hover:text-primary-green transition-colors"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -69,13 +73,30 @@ const Navbar = () => {
             {lang === 'EN' ? 'EN' : 'ગુજ'}
           </button>
           
-          <button className="bg-primary-green text-white font-nunito font-bold px-6 py-2.5 rounded-xl hover:bg-primary-darkGreen hover:shadow-lg hover:shadow-primary-green/30 transition-all duration-300 transform hover:-translate-y-0.5">
-            Try Now Free
-          </button>
+          {user ? (
+            <UserMenu isMobile={false} />
+          ) : (
+            <Link 
+              to="/login"
+              className="border-2 border-primary-green text-primary-green font-nunito font-semibold h-10 px-6 rounded-xl hover:bg-primary-lightGreen flex items-center justify-center transition-all text-[15px]"
+            >
+              Login
+            </Link>
+          )}
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="lg:hidden flex items-center">
+        {/* Mobile Toggle & Auth */}
+        <div className="lg:hidden flex items-center gap-3">
+          {user ? (
+            <UserMenu isMobile={true} />
+          ) : (
+            <Link 
+              to="/login"
+              className="border-[1.5px] border-primary-green text-primary-green font-nunito font-semibold h-9 px-4 rounded-lg hover:bg-primary-lightGreen flex items-center justify-center transition-all text-sm"
+            >
+              Login
+            </Link>
+          )}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-text-charcoal p-2 focus:outline-none"
@@ -96,14 +117,14 @@ const Navbar = () => {
           >
             <nav className="flex flex-col px-4 py-6 gap-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.href}
                   className="text-text-charcoal font-nunito font-bold text-lg border-b border-primary-sage/30 pb-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
               <div className="flex flex-col gap-4 mt-4">
                 <button
@@ -112,9 +133,6 @@ const Navbar = () => {
                 >
                   <Globe className="w-5 h-5 text-primary-green" />
                   Language: {lang === 'EN' ? 'English' : 'ગુજરાતી'}
-                </button>
-                <button className="bg-primary-green text-white font-nunito font-bold py-3 rounded-xl shadow-md">
-                  Try Now Free
                 </button>
               </div>
             </nav>

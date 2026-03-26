@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import StatsStrip from './components/StatsStrip';
-import HowItWorks from './components/HowItWorks';
-import Features from './components/Features';
-import StorySection from './components/StorySection';
-import Testimonials from './components/Testimonials';
-import CTABanner from './components/CTABanner';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Profile from './pages/Profile';
+import ProtectedRoute from './components/ProtectedRoute';
+
+// Placeholder Detect page
+const DetectPlaceholder = () => (
+  <div className="pt-24 min-h-[60vh] flex items-center justify-center text-primary-green font-playfair text-3xl font-bold bg-primary-lightGreen">
+    Disease Detection Coming Soon
+  </div>
+);
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -25,7 +31,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative font-nunito text-text-charcoal bg-white min-h-screen">
+    <div className="relative font-nunito text-text-charcoal bg-white min-h-screen flex flex-col">
       {/* Scroll Progress Bar at very top */}
       <div className="fixed top-0 left-0 w-full h-1 bg-transparent z-[100]">
         <div 
@@ -36,15 +42,29 @@ function App() {
 
       <Navbar />
 
-      <main>
-        <HeroSection />
-        <StatsStrip />
-        <HowItWorks />
-        <Features />
-        <StorySection />
-        <Testimonials />
-        <CTABanner />
-      </main>
+      <div className="flex-grow flex flex-col">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route 
+            path="/profile" 
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/detect" 
+            element={
+              <ProtectedRoute>
+                <DetectPlaceholder />
+              </ProtectedRoute>
+            } 
+          />
+        </Routes>
+      </div>
 
       <Footer />
     </div>
