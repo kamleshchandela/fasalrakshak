@@ -20,10 +20,6 @@ const ImagePreview = ({ fileUrl, selectedCrop, setSelectedCrop, onChangePhoto, o
       const user = JSON.parse(localStorage.getItem('fasalrakshak_user') || '{}');
       if (user && user.cropTypes) {
         setDbCrops(user.cropTypes);
-        // Auto select first crop from user profile to save them a tap
-        if (user.cropTypes.length > 0 && !selectedCrop) {
-          setSelectedCrop(user.cropTypes[0]);
-        }
       }
     } catch(e) {}
   }, [setSelectedCrop]);
@@ -77,30 +73,7 @@ const ImagePreview = ({ fileUrl, selectedCrop, setSelectedCrop, onChangePhoto, o
         </button>
       </div>
 
-      <div className="mt-2 space-y-2">
-        <label className="text-[14px] font-nunito font-bold text-gray-500 ml-1">What crop is this? (Optional)</label>
-        <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar px-1">
-          {displayCrops.map(crop => {
-            const isSelected = selectedCrop === crop;
-            const isUserCrop = dbCrops.includes(crop);
-            return (
-              <motion.button
-                key={crop}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setSelectedCrop(isSelected ? '' : crop)}
-                className={`flex-shrink-0 px-4 py-2 rounded-full font-nunito font-bold text-[14px] border-[1.5px] transition-all
-                  ${isSelected 
-                    ? 'bg-primary-green border-primary-green text-white shadow-sm' 
-                    : isUserCrop 
-                      ? 'bg-primary-lightGreen border-primary-green text-primary-green' 
-                      : 'bg-white border-gray-300 text-gray-600 hover:bg-gray-50'}`}
-              >
-                {getCropIcon(crop)}
-              </motion.button>
-            )
-          })}
-        </div>
-      </div>
+
 
       <motion.button 
         whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.98 }}

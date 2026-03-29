@@ -1,44 +1,13 @@
 {
-  "name": "fasalrakshak",
+  "name": "fasalrakshak-monorepo",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@google/generative-ai": "^0.24.1",
-    "bcryptjs": "^3.0.3",
-    "browser-image-compression": "^2.0.2",
-    "cookie": "^1.1.1",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.6",
-    "date-fns": "^4.1.0",
-    "dotenv": "^17.3.1",
-    "express": "^5.2.1",
-    "framer-motion": "^12.38.0",
-    "jsonwebtoken": "^9.0.3",
-    "lucide-react": "^1.7.0",
-    "mongoose": "^9.3.3",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.2"
+    "install-all": "npm install --prefix frontend && npm install --prefix backend",
+    "client": "npm run dev --prefix frontend",
+    "server": "npm run dev --prefix backend",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.4",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
-    "autoprefixer": "^10.4.27",
-    "eslint": "^9.39.4",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.4.0",
-    "postcss": "^8.5.8",
-    "tailwindcss": "^3.4.1",
-    "vite": "^8.0.1"
+    "concurrently": "^9.1.2"
   }
 }

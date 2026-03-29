@@ -15,12 +15,18 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(express.json({ limit: '10mb' })); // Increased payload limit for base64 images
+app.use(express.json({ limit: '10mb' }));
 app.use(cookieParser());
 
-// Allow requests from the Vite frontend during development
+// Dynamic CORS for production (Netlify) and development (Localhost)
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  process.env.CLIENT_URL // Set this in Render Dashboard to your Netlify URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: allowedOrigins,
   credentials: true,
 }));
 
@@ -29,8 +35,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/scans', scanRoutes);
 
-const PORT = 5000;
+// Export for Render
+const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });

@@ -1,0 +1,12 @@
+node_modules/
+fasalrakshak/node_modules/
+fasalrakshak/backend/node_modules/
+fasalrakshak/frontend/node_modules/
+fasalrakshak/model/
+fasalrakshak/backend/error.log
+fasalrakshak/backend/fasalrakshak_ai_model.keras
+.env
+*.log
+.DS_Store
+dist/
+build/
