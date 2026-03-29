@@ -43,7 +43,7 @@ export const analyzeCropImage = async (base64ImageData, selectedCrop = "") => {
   }
 
   const genAI = new GoogleGenerativeAI(API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   try {
     const promptParams = [{ text: SYSTEM_PROMPT }];

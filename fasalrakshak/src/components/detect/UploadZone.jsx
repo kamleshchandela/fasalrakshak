@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Leaf, Camera, Upload, Sun, ZoomIn, Hand, Camera as CameraAlt } from 'lucide-react';
+import CameraModal from './CameraModal';
 
 const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
   const fileInputRef = useRef(null);
-  const cameraInputRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [showCamera, setShowCamera] = useState(false);
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -55,16 +56,15 @@ const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
       </motion.div>
 
       <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-full">
-        {/* Camera (Primary Mobile) */}
+        {/* Camera - Opens WebRTC Modal */}
         <motion.button 
           whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
-          onClick={() => cameraInputRef.current?.click()}
+          onClick={() => setShowCamera(true)}
           className="w-full md:w-1/2 h-[60px] bg-primary-green text-white rounded-[14px] flex items-center justify-center gap-3 shadow-sm hover:bg-[#155A26] transition-colors"
         >
           <Camera className="w-[22px] h-[22px]" />
           <span className="font-nunito text-[18px] font-bold">Take a Photo</span>
         </motion.button>
-        <input type="file" accept="image/*" capture="environment" ref={cameraInputRef} onChange={handleChange} className="hidden" />
 
         {/* Gallery */}
         <motion.button 
@@ -77,6 +77,14 @@ const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
         </motion.button>
         <input id="gallery-upload-input" type="file" accept="image/jpeg,image/png,image/webp" ref={fileInputRef} onChange={handleChange} className="hidden" />
       </div>
+
+      {/* Camera Modal */}
+      {showCamera && (
+        <CameraModal
+          onCapture={(file) => onFileSelect(file)}
+          onClose={() => setShowCamera(false)}
+        />
+      )}
 
       <p className="text-center font-nunito text-[13px] text-gray-400 -mt-2">Supports JPG, PNG, WEBP · Max 10MB</p>
 
