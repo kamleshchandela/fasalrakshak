@@ -43,37 +43,47 @@ const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
 
       <motion.div 
         onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={handleDrop}
-        animate={{ scale: isDragging ? 1.02 : 1, borderColor: isDragging ? '#1A6B2F' : '#1A6B2F' }}
-        className="border-2 border-dashed border-primary-green rounded-2xl md:rounded-[20px] bg-primary-lightGreen p-8 md:p-12 min-h-[200px] md:min-h-[240px] flex flex-col items-center justify-center transition-colors cursor-pointer relative overflow-hidden group"
+        animate={{ scale: isDragging ? 1.01 : 1, borderColor: isDragging ? '#22c55e' : '#A3D2A9' }}
+        whileHover={{ scale: 1.01 }}
+        className="border-2 border-dashed rounded-[24px] md:rounded-[32px] bg-gradient-to-br from-[#F5FFF5] to-[#EFFFF0] p-8 md:p-14 min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-center transition-all cursor-pointer relative overflow-hidden group shadow-inner"
       >
-        <Leaf className="w-16 h-16 text-primary-green opacity-70 mb-4 transition-transform group-hover:scale-110" />
-        <h3 className="font-nunito font-bold text-lg md:text-xl text-primary-green text-center">Drop your crop photo here</h3>
-        <p className="font-nunito text-sm text-gray-500 mt-1 text-center">or use the buttons below</p>
-        <p className="font-nunito text-[13px] text-primary-green/60 mt-4 hidden md:block">Drag and drop a photo directly here</p>
+        <div className="absolute inset-0 bg-white/40 transition-opacity group-hover:opacity-0" />
         
-        {/* Animated Dashed Border Effect (CSS handled in tailwind or native style) */}
-        <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-primary-green/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="relative z-10 flex flex-col items-center">
+            <div className="mb-6 p-4 bg-white/60 rounded-[20px] shadow-[0_4px_16px_rgba(26,107,47,0.06)] backdrop-blur-sm group-hover:rotate-12 transition-transform duration-500 group-hover:scale-110">
+               <Leaf className="w-12 h-12 text-[#2E7D32]" strokeWidth={1.5} />
+            </div>
+            
+            <h3 className="font-playfair font-black tracking-tight text-2xl md:text-3xl text-[#1B5E20] text-center mb-2">
+               Drop crop photo here
+            </h3>
+            <p className="font-nunito font-medium text-[15px] text-[#4A5D23]/80 text-center">
+               or select using the buttons below
+            </p>
+        </div>
+        
+        <div className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-transparent via-[#4CAF50]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
       </motion.div>
 
-      <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-full">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-5 w-full mt-2">
         {/* Camera - Opens WebRTC Modal */}
         <motion.button 
-          whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
+          whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.97 }}
           onClick={() => setShowCamera(true)}
-          className="w-full md:w-1/2 h-[60px] bg-primary-green text-white rounded-[14px] flex items-center justify-center gap-3 shadow-sm hover:bg-[#155A26] transition-colors"
+          className="w-full md:w-1/2 h-[64px] bg-gradient-to-r from-[#1E5631] to-[#2E7D32] text-white rounded-[20px] flex items-center justify-center gap-3 shadow-[0_8px_20px_rgba(46,125,50,0.25)] hover:shadow-[0_12px_24px_rgba(46,125,50,0.35)] transition-all font-nunito border border-white/10"
         >
-          <Camera className="w-[22px] h-[22px]" />
-          <span className="font-nunito text-[18px] font-bold">Take a Photo</span>
+          <Camera className="w-[24px] h-[24px]" strokeWidth={2} />
+          <span className="text-[18px] font-bold tracking-wide">Take a Photo</span>
         </motion.button>
 
         {/* Gallery */}
         <motion.button 
-          whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
+          whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.97 }}
           onClick={() => fileInputRef.current?.click()}
-          className="w-full md:w-1/2 h-[60px] bg-white border-2 border-primary-green text-primary-green rounded-[14px] flex items-center justify-center gap-3 hover:bg-primary-lightGreen transition-colors"
+          className="w-full md:w-1/2 h-[64px] bg-white border border-[#E0EDD5] text-[#2E7D32] rounded-[20px] flex items-center justify-center gap-3 shadow-[0_8px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)] hover:bg-[#F9FCF9] transition-all font-nunito"
         >
-          <Upload className="w-[22px] h-[22px]" />
-          <span className="font-nunito text-[18px] font-bold">Upload from Gallery</span>
+          <Upload className="w-[24px] h-[24px]" strokeWidth={2} />
+          <span className="text-[18px] font-bold tracking-wide">Upload Gallery</span>
         </motion.button>
         <input id="gallery-upload-input" type="file" accept="image/jpeg,image/png,image/webp" ref={fileInputRef} onChange={handleChange} className="hidden" />
       </div>
@@ -86,29 +96,29 @@ const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
         />
       )}
 
-      <p className="text-center font-nunito text-[13px] text-gray-400 -mt-2">Supports JPG, PNG, WEBP · Max 10MB</p>
+      <p className="text-center font-nunito font-semibold text-[13px] text-gray-400">Supports JPG, PNG, WEBP · Max 10MB</p>
 
       {/* Tips Section */}
-      <div className="mt-4 pt-6 border-t border-[#E0EDD5]">
-        <h4 className="font-nunito text-[14px] font-bold text-primary-green mb-3 flex items-center gap-2">
-          📸 Tips for best results:
+      <div className="mt-6 pt-6 border-t-[1px] border-gray-100">
+        <h4 className="font-nunito text-[15px] font-bold text-gray-400 mb-4 flex items-center gap-2 uppercase tracking-widest text-center justify-center">
+          <span className="h-[1px] w-8 bg-gray-200" /> Tips for best results <span className="h-[1px] w-8 bg-gray-200" />
         </h4>
-        <div className="grid grid-cols-2 gap-3">
-          <div className="bg-primary-lightGreen rounded-[10px] p-3 flex items-center gap-3">
-            <Sun className="w-5 h-5 text-amber-500" />
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white/60 border border-gray-100 rounded-[16px] p-4 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
+            <div className="p-2.5 bg-amber-50 rounded-full"><Sun className="w-5 h-5 text-amber-500" /></div>
             <span className="font-nunito text-[13px] font-bold text-gray-700">Good lighting</span>
           </div>
-          <div className="bg-primary-lightGreen rounded-[10px] p-3 flex items-center gap-3">
-            <ZoomIn className="w-5 h-5 text-blue-500" />
-            <span className="font-nunito text-[13px] font-bold text-gray-700 leading-tight">Close-up of area</span>
+          <div className="bg-white/60 border border-gray-100 rounded-[16px] p-4 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
+            <div className="p-2.5 bg-blue-50 rounded-full"><ZoomIn className="w-5 h-5 text-blue-500" /></div>
+            <span className="font-nunito text-[13px] font-bold text-gray-700 text-center leading-tight">Close-up of area</span>
           </div>
-          <div className="bg-primary-lightGreen rounded-[10px] p-3 flex items-center gap-3">
-            <Hand className="w-5 h-5 text-primary-green" />
-            <span className="font-nunito text-[13px] font-bold text-gray-700 leading-tight">Keep camera steady</span>
+          <div className="bg-white/60 border border-gray-100 rounded-[16px] p-4 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
+            <div className="p-2.5 bg-green-50 rounded-full"><Hand className="w-5 h-5 text-[#2E7D32]" /></div>
+            <span className="font-nunito text-[13px] font-bold text-gray-700 text-center leading-tight">Keep camera steady</span>
           </div>
-          <div className="bg-primary-lightGreen rounded-[10px] p-3 flex items-center gap-3">
-            <CameraAlt className="w-5 h-5 text-gray-500" />
-            <span className="font-nunito text-[13px] font-bold text-gray-700 leading-tight">Include leaves clearly</span>
+          <div className="bg-white/60 border border-gray-100 rounded-[16px] p-4 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
+            <div className="p-2.5 bg-gray-50 rounded-full"><CameraAlt className="w-5 h-5 text-gray-500" /></div>
+            <span className="font-nunito text-[13px] font-bold text-gray-700 text-center leading-tight">Include leaves clearly</span>
           </div>
         </div>
       </div>

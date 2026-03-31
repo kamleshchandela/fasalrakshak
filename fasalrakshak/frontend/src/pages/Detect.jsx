@@ -96,27 +96,28 @@ const Detect = () => {
         throw { type: 'api_error', message: "Our AI is busy. Please wait a moment and try again.", original: geminiError };
       }
 
-      // 4. Handle Not A Plant constraint - (Strict with Gemini, lenient with Local)
-      if (aiResult.aiSource === 'cloud' && aiResult.isPlantImage === false) {
-        throw { type: 'not_plant', message: "This does not look like a crop photo. Please take a closer photo of your plant." };
+      // 4. Handle Not A Plant constraint (Now active for both Cloud & Local AI)
+      if (aiResult.isPlantImage === false) {
+        throw { type: 'not_plant', message: "Image Rejected: Not a crop. Please take a clear photo of a plant leaf." };
       }
 
-      // 5. Fire Cloudinary in background (don't wait heavily)
+      // 5. Upload strictly to Cloudinary to secure permanent URLs
       let cloudImageInfo = { imageUrl: previewUrl, thumbnailUrl: previewUrl }; // fallback
-      uploadToCloudinary(compressedFile).then(cloudResp => {
-        cloudImageInfo = cloudResp;
-        // Background update DB logic via an internal hook tracking the completed item
-        saveToDatabase(aiResult, cloudResp);
-      }).catch(err => {
-        console.warn("Cloudinary silent fail:", err);
-        saveToDatabase(aiResult, cloudImageInfo);
-      });
+      try {
+        const cloudResp = await uploadToCloudinary(compressedFile);
+        if (cloudResp && cloudResp.thumbnailUrl) {
+           cloudImageInfo = cloudResp;
+           saveToDatabase(aiResult, cloudResp);
+        }
+      } catch (err) {
+        console.warn("Cloudinary upload failed, using fallback Base64 / Blob:", err);
+      }
 
-      // 6. Build Local Data record immediately for blazing fast UX
+      // 6. Build Local Data record securely
       const localRecord = {
         id: 'scan_' + Date.now(),
         ...aiResult,
-        imageThumbnail: cloudImageInfo.thumbnailUrl, // initially blob, overriden later
+        imageThumbnail: cloudImageInfo.thumbnailUrl, // Now an absolutely permanent Cloudinary link!
         timestamp: new Date().toISOString()
       };
 
@@ -240,49 +241,73 @@ const Detect = () => {
        <PrintableReport result={analysisResult} image={previewUrl} />
     </div>
     
-    <div className="min-h-screen bg-white font-nunito flex flex-col pt-20 print:hidden">
+    <div className="min-h-screen bg-[#FDFDFD] font-nunito flex flex-col pt-20 print:hidden relative overflow-hidden">
+      
       {/* 1. Header Banner */}
       <motion.div 
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}
-        className="w-full bg-primary-lightGreen relative overflow-hidden py-10 md:py-16"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}
+        className="w-full relative overflow-hidden py-16 md:py-28"
       >
-        <div className="absolute inset-0 bg-black/60 z-10" />
+        {/* Soft elegant gradient just to make text readable, no neon colors */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#142C17]/80 via-[#1A3B20]/40 to-[#FDFDFD] z-10" />
+        
         <img 
-          src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1200" 
-          alt="Agriculture Field" 
-          className="absolute inset-0 w-full h-full object-cover"
+          src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?q=80&w=1600" 
+          alt="Lush Agriculture Field" 
+          className="absolute inset-0 w-full h-full object-cover z-0"
         />
         
-        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center text-center">
-          <div className="bg-primary-green/90 backdrop-blur-sm text-white text-[12px] md:text-sm font-bold uppercase tracking-wider py-1.5 px-4 rounded-full mb-4 border border-white/20">
-            🔬 AI-Powered Disease Detection
-          </div>
-          <h1 className="font-playfair text-white text-3xl md:text-5xl font-bold mb-3 md:mb-4">
-            Detect Crop Disease
-          </h1>
-          <p className="text-white/90 text-[15px] md:text-lg max-w-lg mb-6 leading-relaxed">
-            Upload or capture a photo of your crop to get instant AI-powered disease diagnosis and treatment.
-          </p>
+        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center text-center -mt-6">
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1, duration: 0.5 }}
+            className="bg-white/10 backdrop-blur-md text-white/95 text-[12px] md:text-sm font-semibold uppercase tracking-widest py-1.5 px-6 rounded-full mb-6 border border-white/20 shadow-sm flex items-center gap-2"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            AI-Powered Intelligence
+          </motion.div>
           
-          <div className="flex flex-wrap justify-center gap-3">
-            {['✅ 50,000+ Scans Done', '🌿 40+ Diseases Detected', '⚡ Results in 5 Seconds'].map((stat, i) => (
-              <span key={i} className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 py-1.5 rounded-full text-[13px] md:text-[14px] font-bold">
+          <motion.h1 
+            initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2, duration: 0.5 }}
+            className="font-playfair text-white text-4xl md:text-6xl font-black mb-4 md:mb-5 tracking-tight drop-shadow-md"
+          >
+            Detect Crop Disease Instantly
+          </motion.h1>
+          
+          <motion.p 
+            initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
+            className="text-white/90 text-[16px] md:text-xl max-w-2xl mb-10 leading-relaxed font-medium drop-shadow-sm"
+          >
+            Upload a clear photo of your affected plant. Our localized AI engine will instantly identify diseases and provide a personalized, actionable treatment plan.
+          </motion.p>
+          
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4, duration: 0.5 }}
+            className="flex flex-wrap justify-center gap-4 sm:gap-6"
+          >
+            {['✅ High Precision Models', '🌿 Offline Capable Engine', '⚡ Lightning Fast Output'].map((stat, i) => (
+              <span key={i} className="text-white/90 px-2 py-1 text-[14px] md:text-[15px] font-semibold flex items-center drop-shadow-sm">
                 {stat}
               </span>
             ))}
-          </div>
+          </motion.div>
         </div>
       </motion.div>
 
       {/* 2. Main Content Wrapper */}
-      <div className="container mx-auto px-4 py-8 md:py-12 -mt-8 relative z-30 mb-8 max-w-[800px]">
+      <div className="container mx-auto px-4 py-8 md:py-12 -mt-24 relative z-30 mb-12 max-w-[850px]">
         
         <motion.div 
-          initial={{ y: 60, opacity: 0 }} 
+          initial={{ y: 40, opacity: 0 }} 
           animate={{ y: 0, opacity: 1 }} 
-          transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
-          className={`bg-white border-2 border-[#E0EDD5] rounded-3xl shadow-[0_8px_40px_rgba(26,107,47,0.10)] overflow-hidden transition-all
-            ${currentState === 'RESULTS' ? '' : 'p-5 md:p-10'}
+          transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
+          className={`bg-white border border-[#F0F0F0] rounded-[32px] overflow-hidden transition-all duration-300 relative
+            ${currentState === 'RESULTS' 
+              ? 'p-0 shadow-lg' 
+              : 'p-6 md:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)]'
+            }
           `}
         >
           <AnimatePresence mode="wait">

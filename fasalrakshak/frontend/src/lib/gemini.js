@@ -110,7 +110,7 @@ export const analyzeCropImage = async (base64ImageData, selectedCrop = "") => {
 
     // Map local result to the same schema as Gemini for UI compatibility
     return {
-      isPlantImage: true,
+      isPlantImage: localResult.isPlantImage !== false,
       cropName: selectedCrop || localResult.detectedCrop,
       healthStatus: localResult.healthStatus,
       diseaseName: localResult.disease,
