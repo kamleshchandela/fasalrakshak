@@ -41,7 +41,7 @@ const Navbar = () => {
     { name: t('nav.home'), href: '/', icon: <Leaf className="w-4 h-4 text-[#2d5a27]" /> },
     { name: t('nav.detect'), href: '/detect', icon: <Sparkles className="w-4 h-4 text-orange-400" /> },
     { name: t('nav.soil_report'), href: '/soil-report', icon: <Leaf className="w-4 h-4 text-[#10b981] animate-pulse" />, isNew: true },
-    { name: t('nav.store') || 'AgriStore', href: '/store', icon: <ShoppingBag className="w-4 h-4 text-emerald-600" /> },
+    { name: t('nav.store'), href: '/store', icon: <ShoppingBag className="w-4 h-4 text-emerald-600" /> },
     { name: t('nav.library'), href: '/library', icon: <Package className="w-4 h-4 text-emerald-600" /> },
     { name: t('nav.weather'), href: '/weather', icon: <Globe className="w-4 h-4 text-blue-500 hover:rotate-90 transition-transform" /> },
   ];
@@ -72,7 +72,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex flex-1 justify-center items-center gap-2 xl:gap-4 xxl:gap-6">
+        <nav className="hidden lg:flex flex-1 justify-center items-center gap-1 xl:gap-3 xxl:gap-4">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.href;
             return (
@@ -115,7 +115,7 @@ const Navbar = () => {
           <div className="relative" ref={langMenuRef}>
             <button 
               onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-              className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full transition-all text-sm font-bold border border-transparent shadow-sm"
+              className="flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-full transition-all text-xs font-bold border border-transparent shadow-sm"
             >
               <Globe className="w-4 h-4" />
               <span>{lang}</span>

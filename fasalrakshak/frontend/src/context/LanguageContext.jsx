@@ -15,7 +15,8 @@ export const translations = {
     'nav.about': 'About',
     'nav.contact': 'Contact',
     'nav.login': 'Farmer Login',
-    'nav.soil_report': '🌱 Soil Report',
+    'nav.soil_report': 'Soil Report',
+    'nav.store': 'AgriStore',
 
     'hero.title1': 'किसान की हर ज़रूरत',
     'hero.title2': 'का Digital साथी!',
@@ -105,7 +106,8 @@ export const translations = {
     'nav.about': 'About',
     'nav.contact': 'Contact',
     'nav.login': 'लॉगिन',
-    'nav.soil_report': '🌱 मृदा रिपोर्ट',
+    'nav.soil_report': 'मृदा रिपोर्ट',
+    'nav.store': 'कृषि स्टोर',
 
     'hero.title1': 'किसान की हर ज़रूरत',
     'hero.title2': 'का Digital साथी!',
@@ -195,7 +197,8 @@ export const translations = {
     'nav.about': 'About',
     'nav.contact': 'Contact',
     'nav.login': 'લૉગિન',
-    'nav.soil_report': '🌱 જમીન રિપોર્ટ',
+    'nav.soil_report': 'જમીન રિપોર્ટ',
+    'nav.store': 'કૃષિ સ્ટોર',
 
     'hero.title1': 'किसान की हर ज़रूरत',
     'hero.title2': 'का Digital साथी!',
