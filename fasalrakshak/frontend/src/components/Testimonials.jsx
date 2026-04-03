@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
@@ -15,17 +15,17 @@ const testimonials = [
   {
     name: "Rameshbhai Patel", location: "Anand, Gujarat",
     quote: "My groundnut crop was getting destroyed. FasalRakshak identified the disease in just 2 seconds. My crop is saved and I saved a lot of money!",
-    image: kisan1, cropImg: mumfali, cropLabel: "🥜 Groundnut (Mungfali) Farmer"
+    image: kisan1, cropImg: mumfali, cropLabel: "≡ƒÑ£ Groundnut (Mungfali) Farmer"
   },
   {
     name: "Sureshbhai Chauhan", location: "Rajkot, Gujarat",
-    quote: "Results in Gujarati — very easy to understand. Medicine name and dosage are all written in the app. Thank you FasalRakshak!",
-    image: kisan2, cropImg: kapas, cropLabel: "☁️ Cotton (Kapas) Farmer"
+    quote: "Results in Gujarati ΓÇö very easy to understand. Medicine name and dosage are all written in the app. Thank you FasalRakshak!",
+    image: kisan2, cropImg: kapas, cropLabel: "Γÿü∩╕Å Cotton (Kapas) Farmer"
   },
   {
     name: "Dineshbhai Desai", location: "Saurashtra, Gujarat",
     quote: "Earlier I had to visit the agriculture center. Now my phone is my crop expert. Very fast and useful app for wheat farmers!",
-    image: kisan3, cropImg: gehu, cropLabel: "🌾 Wheat (Gehu) Farmer"
+    image: kisan3, cropImg: gehu, cropLabel: "≡ƒî╛ Wheat (Gehu) Farmer"
   }
 ];
 
