@@ -26,6 +26,8 @@ export default {
         playfair: ['"Playfair Display"', 'serif'],
         nunito: ['"Nunito"', 'sans-serif'],
         laila: ['"Laila"', 'serif'],
+        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+        syne: ['"Syne"', 'sans-serif'],
       },
       boxShadow: {
         'organic': '0 10px 40px -10px rgba(34, 197, 94, 0.1)',
