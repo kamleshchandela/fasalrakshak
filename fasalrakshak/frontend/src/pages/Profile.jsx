@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AuthContext } from '../context/AuthContext';
+import heroLandscape from '../images/hero_landscape.png';
 import Navbar from '../components/Navbar';
 import ProfileHeader from '../components/profile/ProfileHeader';
 import ProfileTabBar from '../components/profile/ProfileTabBar';
@@ -53,29 +54,38 @@ const Profile = () => {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.4 }}
-        className="w-full bg-primary-lightGreen relative pt-16 pb-24 lg:pb-28"
+        transition={{ duration: 0.6 }}
+        className="w-full bg-primary-darkGreen relative pt-20 pb-28 lg:pb-32 overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200"
+            src={heroLandscape}
             alt="Farm background" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover filter blur-[2px] opacity-60 mix-blend-overlay"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-[#0B2C13] opacity-60"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-darkGreen via-primary-darkGreen/50 to-transparent"></div>
         </div>
 
         <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center text-white">
-          <span className="inline-block bg-primary-green/90 border border-primary-green text-white px-4 py-1.5 rounded-full text-sm font-bold tracking-wide shadow-sm mb-4">
+          <motion.span 
+             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+             className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm mb-6"
+          >
             👤 Kisan Profile
-          </span>
-          <h1 className="font-playfair text-4xl lg:text-5xl font-bold mb-3 drop-shadow-md tracking-tight">
+          </motion.span>
+          <motion.h1 
+             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+             className="font-playfair text-5xl lg:text-6xl font-black mb-4 drop-shadow-md tracking-tight"
+          >
             My Profile
-          </h1>
-          <p className="text-gray-100/90 text-[15px] lg:text-[17px] font-semibold tracking-wide max-w-md mx-auto leading-relaxed drop-shadow">
-            Manage your farm details, scan history and account settings
-          </p>
+          </motion.h1>
+          <motion.p 
+             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
+             className="text-white/90 text-lg lg:text-xl font-medium tracking-wide max-w-xl mx-auto leading-relaxed drop-shadow"
+          >
+            Manage your farm details, review your scan history, and update your personal settings securely.
+          </motion.p>
         </div>
       </motion.div>
 
@@ -91,15 +101,15 @@ const Profile = () => {
       <ProfileTabBar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Dynamic Tab Content Area */}
-      <main className="w-full max-w-[900px] mx-auto px-4 mb-16 relative">
+      <main className="w-full max-w-[900px] mx-auto px-4 mb-20 relative -mt-4">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -20, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="min-h-[400px]"
+            transition={{ duration: 0.3, type: "spring", bounce: 0.2 }}
+            className="min-h-[400px] bg-white rounded-3xl p-6 lg:p-10 shadow-organic border-2 border-primary-sage relative z-20"
           >
             {activeTab === 'personal' && <PersonalInfoTab />}
             {activeTab === 'farm' && <FarmDetailsTab />}

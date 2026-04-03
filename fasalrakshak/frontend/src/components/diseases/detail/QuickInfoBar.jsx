@@ -11,18 +11,18 @@ const ITEMS = [
 
 const QuickInfoBar = ({ disease }) => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}
-    className="bg-white border-b border-[#E0EDD5] overflow-x-auto"
+    initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
+    className="bg-white border-b-2 border-primary-sage overflow-x-auto shadow-sm"
   >
-    <div className="flex divide-x divide-[#E0EDD5] min-w-max">
+    <div className="flex divide-x-2 divide-primary-sage min-w-max">
       {ITEMS.map(item => {
         const raw = disease[item.key];
         const display = item.format ? item.format(raw) : raw;
         return (
-          <div key={item.key} className="flex flex-col items-center px-6 py-4 gap-0.5 min-w-[130px]">
-            <span className="text-xl">{item.icon}</span>
-            <span className="font-nunito font-bold text-[15px] text-[#1C1C1C] text-center">{display}</span>
-            <span className="font-nunito text-[12px] text-gray-400">{item.label}</span>
+          <div key={item.key} className="flex flex-col items-center px-8 py-5 gap-1 min-w-[140px] hover:bg-gray-50/50 transition-colors">
+            <span className="text-2xl mb-1">{item.icon}</span>
+            <span className="font-nunito font-bold text-[16px] text-primary-darkGreen text-center">{display}</span>
+            <span className="font-nunito text-[13px] text-gray-500 font-semibold uppercase tracking-wider">{item.label}</span>
           </div>
         );
       })}

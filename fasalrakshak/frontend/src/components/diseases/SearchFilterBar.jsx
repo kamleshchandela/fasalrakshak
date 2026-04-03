@@ -33,10 +33,10 @@ const FilterChip = ({ label, active, onClick }) => (
   <motion.button
     whileTap={{ scale: 0.95 }}
     onClick={onClick}
-    className={`flex-shrink-0 h-9 px-3.5 rounded-full font-nunito font-bold text-[13px] border transition-all duration-150 ${
+    className={`flex-shrink-0 h-10 px-4 rounded-full font-nunito font-extrabold text-[13px] border-2 transition-all duration-300 shadow-sm ${
       active
-        ? 'bg-[#1A6B2F] text-white border-[#1A6B2F]'
-        : 'bg-white text-[#1A6B2F] border-[#1A6B2F] hover:bg-[#F0F7EC]'
+        ? 'bg-primary-green text-white border-primary-green shadow-organic'
+        : 'bg-white text-gray-600 border-primary-sage hover:border-primary-green/50 hover:text-primary-green'
     }`}
   >
     {label}
@@ -70,20 +70,19 @@ const SearchFilterBar = ({ filters, onChange, totalCount }) => {
 
   return (
     <div className="sticky top-[64px] z-40 bg-white border-b border-[#E0EDD5] shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-      {/* Row 1: Search */}
-      <div className="px-4 md:px-6 pt-4 pb-3">
-        <div className="relative max-w-2xl mx-auto">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+      <div className="px-4 md:px-6 pt-5 pb-4">
+        <div className="relative max-w-3xl mx-auto group">
+          <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400 group-focus-within:text-primary-green transition-colors" />
           <input
             type="text"
             value={localSearch}
             onChange={e => handleSearch(e.target.value)}
-            placeholder="Search diseases, crops, symptoms..."
-            className="w-full h-[52px] pl-12 pr-10 bg-[#F9F6EE] border-2 border-[#E0EDD5] rounded-[14px] font-nunito text-[16px] text-[#1C1C1C] placeholder:text-gray-400 focus:outline-none focus:border-[#1A6B2F] transition-colors"
+            placeholder="Search crop diseases, symptoms, or local names..."
+            className="w-full h-[60px] pl-14 pr-12 bg-white border-[2px] border-primary-sage rounded-2xl font-nunito font-semibold text-[17px] text-text-charcoal placeholder:text-gray-400 focus:outline-none focus:border-primary-green focus:shadow-[0_0_0_4px_rgba(26,107,47,0.1)] transition-all duration-300"
           />
           {localSearch && (
-            <button onClick={() => handleSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
-              <X className="w-5 h-5" />
+            <button onClick={() => handleSearch('')} className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary-green transition-colors">
+              <X className="w-6 h-6" />
             </button>
           )}
         </div>

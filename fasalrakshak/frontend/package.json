@@ -11,16 +11,24 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
     "@tensorflow-models/mobilenet": "^2.1.1",
     "@tensorflow/tfjs": "^4.22.0",
     "browser-image-compression": "^2.0.2",
     "date-fns": "^4.1.0",
     "fasalrakshak-monorepo": "file:..",
     "framer-motion": "^12.38.0",
+    "gsap": "^3.14.2",
+    "leaflet": "^1.9.4",
     "lucide-react": "^1.7.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.2"
+    "react-leaflet": "^5.0.0",
+    "react-parallax-tilt": "^1.7.322",
+    "react-router-dom": "^7.13.2",
+    "recharts": "^3.8.1",
+    "three": "^0.183.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

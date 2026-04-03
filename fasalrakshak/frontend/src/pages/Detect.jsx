@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { Leaf } from 'lucide-react';
+import lushGreen from '../images/lush_green.png';
 
 import UploadZone from '../components/detect/UploadZone';
 import ImagePreview from '../components/detect/ImagePreview';
@@ -248,37 +249,37 @@ const Detect = () => {
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}
         className="w-full relative overflow-hidden py-16 md:py-28"
       >
-        {/* Soft elegant gradient just to make text readable, no neon colors */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#142C17]/80 via-[#1A3B20]/40 to-[#FDFDFD] z-10" />
+        {/* Soft elegant gradient for a light organic feel */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-lightGreen/70 via-white/40 to-background-cream z-10" />
         
         <img 
-          src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?q=80&w=1600" 
+          src={lushGreen} 
           alt="Lush Agriculture Field" 
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-full h-full object-cover z-0 filter blur-[1px]"
         />
         
         <div className="relative z-20 container mx-auto px-4 flex flex-col items-center text-center -mt-6">
           <motion.div 
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1, duration: 0.5 }}
-            className="bg-white/10 backdrop-blur-md text-white/95 text-[12px] md:text-sm font-semibold uppercase tracking-widest py-1.5 px-6 rounded-full mb-6 border border-white/20 shadow-sm flex items-center gap-2"
+            className="bg-white/70 backdrop-blur-md text-primary-darkGreen text-[12px] md:text-sm font-bold uppercase tracking-widest py-1.5 px-6 rounded-full mb-6 border border-primary-green/20 shadow-sm flex items-center gap-2"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-green opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-green"></span>
             </span>
             AI-Powered Intelligence
           </motion.div>
           
           <motion.h1 
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2, duration: 0.5 }}
-            className="font-playfair text-white text-4xl md:text-6xl font-black mb-4 md:mb-5 tracking-tight drop-shadow-md"
+            className="font-playfair text-text-charcoal text-4xl md:text-6xl font-black mb-4 md:mb-5 tracking-tight drop-shadow-sm"
           >
-            Detect Crop Disease Instantly
+            Detect Crop Disease <span className="text-primary-green">Instantly</span>
           </motion.h1>
           
           <motion.p 
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-white/90 text-[16px] md:text-xl max-w-2xl mb-10 leading-relaxed font-medium drop-shadow-sm"
+            className="text-gray-700 text-[16px] md:text-xl max-w-2xl mb-10 leading-relaxed font-semibold drop-shadow-sm"
           >
             Upload a clear photo of your affected plant. Our localized AI engine will instantly identify diseases and provide a personalized, actionable treatment plan.
           </motion.p>
@@ -288,7 +289,7 @@ const Detect = () => {
             className="flex flex-wrap justify-center gap-4 sm:gap-6"
           >
             {['✅ High Precision Models', '🌿 Offline Capable Engine', '⚡ Lightning Fast Output'].map((stat, i) => (
-              <span key={i} className="text-white/90 px-2 py-1 text-[14px] md:text-[15px] font-semibold flex items-center drop-shadow-sm">
+              <span key={i} className="bg-white/60 backdrop-blur-sm text-primary-darkGreen px-4 py-1.5 rounded-full text-[14px] md:text-[15px] font-bold border border-primary-green/20 shadow-sm flex items-center">
                 {stat}
               </span>
             ))}
@@ -306,7 +307,7 @@ const Detect = () => {
           className={`bg-white border border-[#F0F0F0] rounded-[32px] overflow-hidden transition-all duration-300 relative
             ${currentState === 'RESULTS' 
               ? 'p-0 shadow-lg' 
-              : 'p-6 md:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)]'
+              : 'p-6 md:p-10 shadow-organic'
             }
           `}
         >

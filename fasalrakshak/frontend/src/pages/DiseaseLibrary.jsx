@@ -2,6 +2,7 @@ import React, { useState, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search } from 'lucide-react';
 import allDiseases from '../data/diseases.json';
+import heroLandscape from '../images/hero_landscape.png';
 import DiseaseCard from '../components/diseases/DiseaseCard';
 import SearchFilterBar from '../components/diseases/SearchFilterBar';
 import CropCategorySection from '../components/diseases/CropCategorySection';
@@ -60,29 +61,41 @@ export default function DiseaseLibrary() {
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.4 }}
-        className="relative pt-24 pb-16 overflow-hidden"
-        style={{ background: '#1A6B2F' }}
+        transition={{ duration: 0.6 }}
+        className="relative pt-28 pb-20 overflow-hidden bg-primary-darkGreen"
       >
         <div
-          className="absolute inset-0 bg-center bg-cover after:absolute after:inset-0 after:bg-[#1A6B2F]/70"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200')" }}
+          className="absolute inset-0 bg-center bg-cover filter blur-[2px] opacity-60 mix-blend-overlay"
+          style={{ backgroundImage: `url(${heroLandscape})` }}
         />
-        <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
-          <span className="inline-flex items-center gap-2 bg-white/20 text-white font-nunito font-bold px-4 py-1.5 rounded-full text-sm mb-5">
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-darkGreen via-primary-darkGreen/50 to-transparent z-0"></div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <motion.span 
+             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+             className="inline-flex items-center gap-2 bg-white/20 text-white font-nunito font-bold px-5 py-2 rounded-full text-xs uppercase tracking-widest mb-6 border border-white/20 shadow-sm backdrop-blur-md"
+          >
             📚 Complete Disease Reference
-          </span>
-          <h1 className="font-playfair font-extrabold text-4xl md:text-5xl text-white mb-4 leading-tight">
+          </motion.span>
+          <motion.h1 
+             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+             className="font-playfair font-black text-5xl md:text-6xl text-white mb-6 leading-tight drop-shadow-md"
+          >
             Crop Disease Library
-          </h1>
-          <p className="font-nunito text-white/85 text-[17px] mb-8">
-            Identify, understand, and treat 40+ crop diseases affecting Indian farmers
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {['🌿 40 Diseases', '🌾 10 Crops Covered', '💊 Treatment for Each'].map(s => (
-              <span key={s} className="bg-white/20 text-white font-nunito font-bold text-sm px-4 py-2 rounded-full border border-white/30">{s}</span>
+          </motion.h1>
+          <motion.p 
+             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
+             className="font-nunito text-white/90 text-xl mb-10 font-medium max-w-2xl mx-auto"
+          >
+            Identify, understand, and treat over 40+ common crop diseases affecting Indian farmers with completely human-made, expert advice.
+          </motion.p>
+          <motion.div 
+             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
+             className="flex flex-wrap justify-center gap-4"
+          >
+            {['🌿 40+ Diseases', '🌾 10 Major Crops', '💊 Verified Treatments'].map(s => (
+              <span key={s} className="bg-white/10 backdrop-blur-sm text-white font-nunito font-bold text-sm px-5 py-2.5 rounded-xl border border-white/20 shadow-sm">{s}</span>
             ))}
-          </div>
+          </motion.div>
         </div>
       </motion.section>
 

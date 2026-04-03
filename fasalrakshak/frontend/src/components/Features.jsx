@@ -5,90 +5,84 @@ import { motion } from 'framer-motion';
 const features = [
   {
     icon: WifiOff,
-    emoji: '📶',
-    title: 'Offline Mode',
-    desc: 'Internet nahi? Koi baat nahi. App offline bhi kaam karta hai — khet mein bhi!',
-    color: 'text-blue-600',
-    bg: 'bg-blue-50',
+    title: 'Offline Monitoring',
+    desc: 'Bina internet ke bhi khet mein kaam karega app. Syncs when you connect.',
+    color: 'text-[#276738]',
+    bg: 'bg-green-50',
   },
   {
     icon: Languages,
-    emoji: '🗣️',
-    title: 'Gujarati & Hindi',
-    desc: 'Apni bhasha mein results pao — Gujarati, Hindi ya English, aap chunein!',
-    color: 'text-indigo-600',
-    bg: 'bg-indigo-50',
-  },
-  {
-    icon: Zap,
-    emoji: '⚡',
-    title: '2-Second Detection',
-    desc: 'Hamara AI model sirf 2 second mein bimari pehchaan leta hai. Bahut fast!',
-    color: 'text-primary-green',
-    bg: 'bg-primary-lightGreen',
-  },
-  {
-    icon: Heart,
-    emoji: '💊',
-    title: 'Treatment Guide',
-    desc: 'Sahi dawai ka naam, matra, aur kab daalni hai sab kuch screen pe aa jayega.',
-    color: 'text-red-600',
-    bg: 'bg-red-50',
-  },
-  {
-    icon: History,
-    emoji: '📋',
-    title: 'Scan History',
-    desc: 'Aapki saari purani scans save rehti hain — kabhi bhi dekh sakte ho!',
-    color: 'text-orange-600',
+    title: 'Multilingual Support',
+    desc: 'Gujarati, Hindi and English interface for complete farmer independence.',
+    color: 'text-[#FF9F43]',
     bg: 'bg-orange-50',
   },
   {
+    icon: Zap,
+    title: 'Precision AI',
+    desc: 'High-speed diagnostic model identifies 150+ diseases in under 2 seconds.',
+    color: 'text-[#276738]',
+    bg: 'bg-green-50',
+  },
+  {
+    icon: Heart,
+    title: 'Verified Treatment',
+    desc: 'Get government-vetted medicine names and local bio-fertilizer advice.',
+    color: 'text-[#FF9F43]',
+    bg: 'bg-orange-50',
+  },
+  {
+    icon: History,
+    title: 'Growth Timeline',
+    desc: 'Keep a history of your farm scans to track crop growth over seasons.',
+    color: 'text-[#276738]',
+    bg: 'bg-green-50',
+  },
+  {
     icon: Cloud,
-    emoji: '🌦️',
-    title: 'Weather Alert',
-    desc: 'Aaj ke mausam ke hisaab se bimari ka risk kya hai, app pehle hi bata deta hai.',
-    color: 'text-sky-600',
-    bg: 'bg-sky-50',
+    title: 'Satellite Weather',
+    desc: 'Real-time hyper-local weather risk analysis before the storms arrive.',
+    color: 'text-[#FF9F43]',
+    bg: 'bg-orange-50',
   }
 ];
 
 const Features = () => {
   return (
-    <section className="py-20 bg-[#F9F6EE]">
-      <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+    <section className="py-32 bg-white">
+      <div className="container mx-auto px-4 md:px-12 max-w-7xl">
 
-        <div className="text-center mb-14">
-          <span className="inline-block bg-primary-lightGreen text-primary-green font-nunito font-bold px-4 py-1.5 rounded-full text-sm uppercase tracking-wider mb-4">
-            Kyun FasalRakshak?
-          </span>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 800, color: '#1C1C1C', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)' }}>
-            Kisaano Ke Liye Bani Features
+        <div className="text-center mb-24 max-w-3xl mx-auto">
+          <h2 className="text-5xl md:text-6xl font-nunito font-black text-slate-800 tracking-tighter leading-none mb-8">
+            Advanced <span className="text-[#276738]">Features</span> <br/> for Smarter Farming
           </h2>
-          <p style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 600, color: '#555', marginTop: '0.75rem', fontSize: '1.05rem' }}>
-            Sab kuch sochke banaya gaya hai — ek aam kisan ki zaroorat ke hisaab se
+          <p className="text-slate-500 font-bold text-xl leading-relaxed">
+            Everything designed with the farmer in mind — ensuring maximum productivity and minimum loss.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {features.map((f, i) => {
             const Icon = f.icon;
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="bg-white rounded-2xl p-7 border border-gray-100 hover:border-primary-sage hover:shadow-lg hover:-translate-y-1 transition-all duration-200 group"
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                className="bg-white rounded-[3rem] p-10 shadow-xl shadow-slate-100/50 border border-slate-50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group overflow-hidden relative"
               >
-                <div className={`${f.bg} ${f.color} w-14 h-14 rounded-2xl flex items-center justify-center mb-5 text-2xl group-hover:scale-110 transition-transform duration-200`}>
-                  <span>{f.emoji}</span>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-[100%] z-0 group-hover:bg-green-50 transition-colors duration-500" />
+                
+                <div className={`${f.bg} ${f.color} w-16 h-16 rounded-[1.5rem] flex items-center justify-center mb-8 relative z-10 shadow-inner`}>
+                  <Icon className="w-8 h-8" />
                 </div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: '#1C1C1C', fontSize: '1.2rem', marginBottom: '0.5rem' }}>
-                  {f.title}
+                
+                <h3 className="text-2xl font-nunito font-black text-slate-800 tracking-tight mb-4 relative z-10">
+                   {f.title}
                 </h3>
-                <p style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 500, color: '#555', lineHeight: 1.65, fontSize: '0.97rem' }}>
+                <p className="text-slate-500 font-bold leading-relaxed relative z-10">
                   {f.desc}
                 </p>
               </motion.div>
