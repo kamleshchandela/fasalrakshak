@@ -65,16 +65,16 @@ const Navbar = () => {
 
         {/* Simple & Clean Logo */}
         <Link to="/" className="flex items-center gap-2 group shrink-0">
-          <div className="bg-[#10b981] w-9 h-9 rounded-xl flex justify-center items-center shadow-sm">
-            <Leaf className="text-white w-5 h-5" />
+          <div className="bg-[#2d5a27] w-8 h-8 rounded-[10px] flex justify-center items-center group-hover:rotate-6 transition-transform shadow-md overflow-hidden">
+             <Leaf className="text-white w-4 h-4" />
           </div>
-          <span className="font-sans text-[20px] font-black tracking-tight text-[#1a2e1a]">
-            Fasal<span className="text-[#10b981]">Rakshak</span>
+          <span className="font-sans text-[18px] md:text-[20px] font-bold tracking-tight text-[#1a2e1a] hidden sm:flex gap-0">
+            Fasal<span className="text-[#2d5a27]">Rakshak</span>
           </span>
         </Link>
 
-        {/* Minimalist Desktop Nav (No Icons, just clean text) */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex flex-1 justify-center items-center gap-1 xl:gap-2">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.href;
             return (
@@ -84,11 +84,23 @@ const Navbar = () => {
                 className={`relative font-semibold text-[15px] transition-colors ${isActive ? 'text-[#10b981]' : 'text-gray-600 hover:text-[#10b981]'
                   }`}
               >
-                {link.name}
-                {link.isNew && (
-                  <span className="absolute -top-3 -right-5 bg-orange-500 text-[8px] font-bold text-white px-1.5 py-0.5 rounded shadow">NEW</span>
-                )}
-                {/* Minimal underline for active view */}
+                <div className={`flex items-center gap-1 transition-colors font-bold text-[12px] xl:text-[13px] whitespace-nowrap px-2 py-1 rounded-full ${
+                  isActive 
+                    ? 'text-[#2d5a27] bg-green-50' 
+                    : link.isNew 
+                      ? 'text-[#10b981] group-hover:text-[#059669]' 
+                      : 'text-gray-700 group-hover:text-[#2d5a27]'
+                }`}>
+                  {link.icon}
+                  <span>{link.name}</span>
+                  {link.isNew && (
+                    <span className="bg-[#10b981] text-[7px] font-black tracking-widest text-white px-1.5 py-0.5 rounded-full ml-0.5 animate-bounce">NEW</span>
+                  )}
+                </div>
+                {/* Underline animation */}
+                <span className={`h-[2.5px] bg-[#2d5a27] transition-all duration-300 rounded-full ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                
+                {/* Active Dot */}
                 {isActive && (
                   <div className="absolute -bottom-1.5 left-0 w-full h-[2px] bg-[#10b981] rounded-full" />
                 )}
@@ -97,18 +109,17 @@ const Navbar = () => {
           })}
         </nav>
 
-        {/* Right side actions - Neat & compact */}
-        <div className="hidden lg:flex items-center gap-4">
-
-          {/* Subtle Language Dropdown */}
+        {/* Right Actions */}
+        <div className="hidden lg:flex items-center gap-2 shrink-0">
+          {/* Language Selector */}
           <div className="relative" ref={langMenuRef}>
             <button
               onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors text-gray-700 font-medium text-sm"
+              className="flex items-center gap-1 bg-gray-100 hover:bg-gray-200 text-gray-700 px-2.5 py-1.5 rounded-full transition-all text-xs font-bold border border-transparent"
             >
-              <Globe className="w-4 h-4 text-gray-500" />
-              <span>{currentLang.code}</span>
-              <ChevronDown className={`w-3 h-3 text-gray-400 transition-transform ${isLangMenuOpen ? 'rotate-180' : ''}`} />
+              <Globe className="w-3.5 h-3.5" />
+              <span>{lang}</span>
+              <ChevronDown className={`w-3 h-3 transition-transform ${isLangMenuOpen ? 'rotate-180' : ''}`} />
             </button>
 
             <AnimatePresence>
@@ -137,14 +148,20 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          <div className="w-px h-5 bg-gray-200"></div>
-
+          {/* Notification bell */}
+          {!user && (
+            <button className="p-2 bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200 transition-all relative">
+              <Bell className="w-4 h-4" />
+              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+            </button>
+          )}
+          
           {user ? (
             <UserMenu isMobile={false} />
           ) : (
             <Link
               to="/login"
-              className="bg-[#10b981] text-white font-bold h-9 px-5 rounded-lg hover:bg-[#059669] transition-colors flex items-center justify-center text-sm shadow-sm"
+              className="bg-[#2d5a27] text-white font-bold h-9 px-5 rounded-full hover:bg-[#1a3818] shadow-md transition-all flex items-center justify-center text-[13px] whitespace-nowrap"
             >
               {t('nav.login')}
             </Link>

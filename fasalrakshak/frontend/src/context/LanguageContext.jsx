@@ -2,19 +2,17 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const LanguageContext = createContext();
 
+import { en } from '../locales/en';
+import { hi } from '../locales/hi';
+import { gu } from '../locales/gu';
+
 export const translations = {
   EN: {
+    ...en,
     lang_en: 'English',
     lang_hi: 'हिन्दी (Hindi)',
     lang_guj: 'ગુજરાતી (Gujarati)',
-    'nav.home': 'Home',
-    'nav.detect': 'Detect',
-    'nav.library': 'Library',
     'nav.weather': 'Weather',
-    'nav.blog': 'Blog',
-    'nav.about': 'About',
-    'nav.contact': 'Contact',
-    'nav.login': 'Farmer Login',
     'nav.soil_report': 'Soil Report',
     'nav.store': 'AgriStore',
     
@@ -136,7 +134,6 @@ export const translations = {
     'soil.manual': '✍️ Manual Entry',
     'soil.upload': '📄 Upload PDF',
     'soil.scan': '📸 Scan Image',
-
     'login.slogan': 'बेहतर खेती के लिए आपका Digital साथी।',
     'login.googleBtn': 'Google के साथ लॉगिन करें',
     'login.secure': 'SECURE LOGIN',
@@ -146,17 +143,11 @@ export const translations = {
     'login.back': 'Back to Home'
   },
   HI: {
+    ...hi,
     lang_en: 'English',
     lang_hi: 'हिन्दी (Hindi)',
     lang_guj: 'ગુજરાતી (Gujarati)',
-    'nav.home': 'मुख्य',
-    'nav.detect': 'पहचानें',
-    'nav.library': 'लाइब्रेरी',
     'nav.weather': 'मौसम',
-    'nav.blog': 'ब्लॉग',
-    'nav.about': 'About',
-    'nav.contact': 'Contact',
-    'nav.login': 'लॉगिन',
     'nav.soil_report': 'मृदा रिपोर्ट',
     'nav.store': 'कृषि स्टोर',
     
@@ -278,7 +269,6 @@ export const translations = {
     'soil.manual': '✍️ मैनुअल एंट्री',
     'soil.upload': '📄 PDF अपलोड',
     'soil.scan': '📸 इमेज स्कैन',
-
     'login.slogan': 'बेहतर खेती के लिए आपका Digital साथी।',
     'login.googleBtn': 'Google के साथ लॉगिन करें',
     'login.secure': 'सुरक्षित लॉगिन',
@@ -288,6 +278,7 @@ export const translations = {
     'login.back': 'मुख्य पृष्ठ पर वापस'
   },
   GUJ: {
+    ...gu,
     lang_en: 'English',
     lang_hi: 'हिन्दी (Hindi)',
     lang_guj: 'ગુજરાતી (Gujarati)',
@@ -423,6 +414,9 @@ export const translations = {
 
     'login.slogan': 'વધુ સારી ખેતી માટે તમારો Digital સાથી.',
     'login.googleBtn': 'Google સાથે લૉગિન કરો',
+    'soil.manual': '✍️ મેન્યુઅલ એન્ટ્રી',
+    'soil.upload': '📄 PDF અપલોડ',
+    'soil.scan': '📸 ફોટો સ્કેન',
     'login.secure': 'સુરક્ષિત લૉગિન',
     'login.free': 'મફત ઉપયોગ',
     'login.trusted': '10,000+ ખેડૂતોનો વિશ્વાસ',
