@@ -11,6 +11,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Detect from './pages/Detect';
 import DiseaseLibrary from './pages/DiseaseLibrary';
 import DiseaseDetail from './pages/DiseaseDetail';
+import AgriStore from './pages/Store';
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -62,6 +63,7 @@ function App() {
           />
           <Route path="/diseases" element={<DiseaseLibrary />} />
           <Route path="/diseases/:slug" element={<DiseaseDetail />} />
+          <Route path="/store" element={<AgriStore />} />
         </Routes>
       </div>
 

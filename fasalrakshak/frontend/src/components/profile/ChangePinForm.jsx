@@ -33,6 +33,7 @@ const ChangePinForm = () => {
     try {
       const response = await fetch('/api/profile/change-pin', {
         method: 'PATCH',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });

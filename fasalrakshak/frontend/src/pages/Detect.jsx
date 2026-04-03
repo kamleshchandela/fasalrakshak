@@ -152,9 +152,6 @@ const Detect = () => {
 
   const saveToDatabase = async (aiData, cloudData) => {
     try {
-      const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
-      if (!token) return;
-
       const payload = {
         imageUrl: cloudData.imageUrl,
         thumbnailUrl: cloudData.thumbnailUrl,
@@ -163,10 +160,11 @@ const Detect = () => {
       
       const res = await fetch('/api/scans', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }, // Cookies handled via browser native mostly if domain matching, or explicit token
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      // If fails silently, it's fine. Frontend already updated completely.
+      // Silently fails if user is not logged in — that is acceptable
     } catch (e) {
       console.warn("DB syncing background trait failed", e);
     }
