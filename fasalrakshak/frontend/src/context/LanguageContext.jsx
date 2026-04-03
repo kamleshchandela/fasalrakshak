@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 
 export const LanguageContext = createContext();
 
@@ -27,7 +27,16 @@ export const LanguageProvider = ({ children }) => {
   );
 };
 
-// Central Database for App Content
+// ── useLanguage hook — used by Navbar and other components ──
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+};
+
+
 export const translations = {
   EN: {
     // Navbar
