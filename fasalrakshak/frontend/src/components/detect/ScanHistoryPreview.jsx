@@ -3,10 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { Leaf } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
+import { useLanguage } from '../../context/LanguageContext';
 
 const ScanHistoryPreview = () => {
   const navigate = useNavigate();
   const [scans, setScans] = useState([]);
+  const { t } = useLanguage();
 
   useEffect(() => {
     try {
@@ -22,10 +24,10 @@ const ScanHistoryPreview = () => {
       <div className="container mx-auto px-4 max-w-[800px]">
         <div className="flex justify-between items-center mb-6">
           <h3 className="font-playfair font-bold text-xl md:text-2xl text-text-charcoal flex items-center gap-2">
-            📊 Your Recent Scans
+            📊 {t('history.title')}
           </h3>
           <Link to="/profile" className="font-nunito font-bold text-[14px] text-primary-green hover:text-[#155A26] transition-colors">
-            View All →
+            {t('history.view_all')} →
           </Link>
         </div>
 
@@ -34,7 +36,7 @@ const ScanHistoryPreview = () => {
             {scans.length === 0 ? (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center p-8 bg-primary-lightGreen/40 rounded-2xl border border-dashed border-primary-sage">
                 <Leaf className="w-12 h-12 text-primary-green/50 mb-3" />
-                <p className="font-nunito font-semibold text-gray-500 text-[15px]">No scans yet — scan your first crop above!</p>
+                <p className="font-nunito font-semibold text-gray-500 text-[15px]">{t('history.no_scans')}</p>
               </motion.div>
             ) : (
               scans.map((scan, i) => {
@@ -65,10 +67,10 @@ const ScanHistoryPreview = () => {
                     
                     <div className="flex-1 overflow-hidden">
                       <h4 className="font-nunito font-bold text-[15px] text-[#1C1C1C] truncate">
-                        {isHealthy ? 'Healthy Plant' : (scan.diseaseName || 'Unknown Disease')}
+                        {isHealthy ? t('history.healthy') : (scan.diseaseName || t('history.unknown_disease'))}
                       </h4>
                       <div className="flex items-center gap-2 mt-0.5">
-                        <span className="font-nunito font-semibold text-[13px] text-gray-500 truncate">{scan.cropName || 'Unknown Crop'}</span>
+                        <span className="font-nunito font-semibold text-[13px] text-gray-500 truncate">{scan.cropName || t('history.unknown_crop')}</span>
                         <span className="w-1 h-1 bg-gray-300 rounded-full" />
                         <span className="font-nunito font-semibold text-[12px] text-gray-400 truncate">{timeStr}</span>
                       </div>

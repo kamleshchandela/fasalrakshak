@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 import { Leaf } from 'lucide-react';
 import lushGreen from '../images/lush_green.png';
 
@@ -26,6 +27,7 @@ import { uploadToCloudinary } from '../lib/cloudinary';
 
 const Detect = () => {
   const { user, incrementTotalScans } = useContext(AuthContext);
+  const { t } = useLanguage();
 
   // System States: 'EMPTY', 'PREVIEW', 'ANALYZING', 'RESULTS'
   const [currentState, setCurrentState] = useState('EMPTY');
@@ -265,32 +267,35 @@ const Detect = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-green opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-green"></span>
             </span>
-            AI-Powered Intelligence
+            {t('detect.tag')}
           </motion.div>
           
           <motion.h1 
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2, duration: 0.5 }}
             className="font-playfair text-text-charcoal text-4xl md:text-6xl font-black mb-4 md:mb-5 tracking-tight drop-shadow-sm"
           >
-            Detect Crop Disease <span className="text-primary-green">Instantly</span>
+            {t('detect.title1')}<span className="text-primary-green">{t('detect.title2')}</span>
           </motion.h1>
           
           <motion.p 
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
             className="text-gray-700 text-[16px] md:text-xl max-w-2xl mb-10 leading-relaxed font-semibold drop-shadow-sm"
           >
-            Upload a clear photo of your affected plant. Our localized AI engine will instantly identify diseases and provide a personalized, actionable treatment plan.
+            {t('detect.desc')}
           </motion.p>
           
           <motion.div 
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4, duration: 0.5 }}
             className="flex flex-wrap justify-center gap-4 sm:gap-6"
           >
-            {['✅ High Precision Models', '🌿 Offline Capable Engine', '⚡ Lightning Fast Output'].map((stat, i) => (
-              <span key={i} className="bg-white/60 backdrop-blur-sm text-primary-darkGreen px-4 py-1.5 rounded-full text-[14px] md:text-[15px] font-bold border border-primary-green/20 shadow-sm flex items-center">
-                {stat}
-              </span>
-            ))}
+            {(() => {
+               const statsArray = Array.isArray(t('detect.stats')) ? t('detect.stats') : ['✅ High Precision Models', '🌿 Offline Capable Engine', '⚡ Lightning Fast Output'];
+               return statsArray.map((stat, i) => (
+                 <span key={i} className="bg-white/60 backdrop-blur-sm text-primary-darkGreen px-4 py-1.5 rounded-full text-[14px] md:text-[15px] font-bold border border-primary-green/20 shadow-sm flex items-center">
+                   {stat}
+                 </span>
+               ));
+            })()}
           </motion.div>
         </div>
       </motion.div>

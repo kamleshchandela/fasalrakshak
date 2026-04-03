@@ -2,11 +2,13 @@ import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Leaf, Camera, Upload, Sun, ZoomIn, Hand, Camera as CameraAlt } from 'lucide-react';
 import CameraModal from './CameraModal';
+import { useLanguage } from '../../context/LanguageContext';
 
 const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
   const fileInputRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [showCamera, setShowCamera] = useState(false);
+  const { t } = useLanguage();
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -55,10 +57,10 @@ const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
             </div>
             
             <h3 className="font-playfair font-black tracking-tight text-2xl md:text-3xl text-primary-darkGreen text-center mb-2">
-               Drop crop photo here
+               {t('upload.drop')}
             </h3>
             <p className="font-nunito font-medium text-[15px] text-gray-500 text-center">
-               or select using the buttons below
+               {t('upload.or_select')}
             </p>
         </div>
         
@@ -73,7 +75,7 @@ const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
           className="w-full md:w-1/2 h-[64px] bg-primary-green hover:bg-primary-darkGreen text-white rounded-[20px] flex items-center justify-center gap-3 shadow-organic hover:shadow-organic-hover transition-all duration-300 font-nunito border border-primary-green/20"
         >
           <Camera className="w-[24px] h-[24px]" strokeWidth={2} />
-          <span className="text-[18px] font-bold tracking-wide">Take a Photo</span>
+          <span className="text-[18px] font-bold tracking-wide">{t('upload.take_photo')}</span>
         </motion.button>
 
         {/* Gallery */}
@@ -83,7 +85,7 @@ const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
           className="w-full md:w-1/2 h-[64px] bg-white border-2 border-primary-sage text-primary-darkGreen rounded-[20px] flex items-center justify-center gap-3 shadow-sm hover:shadow-md hover:bg-primary-lightGreen transition-all font-nunito"
         >
           <Upload className="w-[24px] h-[24px] text-primary-green" strokeWidth={2} />
-          <span className="text-[18px] font-bold tracking-wide">Upload Gallery</span>
+          <span className="text-[18px] font-bold tracking-wide">{t('upload.upload_gallery')}</span>
         </motion.button>
         <input id="gallery-upload-input" type="file" accept="image/jpeg,image/png,image/webp" ref={fileInputRef} onChange={handleChange} className="hidden" />
       </div>
@@ -96,29 +98,29 @@ const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
         />
       )}
 
-      <p className="text-center font-nunito font-semibold text-[13px] text-gray-400">Supports JPG, PNG, WEBP · Max 10MB</p>
+      <p className="text-center font-nunito font-semibold text-[13px] text-gray-400">{t('upload.supports')}</p>
 
       {/* Tips Section */}
       <div className="mt-6 pt-6 border-t-[1px] border-gray-100">
         <h4 className="font-nunito text-[15px] font-bold text-gray-400 mb-4 flex items-center gap-2 uppercase tracking-widest text-center justify-center">
-          <span className="h-[1px] w-8 bg-gray-200" /> Tips for best results <span className="h-[1px] w-8 bg-gray-200" />
+          <span className="h-[1px] w-8 bg-gray-200" /> {t('upload.tips_title')} <span className="h-[1px] w-8 bg-gray-200" />
         </h4>
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-white/60 border border-gray-100 rounded-[16px] p-4 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
             <div className="p-2.5 bg-amber-50 rounded-full"><Sun className="w-5 h-5 text-amber-500" /></div>
-            <span className="font-nunito text-[13px] font-bold text-gray-700">Good lighting</span>
+            <span className="font-nunito text-[13px] font-bold text-gray-700">{t('upload.tip1')}</span>
           </div>
           <div className="bg-white/60 border border-gray-100 rounded-[16px] p-4 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
             <div className="p-2.5 bg-blue-50 rounded-full"><ZoomIn className="w-5 h-5 text-blue-500" /></div>
-            <span className="font-nunito text-[13px] font-bold text-gray-700 text-center leading-tight">Close-up of area</span>
+            <span className="font-nunito text-[13px] font-bold text-gray-700 text-center leading-tight">{t('upload.tip2')}</span>
           </div>
           <div className="bg-white/60 border border-gray-100 rounded-[16px] p-4 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
             <div className="p-2.5 bg-green-50 rounded-full"><Hand className="w-5 h-5 text-[#2E7D32]" /></div>
-            <span className="font-nunito text-[13px] font-bold text-gray-700 text-center leading-tight">Keep camera steady</span>
+            <span className="font-nunito text-[13px] font-bold text-gray-700 text-center leading-tight">{t('upload.tip3')}</span>
           </div>
           <div className="bg-white/60 border border-gray-100 rounded-[16px] p-4 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
             <div className="p-2.5 bg-gray-50 rounded-full"><CameraAlt className="w-5 h-5 text-gray-500" /></div>
-            <span className="font-nunito text-[13px] font-bold text-gray-700 text-center leading-tight">Include leaves clearly</span>
+            <span className="font-nunito text-[13px] font-bold text-gray-700 text-center leading-tight">{t('upload.tip4')}</span>
           </div>
         </div>
       </div>

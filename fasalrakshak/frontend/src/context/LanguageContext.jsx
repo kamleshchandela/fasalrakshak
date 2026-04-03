@@ -17,6 +17,29 @@ export const translations = {
     'nav.login': 'Farmer Login',
     'nav.soil_report': 'Soil Report',
     'nav.store': 'AgriStore',
+    
+    'detect.tag': 'AI-Powered Intelligence',
+    'detect.title1': 'Detect Crop Disease ',
+    'detect.title2': 'Instantly',
+    'detect.desc': 'Upload a clear photo of your affected plant. Our localized AI engine will instantly identify diseases and provide a personalized, actionable treatment plan.',
+    'detect.stats': ['✅ High Precision Models', '🌿 Offline Capable Engine', '⚡ Lightning Fast Output'],
+
+    'upload.drop': 'Drop crop photo here',
+    'upload.or_select': 'or select using the buttons below',
+    'upload.take_photo': 'Take a Photo',
+    'upload.upload_gallery': 'Upload Gallery',
+    'upload.supports': 'Supports JPG, PNG, WEBP · Max 10MB',
+    'upload.tips_title': 'Tips for best results',
+    'upload.tip1': 'Good lighting',
+    'upload.tip2': 'Close-up of area',
+    'upload.tip3': 'Keep camera steady',
+    'upload.tip4': 'Include leaves clearly',
+    'history.title': 'Your Recent Scans',
+    'history.view_all': 'View All',
+    'history.no_scans': 'No scans yet — scan your first crop above!',
+    'history.healthy': 'Healthy Plant',
+    'history.unknown_disease': 'Unknown Disease',
+    'history.unknown_crop': 'Unknown Crop',
 
     'hero.title1': 'किसान की हर ज़रूरत',
     'hero.title2': 'का Digital साथी!',
@@ -47,12 +70,40 @@ export const translations = {
       { title: 'Weather Risk', desc: 'Stay updated with local weather risks to your crops.' }
     ],
 
+    'testimonials.tag': 'Farmer Stories',
+    'testimonials.title': 'Loved by Farmers',
+    'testimonials.desc': 'See how FasalRakshak is changing lives across India.',
+    'testimonials.reviews': [
+      {
+        name: "Rameshbhai Patel", location: "Anand, Gujarat",
+        quote: "My groundnut crop was getting destroyed. FasalRakshak identified the disease in just 2 seconds. My crop is saved and I saved a lot of money!",
+        cropLabel: "🥜 Groundnut (Mungfali) Farmer"
+      },
+      {
+        name: "Sureshbhai Chauhan", location: "Rajkot, Gujarat",
+        quote: "Results in Gujarati — very easy to understand. Medicine name and dosage are all written in the app. Thank you FasalRakshak!",
+        cropLabel: "🌿 Cotton (Kapas) Farmer"
+      },
+      {
+        name: "Dineshbhai Desai", location: "Saurashtra, Gujarat",
+        quote: "Earlier I had to visit the agriculture center. Now my phone is my crop expert. Very fast and useful app for wheat farmers!",
+        cropLabel: "🌾 Wheat (Gehu) Farmer"
+      }
+    ],
+
     'how.tag': 'Simple Steps',
     'how.title': 'How to Use FasalRakshak',
     'how.steps': [
       { title: 'Open App', desc: 'Launch the FasalRakshak app on your smartphone.' },
       { title: 'Snap Photo', desc: 'Take a clear picture of the affected crop leaf.' },
       { title: 'Get Results', desc: 'Instantly view disease details and treatment guide.' }
+    ],
+    'how.supportTag': 'SUPPORTED CROPS',
+    'how.supportTitle': 'Crops we currently support',
+    'how.crops': [
+      { name: '🥜 Groundnut', desc: 'Full lifecycle disease support' },
+      { name: '🌾 Wheat', desc: 'Accurate pest & nutrient detection' },
+      { name: '☁️ Cotton', desc: 'Early pest attack & disease alerts' }
     ],
 
     'cta.tag': 'Get Started Free',
@@ -108,6 +159,29 @@ export const translations = {
     'nav.login': 'लॉगिन',
     'nav.soil_report': 'मृदा रिपोर्ट',
     'nav.store': 'कृषि स्टोर',
+    
+    'detect.tag': 'एआई-संचालित बुद्धिमत्ता',
+    'detect.title1': 'फसल की बीमारी का ',
+    'detect.title2': 'तुरंत पता लगाएं',
+    'detect.desc': 'अपने प्रभावित पौधे की एक साफ फोटो अपलोड करें। हमारा एआई इंजन तुरंत बीमारी की पहचान करेगा और एक सटीक उपचार योजना प्रदान करेगा।',
+    'detect.stats': ['✅ उच्च सटीकता मॉडल', '🌿 ऑफलाइन सक्षम इंजन', '⚡ तेज़ परिणाम'],
+
+    'upload.drop': 'फसल की फोटो यहाँ डालें',
+    'upload.or_select': 'या नीचे दिए गए बटन का उपयोग करें',
+    'upload.take_photo': 'तस्वीर खींचें',
+    'upload.upload_gallery': 'गैलरी से अपलोड करें',
+    'upload.supports': 'सपोर्ट: JPG, PNG, WEBP · अधिकतम 10MB',
+    'upload.tips_title': 'बेहतर परिणाम के लिए टिप्स',
+    'upload.tip1': 'अच्छी रोशनी',
+    'upload.tip2': 'नज़दीक से फोटो लें',
+    'upload.tip3': 'कैमरा स्थिर रखें',
+    'upload.tip4': 'पत्ते साफ दिखने चाहिए',
+    'history.title': 'आपके हालिया स्कैन',
+    'history.view_all': 'सभी देखें',
+    'history.no_scans': 'अभी तक कोई स्कैन नहीं — ऊपर अपनी पहली फसल स्कैन करें!',
+    'history.healthy': 'स्वस्थ पौधा',
+    'history.unknown_disease': 'अज्ञात बीमारी',
+    'history.unknown_crop': 'अज्ञात फसल',
 
     'hero.title1': 'किसान की हर ज़रूरत',
     'hero.title2': 'का Digital साथी!',
@@ -138,12 +212,40 @@ export const translations = {
       { title: 'मौसम जोखिम', desc: 'अपनी फसलों के लिए स्थानीय मौसम जोखिमों से अपडेट रहें।' }
     ],
 
+    'testimonials.tag': 'किसान की कहानियाँ',
+    'testimonials.title': 'किसानों की पसंद',
+    'testimonials.desc': 'देखें कैसे फसलरक्षक पूरे भारत में किसानों की ज़िंदगी बदल रहा है।',
+    'testimonials.reviews': [
+      {
+        name: "रमेशभाई पटेल", location: "आणंद, गुजरात",
+        quote: "मेरी मूंगफली की फसल खराब हो रही थी। फसलरक्षक ने सिर्फ 2 सेकंड में बीमारी पहचान ली। मेरी फसल भी बच गई और काफी पैसे भी बचे!",
+        cropLabel: "🥜 मूंगफली किसान"
+      },
+      {
+        name: "सुरेशभाई चौहान", location: "राजकोट, गुजरात",
+        quote: "गुजराती में परिणाम — समझने में बहुत आसान। दवाई का नाम और मात्रा सब ऐप में लिखी होती है। फसलरक्षक का धन्यवाद!",
+        cropLabel: "🌿 कपास किसान"
+      },
+      {
+        name: "दिनेशभाई देसाई", location: "सौराष्ट्र, गुजरात",
+        quote: "पहले मुझे कृषि केंद्र जाना पड़ता था। अब मेरा फोन ही मेरा फसल विशेषज्ञ है। गेहूं के किसानों के लिए बहुत तेज़ और उपयोगी ऐप!",
+        cropLabel: "🌾 गेहूं किसान"
+      }
+    ],
+
     'how.tag': 'आसान चरण',
     'how.title': 'उपयोग कैसे करें',
     'how.steps': [
       { title: 'ऐप खोलें', desc: 'स्मार्टफोन पर फसलरक्षक ऐप लॉन्च करें।' },
       { title: 'फोटो लें', desc: 'प्रभावित फसल के पत्ते की साफ फोटो लें।' },
       { title: 'परिणाम पाएं', desc: 'बीमारी का विवरण और उपचार गाइड तुरंत देखें।' }
+    ],
+    'how.supportTag': 'समर्थित फसलें',
+    'how.supportTitle': 'फसलें जिनका हम समर्थन करते हैं',
+    'how.crops': [
+      { name: '🥜 मूंगफली', desc: 'संपूर्ण जीवनचक्र बीमारी समर्थन' },
+      { name: '🌾 गेहूं', desc: 'सटीक कीट और पोषक तत्वों की पहचान' },
+      { name: '☁️ कपास', desc: 'कीट हमले और बीमारी की प्रारंभिक चेतावनी' }
     ],
 
     'cta.tag': 'निशुल्क शुरू करें',
@@ -190,22 +292,45 @@ export const translations = {
     lang_hi: 'हिन्दी (Hindi)',
     lang_guj: 'ગુજરાતી (Gujarati)',
     'nav.home': 'મુખ્ય',
-    'nav.detect': 'ઓળખો',
+    'nav.detect': 'ખોડ શોધો',
     'nav.library': 'લાઈબ્રેરી',
     'nav.weather': 'હવામાન',
     'nav.blog': 'બ્લોગ',
-    'nav.about': 'About',
-    'nav.contact': 'Contact',
+    'nav.about': 'અમારા વિશે',
+    'nav.contact': 'સંપર્ક',
     'nav.login': 'લૉગિન',
     'nav.soil_report': 'જમીન રિપોર્ટ',
-    'nav.store': 'કૃષિ સ્ટોર',
+    'nav.store': 'કૃષિ દુકાન',
+    
+    'detect.tag': 'AI-સંચાલિત બુદ્ધિમત્તા',
+    'detect.title1': 'પાકના રોગની ',
+    'detect.title2': 'તરત જ તપાસ કરો',
+    'detect.desc': 'તમારા રોગગ્રસ્ત છોડનો સ્પષ્ટ ફોટો અપલોડ કરો. અમારું AI એન્જિન તરત જ રોગની ઓળખ કરશે અને ચોક્કસ સારવાર યોજના આપશે.',
+    'detect.stats': ['✅ ઉચ્ચ ચોકસાઈ મોડેલ્સ', '🌿 ઑફલાઇન સક્ષમ એન્જિન', '⚡ અતિ ઝડપી પરિણામ'],
 
-    'hero.title1': 'किसान की हर ज़रूरत',
-    'hero.title2': 'का Digital साथी!',
-    'hero.subtitle': 'Empowering Farmers',
-    'hero.desc': 'સેકન્ડોમાં પાકના રોગોને ઓળખવા માટે અદ્યતન AI. વિશ્વાસપાત્ર અને તમારા હાથમાં.',
-    'hero.downloadBtn': 'Download Now',
-    'hero.scanningActive': 'SCANNING ACTIVE IN',
+    'upload.drop': 'પાકનો ફોટો અહીં છોડો',
+    'upload.or_select': 'અથવા નીચેના બટનોનો ઉપયોગ કરો',
+    'upload.take_photo': 'ફોટો પાડો',
+    'upload.upload_gallery': 'ગેલેરીમાંથી અપલોડ કરો',
+    'upload.supports': 'સપોર્ટ: JPG, PNG, WEBP · મહત્તમ 10MB',
+    'upload.tips_title': 'સારા પરિણામો માટે ટિપ્સ',
+    'upload.tip1': 'સારો પ્રકાશ',
+    'upload.tip2': 'નજીકથી ફોટો લો',
+    'upload.tip3': 'કેમેરો સ્થિર રાખો',
+    'upload.tip4': 'પાંદડા ચોખ્ખા દેખાવા જોઈએ',
+    'history.title': 'તમારા તાજેતરના સ્કેન',
+    'history.view_all': 'બધા જુઓ',
+    'history.no_scans': 'હજુ સુધી કોઈ સ્કેન નથી — ઉપર તમારો પહેલો પાક સ્કેન કરો!',
+    'history.healthy': 'તંદુરસ્ત છોડ',
+    'history.unknown_disease': 'અજ્ઞાત રોગ',
+    'history.unknown_crop': 'અજ્ઞાત પાક',
+
+    'hero.title1': 'ખેડૂતની દરેક જરૂરિયાતનો',
+    'hero.title2': 'Digital સાથી!',
+    'hero.subtitle': 'ખેડૂતોનું સશક્તિકરણ',
+    'hero.desc': 'થોડી જ સેકન્ડોમાં પાકના રોગોને ઓળખવા માટે અત્યાધુનિક AI. વિશ્વાસપાત્ર, સરળ અને તમારા હાથમાં કામ કરે છે.',
+    'hero.downloadBtn': 'હમણાં ડાઉનલોડ કરો',
+    'hero.scanningActive': 'સ્કેનિંગ સક્રિય છે',
     'hero.districts': '200+ જિલ્લાઓમાં',
 
     'stats.tag': 'વિશ્વાસ',
@@ -217,64 +342,92 @@ export const translations = {
       { number: '24/7', label: 'ખેડૂત સહાય', value: '24/7', sublabel: 'હંમેશા તમારી સાથે' }
     ],
 
-    'features.tag': 'મુખ્ય લાક્ષણિકતાઓ',
-    'features.title': 'તમને જોઈતી દરેક વસ્તુ',
+    'features.tag': 'મુખ્ય વિશેષતાઓ',
+    'features.title': 'તમારે જે બધું જોઈએ છે તે',
     'features.desc': 'ફસલરક્ષક સીધી તમારા હાથમાં શક્તિશાળી કૃષિ AI ટેકનોલોજી લાવે છે.',
     'features.items': [
-      { title: 'ઓફલાઇન મોડ', desc: 'ઇન્ટરનેટ નથી? કોઈ વાંધો નહીં. એપ ખેતરમાં પણ કામ કરે છે!' },
+      { title: 'ઓફલાઇન મોડ', desc: 'ઇન્ટરનેટ નથી? કોઈ વાંધો નહીં. એપ તમારા ખેતરમાં પણ કામ કરે છે!' },
       { title: 'સ્થાનિક ભાષાઓ', desc: 'તમારી ભાષામાં પરિણામો મેળવો - ગુજરાતી, હિન્દી કે અંગ્રેજી!' },
-      { title: '2-સેકન્ડ AI', desc: 'અમરું AI મોડેલ પાકનો રોગ ફક્ત 2 સેકન્ડમાં ઓળખી લે છે.' },
-      { title: 'સારવાર માર્ગદર્શિકા', desc: 'દવાઓના નામ, માત્રા અને ઉપયોગની ટીપ્સ મેળવો.' },
-      { title: 'સ્કેન હિસ્ટ્રી', desc: 'તમારા જૂના સ્કેન અને પાકના સ્વાસ્થ્યના રેકોર્ડ જુઓ.' },
-      { title: 'હવામાન જોખમ', desc: 'પાક માટે સ્થાનિક હવામાન જોખમો સાથે અપડેટ રહો.' }
+      { title: '2-સેકન્ડ AI', desc: 'અમારું AI મોડેલ પાકનો રોગ માત્ર 2 સેકન્ડમાં ઓળખી લે છે.' },
+      { title: 'સારવાર માર્ગદર્શિકા', desc: 'દવાના નામ, માત્રા અને ઉપયોગની પદ્ધતિઓ વિશે જાણો.' },
+      { title: 'સ્કેન હિસ્ટ્રી', desc: 'તમારા અગાઉના તમામ સ્કેન અને પાકના સ્વાસ્થ્યના રેકોર્ડ જુઓ.' },
+      { title: 'હવામાન જોખમ', desc: 'તમારા પાક માટે સ્થાનિક હવામાનના જોખમો વિશે અપડેટ રહો.' }
+    ],
+
+    'testimonials.tag': 'ખેડૂતોની વાર્તાઓ',
+    'testimonials.title': 'ખેડૂતોની પસંદ',
+    'testimonials.desc': 'જુઓ ફસલરક્ષક સમગ્ર ભારતમાં ખેડૂતોનું જીવન કેવી રીતે બદલી રહ્યું છે.',
+    'testimonials.reviews': [
+      {
+        name: "રમેશભાઈ પટેલ", location: "આણંદ, ગુજરાત",
+        quote: "મારો મગફળીનો પાક બગડી રહ્યો હતો. ફસલરક્ષકે 2 સેકન્ડમાં રોગ ઓળખી કાઢ્યો. મારો પાક પણ બચી ગયો અને મારા ઘણા પૈસા પણ બચ્યા!",
+        cropLabel: "🥜 મગફળીના ખેડૂત"
+      },
+      {
+        name: "સુરેશભાઈ ચૌહાણ", location: "રાજકોટ, ગુજરાત",
+        quote: "ગુજરાતીમાં પરિણામ — સમજવામાં ખૂબ જ સરળ. દવાનું નામ અને ડોઝ એપમાં જ લખેલું હોય છે. ફસલરક્ષકનો આભાર!",
+        cropLabel: "🌿 કપાસના ખેડૂત"
+      },
+      {
+        name: "દિનેશભાઈ દેસાઈ", location: "સૌરાષ્ટ્ર, ગુજરાત",
+        quote: "પહેલા મારે કૃષિ કેન્દ્ર જવું પડતું હતું. હવે મારો ફોન જ મારો પાક નિષ્ણાત છે. ઘઉંના ખેડૂતો માટે ખૂબ જ ઝડપી અને ઉપયોગી એપ!",
+        cropLabel: "🌾 ઘઉંના ખેડૂત"
+      }
     ],
 
     'how.tag': 'સરળ પગલાં',
-    'how.title': 'ઉપયોગ કેવી રીતે કરવો',
+    'how.title': 'ફસલરક્ષકનો ઉપયોગ કેવી રીતે કરવો',
     'how.steps': [
-      { title: 'એપ ખોલો', desc: 'તમારા સ્માર્ટફોન પર ફસલરક્ષક એપ લોન્ચ કરો.' },
-      { title: 'ફોટો લો', desc: 'રોગગ્રસ્ત પાકના પાંદડાનો સાફ ફોટો લો.' },
-      { title: 'પરિણામ મેળવો', desc: 'રોગની વિગત અને સારવાર માર્ગદર્શિકા તરત જ જુઓ.' }
+      { title: 'એપ ખોલો', desc: 'તમારા સ્માર્ટફોન પર ફસલરક્ષક એપ ચાલુ કરો.' },
+      { title: 'ફોટો લો', desc: 'રોગગ્રસ્ત પાકના પાંદડાનો સ્પષ્ટ ફોટો લો.' },
+      { title: 'પરિણામ મેળવો', desc: 'રોગની વિગત અને સારવાર માર્ગદર્શિકા તરત જુઓ.' }
+    ],
+    'how.supportTag': 'સપોર્ટ કરાયેલા પાક',
+    'how.supportTitle': 'અમે હાલમાં આ પાકોને સપોર્ટ કરીએ છીએ',
+    'how.crops': [
+      { name: '🥜 મગફળી', desc: 'સંપૂર્ણ જીવનચક્ર રોગ સપોર્ટ' },
+      { name: '🌾 ઘઉં', desc: 'ચોક્કસ જીવાત અને પોષક તત્વોની ઓળખ' },
+      { name: '☁️ કપાસ', desc: 'જીવાતોના હુમલા અને રોગની પ્રારંભિક ચેતવણી' }
     ],
 
     'cta.tag': 'નિઃશુલ્ક શરૂ કરો',
     'cta.title': 'આજે જ તમારા પાકને સુરક્ષિત કરો',
-    'cta.desc': 'ફસલરક્ષકનો ઉપયોગ કરતા 10,000+ ખેડૂતોમાં જોડાઓ. હંમેશા મફત.',
-    'cta.btn': 'અત્યારે સ્કેન કરો',
-    'cta.comingSoon': 'કમિંગ સૂન',
+    'cta.desc': 'ફસલરક્ષકનો ઉપયોગ કરતા 10,000+ ખેડૂતોમાં જોડાઓ. હંમેશા માટે મફત.',
+    'cta.btn': 'અત્યારે જ સ્કેન કરો',
+    'cta.comingSoon': 'ટૂંક સમયમાં આવી રહ્યું છે',
 
     'footer.subscribeTitle1': 'અમારા ',
     'footer.subscribeTitle2': 'સમુદાયમાં જોડાઓ',
-    'footer.subscribeDesc': 'તમારા ઇનબોક્સમાં સીધા સાપ્તાહિક જૈવિક ટિપ્સ અને હવામાન ચેતવણીઓ મેળવો.',
+    'footer.subscribeDesc': 'તમારા ઇનબોક્સમાં સીધી સાપ્તાહિક જૈવિક ટિપ્સ અને હવામાન ચેતવણીઓ મેળવો.',
     'footer.emailPlaceholder': 'તમારું ઇમેઇલ સરનામું દાખલ કરો',
-    'footer.subscribeBtn': 'અત્યારે જોડાઓ',
-    'footer.brandDesc': 'ફસલરક્ષક એ AI-સંચાલિત કૃષિ સાથી છે જે જૈવિક રોગની ઓળખ સાથે સમગ્ર ભારતમાં પાકનું રક્ષણ કરે છે અને ખેડૂતોને સશક્ત બનાવે છે.',
+    'footer.subscribeBtn': 'હમણાં જોડાઓ',
+    'footer.brandDesc': 'ફસલરક્ષક એ AI સંચાલિત કૃષિ સાથી છે જે જૈવિક રોગની ઓળખ સાથે સમગ્ર ભારતમાં પાકનું રક્ષણ કરે છે અને ખેડૂતોને સશક્ત બનાવે છે.',
     'footer.company': 'કંપની',
     'footer.companyLinks': ['અમારા વિશે', 'સંપર્ક કરો', 'બ્લોગ', 'ઇકોસિસ્ટમ'],
     'footer.solutions': 'ઉકેલો',
-    'footer.solutionLinks': ['રોગની ઓળખ', 'હવામાન AI', 'મંડી ભાવ', 'જમીનનું સ્વાસ્થ્ય'],
+    'footer.solutionLinks': ['રોગની ઓળખ', 'હવામાન AI', 'મંડી ભાવ', 'જમીન સ્વાસ્થ્ય'],
     'footer.contact': 'અમારો સંપર્ક કરો',
     'footer.emailUs': 'ઇમેઇલ સહાય',
     'footer.helpline': 'હેલ્પલાઇન નંબર',
     'footer.tollFree': 'ટોલ ફ્રી',
-    'footer.headOffice': 'મુખ્ય ઓફિસ',
+    'footer.headOffice': 'મુખ્ય કાર્યાલય',
     'footer.address': 'એગ્રીટેક હબ, સેક્ટર 4, <br/>ગાંધીનગર, ભારત',
     'footer.copyright': '© {year} ફસલરક્ષક એપ.',
     'footer.privacy': 'ગોપનીયતા નીતિ',
-    'footer.terms': 'શરતો અને નિયમો',
+    'footer.terms': 'નિયમો અને શરતો',
     'footer.systemOp': 'સિસ્ટમ ઓનલાઇન છે',
 
     'soil.manual': '✍️ મેન્યુઅલ એન્ટ્રી',
     'soil.upload': '📄 PDF અપલોડ',
-    'soil.scan': '📸 ઇમેજ સ્કેન',
+    'soil.scan': '📸 ફોટો સ્કેન',
 
-    'login.slogan': 'बेहतर खेती के लिए आपका Digital साथी।',
-    'login.googleBtn': 'Google के साथ लॉगिन करें',
+    'login.slogan': 'વધુ સારી ખેતી માટે તમારો Digital સાથી.',
+    'login.googleBtn': 'Google સાથે લૉગિન કરો',
     'login.secure': 'સુરક્ષિત લૉગિન',
-    'login.free': 'મફત એક્સેસ',
+    'login.free': 'મફત ઉપયોગ',
     'login.trusted': '10,000+ ખેડૂતોનો વિશ્વાસ',
     'login.designed': 'ભારતીય ખેડૂતો માટે ❤️ સાથે ડિઝાઈન કરેલ',
-    'login.back': 'મુખ્ય પૃષ્ઠ પર પાછા'
+    'login.back': 'મુખ્ય પૃષ્ઠ પર પાછા ફરો'
   }
 };
 

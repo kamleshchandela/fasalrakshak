@@ -1,14 +1,38 @@
-﻿import React from 'react';
-import { Users, Leaf, Target, Zap } from 'lucide-react';
+import React from 'react';
+import { Users, Leaf, Target, Zap, Sparkles } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 const stats = [
-  { icon: Users, value: '50,000+', label: 'Farmer Users', sublabel: 'Across India', color: 'text-emerald-500', bg: 'bg-emerald-50', border: 'border-emerald-100', glow: 'group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]' },
-  { icon: Leaf,  value: '150+',   label: 'Diseases Detected', sublabel: 'Across major crops', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-100', glow: 'group-hover:shadow-[0_0_30px_rgba(22,163,74,0.3)]' },
-  { icon: Target,value: '98%',    label: 'AI Accuracy',       sublabel: 'Clinically validated', color: 'text-teal-600', bg: 'bg-teal-50', border: 'border-teal-100', glow: 'group-hover:shadow-[0_0_30px_rgba(13,148,136,0.3)]' },
-  { icon: Zap,   value: '2 Sec',  label: 'Detection Time',    sublabel: 'Instant offline results', color: 'text-cyan-600', bg: 'bg-cyan-50', border: 'border-cyan-100', glow: 'group-hover:shadow-[0_0_30px_rgba(8,145,178,0.3)]' },
+  { icon: Users, value: '50,000+', label: 'Farmer Users', sublabel: 'Across India', 
+    color: 'text-emerald-500', 
+    grad: 'from-emerald-600 to-emerald-400', 
+    bg: 'bg-emerald-50', 
+    border: 'border-emerald-100', 
+    glow: 'group-hover:shadow-[0_15px_35px_rgba(16,185,129,0.2)]' 
+  },
+  { icon: Leaf,  value: '150+',   label: 'Diseases Detected', sublabel: 'Across major crops', 
+    color: 'text-green-600', 
+    grad: 'from-green-600 to-lime-500', 
+    bg: 'bg-green-50', 
+    border: 'border-green-100', 
+    glow: 'group-hover:shadow-[0_15px_35px_rgba(22,163,74,0.2)]' 
+  },
+  { icon: Target,value: '98%',    label: 'AI Accuracy',       sublabel: 'Clinically validated', 
+    color: 'text-teal-600', 
+    grad: 'from-teal-600 to-emerald-400', 
+    bg: 'bg-teal-50', 
+    border: 'border-teal-100', 
+    glow: 'group-hover:shadow-[0_15px_35px_rgba(20,184,166,0.2)]' 
+  },
+  { icon: Zap,   value: '2 Sec',  label: 'Detection Time',    sublabel: 'Instant offline results', 
+    color: 'text-cyan-600', 
+    grad: 'from-cyan-600 to-blue-500', 
+    bg: 'bg-cyan-50', 
+    border: 'border-cyan-100', 
+    glow: 'group-hover:shadow-[0_15px_35px_rgba(6,182,212,0.2)]' 
+  },
 ];
 
 const containerVariants = {
@@ -62,22 +86,37 @@ const StatsStrip = () => {
             const value = locItem ? locItem.value : stat.value;
             const label = locItem ? locItem.label : stat.label;
             const sublabel = locItem ? locItem.sublabel : stat.sublabel;
+            
             return (
               <motion.div
                 key={i}
                 variants={itemVariants}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className={`relative flex flex-col items-center text-center p-8 rounded-[32px] border ${stat.border} bg-white shadow-sm hover:border-transparent transition-all duration-500 group ${stat.glow}`}
+                className={`relative flex flex-col items-center text-center p-8 rounded-[32px] border ${stat.border} bg-white shadow-sm hover:border-transparent transition-all duration-500 group ${stat.glow} overflow-hidden`}
               >
                 {/* Internal gradient hover effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 opacity-0 group-hover:opacity-100 rounded-[32px] transition-opacity duration-500 -z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
                 
-                <div className={`${stat.bg} ${stat.color} w-20 h-20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 shadow-inner`}>
+                {/* Decorative floating sparkle on hover */}
+                <motion.div 
+                  className={`absolute top-6 right-6 opacity-0 group-hover:opacity-100 ${stat.color} transition-opacity duration-500`}
+                  animate={{ rotate: 360, scale: [1, 1.2, 1] }}
+                  transition={{ repeat: Infinity, duration: 4 }}
+                >
+                   <Sparkles className="w-5 h-5 opacity-40" />
+                </motion.div>
+                
+                <div className={`${stat.bg} ${stat.color} w-20 h-20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 shadow-inner relative z-10`}>
                   <Icon className="w-10 h-10" />
                 </div>
-                <div className="font-playfair font-black text-4xl lg:text-5xl text-gray-900 mb-3 tracking-tight">{value}</div>
-                <div className="font-nunito font-extrabold text-gray-800 text-lg mb-1">{label}</div>
-                <div className="font-nunito font-semibold text-gray-500 text-sm">{sublabel}</div>
+                
+                {/* Creative Gradient Numbers */}
+                <div className={`font-sans font-extrabold text-4xl lg:text-[2.8rem] mb-3 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r ${stat.grad} relative z-10 transition-transform duration-300 group-hover:scale-[1.05]`}>
+                  {value}
+                </div>
+                
+                <div className="font-nunito font-extrabold text-gray-800 text-lg mb-1 relative z-10">{label}</div>
+                <div className="font-nunito font-semibold text-gray-500 text-sm relative z-10">{sublabel}</div>
               </motion.div>
             );
           })}
