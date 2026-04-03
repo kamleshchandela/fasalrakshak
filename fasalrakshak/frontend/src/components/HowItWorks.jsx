@@ -13,7 +13,7 @@ import smilingFarmer   from '../images/smiling_farmer.png';
 
 const steps = [
   {
-    number: '1', emoji: '📷',
+    number: '1', emoji: '📸',
     title: 'Take a Photo',
     desc: 'Click a clear photo of the diseased leaf using your mobile camera, or choose from your gallery.',
     img: heroScan, imgAlt: 'Farmer analyzing field'
@@ -27,7 +27,7 @@ const steps = [
   {
     number: '3', emoji: '💊',
     title: 'Get Treatment Advice',
-    desc: 'Disease name, severity, medicine & dosage — shown in English, Hindi or Gujarati.',
+    desc: 'Disease name, severity, medicine & dosage ΓÇö shown in English, Hindi or Gujarati.',
     img: smilingFarmer, imgAlt: 'Smiling farmer getting treatment'
   }
 ];
@@ -35,7 +35,7 @@ const steps = [
 const HowItWorks = () => {
   const { t } = useLanguage();
   const steps = [
-    { number: '1', emoji: '📷', img: heroScan, imgAlt: 'Farmer analyzing field', ...( (Array.isArray(t('how.steps')) && t('how.steps')[0]) || { title: 'Take a Photo', desc: 'Click a clear photo of the diseased leaf.' }) },
+    { number: '1', emoji: '📸', img: heroScan, imgAlt: 'Farmer analyzing field', ...( (Array.isArray(t('how.steps')) && t('how.steps')[0]) || { title: 'Take a Photo', desc: 'Click a clear photo of the diseased leaf.' }) },
     { number: '2', emoji: '🤖', img: lushGreen, imgAlt: 'Healthy lush green crops', ...( (Array.isArray(t('how.steps')) && t('how.steps')[1]) || { title: 'AI Analyzes Instantly', desc: 'Our AI identifies disease in 2 seconds.' }) },
     { number: '3', emoji: '💊', img: smilingFarmer, imgAlt: 'Smiling farmer', ...( (Array.isArray(t('how.steps')) && t('how.steps')[2]) || { title: 'Get Treatment Advice', desc: 'Shown in your language.' }) },
   ];

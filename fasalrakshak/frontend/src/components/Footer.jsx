@@ -22,6 +22,7 @@ const Footer = () => {
             <h3 className="font-playfair text-3xl font-bold text-white mb-3 tracking-tight">{t('footer.subscribeTitle1')}<span className="text-[#10b981]">{t('footer.subscribeTitle2')}</span></h3>
             <p className="font-nunito text-gray-400 text-sm md:text-base leading-relaxed">{t('footer.subscribeDesc')}</p>
           </div>
+          
           <div className="flex w-full lg:w-auto min-w-[320px] max-w-lg bg-white/5 p-1.5 rounded-full border border-white/10 ring-1 ring-white/5 focus-within:ring-[#10b981]/50 focus-within:border-[#10b981]/50 focus-within:bg-white/10 transition-all relative">
             <input 
               type="email" 

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Users, Leaf, Target, Zap } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';

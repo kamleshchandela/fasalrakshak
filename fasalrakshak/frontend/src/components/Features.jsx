@@ -22,7 +22,7 @@ const features = [
   {
     emoji: '🗣️',
     title: 'Gujarati & Hindi',
-    desc: 'Apni bhasha mein results pao — Gujarati, Hindi ya English!',
+    desc: 'Apni bhasha mein results pao ΓÇö Gujarati, Hindi ya English!',
     img: lushGreen,
     color: 'from-indigo-900/90'
   },
@@ -43,12 +43,12 @@ const features = [
   {
     emoji: '📋',
     title: 'Scan History',
-    desc: 'Aapki saari purani scans save rehti hain — jab chahein dekhein.',
+    desc: 'Aapki saari purani scans save rehti hain ΓÇö jab chahein dekhein.',
     img: heroLandscape,
     color: 'from-amber-900/90'
   },
   {
-    emoji: '🌦️',
+    emoji: '⛈️',
     title: 'Weather Risk',
     desc: 'Aaj ke mausam se bimari ka risk kya hai, app bata dega.',
     img: smilingFarmer,
