@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Camera, Search, HeartPulse } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
@@ -13,19 +13,19 @@ import smilingFarmer   from '../images/smiling_farmer.png';
 
 const steps = [
   {
-    number: '1', emoji: '≡ƒô╖',
+    number: '1', emoji: '📸',
     title: 'Take a Photo',
     desc: 'Click a clear photo of the diseased leaf using your mobile camera, or choose from your gallery.',
     img: heroScan, imgAlt: 'Farmer analyzing field'
   },
   {
-    number: '2', emoji: '≡ƒñû',
+    number: '2', emoji: '🤖',
     title: 'AI Analyzes Instantly',
     desc: 'Our AI model identifies the crop disease in just 2 seconds with 94% accuracy.',
     img: lushGreen, imgAlt: 'Healthy lush green crops'
   },
   {
-    number: '3', emoji: '≡ƒÆè',
+    number: '3', emoji: '💊',
     title: 'Get Treatment Advice',
     desc: 'Disease name, severity, medicine & dosage ΓÇö shown in English, Hindi or Gujarati.',
     img: smilingFarmer, imgAlt: 'Smiling farmer getting treatment'
@@ -35,9 +35,9 @@ const steps = [
 const HowItWorks = () => {
   const { t } = useLanguage();
   const steps = [
-    { number: '1', emoji: '≡ƒô╖', img: heroScan, imgAlt: 'Farmer analyzing field', ...( (Array.isArray(t('how.steps')) && t('how.steps')[0]) || { title: 'Take a Photo', desc: 'Click a clear photo of the diseased leaf.' }) },
-    { number: '2', emoji: '≡ƒñû', img: lushGreen, imgAlt: 'Healthy lush green crops', ...( (Array.isArray(t('how.steps')) && t('how.steps')[1]) || { title: 'AI Analyzes Instantly', desc: 'Our AI identifies disease in 2 seconds.' }) },
-    { number: '3', emoji: '≡ƒÆè', img: smilingFarmer, imgAlt: 'Smiling farmer', ...( (Array.isArray(t('how.steps')) && t('how.steps')[2]) || { title: 'Get Treatment Advice', desc: 'Shown in your language.' }) },
+    { number: '1', emoji: '📸', img: heroScan, imgAlt: 'Farmer analyzing field', ...( (Array.isArray(t('how.steps')) && t('how.steps')[0]) || { title: 'Take a Photo', desc: 'Click a clear photo of the diseased leaf.' }) },
+    { number: '2', emoji: '🤖', img: lushGreen, imgAlt: 'Healthy lush green crops', ...( (Array.isArray(t('how.steps')) && t('how.steps')[1]) || { title: 'AI Analyzes Instantly', desc: 'Our AI identifies disease in 2 seconds.' }) },
+    { number: '3', emoji: '💊', img: smilingFarmer, imgAlt: 'Smiling farmer', ...( (Array.isArray(t('how.steps')) && t('how.steps')[2]) || { title: 'Get Treatment Advice', desc: 'Shown in your language.' }) },
   ];
   const crops = Array.isArray(t('how.crops')) ? t('how.crops') : [];
   return (
@@ -118,9 +118,9 @@ const HowItWorks = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
             {[
-              { img: mumfali, ...(crops[0] || { name: '≡ƒÑ£ Groundnut (Mungfali)', desc: '' }) },
-              { img: gehu,    ...(crops[1] || { name: '≡ƒî╛ Wheat (Gehu)', desc: '' }) },
-              { img: kapas,   ...(crops[2] || { name: 'Γÿü∩╕Å Cotton (Kapas)', desc: '' }) },
+              { img: mumfali, ...(crops[0] || { name: '🥜 Groundnut (Mungfali)', desc: '' }) },
+              { img: gehu,    ...(crops[1] || { name: '🌾 Wheat (Gehu)', desc: '' }) },
+              { img: kapas,   ...(crops[2] || { name: '☁️ Cotton (Kapas)', desc: '' }) },
             ].map((crop, i) => (
               <motion.div 
                 key={i} 

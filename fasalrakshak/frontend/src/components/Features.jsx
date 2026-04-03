@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { WifiOff, Languages, Zap, Heart, History, Cloud } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
@@ -13,42 +13,42 @@ import smilingFarmer from '../images/smiling_farmer.png';
 
 const features = [
   {
-    emoji: '≡ƒô╢',
+    emoji: '📶',
     title: 'Offline Mode',
     desc: 'Internet nahi? Koi baat nahi. App offline bhi kaam karta khet mein!',
     img: featOffline,
     color: 'from-blue-900/90'
   },
   {
-    emoji: '≡ƒùú∩╕Å',
+    emoji: '🗣️',
     title: 'Gujarati & Hindi',
     desc: 'Apni bhasha mein results pao ΓÇö Gujarati, Hindi ya English!',
     img: lushGreen,
     color: 'from-indigo-900/90'
   },
   {
-    emoji: 'ΓÜí',
+    emoji: '⚡',
     title: '2-Second Detection',
     desc: 'Hamara AI model sirf 2 second mein bimari pehchaan leta hai.',
     img: heroScan,
     color: 'from-green-900/90'
   },
   {
-    emoji: '≡ƒÆè',
+    emoji: '💊',
     title: 'Treatment Guide',
     desc: 'Sahi dawai ka naam, matra, aur kab daalni hai, screen pe aayega.',
     img: heroFarmer,
     color: 'from-red-900/90'
   },
   {
-    emoji: '≡ƒôï',
+    emoji: '📋',
     title: 'Scan History',
     desc: 'Aapki saari purani scans save rehti hain ΓÇö jab chahein dekhein.',
     img: heroLandscape,
     color: 'from-amber-900/90'
   },
   {
-    emoji: '≡ƒîª∩╕Å',
+    emoji: '⛈️',
     title: 'Weather Risk',
     desc: 'Aaj ke mausam se bimari ka risk kya hai, app bata dega.',
     img: smilingFarmer,
