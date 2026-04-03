@@ -78,18 +78,18 @@ const Testimonials = () => {
               <div className="absolute top-24 right-6 text-9xl font-serif text-gray-50/80 -z-0 pointer-events-none select-none group-hover:text-[#10b981]/5 transition-colors duration-500">
                 "
               </div>
-              <div className="relative h-40 overflow-hidden shrink-0 rounded-t-[32px]">
+              <div className="relative h-44 overflow-hidden shrink-0 rounded-t-[32px]">
                 <img src={cropImages[i]} alt={rev.cropLabel} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent"></div>
-                <span className="absolute bottom-4 left-6 text-white text-xs font-nunito font-extrabold tracking-widest uppercase shadow-sm">{rev.cropLabel}</span>
+                <span className="absolute bottom-3 left-6 right-6 text-white text-xs font-nunito font-extrabold tracking-widest uppercase shadow-sm leading-tight">{rev.cropLabel}</span>
               </div>
               
               {/* Pop out avatar */}
-              <div className="absolute top-32 left-6 z-20">
+              <div className="absolute top-[152px] left-6 z-20">
                 <img src={images[i]} alt={rev.name} className="w-16 h-16 object-cover rounded-full border-4 border-white shadow-md group-hover:scale-110 transition-transform duration-500 bg-white" />
               </div>
 
-              <div className="p-8 pt-12 flex flex-col flex-1 relative z-10">
+              <div className="p-8 pt-14 flex flex-col flex-1 relative z-10">
                 <div className="flex gap-1 text-amber-400 mb-6 drop-shadow-sm">
                   {[...Array(5)].map((_, idx) => <Star key={idx} className="w-4 h-4 fill-current" />)}
                 </div>
