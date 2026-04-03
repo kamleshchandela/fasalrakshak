@@ -63,16 +63,16 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center max-w-7xl">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group shrink-0">
-          <div className="bg-[#2d5a27] w-9 h-9 md:w-10 md:h-10 rounded-[12px] flex justify-center items-center group-hover:rotate-6 transition-transform shadow-md overflow-hidden">
-             <Leaf className="text-white w-5 h-5 md:w-6 md:h-6" />
+          <div className="bg-[#2d5a27] w-8 h-8 rounded-[10px] flex justify-center items-center group-hover:rotate-6 transition-transform shadow-md overflow-hidden">
+             <Leaf className="text-white w-4 h-4" />
           </div>
-          <span className="font-sans text-[20px] md:text-[24px] font-bold tracking-tight text-[#1a2e1a] hidden sm:flex gap-0">
+          <span className="font-sans text-[18px] md:text-[20px] font-bold tracking-tight text-[#1a2e1a] hidden sm:flex gap-0">
             Fasal<span className="text-[#2d5a27]">Rakshak</span>
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex flex-1 justify-center items-center gap-1 xl:gap-3 xxl:gap-4">
+        <nav className="hidden lg:flex flex-1 justify-center items-center gap-1 xl:gap-2">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.href;
             return (
@@ -81,7 +81,7 @@ const Navbar = () => {
                 to={link.href}
                 className={`group relative flex flex-col items-center gap-1 transition-all ${link.isNew ? 'hover:drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]' : ''}`}
               >
-                <div className={`flex items-center gap-1.5 transition-colors font-bold text-[13px] xl:text-[14px] whitespace-nowrap px-2 py-1 rounded-full ${
+                <div className={`flex items-center gap-1 transition-colors font-bold text-[12px] xl:text-[13px] whitespace-nowrap px-2 py-1 rounded-full ${
                   isActive 
                     ? 'text-[#2d5a27] bg-green-50' 
                     : link.isNew 
@@ -91,7 +91,7 @@ const Navbar = () => {
                   {link.icon}
                   <span>{link.name}</span>
                   {link.isNew && (
-                    <span className="bg-[#10b981] text-[8px] font-black tracking-widest text-white px-1.5 py-0.5 rounded-full ml-1 animate-bounce">NEW</span>
+                    <span className="bg-[#10b981] text-[7px] font-black tracking-widest text-white px-1.5 py-0.5 rounded-full ml-0.5 animate-bounce">NEW</span>
                   )}
                 </div>
                 {/* Underline animation */}
@@ -110,14 +110,14 @@ const Navbar = () => {
         </nav>
 
         {/* Right Actions */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-2 shrink-0">
           {/* Language Selector */}
           <div className="relative" ref={langMenuRef}>
             <button 
               onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-              className="flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-full transition-all text-xs font-bold border border-transparent shadow-sm"
+              className="flex items-center gap-1 bg-gray-100 hover:bg-gray-200 text-gray-700 px-2.5 py-1.5 rounded-full transition-all text-xs font-bold border border-transparent"
             >
-              <Globe className="w-4 h-4" />
+              <Globe className="w-3.5 h-3.5" />
               <span>{lang}</span>
               <ChevronDown className={`w-3 h-3 transition-transform ${isLangMenuOpen ? 'rotate-180' : ''}`} />
             </button>
@@ -149,11 +149,11 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          {/* Action Buttons for Guests */}
+          {/* Notification bell */}
           {!user && (
-            <button className="p-2.5 bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200 transition-all border border-transparent shadow-sm relative">
-              <Bell className="w-5 h-5" />
-              <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+            <button className="p-2 bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200 transition-all relative">
+              <Bell className="w-4 h-4" />
+              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
             </button>
           )}
           
@@ -162,7 +162,7 @@ const Navbar = () => {
           ) : (
             <Link 
               to="/login"
-              className="bg-[#2d5a27] text-white font-bold h-11 px-8 rounded-full hover:bg-[#1a3818] shadow-lg hover:shadow-xl transition-all flex items-center justify-center text-[15px]"
+              className="bg-[#2d5a27] text-white font-bold h-9 px-5 rounded-full hover:bg-[#1a3818] shadow-md transition-all flex items-center justify-center text-[13px] whitespace-nowrap"
             >
               {t('nav.login')}
             </Link>
