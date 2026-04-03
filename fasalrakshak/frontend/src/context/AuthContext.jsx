@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   const fetchMe = async () => {
     try {
       const res = await fetch('/api/auth/me', {
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -61,7 +62,7 @@ export const AuthProvider = ({ children }) => {
 
   const logoutContext = async () => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST' });
+      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
     } catch (err) {
       console.error('Logout error:', err);
     }

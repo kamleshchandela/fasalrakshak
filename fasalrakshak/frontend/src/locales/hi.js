@@ -6,7 +6,8 @@ export const hi = {
     blog: "ब्लॉग",
     about: "हमारे बारे में",
     contact: "संपर्क करें",
-    login: "लॉगिन"
+    login: "लॉगिन",
+    store: "स्टोर"
   },
   hero: {
     title1: "किसान की हर ज़रूरत",
