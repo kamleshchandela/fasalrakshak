@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
@@ -10,7 +10,7 @@ import gehu    from '../images/gehu.png';
 const StorySection = () => {
   const { t } = useLanguage();
   const points = Array.isArray(t('story.points')) ? t('story.points') : [
-    'Free for all farmers — forever',
+    'Free for all farmers ΓÇö forever',
     'Works in Gujarati, Hindi & English',
     'No internet needed in offline mode'
   ];

@@ -27,6 +27,7 @@ const DeleteAccountModal = () => {
     try {
       const resp = await fetch('/api/profile/delete-account', {
         method: 'DELETE',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pin })
       });

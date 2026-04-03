@@ -51,6 +51,7 @@ const AvatarUpload = ({ currentPhoto, gender }) => {
       // Call API
       const response = await fetch('/api/profile', {
         method: 'PATCH',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ profilePhoto: base64Photo })
       });
@@ -81,6 +82,7 @@ const AvatarUpload = ({ currentPhoto, gender }) => {
       setIsUploading(true);
       const response = await fetch('/api/profile', {
         method: 'PATCH',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ profilePhoto: "" })
       });
