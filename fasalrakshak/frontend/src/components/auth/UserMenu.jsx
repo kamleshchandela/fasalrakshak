@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AuthContext } from '../../context/AuthContext';
+import { Bell } from 'lucide-react';
 
 const UserMenu = ({ isMobile }) => {
   const { user, logout } = useContext(AuthContext);
@@ -27,26 +28,41 @@ const UserMenu = ({ isMobile }) => {
 
   if (!user) return null;
 
-  const getAvatarIcon = () => {
-    if (user.gender === 'female') return '👩';
-    return '👨';
-  };
+  // Get first initial
+  const initial = user.firstName ? user.firstName.charAt(0).toUpperCase() : (user.name ? user.name.charAt(0).toUpperCase() : 'F');
 
   return (
     <div className="relative" ref={menuRef}>
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 hover:opacity-80 transition-opacity focus:outline-none"
-      >
-        <div className="w-10 h-10 rounded-full bg-primary-lightGreen flex items-center justify-center text-xl shadow-sm border border-primary-sage">
-          {getAvatarIcon()}
-        </div>
+      <div className="flex items-center gap-4">
+        {/* Notification Bell - Styled like screenshot */}
         {!isMobile && (
-          <span className="font-nunito font-bold text-[15px] text-primary-green hidden lg:block">
-            {user.name ? `Hello, ${user.name.split(' ')[0]}` : 'Hello'}
-          </span>
+          <button className="w-10 h-10 rounded-full border border-green-100 bg-green-50/50 flex items-center justify-center text-gray-500 hover:bg-green-100 transition-colors shadow-sm">
+            <Bell className="w-5 h-5 stroke-[1.5]" />
+          </button>
         )}
-      </button>
+
+        {/* User Info & Avatar Toggle */}
+        <button 
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center gap-3 hover:opacity-90 transition-all focus:outline-none group"
+        >
+          {!isMobile && (
+            <div className="flex flex-col items-end mr-1">
+              <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">
+                Active Farmer
+              </span>
+              <span className="text-lg font-bold text-[#2d5a27] leading-none">
+                {user.firstName || user.name?.split(' ')[0] || 'Farmer'}
+              </span>
+            </div>
+          )}
+
+          {/* Avatar - Styled like screenshot (Grayish blue/slate) */}
+          <div className="w-10 h-10 rounded-full bg-[#78909c] flex items-center justify-center text-white font-bold text-lg shadow-md border-2 border-green-50 group-hover:scale-105 transition-transform">
+            {initial}
+          </div>
+        </button>
+      </div>
 
       <AnimatePresence>
         {isOpen && (
@@ -54,29 +70,38 @@ const UserMenu = ({ isMobile }) => {
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            transition={{ duration: 0.2 }}
-            className={`absolute ${isMobile ? 'right-0 mt-4' : 'right-0 mt-3'} w-48 bg-white border border-primary-green rounded-xl shadow-lg py-2 z-50`}
+            transition={{ type: "spring", damping: 20, stiffness: 300 }}
+            className="absolute right-0 mt-4 w-56 bg-white/95 backdrop-blur-md border border-gray-100 rounded-[24px] shadow-2xl py-3 z-50 overflow-hidden"
           >
+            <div className="px-5 py-3 mb-2 border-b border-gray-100 bg-gray-50/50">
+               <p className="text-xs font-black text-gray-400 uppercase tracking-widest truncate">{user.email}</p>
+            </div>
+
             <Link 
               to="/profile" 
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-4 py-2 hover:bg-primary-lightGreen text-text-charcoal font-semibold text-sm transition-colors"
+              className="flex items-center gap-3 px-5 py-3 hover:bg-green-50 text-gray-700 font-bold text-sm transition-colors mx-2 rounded-xl"
             >
-              👤 My Profile
+              <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-700">👤</div>
+              My Profile
             </Link>
             <Link 
               to="/detect" 
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-4 py-2 hover:bg-primary-lightGreen text-text-charcoal font-semibold text-sm transition-colors"
+              className="flex items-center gap-3 px-5 py-3 hover:bg-green-50 text-gray-700 font-bold text-sm transition-colors mx-2 rounded-xl"
             >
-              🌿 My Scans
+              <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center text-amber-700">🌿</div>
+              Current Scans
             </Link>
-            <div className="h-px bg-primary-sage/50 my-1 mx-2"></div>
+            
+            <div className="h-px bg-gray-100 my-2 mx-4"></div>
+            
             <button 
               onClick={handleLogout}
-              className="w-full flex items-center gap-3 px-4 py-2 hover:bg-red-50 text-red-600 font-semibold text-sm transition-colors text-left"
+              className="w-[calc(100%-16px)] flex items-center gap-3 px-5 py-3 hover:bg-red-50 text-red-600 font-bold text-sm transition-colors mx-2 rounded-xl text-left"
             >
-              🚪 Logout
+              <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center text-red-700">🚪</div>
+              Logout Session
             </button>
           </motion.div>
         )}

@@ -20,7 +20,7 @@ const testimonials = [
   {
     name: "Sureshbhai Chauhan", location: "Rajkot, Gujarat",
     quote: "Results in Gujarati — very easy to understand. Medicine name and dosage are all written in the app. Thank you FasalRakshak!",
-    image: kisan2, cropImg: kapas, cropLabel: "☁️ Cotton (Kapas) Farmer"
+    image: kisan2, cropImg: kapas, cropLabel: "🌿 Cotton (Kapas) Farmer"
   },
   {
     name: "Dineshbhai Desai", location: "Saurashtra, Gujarat",
