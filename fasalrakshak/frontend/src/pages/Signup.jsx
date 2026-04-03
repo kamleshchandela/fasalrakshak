@@ -3,16 +3,34 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AuthContext } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
-import { Globe, ChevronDown, ShieldCheck, Zap, Leaf, UserPlus } from 'lucide-react';
+import { Globe, ChevronDown, ShieldCheck, Zap, Leaf, UserPlus, MapPin, Tent } from 'lucide-react';
 import { useSignUp, SignUpButton } from '@clerk/clerk-react';
 
 const Signup = () => {
-  const { user } = useContext(AuthContext);
+  const { user, login } = useContext(AuthContext); // Merged login from context
   const { lang, setLang, t } = useLanguage();
   const { isLoaded: isSignUpLoaded } = useSignUp();
   const navigate = useNavigate();
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const langMenuRef = useRef(null);
+
+  // New features from Rishikesh: Form state management
+  const [formData, setFormData] = useState({
+    name: '',
+    mobile: '',
+    pin: '',
+    confirmPin: '',
+    gender: '',
+    village: '',
+    district: '',
+    state: 'Gujarat',
+    cropTypes: [],
+    landSize: ''
+  });
+  const [step, setStep] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => { 
     if (user) {
@@ -36,6 +54,89 @@ const Signup = () => {
     { code: 'HI', name: t('lang_hi'), flag: 'https://flagcdn.com/w40/in.png' },
     { code: 'GUJ', name: t('lang_guj'), flag: 'https://flagcdn.com/w40/in.png' },
   ];
+
+  // Rishikesh's Navigation Logic (Preserved)
+  const handleNextStep = () => {
+    setError(null);
+    const { name, gender, mobile, pin, confirmPin } = formData;
+    
+    if (!name || name.length < 2) {
+      setError('Please enter a valid full name.');
+      return;
+    }
+    if (!gender) {
+      setError('Please select your gender.');
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(mobile)) {
+      setError('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+    if (pin.length !== 4) {
+      setError('PIN must be exactly 4 digits.');
+      return;
+    }
+    if (pin !== confirmPin) {
+      setError('PINs do not match.');
+      return;
+    }
+
+    setStep(2);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    const { village, district } = formData;
+    if (!village || !district) {
+      setError('Village and District are required to complete setup.');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          mobile: formData.mobile,
+          pin: formData.pin,
+          gender: formData.gender,
+          village: formData.village,
+          district: formData.district,
+          state: formData.state,
+          cropTypes: formData.cropTypes,
+          landSize: formData.landSize
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Error occurred during signup.');
+      }
+
+      setSuccess(true);
+      setTimeout(() => {
+        login(data.user);
+        navigate('/detect');
+      }, 2000);
+
+    } catch (err) {
+      setError(err.message);
+      setTimeout(() => setError(null), 5000);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const inputStyle = `w-full h-[52px] pl-11 pr-4 rounded-[16px] border border-gray-200 text-base font-semibold text-text-charcoal 
+                      outline-none transition-all duration-300 bg-gray-50/50 hover:bg-white
+                      focus:bg-white focus:border-primary-green focus:shadow-[0_0_0_4px_rgba(34,197,94,0.1)]`;
 
   return (
     <div className="min-h-screen w-full bg-[#f0f9f1] flex flex-col items-center justify-center relative px-4 py-20 overflow-hidden font-nunito">
@@ -100,7 +201,7 @@ const Signup = () => {
            <p className="text-gray-500 font-medium text-center leading-relaxed"> Join 10,000+ farmers using FasalRakshak </p>
         </div>
 
-        {/* Buttons Section */}
+        {/* Clerk Buttons Section (Primary) */}
         <div className="space-y-4">
           <SignUpButton mode="modal" fallbackRedirectUrl="/detect" forceRedirectUrl="/detect">
             <motion.button 
@@ -132,21 +233,28 @@ const Signup = () => {
             </motion.button>
           </SignUpButton>
 
-          <div className="flex items-center justify-center gap-6 pt-4">
+          {/* Fallback to Rishikesh's Step-based signup (Optional toggle could go here) */}
+          <div className="flex items-center gap-4 py-4">
+             <div className="flex-grow h-px bg-gray-100"></div>
+             <span className="text-gray-300 text-[10px] uppercase font-black tracking-widest">Enhanced Analytics</span>
+             <div className="flex-grow h-px bg-gray-100"></div>
+          </div>
+
+          <div className="flex items-center justify-center gap-6">
              <div className="flex flex-col items-center gap-1">
-                <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center border border-blue-100">
+                <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center border border-blue-100 shadow-sm">
                    <ShieldCheck className="w-5 h-5 text-blue-600" />
                 </div>
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Safe</span>
              </div>
              <div className="flex flex-col items-center gap-1">
-                <div className="w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center border border-orange-100">
+                <div className="w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center border border-orange-100 shadow-sm">
                    <Zap className="w-5 h-5 text-orange-600" />
                 </div>
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Fast</span>
              </div>
              <div className="flex flex-col items-center gap-1">
-                <div className="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center border border-green-100">
+                <div className="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center border border-green-100 shadow-sm">
                    <Leaf className="w-5 h-5 text-green-600" />
                 </div>
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Organic</span>

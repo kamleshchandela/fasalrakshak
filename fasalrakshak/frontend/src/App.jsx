@@ -13,6 +13,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Detect from './pages/Detect';
 import DiseaseLibrary from './pages/DiseaseLibrary';
 import DiseaseDetail from './pages/DiseaseDetail';
+import AgriStore from './pages/Store';
 
 import Weather from './pages/Weather';
 import Ecosystem from './pages/Ecosystem';
@@ -71,73 +72,101 @@ function App() {
       {!isAuthPage && <Navbar />}
 
       <div className={`flex-grow flex flex-col ${isAuthPage ? '' : 'pt-16 lg:pt-20'}`}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/login"
-            element={isLoggedIn ? <Navigate to="/detect" replace /> : <Login />}
-          />
-          <Route
-            path="/signup"
-            element={isLoggedIn ? <Navigate to="/detect" replace /> : <Signup />}
-          />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/detect"
-            element={
-              <ProtectedRoute>
-                <Detect />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/library"
-            element={
-              <ProtectedRoute>
-                <DiseaseLibrary />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/library/:id"
-            element={
-              <ProtectedRoute>
-                <DiseaseDetail />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/weather"
-            element={
-              <ProtectedRoute>
-                <Weather />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/ecosystem"
-            element={
-              <ProtectedRoute>
-                <Ecosystem />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/soil-report"
-            element={
-              <ProtectedRoute>
-                <SoilReport />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/login"
+              element={isLoggedIn ? <Navigate to="/detect" replace /> : <Login />}
+            />
+            <Route
+              path="/signup"
+              element={isLoggedIn ? <Navigate to="/detect" replace /> : <Signup />}
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/detect"
+              element={
+                <ProtectedRoute>
+                  <Detect />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/library"
+              element={
+                <ProtectedRoute>
+                  <DiseaseLibrary />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/library/:id"
+              element={
+                <ProtectedRoute>
+                  <DiseaseDetail />
+                </ProtectedRoute>
+              }
+            />
+            {/* Added fallback routes from Rishikesh merge */}
+            <Route
+              path="/diseases"
+              element={
+                <ProtectedRoute>
+                  <DiseaseLibrary />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/diseases/:id"
+              element={
+                <ProtectedRoute>
+                  <DiseaseDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/weather"
+              element={
+                <ProtectedRoute>
+                  <Weather />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/ecosystem"
+              element={
+                <ProtectedRoute>
+                  <Ecosystem />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/soil-report"
+              element={
+                <ProtectedRoute>
+                  <SoilReport />
+                </ProtectedRoute>
+              }
+            />
+            {/* New Store Feature from Rishikesh */}
+            <Route
+              path="/store"
+              element={
+                <ProtectedRoute>
+                  <AgriStore />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </AnimatePresence>
       </div>
 
       {!isAuthPage && <Footer />}

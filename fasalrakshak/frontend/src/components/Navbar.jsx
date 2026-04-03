@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import { Menu, X, Leaf, Globe, ChevronDown, Sparkles, Package, Users, Bell, Search } from 'lucide-react';
+import { Menu, X, Leaf, Globe, ChevronDown, Sparkles, Package, Users, Bell, ShoppingBag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
@@ -41,6 +41,7 @@ const Navbar = () => {
     { name: t('nav.home'), href: '/', icon: <Leaf className="w-4 h-4 text-[#2d5a27]" /> },
     { name: t('nav.detect'), href: '/detect', icon: <Sparkles className="w-4 h-4 text-orange-400" /> },
     { name: t('nav.soil_report'), href: '/soil-report', icon: <Leaf className="w-4 h-4 text-[#10b981] animate-pulse" />, isNew: true },
+    { name: t('nav.store') || 'AgriStore', href: '/store', icon: <ShoppingBag className="w-4 h-4 text-emerald-600" /> },
     { name: t('nav.library'), href: '/library', icon: <Package className="w-4 h-4 text-emerald-600" /> },
     { name: t('nav.weather'), href: '/weather', icon: <Globe className="w-4 h-4 text-blue-500 hover:rotate-90 transition-transform" /> },
   ];

@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (isLoaded) {
       if (clerkUser) {
-        // Map Clerk user to our local user format
+        // Map Clerk user to our local user format for premium consistency
         const userData = {
           id: clerkUser.id,
           firstName: clerkUser.firstName,
@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }) => {
           email: clerkUser.primaryEmailAddress?.emailAddress,
           imageUrl: clerkUser.imageUrl,
           fullName: clerkUser.fullName,
-          // Add any custom fields we need
           totalScans: 0, 
         };
         setUser(userData);
@@ -37,7 +36,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logoutContext = async () => {
-    await signOut();
+    try {
+      await signOut();
+    } catch (err) {
+      console.error('Logout error:', err);
+    }
     setUser(null);
     localStorage.removeItem('fasalrakshak_user');
   };

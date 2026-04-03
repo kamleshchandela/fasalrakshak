@@ -6,7 +6,8 @@ export const gu = {
     blog: "બ્લોગ",
     about: "અમારા વિશે",
     contact: "સંપર્ક કરો",
-    login: "લોગીન"
+    login: "લોગીન",
+    store: "સ્ટોર"
   },
   hero: {
     title1: "ખેડૂતની દરેક જરૂરિયાત",

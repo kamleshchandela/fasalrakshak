@@ -6,7 +6,8 @@ export const en = {
     blog: "Blog",
     about: "About",
     contact: "Contact",
-    login: "Login"
+    login: "Login",
+    store: "Store"
   },
   hero: {
     title1: "Farmer's Every Need,",
