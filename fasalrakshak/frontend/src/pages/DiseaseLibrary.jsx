@@ -7,22 +7,26 @@ import DiseaseCard from '../components/diseases/DiseaseCard';
 import SearchFilterBar from '../components/diseases/SearchFilterBar';
 import CropCategorySection from '../components/diseases/CropCategorySection';
 import LibraryCTABanner from '../components/diseases/LibraryCTABanner';
-
-const SORT_OPTIONS = [
-  { value: 'az', label: 'A–Z' },
-  { value: 'za', label: 'Z–A' },
-  { value: 'severe_first', label: 'Most Severe First' },
-  { value: 'mild_first', label: 'Least Severe First' },
-  { value: 'common_first', label: 'Gujarat Common First' },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 const SEVERITY_RANK = { severe: 0, moderate: 1, mild: 2 };
 
-const filterAndSort = (diseases, filters, sort) => {
+const filterAndSort = (diseases, filters, sort, lang) => {
   let result = diseases.filter(d => {
     if (filters.search) {
       const q = filters.search.toLowerCase();
-      const haystack = [d.name, d.localName, d.cropName, ...(d.symptoms || []), ...(d.tags || [])].join(' ').toLowerCase();
+      const nameL = (d[`name_${lang.toLowerCase()}`] || '').toLowerCase();
+      const symptomsL = (d[`symptoms_${lang.toLowerCase()}`] || []).join(' ').toLowerCase();
+      
+      const haystack = [
+        d.name, 
+        nameL,
+        d.localName, 
+        d.cropName, 
+        ...(d.symptoms || []), 
+        ...(d.tags || [])
+      ].join(' ').toLowerCase() + ' ' + symptomsL;
+      
       if (!haystack.includes(q)) return false;
     }
     if (filters.crop && d.cropName !== filters.crop) return false;
@@ -33,8 +37,8 @@ const filterAndSort = (diseases, filters, sort) => {
     return true;
   });
 
-  if (sort === 'az') result.sort((a, b) => a.name.localeCompare(b.name));
-  else if (sort === 'za') result.sort((a, b) => b.name.localeCompare(a.name));
+  if (sort === 'az') result.sort((a, b) => (a[`name_${lang.toLowerCase()}`] || a.name).localeCompare(b[`name_${lang.toLowerCase()}`] || b.name));
+  else if (sort === 'za') result.sort((a, b) => (b[`name_${lang.toLowerCase()}`] || b.name).localeCompare(a[`name_${lang.toLowerCase()}`] || a.name));
   else if (sort === 'severe_first') result.sort((a, b) => (SEVERITY_RANK[a.severity] ?? 2) - (SEVERITY_RANK[b.severity] ?? 2));
   else if (sort === 'mild_first') result.sort((a, b) => (SEVERITY_RANK[b.severity] ?? 2) - (SEVERITY_RANK[a.severity] ?? 2));
   else if (sort === 'common_first') result.sort((a, b) => (b.commonInGujarat ? 1 : 0) - (a.commonInGujarat ? 1 : 0));
@@ -45,11 +49,20 @@ const filterAndSort = (diseases, filters, sort) => {
 const INIT_FILTERS = { search: '', crop: '', type: '', severity: '', gujarat: false, fast: false };
 
 export default function DiseaseLibrary() {
+  const { t, lang } = useLanguage();
   const [filters, setFilters] = useState(INIT_FILTERS);
   const [sort, setSort] = useState('az');
   const gridRef = useRef(null);
 
-  const diseases = useMemo(() => filterAndSort(allDiseases, filters, sort), [filters, sort]);
+  const SORT_OPTIONS = [
+    { value: 'az', label: lang === 'HI' ? 'नाम: अ-ज्ञ' : lang === 'GUJ' ? 'નામ: અ-જ્ઞ' : 'Name: A–Z' },
+    { value: 'za', label: lang === 'HI' ? 'नाम: ज्ञ-अ' : lang === 'GUJ' ? 'નામ: જ્ઞ-અ' : 'Name: Z–A' },
+    { value: 'severe_first', label: lang === 'HI' ? 'सबसे गंभीर पहले' : lang === 'GUJ' ? 'સૌથી વધુ ગંભીર પહેલા' : 'Most Severe First' },
+    { value: 'mild_first', label: lang === 'HI' ? 'कम गंभीर पहले' : lang === 'GUJ' ? 'ઓછા ગંભીર પહેલા' : 'Least Severe First' },
+    { value: 'common_first', label: lang === 'HI' ? 'गुजरात में सामान्य' : lang === 'GUJ' ? 'ગુજરાતમાં સામાન્ય' : 'Gujarat Common First' },
+  ];
+
+  const diseases = useMemo(() => filterAndSort(allDiseases, filters, sort, lang), [filters, sort, lang]);
 
   const handleSelectCrop = (cropName) => {
     setFilters(f => ({ ...f, crop: f.crop === cropName ? '' : cropName }));
@@ -74,25 +87,29 @@ export default function DiseaseLibrary() {
              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
              className="inline-flex items-center gap-2 bg-white/20 text-white font-nunito font-bold px-5 py-2 rounded-full text-xs uppercase tracking-widest mb-6 border border-white/20 shadow-sm backdrop-blur-md"
           >
-            📚 Complete Disease Reference
+            {lang === 'HI' ? '📚 पूर्ण रोग संदर्भ' : lang === 'GUJ' ? '📚 પૂર્ણ રોગ સંદર્ભ' : '📚 Complete Disease Reference'}
           </motion.span>
           <motion.h1 
              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
              className="font-playfair font-black text-5xl md:text-6xl text-white mb-6 leading-tight drop-shadow-md"
           >
-            Crop Disease Library
+            {lang === 'HI' ? 'फसल रोग लाइब्रेरी' : lang === 'GUJ' ? 'પાક રોગ લાઇબ્રેરી' : 'Crop Disease Library'}
           </motion.h1>
           <motion.p 
              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
              className="font-nunito text-white/90 text-xl mb-10 font-medium max-w-2xl mx-auto"
           >
-            Identify, understand, and treat over 40+ common crop diseases affecting Indian farmers with completely human-made, expert advice.
+            {lang === 'HI' ? '40+ सामान्य फसल रोगों को पहचानें, समझें और विशेषज्ञ सलाह से उपचार करें।' : lang === 'GUJ' ? '40+ સામાન્ય પાક રોગોને ઓળખો, સમજો અને નિષ્ણાતોની સલાહથી ઉપચાર કરો.' : 'Identify, understand, and treat over 40+ common crop diseases affecting Indian farmers with expert advice.'}
           </motion.p>
           <motion.div 
              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
              className="flex flex-wrap justify-center gap-4"
           >
-            {['🌿 40+ Diseases', '🌾 10 Major Crops', '💊 Verified Treatments'].map(s => (
+            {[
+              `🌿 ${lang === 'HI' ? '40+ रोग' : lang === 'GUJ' ? '40+ રોગ' : '40+ Diseases'}`, 
+              `🌾 ${lang === 'HI' ? '10 प्रमुख फसलें' : lang === 'GUJ' ? '10 મુખ્ય પાક' : '10 Major Crops'}`, 
+              `💊 ${lang === 'HI' ? 'सत्यापित उपचार' : lang === 'GUJ' ? 'ચકાસાયેલ સારવાર' : 'Verified Treatments'}`
+            ].map(s => (
               <span key={s} className="bg-white/10 backdrop-blur-sm text-white font-nunito font-bold text-sm px-5 py-2.5 rounded-xl border border-white/20 shadow-sm">{s}</span>
             ))}
           </motion.div>
@@ -104,8 +121,8 @@ export default function DiseaseLibrary() {
 
       {/* RESULTS COUNT + SORT */}
       <div className="px-4 md:px-6 py-3 border-b border-[#F0F0F0] flex items-center justify-between" ref={gridRef}>
-        <span className="font-nunito text-[14px] text-gray-500">
-          Showing <strong className="text-[#1C1C1C]">{diseases.length}</strong> disease{diseases.length !== 1 ? 's' : ''}
+        <span className="font-nunito text-[14px] text-gray-500 text-left">
+          {t('store.showing')} <strong className="text-[#1C1C1C]">{diseases.length}</strong> {lang === 'HI' ? 'रोग' : lang === 'GUJ' ? 'રોગ' : `disease${diseases.length !== 1 ? 's' : ''}`}
         </span>
         <select
           value={sort}
@@ -126,14 +143,14 @@ export default function DiseaseLibrary() {
               className="flex flex-col items-center justify-center py-24 gap-4"
             >
               <Search className="w-20 h-20 text-[#E0EDD5]" />
-              <h3 className="font-playfair font-bold text-[24px] text-[#1C1C1C]">No diseases found</h3>
-              <p className="font-nunito text-[16px] text-gray-400 text-center">Try searching with different keywords or clear your filters</p>
+              <h3 className="font-playfair font-bold text-[24px] text-[#1C1C1C]">{t('disease.no_diseases')}</h3>
+              <p className="font-nunito text-[16px] text-gray-400 text-center">{t('disease.try_different')}</p>
               <div className="flex gap-3 mt-2">
                 <button
                   onClick={() => setFilters(INIT_FILTERS)}
                   className="bg-[#1A6B2F] text-white font-nunito font-bold px-6 py-3 rounded-xl hover:bg-[#155824] transition-colors"
                 >
-                  Clear All Filters
+                  {t('disease.clear_filters')}
                 </button>
               </div>
             </motion.div>

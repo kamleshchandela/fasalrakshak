@@ -1,7 +1,9 @@
 import React from 'react';
 import { Filter, Search, ShoppingCart } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 const SearchFilterBar = ({ filters, setFilters, categories, cartCount, onCartOpen }) => {
+  const { t } = useLanguage();
   const handleCategoryChange = (event) => {
     setFilters(prev => ({ ...prev, category: event.target.value }));
   };
@@ -27,15 +29,15 @@ const SearchFilterBar = ({ filters, setFilters, categories, cartCount, onCartOpe
       <div className="container mx-auto px-4">
         <div className="mb-4 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary-green">AgriStore Catalog</p>
-            <h2 className="text-2xl font-bold text-gray-900">Real agri inputs with quick WhatsApp ordering</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary-green">{t('store.catalog')}</p>
+            <h2 className="text-2xl font-bold text-gray-900">{t('store.catalogDesc')}</h2>
           </div>
           <button
             onClick={onCartOpen}
             className="hidden items-center gap-2 rounded-2xl bg-primary-green px-4 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-green-700 xl:flex"
           >
             <ShoppingCart className="h-4 w-4" />
-            Cart ({cartCount})
+            {t('store.cart')} ({cartCount})
           </button>
         </div>
 
@@ -47,7 +49,7 @@ const SearchFilterBar = ({ filters, setFilters, categories, cartCount, onCartOpe
               </div>
               <input
                 type="text"
-                placeholder="Search by product name, crop, or input type"
+                placeholder={t('store.searchPlaceholder')}
                 className="w-full rounded-2xl border border-gray-200 bg-[#fafcf8] py-3 pl-10 pr-4 outline-none focus:border-transparent focus:ring-2 focus:ring-primary-green"
                 value={filters.search}
                 onChange={handleSearchChange}
@@ -62,7 +64,7 @@ const SearchFilterBar = ({ filters, setFilters, categories, cartCount, onCartOpe
                   value={filters.category}
                   onChange={handleCategoryChange}
                 >
-                  <option value="All">All Categories</option>
+                  <option value="All">{t('store.allCategories')}</option>
                   {categories.map(category => (
                     <option key={category} value={category}>
                       {category}
@@ -75,7 +77,7 @@ const SearchFilterBar = ({ filters, setFilters, categories, cartCount, onCartOpe
 
           <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-700">
             <div className="flex items-center gap-2 rounded-full bg-[#f4f8ee] px-3 py-2">
-              <label className="whitespace-nowrap font-semibold">Max Price Rs.{filters.maxPrice}</label>
+              <label className="whitespace-nowrap font-semibold">{t('store.maxPrice')} Rs.{filters.maxPrice}</label>
               <input
                 type="range"
                 min="0"
@@ -95,17 +97,17 @@ const SearchFilterBar = ({ filters, setFilters, categories, cartCount, onCartOpe
                 onChange={handleRatingChange}
                 className="h-4 w-4 rounded text-primary-green accent-primary-green focus:ring-primary-green"
               />
-              <span>4 star and above</span>
+              <span>{t('store.starAbove')}</span>
             </label>
 
             <div className="flex items-center gap-2 rounded-full bg-[#f4f8ee] px-3 py-2">
-              <label className="font-semibold">Location</label>
+              <label className="font-semibold">{t('store.location')}</label>
               <select
                 className="bg-transparent outline-none"
                 value={filters.location}
                 onChange={handleLocationChange}
               >
-                <option value="All">All Locations</option>
+                <option value="All">{t('store.allLocations')}</option>
                 <option value="Pune, Maharashtra">Pune, Maharashtra</option>
                 <option value="Nagpur, Maharashtra">Nagpur, Maharashtra</option>
                 <option value="Nashik, Maharashtra">Nashik, Maharashtra</option>

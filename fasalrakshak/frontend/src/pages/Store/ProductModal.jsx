@@ -15,6 +15,7 @@ import {
   Droplets
 } from 'lucide-react';
 import AIProductInsight from './AIProductInsight';
+import { useLanguage } from '../../context/LanguageContext';
 
 const categoryIcons = {
   Pesticide: Bug,
@@ -27,6 +28,7 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
   const [imageError, setImageError] = useState(false);
   const [added, setAdded] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState(null);
+  const { t, lang } = useLanguage();
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -89,16 +91,22 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
 
   const handleBuyWhatsApp = () => {
     if (!product.inStock) return;
-    const message = encodeURIComponent(
-      `Hi, I would like to order ${quantity}x ${product.name}. Total: Rs.${total}.`
-    );
+    const waMessages = {
+      EN: `Hi, I would like to order ${quantity}x ${product.name}. Total: Rs.${total}.`,
+      HI: `नमस्ते, मैं ${quantity}x ${product.name} ऑर्डर करना चाहता/चाहती हूँ। कुल: ₹${total}.`,
+      GUJ: `નમસ્તે, હું ${quantity}x ${product.name} ઓર્ડર કરવા ઇચ્છું છું. કુલ: ₹${total}.`,
+    };
+    const message = encodeURIComponent(waMessages[lang] || waMessages.EN);
     window.open(`https://wa.me/${product.sellerPhone}?text=${message}`, '_blank');
   };
 
   const handleContactSeller = () => {
-    const message = encodeURIComponent(
-      `Hi, I have a question about ${product.name}. Can you help me?`
-    );
+    const waMessages = {
+      EN: `Hi, I have a question about ${product.name}. Can you help me?`,
+      HI: `नमस्ते, मुझे ${product.name} के बारे में एक सवाल है। क्या आप मेरी मदद कर सकते हैं?`,
+      GUJ: `નમસ્તે, મને ${product.name} વિશે એક સવાલ છે. શું તમે મને મદદ કરી શકો?`,
+    };
+    const message = encodeURIComponent(waMessages[lang] || waMessages.EN);
     window.open(`https://wa.me/${product.sellerPhone}?text=${message}`, '_blank');
   };
 
@@ -207,7 +215,7 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
                   product.inStock ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
                 }`}
               >
-                {product.inStock ? 'In Stock' : 'Out of Stock'}
+                {product.inStock ? t('store.inStock') : t('store.outOfStock')}
               </span>
             </div>
 
@@ -217,7 +225,8 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
                 {product.tag}
               </div>
             )}
-            <p className="mb-4 text-sm font-medium text-gray-500">Best for {product.season} season</p>
+            <p className="mb-5 text-base leading-relaxed text-gray-600">
+              {t('store.bestFor')} {product.season} {t('store.season')}</p>
 
             <div className="mb-4 flex flex-wrap items-center gap-4">
               <div className="text-3xl font-bold text-gray-900">₹{total}</div>
@@ -243,7 +252,7 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
             {/* Pack Size Selector */}
             {variants && (
               <div className="mb-4">
-                <p className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-400">Pack Size</p>
+                <p className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-400">{t('store.packSize')}</p>
                 <div className="flex flex-wrap gap-2">
                   {variants.map(v => (
                     <button
@@ -277,7 +286,7 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
               <div className="mb-5 rounded-2xl border border-green-200 bg-gradient-to-r from-green-50 to-emerald-50 p-4">
                 <h3 className="mb-2 flex items-center gap-2 text-base font-bold text-green-800">
                   <Leaf className="h-5 w-5 text-primary-green" />
-                  Why Use This?
+                  {t('store.whyUse')}
                 </h3>
                 <p className="text-sm leading-relaxed text-green-900">{product.whyUse.replace(/\s*undefined\s*/g, ' ').trim()}</p>
               </div>
@@ -287,7 +296,7 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
 
             {product.features?.length > 0 && (
               <div className="mb-5">
-                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-gray-500">Key Features</h3>
+                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-gray-500">{t('store.keyFeatures')}</h3>
                 <div className="grid gap-2 sm:grid-cols-2">
                   {product.features.map((feature, index) => (
                     <div
@@ -304,14 +313,15 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
 
             <div className="mb-5">
               <h3 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-500">
-                <Info className="h-4 w-4 text-primary-green" /> Specifications
+                <Info className="h-4 w-4 text-primary-green" /> {t('store.specifications')}
               </h3>
               <div className="overflow-hidden rounded-xl border border-gray-100 bg-gray-50">
                 {[
                   ['Composition', product.specs?.composition || 'Standard'],
-                  ['Weight', product.specs?.weight || 'Standard'],
-                  ['Dosage', product.specs?.dosage || 'As per recommendation'],
-                  ['Application', product.specs?.applicationMethod || 'Foliar spray']
+                  [t('store.composition'), product.specs?.composition || 'Standard'],
+                  [t('store.weight'), product.specs?.weight || 'Standard'],
+                  [t('store.dosage'), product.specs?.dosage || 'As per recommendation'],
+                  [t('store.application'), product.specs?.applicationMethod || 'Foliar spray']
                 ].map(([key, value], index) => (
                   <div key={key} className={`flex ${index !== 0 ? 'border-t border-gray-100' : ''}`}>
                     <div className="w-2/5 bg-gray-100/50 px-4 py-2.5 text-xs font-semibold text-gray-600">
@@ -325,7 +335,7 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
 
             {product.recommendedCrops && product.recommendedCrops.length > 0 && (
               <div className="mb-5">
-                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-gray-500">Recommended Crops</h3>
+                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-gray-500">{t('store.recommended_crops')}</h3>
                 <div className="flex flex-wrap gap-2">
                   {product.recommendedCrops.map(crop => (
                     <span
@@ -341,7 +351,7 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
 
             {product.usage && Object.keys(product.usage).length > 0 && (
               <div className="mb-5">
-                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-gray-500">Usage Guide</h3>
+                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-gray-500">{t('store.usageGuide')}</h3>
                 <div className="overflow-hidden rounded-xl border border-gray-100 bg-white">
                   {Object.entries(product.usage).slice(0, 4).map(([crop, value], index) => (
                     <div
@@ -382,12 +392,12 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
                   {added ? (
                     <>
                       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      Added to Cart!
+                      {t('store.addedToCartFull')}
                     </>
                   ) : (
                     <>
                       <ShoppingCart className="h-5 w-5" />
-                      Add to Cart
+                      {t('store.addToCart')}
                     </>
                   )}
                 </button>
@@ -397,7 +407,7 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
                   className="flex w-full items-center justify-center gap-3 rounded-2xl bg-[#25D366] px-6 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-[#1fb355] hover:scale-[1.02] disabled:cursor-not-allowed disabled:bg-gray-300 disabled:hover:scale-100"
                 >
                   <MessageCircle className="h-5 w-5" />
-                  Buy on WhatsApp
+                  {t('store.buyOnWhatsapp')}
                 </button>
               </div>
 
@@ -406,11 +416,11 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
                 className="flex w-full items-center justify-center gap-3 rounded-2xl border-2 border-[#25D366] px-6 py-3 text-sm font-bold text-[#1a9e4f] transition-all hover:bg-green-50"
               >
                 <MessageCircle className="h-5 w-5" />
-                Contact Seller
+                {t('store.contactSeller')}
               </button>
 
               <p className="mt-3 text-center text-xs text-gray-400">
-                Payment and delivery are coordinated directly with the seller on WhatsApp.
+                {t('store.paymentNote')}
               </p>
             </div>
           </div>

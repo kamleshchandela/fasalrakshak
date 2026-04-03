@@ -1,16 +1,17 @@
 import React from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 
-const FALLBACK_IMAGE =
-  '/products/dap.jpg';
+const FALLBACK_IMAGE = '/products/dap.jpg';
 
 const RecommendedBanner = ({ recommendedProducts, onProductSelect }) => {
+  const { t } = useLanguage();
   if (!recommendedProducts || recommendedProducts.length === 0) return null;
 
   return (
     <div className="container mx-auto mb-8 px-4">
       <div className="rounded-xl border border-green-200 bg-green-50 p-4 shadow-sm md:p-6">
         <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-green-800">
-          Recommended for your soil <span aria-label="sprout">🌱</span>
+          {t('store.recommended')}
         </h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
           {recommendedProducts.map(product => (

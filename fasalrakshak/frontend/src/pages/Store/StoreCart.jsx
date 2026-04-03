@@ -1,5 +1,6 @@
 import React from 'react';
 import { Minus, Plus, ShoppingCart, Trash2, X } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 const formatPrice = (value) => `Rs.${value}`;
 
@@ -17,14 +18,15 @@ const StoreCart = ({
   onClear
 }) => {
   const hasItems = cartItems.length > 0;
+  const { t } = useLanguage();
 
   const cartContent = (
     <div className="flex h-full flex-col bg-white">
       <div className="flex items-center justify-between border-b border-gray-100 px-4 py-4">
         <div>
-          <h3 className="text-lg font-bold text-gray-900">Your Cart</h3>
+          <h3 className="text-lg font-bold text-gray-900">{t('store.yourCart')}</h3>
           <p className="text-sm text-gray-500">
-            {cartCount} item{cartCount === 1 ? '' : 's'} selected
+            {cartCount} {cartCount === 1 ? t('store.itemSelected') : t('store.itemsSelected')}
           </p>
         </div>
         {!isDesktop && (
@@ -101,11 +103,11 @@ const StoreCart = ({
 
           <div className="border-t border-gray-100 bg-white px-4 py-4">
             <div className="mb-3 flex items-center justify-between text-sm text-gray-600">
-              <span>Subtotal</span>
+              <span>{t('store.subtotal')}</span>
               <span className="font-semibold text-gray-900">{formatPrice(cartTotal)}</span>
             </div>
             <div className="mb-4 flex items-center justify-between text-base font-bold text-gray-900">
-              <span>Total</span>
+              <span>{t('store.total')}</span>
               <span>{formatPrice(cartTotal)}</span>
             </div>
             <div className="flex gap-3">
@@ -113,13 +115,13 @@ const StoreCart = ({
                 onClick={onClear}
                 className="flex-1 rounded-xl border border-gray-200 px-4 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50"
               >
-                Clear Cart
+                {t('store.clearCart')}
               </button>
               <button
                 onClick={onCheckout}
                 className="flex-1 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-[#1fb355]"
               >
-                Buy All on WhatsApp
+                {t('store.buyAllWhatsapp')}
               </button>
             </div>
           </div>
@@ -129,9 +131,9 @@ const StoreCart = ({
           <div className="mb-4 rounded-full bg-green-50 p-4 text-primary-green">
             <ShoppingCart className="h-8 w-8" />
           </div>
-          <h4 className="text-lg font-bold text-gray-900">Your cart is empty</h4>
+          <h4 className="text-lg font-bold text-gray-900">{t('store.emptyCart')}</h4>
           <p className="mt-2 max-w-xs text-sm text-gray-500">
-            Add products from the store and place one combined order on WhatsApp.
+            {t('store.emptyCartDesc')}
           </p>
         </div>
       )}

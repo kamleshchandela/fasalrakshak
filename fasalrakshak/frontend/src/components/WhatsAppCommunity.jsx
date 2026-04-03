@@ -4,13 +4,6 @@ import { useLanguage } from '../context/LanguageContext';
 
 const WHATSAPP_JOIN_LINK = 'https://chat.whatsapp.com/HAoHvNFmiYK0fhVYOeHGO1';
 
-const stats = [
-  { value: '10,000+', label: 'Farmers Joined', icon: '👨‍🌾' },
-  { value: '50+',     label: 'Districts Active', icon: '🗺️' },
-  { value: '24/7',    label: 'Expert Support', icon: '🌾' },
-  { value: 'Free',    label: 'Always & Forever', icon: '💚' },
-];
-
 const WhatsAppCommunity = () => {
   const { lang } = useLanguage();
 
@@ -22,7 +15,13 @@ const WhatsAppCommunity = () => {
       desc: 'Join thousands of farmers in your district. Share crop tips, get pest alerts, and support each other — all on WhatsApp.',
       btnLabel: 'Join the Kisan WhatsApp Group',
       trust: 'Free to join • No spam • Moderated by agricultural experts',
-      districts: 'Farmer groups active across Gujarat, Rajasthan & more'
+      districts: 'Farmer groups active across Gujarat, Rajasthan & more',
+      stats: [
+        { value: '10,000+', label: 'Farmers Joined', icon: '👨‍🌾' },
+        { value: '50+',     label: 'Districts Active', icon: '🗺️' },
+        { value: '24/7',    label: 'Expert Support', icon: '🌾' },
+        { value: 'Free',    label: 'Always & Forever', icon: '💚' },
+      ]
     },
     HI: {
       tag: '🌱 किसान समुदाय',
@@ -31,7 +30,13 @@ const WhatsAppCommunity = () => {
       desc: 'अपने जिले के हजारों किसानों से जुड़ें। फसल की टिप्स शेयर करें, कीट अलर्ट पाएं और एक दूसरे की मदद करें — सब WhatsApp पर।',
       btnLabel: 'किसान WhatsApp ग्रुप जॉइन करें',
       trust: 'जॉइन करना बिल्कुल मुफ़्त • कोई स्पैम नहीं • कृषि विशेषज्ञों द्वारा संचालित',
-      districts: 'गुजरात, राजस्थान और अन्य राज्यों में किसान समूह सक्रिय'
+      districts: 'गुजरात, राजस्थान और अन्य राज्यों में किसान समूह सक्रिय',
+      stats: [
+        { value: '10,000+', label: 'किसान जुड़े', icon: '👨‍🌾' },
+        { value: '50+',     label: 'जिले सक्रिय', icon: '🗺️' },
+        { value: '24/7',    label: 'विशेषज्ञ सहायता', icon: '🌾' },
+        { value: 'मुफ़्त', label: 'हमेशा के लिए', icon: '💚' },
+      ]
     },
     GUJ: {
       tag: '🌱 ખેડૂત સમુદાય',
@@ -40,7 +45,13 @@ const WhatsAppCommunity = () => {
       desc: 'તમારા જિલ્લાના હજારો ખેડૂતો સાથે જોડાઓ. ખેતી ટિપ્સ શેર કરો, જંતુ ચેતવણી મેળવો — WhatsApp પર.',
       btnLabel: 'ખેડૂત WhatsApp ગ્રૂપ જોઈન કરો',
       trust: 'જોઈન કરવું સંપૂર્ણ મફત • સ્પામ નહીં • કૃષિ નિષ્ણાતો દ્વારા સંચાલિત',
-      districts: 'ગુજરાત, રાજસ્થાન અને અન્ય રાજ્યોમાં ખેડૂત જૂથો સક્રિય'
+      districts: 'ગુજરાત, રાજસ્થાન અને અન્ય રાજ્યોમાં ખેડૂત જૂથો સક્રિય',
+      stats: [
+        { value: '10,000+', label: 'ખેડૂત જોડાયા', icon: '👨‍🌾' },
+        { value: '50+',     label: 'જિલ્લા સક્રિય', icon: '🗺️' },
+        { value: '24/7',    label: 'નિષ્ણાત સહાય', icon: '🌾' },
+        { value: 'મફત',    label: 'હંમેશ માટે', icon: '💚' },
+      ]
     }
   };
 
@@ -104,7 +115,7 @@ const WhatsAppCommunity = () => {
           transition={{ delay: 0.15 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
         >
-          {stats.map((s, i) => (
+          {c.stats.map((s, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}

@@ -19,9 +19,9 @@ const ContactSection = () => {
           {/* Info Cards */}
           <div className="flex-1 w-full space-y-6">
             {[
-              { icon: Phone, title: 'Call Us', info: '+91 12345 67890' },
-              { icon: Mail, title: 'Email', info: 'info@rupaya.com' },
-              { icon: MapPin, title: 'Location', info: 'Surat, India' },
+              { icon: Phone, title: t('footer.contact'), info: '+91 12345 67890' },
+              { icon: Mail, title: t('footer.emailUs'), info: 'info@rupaya.com' },
+              { icon: MapPin, title: t('footer.headOffice'), info: 'Surat, India' },
             ].map((item, i) => {
               const Icon = item.icon;
               return (

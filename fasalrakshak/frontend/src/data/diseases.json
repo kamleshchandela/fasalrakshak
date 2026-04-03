@@ -2,6 +2,8 @@
   {
     "id": "wheat-rust",
     "name": "Wheat Rust",
+    "name_hi": "गेहूं का रतुआ",
+    "name_guj": "ઘઉંનો ગેરુ",
     "localName": "Gehun ka Zang",
     "cropName": "Wheat",
     "cropEmoji": "🌾",
@@ -25,10 +27,30 @@
       "Leaves turn yellow and wither",
       "Stems weaken and lodging occurs"
     ],
+    "symptoms_hi": [
+      "पत्तियों पर नारंगी-पीले रंग के पाउडर जैसे धब्बे",
+      "पत्तियां पीली पड़कर सूख जाती हैं",
+      "तने कमजोर हो जाते हैं और फसल गिर जाती है"
+    ],
+    "symptoms_guj": [
+      "પાંદડા પર નારંગી-પીળા રંગના પાવડર જેવા ટપકા",
+      "પાંદડા પીળા પડી જાય છે અને સુકાઈ જાય છે",
+      "થડ નબળા પડી જાય છે અને પાક ઢળી પડે છે"
+    ],
     "causes": [
       "Fungal spores spread by wind",
       "Cool humid weather 15-22°C",
       "Overcrowded planting"
+    ],
+    "causes_hi": [
+      "हवा द्वारा फैलने वाले कवक बीजाणु",
+      "15-22°C का ठंडा और आर्द्र मौसम",
+      "बहुत पास-पास बुवाई करना"
+    ],
+    "causes_guj": [
+      "પવન દ્વારા ફેલાતા ફૂગના બીજાણુઓ",
+      "15-22°C ઠંડુ અને ભેજવાળું વાતાવરણ",
+      "વધુ પડતી ગીચ વાવણી"
     ],
     "treatments": [
       {
@@ -53,13 +75,73 @@
         "type": "organic"
       }
     ],
+    "treatments_hi": [
+      {
+        "step": 1,
+        "action": "संक्रमित पौधों को हटा दें",
+        "detail": "सभी संक्रमित पौधों को तुरंत हटा दें और जला दें",
+        "timing": "तुरंत",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "मैनकोज़ेब 75% WP का प्रयोग करें",
+        "detail": "2 ग्राम प्रति लीटर पानी में मिलाकर पत्तियों पर स्प्रे करें",
+        "timing": "48 घंटों के भीतर",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "नीम के तेल का स्प्रे",
+        "detail": "5 मिली नीम का तेल प्रति लीटर पानी में मिलाकर हर 7 दिन में स्प्रे करें",
+        "timing": "3 सप्ताह तक साप्ताहिक",
+        "type": "organic"
+      }
+    ],
+    "treatments_guj": [
+      {
+        "step": 1,
+        "action": "ચેપગ્રસ્ત છોડને દૂર કરો",
+        "detail": "બધા ચેપગ્રસ્ત છોડને તરત જ દૂર કરો અને બાળી નાખો",
+        "timing": "તરત જ",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "મેન્કોઝેબ 75% WP નો ઉપયોગ કરો",
+        "detail": "2 ગ્રામ પ્રતિ લિટર પાણીમાં ભેળવીને પાંદડા પર છંટકાવ કરો",
+        "timing": "48 કલાકની અંદર",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "લીમડાના તેલનો છંટકાવ",
+        "detail": "5 મિલી લીમડાનું તેલ પ્રતિ લિટર પાણીમાં ભેળવીને દર 7 દિવસે છંટકાવ કરો",
+        "timing": "3 અઠવાડિયા સુધી સાપ્તાહિક",
+        "type": "organic"
+      }
+    ],
     "preventionTips": [
       "Use rust-resistant wheat varieties",
       "Avoid overhead irrigation",
       "Maintain proper plant spacing",
       "Rotate crops every season"
     ],
+    "preventionTips_hi": [
+      "रतुआ-प्रतिरोधी गेहूं की किस्मों का उपयोग करें",
+      "ऊपर से सिंचाई (ओवरहेड) से बचें",
+      "पौधों के बीच उचित दूरी बनाए रखें",
+      "हर मौसम में फसल चक्र अपनाएं"
+    ],
+    "preventionTips_guj": [
+      "ગેરુ-પ્રતિરોધક ઘઉંની જાતોનો ઉપયોગ કરો",
+      "ઉપરથી પિયત (ઓવરહેડ ઈરિગેશન) ટાળો",
+      "છોડ વચ્ચે યોગ્ય અંતર જાળવો",
+      "દરેક ઋતુમાં પાકની ફેરબદલી કરો"
+    ],
     "organicAlternative": "Neem oil spray 5ml/L every 7 days acts as natural fungicide",
+    "organicAlternative_hi": "नीम के तेल का स्प्रे (5 मिली/लीटर) हर 7 दिन में प्राकृतिक कवकनाशी के रूप में कार्य करता है",
+    "organicAlternative_guj": "લીમડાના તેલનો છંટકાવ (5 મિલી/લિટર) દર 7 દિવસે કુદરતી ફૂગનાશક તરીકે કામ કરે છે",
     "estimatedYieldLoss": "30-70%",
     "spreadRate": "fast",
     "contagious": true,
@@ -73,13 +155,19 @@
       "rabi"
     ],
     "weatherConditions": "Cool and humid weather 15-22°C with morning dew",
+    "weather_hi": "सुबह की ओस के साथ 15-22°C का ठंडा और आर्द्र मौसम",
+    "weather_guj": "સવારના ઝાકળ સાથે 15-22°C ઠંડુ અને ભેજવાળું વાતાવરણ",
     "firstAidTip": "Remove infected leaves immediately to slow spread",
+    "firstAid_hi": "प्रसार को धीमा करने के लिए संक्रमित पत्तियों को तुरंत हटा दें",
+    "firstAid_guj": "ફેલાવો ધીમો કરવા માટે ચેપગ્રસ્ત પાંદડા તરત જ દૂર કરો",
     "difficultToTreat": false,
     "commonInGujarat": true
   },
   {
     "id": "wheat-smut",
     "name": "Wheat Smut (Karnal Bunt)",
+    "name_hi": "गेहूं का कंडवा (करनाल बंट)",
+    "name_guj": "ઘઉંનો અંગારિયો (કર્નાલ બંટ)",
     "localName": "Gehun ka Kand",
     "cropName": "Wheat",
     "cropEmoji": "🌾",
@@ -102,10 +190,30 @@
       "Blackish-brown spore masses in grain",
       "Reduced grain weight and quality"
     ],
+    "symptoms_hi": [
+      "मछली जैसी गंध वाले आंशिक रूप से सड़े हुए दाने",
+      "अनाज में काले-भूरे रंग के बीजाणु समूह",
+      "अनाज के वजन और गुणवत्ता में कमी"
+    ],
+    "symptoms_guj": [
+      "માછલી જેવી ગંધવાળા આંશિક રીતે સડેલા દાણા",
+      "દાણામાં કાળા-ભૂરા રંગના બીજાણુઓ",
+      "દાણાના વજન અને ગુણવત્તામાં ઘટાડો"
+    ],
     "causes": [
       "Seed-borne fungal infection",
       "Cool moist conditions at flowering",
       "Infected seed use"
+    ],
+    "causes_hi": [
+      "बीज जनित कवक संक्रमण",
+      "फूल आने के समय ठंडी और नम स्थिति",
+      "संक्रमित बीज का उपयोग"
+    ],
+    "causes_guj": [
+      "બીજજન્ય ફૂગનો ચેપ",
+      "ફૂલ આવતી વખતે ઠંડુ અને ભેજવાળું વાતાવરણ",
+      "ચેપગ્રસ્ત બીજનો ઉપયોગ"
     ],
     "treatments": [
       {
@@ -130,13 +238,73 @@
         "type": "organic"
       }
     ],
+    "treatments_hi": [
+      {
+        "step": 1,
+        "action": "कार्बोक्सिन के साथ बीज उपचार",
+        "detail": "बीजों को कार्बोक्सिन 37.5% + थिरम 37.5% (3 ग्राम/किग्रा) से उपचारित करें",
+        "timing": "बुवाई से पहले",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "गहरी जुताई",
+        "detail": "संक्रमित कचरे को दबाने के लिए खेतों की गहरी जुताई करें",
+        "timing": "कटाई के बाद",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "ट्राइकोडर्मा बीज उपचार",
+        "detail": "जैव-नियंत्रण के रूप में ट्राइकोडर्मा विरिडी (4 ग्राम/किग्रा बीज) लगाएं",
+        "timing": "बुवाई से पहले",
+        "type": "organic"
+      }
+    ],
+    "treatments_guj": [
+      {
+        "step": 1,
+        "action": "કાર્બોક્સિન સાથે બીજ માવજત",
+        "detail": "બીજને કાર્બોક્સિન 37.5% + થીરમ 37.5% (3 ગ્રામ/કિલો) થી માવજત આપો",
+        "timing": "વાવણી પહેલા",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "ઊંડી ખેડ",
+        "detail": "ચેપગ્રસ્ત કચરાને દાટી દેવા માટે ખેતરોમાં ઊંડી ખેડ કરો",
+        "timing": "લણણી પછી",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "ટ્રાઈકોડર્મા બીજ માવજત",
+        "detail": "જૈવિક-નિયંત્રણ તરીકે ટ્રાઈકોડર્મા વિરીડી (4 ગ્રામ/કિલો બીજ) નો ઉપયોગ કરો",
+        "timing": "વાવણી પહેલા",
+        "type": "organic"
+      }
+    ],
     "preventionTips": [
       "Use certified disease-free seeds",
       "Treat seeds before every sowing",
       "Remove and burn infected plants",
       "Avoid water-logging"
     ],
+    "preventionTips_hi": [
+      "प्रमाणित रोगमुक्त बीजों का उपयोग करें",
+      "प्रत्येक बुवाई से पहले बीजों का उपचार करें",
+      "संक्रमित पौधों को हटा दें और जला दें",
+      "जलभराव से बचें"
+    ],
+    "preventionTips_guj": [
+      "પ્રમાણિત રોગમુક્ત બીજ વાપરો",
+      "દરેક વાવણી પહેલા બીજની માવજત કરો",
+      "ચેપગ્રસ્ત છોડને દૂર કરી બાળી નાખો",
+      "પાણી ભરાઈ રહેવાની સમસ્યા ટાળો"
+    ],
     "organicAlternative": "Trichoderma viride seed treatment (4g/kg) prevents infection",
+    "organicAlternative_hi": "ट्राइकोडर्मा विरिडी बीज उपचार (4 ग्राम/किग्रा) संक्रमण को रोकता है",
+    "organicAlternative_guj": "ટ્રાઈકોડર્મા વિરીડી બીજ માવજત (4 ગ્રામ/કિલો) ચેપ અટકાવે છે",
     "estimatedYieldLoss": "15-35%",
     "spreadRate": "moderate",
     "contagious": false,
@@ -150,7 +318,11 @@
       "seed-borne"
     ],
     "weatherConditions": "Cool moist weather during flowering stage",
+    "weather_hi": "फूल आने के दौरान ठंडा और नम मौसम",
+    "weather_guj": "ફૂલ આવવા સમયે ઠંડુ અને ભેજવાળું વાતાવરણ",
     "firstAidTip": "Do not use infected grain as seed next season",
+    "firstAid_hi": "अगले सीजन में संक्रमित अनाज को बीज के रूप में उपयोग न करें",
+    "firstAid_guj": "પછીની સિઝનમાં ચેપગ્રસ્ત દાણાનો બીજ તરીકે ઉપયોગ ન કરો",
     "difficultToTreat": false,
     "commonInGujarat": true
   },
@@ -857,6 +1029,8 @@
   {
     "id": "groundnut-stem-rot",
     "name": "Groundnut Stem Rot",
+    "name_hi": "मूंगफली का तना सड़न",
+    "name_guj": "મગફળીના થડનો સડો",
     "localName": "Mungfali Tana Sadhan",
     "cropName": "Groundnut",
     "cropEmoji": "🥜",
@@ -880,10 +1054,30 @@
       "White mycelium with mustard-seed sclerotia",
       "Entire plant collapses and dies"
     ],
+    "symptoms_hi": [
+      "मिट्टी के पास तने के निचले हिस्से पर पानी से भीगे हुए धब्बे",
+      "सफेद कवक (माइसेलियम) और सरसों के दाने जैसे दाने (स्क्लेरोटिया)",
+      "पूरा पौधा मुरझाकर गिर जाता है और मर जाता है"
+    ],
+    "symptoms_guj": [
+      "જમીનની નજીક થડના તળિયે પાણી જેવા ડાઘા",
+      "સફેદ ફૂગ (માયસેલિયમ) અને રાઈના દાણા જેવા સફેદ ટપકા (સ્ક્લેરોશિયા)",
+      "આખો છોડ કરમાઈને ઢળી પડે છે અને સુકાઈ જાય છે"
+    ],
     "causes": [
       "Sclerotium rolfsii soil fungus",
       "Water-logging and high soil temperature",
       "Infected plant debris in soil"
+    ],
+    "causes_hi": [
+      "स्क्लेरोटियम रोल्फसी नामक मिट्टी का कवक",
+      "जलभराव और मिट्टी का उच्च तापमान",
+      "मिट्टी में संक्रमित फसल अवशेष"
+    ],
+    "causes_guj": [
+      "સ્ક્લેરોશિયમ રોલ્ફસી નામની જમીનની ફૂગ",
+      "પાણી ભરાઈ રહેવું અને જમીનનું ઊંચું તાપમાન",
+      "જમીનમાં પાકના ચેપગ્રસ્ત અવશેષો"
     ],
     "treatments": [
       {
@@ -908,13 +1102,73 @@
         "type": "organic"
       }
     ],
+    "treatments_hi": [
+      {
+        "step": 1,
+        "action": "कार्बेंडाजिम से मिट्टी का उपचार",
+        "detail": "पौधे के आधार के पास मिट्टी में 2 ग्राम/लीटर कार्बेंडाजिम 50% WP डालें",
+        "timing": "तुरंत",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "संक्रमित पौधों को निकालें",
+        "detail": "सभी मुरझाए हुए पौधों को आसपास की मिट्टी के साथ उखाड़कर नष्ट कर दें",
+        "timing": "तुरंत",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "सरसों की खली का उपचार",
+        "detail": "बुवाई से पहले 500 किग्रा/हेक्टेयर सरसों की खली मिट्टी में मिलाएं",
+        "timing": "बुवाई से पहले",
+        "type": "organic"
+      }
+    ],
+    "treatments_guj": [
+      {
+        "step": 1,
+        "action": "કાર્બેન્ડાઝીમથી જમીન પલાળવી",
+        "detail": "છોડના થડ પાસે જમીનમાં 2 ગ્રામ/લિટર કાર્બેન્ડાઝીમ 50% WP નાખો",
+        "timing": "તરત જ",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "ચેપગ્રસ્ત છોડ દૂર કરો",
+        "detail": "ઢળી પડેલા બધા છોડને આસપાસની માટી સાથે ઉખાડી નાશ કરો",
+        "timing": "તરત જ",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "રાઈના ખોળની માવજત",
+        "detail": "વાવણી પહેલા 500 કિગ્રા/હેક્ટર રાઈનો ખોળ જમીનમાં ભેળવો",
+        "timing": "વાવણી પહેલા",
+        "type": "organic"
+      }
+    ],
     "preventionTips": [
       "Avoid water-logging",
       "Deep plow to expose and destroy sclerotia",
       "Use Trichoderma-enriched compost",
       "Practice 2-year rotation with cereals"
     ],
+    "preventionTips_hi": [
+      "जलभराव से बचें",
+      "बीजाणुओं को नष्ट करने के लिए गहरी जुताई करें",
+      "ट्राइकोडर्मा-युक्त कंपोस्ट का उपयोग करें",
+      "अनाज के साथ 2 साल का फसल चक्र अपनाएं"
+    ],
+    "preventionTips_guj": [
+      "પાણી ભરાઈ રહેવાની સમસ્યા ટાળો",
+      "ફૂગના દાણા (સ્ક્લેરોશિયા) નાશ કરવા ઊંડી ખેડ કરો",
+      "ટ્રાઈકોડર્મા-યુક્ત ખાતર વાપરો",
+      "ધાન્ય પાકો સાથે 2 વર્ષનું પાક ચક્ર અપનાવો"
+    ],
     "organicAlternative": "Trichoderma viride 2.5kg/ha in FYM suppresses Sclerotium in soil",
+    "organicAlternative_hi": "गोबर की खाद में 2.5 किग्रा/हेक्टेयर ट्राइकोडर्मा विरिडी मिट्टी में संक्रमण रोकती है",
+    "organicAlternative_guj": "છાણિયા ખાતર સાથે 2.5 કિગ્રા/હેક્ટર ટ્રાઈકોડર્મા વિરીડી જમીનમાં ચેપ અટકાવે છે",
     "estimatedYieldLoss": "25-60%",
     "spreadRate": "slow",
     "contagious": false,

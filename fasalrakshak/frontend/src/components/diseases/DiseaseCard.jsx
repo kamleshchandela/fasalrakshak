@@ -3,22 +3,43 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Tilt from 'react-parallax-tilt';
+import { useLanguage } from '../../context/LanguageContext';
 
 const PART_ICONS = { leaf: '🍃', stem: '🌿', root: '🌱', fruit: '🍎', flower: '🌸' };
 
 const SeverityBadge = ({ severity }) => {
-  const map = { severe: { color: 'rgba(229,62,62,0.88)', label: '🔴 Severe' }, moderate: { color: 'rgba(245,166,35,0.88)', label: '🟡 Moderate' }, mild: { color: 'rgba(26,107,47,0.88)', label: '🟢 Mild' } };
+  const { t } = useLanguage();
+  const map = { 
+    severe: { color: 'rgba(229,62,62,0.88)', label: `🔴 ${t('disease.severe')}` }, 
+    moderate: { color: 'rgba(245,166,35,0.88)', label: `🟡 ${t('disease.moderate')}` }, 
+    mild: { color: 'rgba(26,107,47,0.88)', label: `🟢 ${t('disease.mild')}` } 
+  };
   const s = map[severity] || map.mild;
-  return <span style={{ background: s.color }} className="text-white font-nunito font-bold text-[12px] px-2.5 py-1 rounded-full absolute top-3 left-3">{s.label}</span>;
+  return <span style={{ background: s.color }} className="text-white font-nunito font-bold text-[12px] px-2.5 py-1 rounded-full absolute top-3 left-3 z-10">{s.label}</span>;
 };
 
 const TypeBadge = ({ type }) => {
-  const map = { fungal: '🍄 Fungal', bacterial: '🦠 Bacterial', viral: '🧬 Viral', pest: '🐛 Pest', nutrient: '🌱 Nutrient' };
-  return <span className="bg-black/55 text-white font-nunito font-bold text-[12px] px-2.5 py-1 rounded-full absolute top-3 right-3">{map[type] || type}</span>;
+  const { t } = useLanguage();
+  const map = { 
+    fungal: `🍄 ${t('disease.fungal')}`, 
+    bacterial: `🦠 ${t('disease.bacterial')}`, 
+    viral: `🧬 ${t('disease.viral')}`, 
+    pest: `🐛 ${t('disease.pest')}`, 
+    nutrient: `🌱 ${t('disease.nutrient')}` 
+  };
+  return <span className="bg-black/55 text-white font-nunito font-bold text-[12px] px-2.5 py-1 rounded-full absolute top-3 right-3 z-10">{map[type] || type}</span>;
 };
 
 const DiseaseCard = ({ disease, index }) => {
+  const { t, lang } = useLanguage();
   const [imgError, setImgError] = useState(false);
+
+  // Get localized content
+  const displayName = disease[`name_${lang.toLowerCase()}`] || disease.name;
+  const displayCropName = lang === 'HI' ? (disease.cropName === 'Wheat' ? 'गेहूं' : disease.cropName === 'Cotton' ? 'कपास' : disease.cropName) : 
+                        lang === 'GUJ' ? (disease.cropName === 'Wheat' ? 'ઘઉં' : disease.cropName === 'Cotton' ? 'કપાસ' : disease.cropName) : 
+                        disease.cropName;
+  const symptoms = disease[`symptoms_${lang.toLowerCase()}`] || disease.symptoms;
 
   return (
     <Tilt
@@ -43,7 +64,7 @@ const DiseaseCard = ({ disease, index }) => {
         {!imgError ? (
           <img
             src={disease.thumbnailImage || disease.image}
-            alt={disease.name}
+            alt={displayName}
             loading="lazy"
             onError={() => setImgError(true)}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -58,10 +79,10 @@ const DiseaseCard = ({ disease, index }) => {
         <TypeBadge type={disease.diseaseType} />
 
         {disease.spreadRate === 'fast' && (
-          <span className="bg-[rgba(245,166,35,0.88)] text-white font-nunito font-bold text-[11px] px-2 py-0.5 rounded-full absolute bottom-3 left-3">⚡ Spreads Fast</span>
+          <span className="bg-[rgba(245,166,35,0.88)] text-white font-nunito font-bold text-[11px] px-2 py-0.5 rounded-full absolute bottom-3 left-3 z-10">⚡ {t('disease.spreads_fast')}</span>
         )}
         {disease.commonInGujarat && (
-          <span className="bg-[rgba(26,107,47,0.88)] text-white font-nunito font-bold text-[11px] px-2 py-0.5 rounded-full absolute bottom-3 right-3">📍 Gujarat</span>
+          <span className="bg-[rgba(26,107,47,0.88)] text-white font-nunito font-bold text-[11px] px-2 py-0.5 rounded-full absolute bottom-3 right-3 z-10">📍 {t('disease.gujarat')}</span>
         )}
       </div>
 
@@ -70,31 +91,31 @@ const DiseaseCard = ({ disease, index }) => {
         {/* Crop badge */}
         <div className="inline-flex items-center gap-1.5 bg-primary-lightGreen border border-primary-sage rounded-full px-3 py-1 self-start mb-4">
           <span className="text-[13px]">{disease.cropEmoji}</span>
-          <span className="font-nunito font-bold text-[12px] text-primary-darkGreen">{disease.cropName}</span>
+          <span className="font-nunito font-bold text-[12px] text-primary-darkGreen">{displayCropName}</span>
         </div>
 
-        <h3 className="font-playfair font-black text-[18px] text-text-charcoal mb-1.5 leading-snug line-clamp-2">{disease.name}</h3>
+        <h3 className="font-playfair font-black text-[18px] text-text-charcoal mb-1.5 leading-snug line-clamp-2">{displayName}</h3>
         {disease.localName && (
-          <p className="font-nunito text-[13px] font-semibold text-gray-500 mb-3">aka {disease.localName}</p>
+          <p className="font-nunito text-[13px] font-semibold text-gray-500 mb-3">{t('disease.aka')} {disease.localName}</p>
         )}
 
         {/* Symptoms preview */}
         <ul className="flex flex-col gap-1.5 mb-4 flex-1">
-          {disease.symptoms.slice(0, 2).map((s, i) => (
+          {symptoms.slice(0, 2).map((s, i) => (
             <li key={i} className="flex items-start gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-primary-green/50 mt-[6px] flex-shrink-0" />
-              <span className="font-nunito text-[13px] text-gray-600 font-medium leading-snug">{s}</span>
+              <span className="font-nunito text-[13px] text-gray-600 font-medium leading-snug line-clamp-2 text-left">{s}</span>
             </li>
           ))}
-          {disease.symptoms.length > 2 && (
-            <span className="font-nunito text-[12px] text-primary-green font-bold mt-1">+{disease.symptoms.length - 2} more symptoms</span>
+          {symptoms.length > 2 && (
+            <span className="font-nunito text-[12px] text-primary-green font-bold mt-1">+{symptoms.length - 2} {t('disease.more_symptoms')}</span>
           )}
         </ul>
 
         <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
           <div className="flex gap-1.5">
             {disease.affectedParts.slice(0, 3).map(part => (
-              <span key={part} className="w-8 h-8 flex items-center justify-center bg-background-cream rounded-full text-[14px] border border-gray-100" title={part}>
+              <span key={part} className="w-8 h-8 flex items-center justify-center bg-background-cream rounded-full text-[14px] border border-gray-100" title={t(`disease.${part}`)}>
                 {PART_ICONS[part] || '🌿'}
               </span>
             ))}
@@ -108,7 +129,7 @@ const DiseaseCard = ({ disease, index }) => {
             className="flex items-center gap-1 font-nunito font-bold text-[14px] text-primary-green hover:text-primary-darkGreen group/link transition-colors"
             onClick={e => e.stopPropagation()}
           >
-            View Details
+            {t('disease.view_details')}
             <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
           </Link>
         </div>
