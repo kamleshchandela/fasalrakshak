@@ -43,26 +43,26 @@ const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
 
       <motion.div 
         onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={handleDrop}
-        animate={{ scale: isDragging ? 1.01 : 1, borderColor: isDragging ? '#22c55e' : '#A3D2A9' }}
+        animate={{ scale: isDragging ? 1.01 : 1, borderColor: isDragging ? '#22C55E' : '#BBE8CC' }}
         whileHover={{ scale: 1.01 }}
-        className="border-2 border-dashed rounded-[24px] md:rounded-[32px] bg-gradient-to-br from-[#F5FFF5] to-[#EFFFF0] p-8 md:p-14 min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-center transition-all cursor-pointer relative overflow-hidden group shadow-inner"
+        className="border-2 border-dashed rounded-[24px] md:rounded-[32px] bg-gradient-to-br from-primary-lightGreen/80 to-white p-8 md:p-14 min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-center transition-all cursor-pointer relative overflow-hidden group shadow-inner"
       >
         <div className="absolute inset-0 bg-white/40 transition-opacity group-hover:opacity-0" />
         
         <div className="relative z-10 flex flex-col items-center">
-            <div className="mb-6 p-4 bg-white/60 rounded-[20px] shadow-[0_4px_16px_rgba(26,107,47,0.06)] backdrop-blur-sm group-hover:rotate-12 transition-transform duration-500 group-hover:scale-110">
-               <Leaf className="w-12 h-12 text-[#2E7D32]" strokeWidth={1.5} />
+            <div className="mb-6 p-4 bg-white/60 rounded-[20px] shadow-organic backdrop-blur-sm group-hover:rotate-12 transition-transform duration-500 group-hover:scale-110 border border-white/50">
+               <Leaf className="w-12 h-12 text-primary-green" strokeWidth={1.5} />
             </div>
             
-            <h3 className="font-playfair font-black tracking-tight text-2xl md:text-3xl text-[#1B5E20] text-center mb-2">
+            <h3 className="font-playfair font-black tracking-tight text-2xl md:text-3xl text-primary-darkGreen text-center mb-2">
                Drop crop photo here
             </h3>
-            <p className="font-nunito font-medium text-[15px] text-[#4A5D23]/80 text-center">
+            <p className="font-nunito font-medium text-[15px] text-gray-500 text-center">
                or select using the buttons below
             </p>
         </div>
         
-        <div className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-transparent via-[#4CAF50]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-transparent via-primary-green/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
       </motion.div>
 
       <div className="flex flex-col md:flex-row gap-4 md:gap-5 w-full mt-2">
@@ -70,7 +70,7 @@ const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
         <motion.button 
           whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.97 }}
           onClick={() => setShowCamera(true)}
-          className="w-full md:w-1/2 h-[64px] bg-gradient-to-r from-[#1E5631] to-[#2E7D32] text-white rounded-[20px] flex items-center justify-center gap-3 shadow-[0_8px_20px_rgba(46,125,50,0.25)] hover:shadow-[0_12px_24px_rgba(46,125,50,0.35)] transition-all font-nunito border border-white/10"
+          className="w-full md:w-1/2 h-[64px] bg-primary-green hover:bg-primary-darkGreen text-white rounded-[20px] flex items-center justify-center gap-3 shadow-organic hover:shadow-organic-hover transition-all duration-300 font-nunito border border-primary-green/20"
         >
           <Camera className="w-[24px] h-[24px]" strokeWidth={2} />
           <span className="text-[18px] font-bold tracking-wide">Take a Photo</span>
@@ -80,9 +80,9 @@ const UploadZone = ({ onFileSelect, errorStatus, onClearError }) => {
         <motion.button 
           whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.97 }}
           onClick={() => fileInputRef.current?.click()}
-          className="w-full md:w-1/2 h-[64px] bg-white border border-[#E0EDD5] text-[#2E7D32] rounded-[20px] flex items-center justify-center gap-3 shadow-[0_8px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)] hover:bg-[#F9FCF9] transition-all font-nunito"
+          className="w-full md:w-1/2 h-[64px] bg-white border-2 border-primary-sage text-primary-darkGreen rounded-[20px] flex items-center justify-center gap-3 shadow-sm hover:shadow-md hover:bg-primary-lightGreen transition-all font-nunito"
         >
-          <Upload className="w-[24px] h-[24px]" strokeWidth={2} />
+          <Upload className="w-[24px] h-[24px] text-primary-green" strokeWidth={2} />
           <span className="text-[18px] font-bold tracking-wide">Upload Gallery</span>
         </motion.button>
         <input id="gallery-upload-input" type="file" accept="image/jpeg,image/png,image/webp" ref={fileInputRef} onChange={handleChange} className="hidden" />

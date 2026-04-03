@@ -6,19 +6,40 @@
 
 @layer base {
   body {
-    @apply font-nunito bg-background-pureWhite text-text-charcoal;
-    background-color: #FFFFFF;
+    @apply font-nunito bg-background-cream text-text-charcoal antialiased selection:bg-[#10b981] selection:text-white;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair;
+    @apply font-playfair tracking-tight;
   }
   html {
     scroll-behavior: smooth;
+  }
+  
+  /* Premium dark scrollbar for the site */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FAFAF9; /* matches cream */
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #10b981; 
   }
 }
 
 @layer utilities {
   .clip-path-slant {
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  }
+  .glassmorphism {
+    @apply bg-white/60 backdrop-blur-lg border border-white/40;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+  }
+  .glassmorphism-dark {
+    @apply bg-black/40 backdrop-blur-lg border border-white/10;
   }
 }

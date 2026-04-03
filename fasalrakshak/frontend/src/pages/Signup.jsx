@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Lock, User, MapPin, Map as MapIcon, Leaf, AlertTriangle, CheckCircle, EyeOff, Eye } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
+import heroScan from '../images/hero_scan.png';
 
 const CROP_OPTIONS = [
   { id: 'wheat', label: '🌾 Wheat' },
@@ -140,65 +141,84 @@ const Signup = () => {
   };
 
   // Shared generic input style
-  const inputStyle = `w-full h-[52px] pl-11 pr-4 rounded-xl border-1.5 border-primary-sage text-base 
-                      outline-none transition-all duration-300 bg-white
-                      focus:border-primary-green focus:shadow-[0_0_0_4px_rgba(26,107,47,0.1)]`;
+  const inputStyle = `w-full h-[52px] pl-11 pr-4 rounded-[16px] border border-gray-200 text-base font-semibold text-text-charcoal 
+                      outline-none transition-all duration-300 bg-gray-50/50 hover:bg-white
+                      focus:bg-white focus:border-primary-green focus:shadow-[0_0_0_4px_rgba(34,197,94,0.1)]`;
 
   return (
-    <div className="min-h-screen bg-white font-nunito flex flex-col pt-16 lg:pt-20 overflow-x-hidden">
+    <div className="min-h-screen bg-background-cream font-nunito flex">
       
-      {/* SECTION 1 — PAGE HEADER */}
-      <section className="relative bg-primary-lightGreen py-16 md:py-24 flex items-center justify-center">
-        <div 
-          className="absolute inset-0 z-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200")' }}
-        ></div>
-        <div className="absolute inset-0 bg-primary-darkGreen/65 z-10"></div>
+      {/* LEFT SECTION — SPLIT SCREEN BACKGROUND */}
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-primary-darkGreen">
+        <img 
+          src={heroScan} 
+          alt="Hands holding green sapling" 
+          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-[20s] ease-out object-right"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-darkGreen via-primary-darkGreen/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-black/10"></div>
         
-        <div className="relative z-20 text-center px-4 max-w-2xl mx-auto flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 bg-primary-lightGreen/90 text-primary-green px-4 py-1.5 rounded-full font-bold text-sm mb-6 uppercase tracking-wider">
-            <Leaf className="w-4 h-4" />
-            FasalRakshak — Smart Kheti
-          </div>
-          <h1 className="font-playfair font-bold text-3xl md:text-5xl text-white mb-4 leading-tight">
-            Join FasalRakshak Today
-          </h1>
-          <p className="text-white/90 font-nunito text-lg mb-8 max-w-lg mx-auto">
-            Create your free account in 2 minutes
-          </p>
+        <div className="absolute bottom-0 left-0 p-16 z-20 w-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="inline-flex items-center gap-2 bg-primary-yellow/20 backdrop-blur-md text-primary-yellow px-4 py-2 rounded-full font-bold text-xs mb-6 uppercase tracking-widest border border-primary-yellow/30">
+              <Leaf className="w-4 h-4" />
+              Empowering India's Farmers
+            </div>
+            <h1 className="font-playfair font-black text-5xl text-white mb-6 leading-tight drop-shadow-md">
+              Join FasalRakshak<br />Today
+            </h1>
+            <p className="text-white/90 font-nunito text-xl font-medium max-w-md leading-relaxed">
+              Create your free account to track your crops, scan for diseases, and get local language advice.
+            </p>
+          </motion.div>
         </div>
-      </section>
+      </div>
 
-      {/* SECTION 2 — SIGNUP CARD */}
-      <section className="flex-grow flex flex-col items-center px-4 -mt-12 md:-mt-16 relative z-30 pb-20">
-        <div className="bg-white rounded-3xl w-full max-w-[480px] p-6 md:p-10 shadow-[0_8px_40px_rgba(26,107,47,0.10)] border-2 border-primary-sage overflow-hidden mx-auto relative h-auto min-h-[500px]">
-          
+      {/* RIGHT SECTION — SIGNUP FORM */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12 lg:p-20 relative lg:pt-20 pt-28">
+        
+        {/* Mobile Background Fallback */}
+        <div 
+          className="lg:hidden absolute inset-0 z-0 bg-cover bg-center opacity-20 filter blur-sm"
+          style={{ backgroundImage: `url(${heroScan})` }}
+        ></div>
+
+        <motion.div 
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="bg-white/95 backdrop-blur-xl rounded-[32px] w-full max-w-[500px] p-8 md:p-10 shadow-organic border border-white relative z-10 overflow-hidden"
+        >
           {/* Success Overlay */}
           <AnimatePresence>
             {success && (
               <motion.div 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
-                className="absolute inset-0 z-50 bg-white/95 flex flex-col items-center justify-center p-8 text-center"
+                className="absolute inset-0 z-50 bg-white/95 backdrop-blur-md flex flex-col items-center justify-center p-8 text-center"
               >
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: [1.2, 1], opacity: 1 }}
                   transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                  className="w-24 h-24 bg-[#F0FFF4] rounded-full flex items-center justify-center mb-6"
+                  className="w-24 h-24 bg-primary-lightGreen rounded-full flex items-center justify-center mb-6 border-2 border-primary-sage shadow-organic"
                 >
                   <CheckCircle className="w-12 h-12 text-primary-green" />
                 </motion.div>
-                <h3 className="font-playfair font-bold text-2xl text-primary-green mb-2">
+                <h3 className="font-playfair font-black text-3xl text-text-charcoal mb-2">
                   Account Created!
                 </h3>
-                <p className="text-text-charcoal font-semibold text-lg">
+                <p className="text-gray-500 font-semibold text-lg">
                   Welcome to FasalRakshak 🎉
                 </p>
-                <div className="mt-8 flex gap-1 justify-center">
-                  <div className="w-2 h-2 rounded-full bg-primary-green animate-bounce" style={{ animationDelay: '0ms' }} />
-                  <div className="w-2 h-2 rounded-full bg-primary-green animate-bounce" style={{ animationDelay: '150ms' }} />
-                  <div className="w-2 h-2 rounded-full bg-primary-green animate-bounce" style={{ animationDelay: '300ms' }} />
+                <div className="mt-8 flex gap-2 justify-center">
+                  <div className="w-2.5 h-2.5 rounded-full bg-primary-green animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <div className="w-2.5 h-2.5 rounded-full bg-primary-green animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <div className="w-2.5 h-2.5 rounded-full bg-primary-green animate-bounce" style={{ animationDelay: '300ms' }} />
                 </div>
               </motion.div>
             )}
@@ -206,17 +226,20 @@ const Signup = () => {
 
           {/* Progress Indicator */}
           <div className="mb-8 flex flex-col items-center">
-            <div className="flex items-center gap-2">
-              <span className={`text-sm font-bold ${step === 1 ? 'text-primary-green' : 'text-gray-400'}`}>Step 1</span>
-              <div className="flex items-center gap-1">
+            <div className="flex items-center gap-3">
+              <span className={`text-[13px] uppercase tracking-wider font-bold ${step === 1 ? 'text-primary-green' : 'text-gray-400'}`}>Step 1</span>
+              <div className="flex items-center gap-1.5">
                 <div className="w-2 h-2 rounded-full bg-primary-green"></div>
-                <div className={`h-[2px] w-8 ${step === 2 ? 'bg-primary-green' : 'bg-gray-200'} transition-colors duration-500`}></div>
+                <div className={`h-[3px] w-10 ${step === 2 ? 'bg-primary-green' : 'bg-gray-200'} transition-colors duration-500 rounded-full`}></div>
                 <div className={`w-2 h-2 rounded-full ${step === 2 ? 'bg-primary-green' : 'bg-gray-200'} transition-colors duration-500`}></div>
               </div>
-              <span className={`text-sm font-bold ${step === 2 ? 'text-primary-green' : 'text-gray-400'}`}>Step 2</span>
+              <span className={`text-[13px] uppercase tracking-wider font-bold ${step === 2 ? 'text-primary-green' : 'text-gray-400'}`}>Step 2</span>
             </div>
-            <p className="text-sm font-bold text-text-charcoal mt-2 tracking-wide">
-              {step === 1 ? 'Your Details' : 'Your Farm'}
+            <h2 className="font-playfair text-2xl font-black text-text-charcoal mt-4 mb-1">
+              {step === 1 ? 'Personal Details' : 'Farm Details'}
+            </h2>
+            <p className="text-sm font-semibold text-gray-500 text-center">
+              {step === 1 ? "Let's start with the basics" : "Tell us about what you grow"}
             </p>
           </div>
 
@@ -224,10 +247,10 @@ const Signup = () => {
             {error && (
               <motion.div
                 key="errorMsg"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: -10, height: 0 }}
+                animate={{ opacity: 1, y: 0, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="bg-red-50 border-l-4 border-red-500 p-4 rounded-xl flex items-start text-red-700 text-sm font-semibold mb-6"
+                className="bg-red-50 border-1.5 border-red-200 p-4 rounded-[16px] flex items-start text-red-700 text-sm font-semibold mb-6 overflow-hidden"
               >
                 <AlertTriangle className="w-5 h-5 mr-3 flex-shrink-0" />
                 <span>{error}</span>
@@ -241,34 +264,32 @@ const Signup = () => {
               <motion.div
                 key="step1"
                 custom={1}
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
+                exit={{ opacity: 0, x: -30 }}
                 transition={{ duration: 0.3 }}
                 className="flex flex-col space-y-4"
               >
                 {/* Full Name */}
-                <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-bold text-text-charcoal pl-1">Your Full Name</label>
+                <div className="flex flex-col space-y-1.5">
+                  <label className="text-[13px] uppercase tracking-wider font-bold text-gray-700 pl-1">Your Full Name</label>
                   <div className="relative group">
-                    <User className="absolute left-4 top-[14px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
+                    <User className="absolute left-4 top-[15px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
                     <input name="name" type="text" value={formData.name} onChange={handleInputChange} className={inputStyle} placeholder="e.g. Ramesh Patel" />
                   </div>
                 </div>
 
                 {/* Gender */}
                 <div className="flex flex-col space-y-2 pb-1">
-                  <label className="text-sm font-bold text-text-charcoal pl-1">Gender</label>
-                  <div className="flex gap-2">
+                  <label className="text-[13px] uppercase tracking-wider font-bold text-gray-700 pl-1">Gender</label>
+                  <div className="flex gap-3">
                     {['male', 'female', 'other'].map(g => (
                       <button
-                        key={g}
-                        type="button"
-                        onClick={() => setFormData(p => ({ ...p, gender: g }))}
-                        className={`flex-1 h-12 rounded-xl border-1.5 font-bold text-sm tracking-wide capitalize transition-all
+                        key={g} type="button" onClick={() => setFormData(p => ({ ...p, gender: g }))}
+                        className={`flex-1 h-[52px] rounded-[16px] border font-bold text-[14px] tracking-wide capitalize transition-all duration-300
                           ${formData.gender === g 
-                            ? 'bg-primary-green border-primary-green text-white shadow-md' 
-                            : 'bg-white border-primary-sage text-primary-green'}`}
+                            ? 'bg-primary-green border-primary-green text-white shadow-organic' 
+                            : 'bg-gray-50/50 border-gray-200 text-gray-600 hover:bg-white hover:border-primary-green/50'}`}
                       >
                         {g === 'male' ? '👨 Male' : g === 'female' ? '👩 Female' : '🧑 Other'}
                       </button>
@@ -277,59 +298,50 @@ const Signup = () => {
                 </div>
 
                 {/* Mobile Number */}
-                <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-bold text-text-charcoal pl-1">Mobile Number</label>
+                <div className="flex flex-col space-y-1.5">
+                  <label className="text-[13px] uppercase tracking-wider font-bold text-gray-700 pl-1">Mobile Number</label>
                   <div className="relative group">
-                    <Phone className="absolute left-4 top-[14px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
+                    <Phone className="absolute left-4 top-[15px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
                     <input name="mobile" type="tel" value={formData.mobile} 
                            onChange={(e) => setFormData(p => ({ ...p, mobile: e.target.value.replace(/\D/g, '').slice(0, 10)}))} 
-                           className={inputStyle} placeholder="Enter 10-digit mobile number" inputMode="numeric" />
+                           className={inputStyle} placeholder="Enter 10-digit number" inputMode="numeric" />
                   </div>
                 </div>
 
-                {/* Create PIN */}
-                <div className="flex flex-col space-y-1">
-                  <div className="flex justify-between items-end pl-1 pr-1">
-                    <label className="text-sm font-bold text-text-charcoal">Create Your PIN</label>
-                    {formData.pin.length === 4 && <span className="text-xs text-primary-green font-bold flex items-center gap-1"><CheckCircle className="w-3 h-3"/> Good</span>}
+                {/* PIN Grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Create PIN */}
+                  <div className="flex flex-col space-y-1.5">
+                    <label className="text-[13px] uppercase tracking-wider font-bold text-gray-700 pl-1">Create PIN</label>
+                    <div className="relative group">
+                      <Lock className="absolute left-4 top-[15px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
+                      <input name="pin" type={showPin ? 'text' : 'password'} value={formData.pin} 
+                             onChange={(e) => setFormData(p => ({ ...p, pin: e.target.value.replace(/\D/g, '').slice(0, 4)}))}
+                             className={`${inputStyle} tracking-[0.2em] pr-10`} placeholder="••••" inputMode="numeric" />
+                      <button type="button" onClick={() => setShowPin(!showPin)} className="absolute right-3 top-[15px] text-gray-400 hover:text-primary-green">
+                        {showPin ? <EyeOff className="w-4 h-4"/> : <Eye className="w-4 h-4"/>}
+                      </button>
+                    </div>
                   </div>
-                  <div className="relative group">
-                    <Lock className="absolute left-4 top-[14px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
-                    <input name="pin" type={showPin ? 'text' : 'password'} value={formData.pin} 
-                           onChange={(e) => setFormData(p => ({ ...p, pin: e.target.value.replace(/\D/g, '').slice(0, 4)}))}
-                           className={`${inputStyle} tracking-widest`} placeholder="•••• (4 digits)" inputMode="numeric" />
-                    <button type="button" onClick={() => setShowPin(!showPin)} className="absolute right-4 top-[14px] text-gray-400 hover:text-primary-green">
-                      {showPin ? <EyeOff className="w-5 h-5"/> : <Eye className="w-5 h-5"/>}
-                    </button>
-                  </div>
-                </div>
 
-                {/* Confirm PIN */}
-                <div className="flex flex-col space-y-1">
-                  <div className="flex justify-between items-end pl-1 pr-1">
-                    <label className="text-sm font-bold text-text-charcoal">Confirm PIN</label>
-                    {formData.confirmPin && (
-                       formData.confirmPin === formData.pin ? (
-                         <span className="text-xs text-primary-green font-bold">✅ Match</span>
-                       ) : (
-                         <span className="text-xs text-red-500 font-bold">❌ Mismatch</span>
-                       )
-                    )}
-                  </div>
-                  <div className="relative group">
-                    <Lock className="absolute left-4 top-[14px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
-                    <input name="confirmPin" type={showPin ? 'text' : 'password'} value={formData.confirmPin} 
-                           onChange={(e) => setFormData(p => ({ ...p, confirmPin: e.target.value.replace(/\D/g, '').slice(0, 4)}))}
-                           className={`${inputStyle} tracking-widest`} placeholder="••••" inputMode="numeric" />
+                  {/* Confirm PIN */}
+                  <div className="flex flex-col space-y-1.5">
+                    <label className="text-[13px] uppercase tracking-wider font-bold text-gray-700 pl-1">Confirm</label>
+                    <div className="relative group">
+                      <Lock className="absolute left-4 top-[15px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
+                      <input name="confirmPin" type={showPin ? 'text' : 'password'} value={formData.confirmPin} 
+                             onChange={(e) => setFormData(p => ({ ...p, confirmPin: e.target.value.replace(/\D/g, '').slice(0, 4)}))}
+                             className={`${inputStyle} tracking-[0.2em]`} placeholder="••••" inputMode="numeric" />
+                    </div>
                   </div>
                 </div>
 
                 <motion.button
-                  whileTap={{ scale: 0.97 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={handleNextStep}
-                  className="w-full h-[52px] mt-4 flex items-center justify-center bg-primary-green text-white font-bold text-lg rounded-xl hover:bg-primary-darkGreen hover:shadow-lg transition-colors"
+                  className="w-full h-[56px] mt-6 flex items-center justify-center bg-primary-green text-white font-bold text-lg rounded-[16px] shadow-organic hover:bg-primary-darkGreen hover:shadow-organic-hover transition-all duration-300"
                 >
-                  Next Step →
+                  Continue Setup →
                 </motion.button>
               </motion.div>
             ) : (
@@ -337,42 +349,36 @@ const Signup = () => {
               <motion.div
                 key="step2"
                 custom={2}
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 50 }}
+                exit={{ opacity: 0, x: 30 }}
                 transition={{ duration: 0.3 }}
                 className="flex flex-col space-y-4"
               >
-                {/* Village */}
-                <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-bold text-text-charcoal pl-1">Village or Town</label>
-                  <div className="relative group">
-                    <MapPin className="absolute left-4 top-[14px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
-                    <input name="village" type="text" value={formData.village} onChange={handleInputChange} className={inputStyle} placeholder="e.g. Anand, Kheda" />
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Village */}
+                  <div className="flex flex-col space-y-1.5">
+                    <label className="text-[13px] uppercase tracking-wider font-bold text-gray-700 pl-1">Village/Town</label>
+                    <div className="relative group">
+                      <MapPin className="absolute left-3 top-[15px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
+                      <input name="village" type="text" value={formData.village} onChange={handleInputChange} className={`${inputStyle} pl-10`} placeholder="Anand" />
+                    </div>
                   </div>
-                </div>
 
-                {/* District */}
-                <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-bold text-text-charcoal pl-1">District</label>
-                  <div className="relative group">
-                    <MapIcon className="absolute left-4 top-[14px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
-                    <input name="district" type="text" value={formData.district} onChange={handleInputChange} className={inputStyle} placeholder="e.g. Vadodara, Surat" />
-                  </div>
-                </div>
-
-                {/* State */}
-                <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-bold text-text-charcoal pl-1">State</label>
-                  <div className="relative group">
-                    <input name="state" type="text" value={formData.state} onChange={handleInputChange} className={`${inputStyle} pl-4`} placeholder="State" />
+                  {/* District */}
+                  <div className="flex flex-col space-y-1.5">
+                    <label className="text-[13px] uppercase tracking-wider font-bold text-gray-700 pl-1">District</label>
+                    <div className="relative group">
+                      <MapIcon className="absolute left-3 top-[15px] h-5 w-5 text-gray-400 group-focus-within:text-primary-green transition-colors" />
+                      <input name="district" type="text" value={formData.district} onChange={handleInputChange} className={`${inputStyle} pl-10`} placeholder="Vadodara" />
+                    </div>
                   </div>
                 </div>
 
                 {/* Crop Types */}
-                <div className="flex flex-col space-y-2 pb-2">
-                  <label className="text-sm font-bold text-text-charcoal pl-1">Your Crops (select all that apply)</label>
-                  <div className="flex flex-wrap gap-2">
+                <div className="flex flex-col space-y-3 pb-2 pt-2">
+                  <label className="text-[13px] uppercase tracking-wider font-bold text-gray-700 pl-1">What do you grow? (Select all)</label>
+                  <div className="flex flex-wrap gap-2.5">
                     {CROP_OPTIONS.map(crop => {
                       const isActive = formData.cropTypes.includes(crop.id);
                       return (
@@ -381,10 +387,10 @@ const Signup = () => {
                           whileTap={{ scale: 0.95 }}
                           type="button"
                           onClick={() => toggleCrop(crop.id)}
-                          className={`px-3 py-1.5 rounded-full border-1.5 font-bold text-sm transition-colors
+                          className={`px-4 py-2 rounded-full border-1.5 font-bold text-sm transition-colors duration-300
                             ${isActive 
                               ? 'bg-primary-green border-primary-green text-white shadow-sm' 
-                              : 'bg-white border-primary-sage text-primary-green'}`}
+                              : 'bg-gray-50/50 border-gray-200 text-gray-600 hover:bg-white hover:border-primary-green/50'}`}
                         >
                           {crop.label}
                         </motion.button>
@@ -394,37 +400,37 @@ const Signup = () => {
                 </div>
 
                 {/* Land Size */}
-                <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-bold text-text-charcoal pl-1">Total Farm Land (Optional)</label>
+                <div className="flex flex-col space-y-1.5 pt-2">
+                  <label className="text-[13px] uppercase tracking-wider font-bold text-gray-700 pl-1">Total Farm Land (Optional)</label>
                   <div className="relative group">
-                    <input name="landSize" type="text" value={formData.landSize} onChange={handleInputChange} className={`${inputStyle} pl-4`} placeholder="e.g. 5 acres or 3 bigha" />
+                    <input name="landSize" type="text" value={formData.landSize} onChange={handleInputChange} className={`${inputStyle} pl-4`} placeholder="e.g. 5 acres or 10 bigha" />
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3 pt-6">
+                <div className="flex flex-col sm:flex-row gap-4 pt-6">
                   <motion.button
-                    whileTap={{ scale: 0.97 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => setStep(1)}
                     type="button"
-                    className="flex-1 h-[52px] flex items-center justify-center bg-white border-2 border-primary-green text-primary-green font-bold text-lg rounded-xl hover:bg-primary-lightGreen transition-colors"
+                    className="flex-1 h-[56px] flex items-center justify-center bg-white border-2 border-primary-sage text-gray-600 font-bold text-lg rounded-[16px] hover:border-primary-green hover:text-primary-green transition-colors"
                   >
                     ← Back
                   </motion.button>
                   <motion.button
-                    whileTap={{ scale: 0.97 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={handleSubmit}
                     disabled={isLoading}
                     type="button"
-                    className={`flex-1 h-[52px] flex items-center justify-center bg-primary-green text-white font-bold text-lg rounded-xl transition-colors
-                                ${isLoading ? 'opacity-80 cursor-wait' : 'hover:bg-primary-darkGreen hover:shadow-lg'}`}
+                    className={`flex-[2] h-[56px] flex items-center justify-center bg-primary-green text-white font-bold text-lg rounded-[16px] shadow-organic transition-all duration-300
+                                ${isLoading ? 'opacity-80 cursor-wait' : 'hover:bg-primary-darkGreen hover:shadow-organic-hover hover:-translate-y-0.5'}`}
                   >
                     {isLoading ? (
-                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
                     ) : (
-                      '🌿 Create Account'
+                      'Finish Setup ✨'
                     )}
                   </motion.button>
                 </div>
@@ -435,17 +441,18 @@ const Signup = () => {
           
           {/* Link Below Form */}
           {step === 1 && (
-            <div className="mt-8 flex flex-col items-center">
-              <p className="text-text-charcoal font-semibold text-[15px]">
+            <div className="mt-8 text-center border-t border-gray-100 pt-6">
+              <p className="text-gray-500 font-medium text-[15px]">
                 Already registered?{' '}
-                <Link to="/login" className="text-primary-green hover:underline decoration-2 underline-offset-4">
-                  Login here
+                <Link to="/login" className="text-primary-green font-bold hover:underline decoration-2 underline-offset-4">
+                  Log in here
                 </Link>
               </p>
             </div>
           )}
-        </div>
-      </section>
+        </motion.div>
+      </div>
+
     </div>
   );
 };
