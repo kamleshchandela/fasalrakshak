@@ -1,0 +1,3409 @@
+[
+  {
+    "id": "wheat-rust",
+    "name": "Wheat Rust",
+    "name_hi": "गेहूं का रतुआ",
+    "name_guj": "ઘઉંનો ગેરુ",
+    "localName": "Gehun ka Zang",
+    "cropName": "Wheat",
+    "cropEmoji": "🌾",
+    "diseaseType": "fungal",
+    "severity": "severe",
+    "affectedParts": [
+      "leaf",
+      "stem"
+    ],
+    "season": [
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "Punjab",
+      "MP",
+      "Rajasthan"
+    ],
+    "symptoms": [
+      "Orange-yellow powdery pustules on leaves",
+      "Leaves turn yellow and wither",
+      "Stems weaken and lodging occurs"
+    ],
+    "symptoms_hi": [
+      "पत्तियों पर नारंगी-पीले रंग के पाउडर जैसे धब्बे",
+      "पत्तियां पीली पड़कर सूख जाती हैं",
+      "तने कमजोर हो जाते हैं और फसल गिर जाती है"
+    ],
+    "symptoms_guj": [
+      "પાંદડા પર નારંગી-પીળા રંગના પાવડર જેવા ટપકા",
+      "પાંદડા પીળા પડી જાય છે અને સુકાઈ જાય છે",
+      "થડ નબળા પડી જાય છે અને પાક ઢળી પડે છે"
+    ],
+    "causes": [
+      "Fungal spores spread by wind",
+      "Cool humid weather 15-22°C",
+      "Overcrowded planting"
+    ],
+    "causes_hi": [
+      "हवा द्वारा फैलने वाले कवक बीजाणु",
+      "15-22°C का ठंडा और आर्द्र मौसम",
+      "बहुत पास-पास बुवाई करना"
+    ],
+    "causes_guj": [
+      "પવન દ્વારા ફેલાતા ફૂગના બીજાણુઓ",
+      "15-22°C ઠંડુ અને ભેજવાળું વાતાવરણ",
+      "વધુ પડતી ગીચ વાવણી"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Remove infected plants",
+        "detail": "Remove and burn all infected plant material immediately",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Apply Mancozeb 75% WP",
+        "detail": "Spray at 2g per liter of water covering all leaf surfaces",
+        "timing": "Within 48 hours",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Neem oil spray",
+        "detail": "Mix 5ml neem oil per liter water, spray every 7 days",
+        "timing": "Weekly for 3 weeks",
+        "type": "organic"
+      }
+    ],
+    "treatments_hi": [
+      {
+        "step": 1,
+        "action": "संक्रमित पौधों को हटा दें",
+        "detail": "सभी संक्रमित पौधों को तुरंत हटा दें और जला दें",
+        "timing": "तुरंत",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "मैनकोज़ेब 75% WP का प्रयोग करें",
+        "detail": "2 ग्राम प्रति लीटर पानी में मिलाकर पत्तियों पर स्प्रे करें",
+        "timing": "48 घंटों के भीतर",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "नीम के तेल का स्प्रे",
+        "detail": "5 मिली नीम का तेल प्रति लीटर पानी में मिलाकर हर 7 दिन में स्प्रे करें",
+        "timing": "3 सप्ताह तक साप्ताहिक",
+        "type": "organic"
+      }
+    ],
+    "treatments_guj": [
+      {
+        "step": 1,
+        "action": "ચેપગ્રસ્ત છોડને દૂર કરો",
+        "detail": "બધા ચેપગ્રસ્ત છોડને તરત જ દૂર કરો અને બાળી નાખો",
+        "timing": "તરત જ",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "મેન્કોઝેબ 75% WP નો ઉપયોગ કરો",
+        "detail": "2 ગ્રામ પ્રતિ લિટર પાણીમાં ભેળવીને પાંદડા પર છંટકાવ કરો",
+        "timing": "48 કલાકની અંદર",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "લીમડાના તેલનો છંટકાવ",
+        "detail": "5 મિલી લીમડાનું તેલ પ્રતિ લિટર પાણીમાં ભેળવીને દર 7 દિવસે છંટકાવ કરો",
+        "timing": "3 અઠવાડિયા સુધી સાપ્તાહિક",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Use rust-resistant wheat varieties",
+      "Avoid overhead irrigation",
+      "Maintain proper plant spacing",
+      "Rotate crops every season"
+    ],
+    "preventionTips_hi": [
+      "रतुआ-प्रतिरोधी गेहूं की किस्मों का उपयोग करें",
+      "ऊपर से सिंचाई (ओवरहेड) से बचें",
+      "पौधों के बीच उचित दूरी बनाए रखें",
+      "हर मौसम में फसल चक्र अपनाएं"
+    ],
+    "preventionTips_guj": [
+      "ગેરુ-પ્રતિરોધક ઘઉંની જાતોનો ઉપયોગ કરો",
+      "ઉપરથી પિયત (ઓવરહેડ ઈરિગેશન) ટાળો",
+      "છોડ વચ્ચે યોગ્ય અંતર જાળવો",
+      "દરેક ઋતુમાં પાકની ફેરબદલી કરો"
+    ],
+    "organicAlternative": "Neem oil spray 5ml/L every 7 days acts as natural fungicide",
+    "organicAlternative_hi": "नीम के तेल का स्प्रे (5 मिली/लीटर) हर 7 दिन में प्राकृतिक कवकनाशी के रूप में कार्य करता है",
+    "organicAlternative_guj": "લીમડાના તેલનો છંટકાવ (5 મિલી/લિટર) દર 7 દિવસે કુદરતી ફૂગનાશક તરીકે કામ કરે છે",
+    "estimatedYieldLoss": "30-70%",
+    "spreadRate": "fast",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600",
+    "thumbnailImage": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300",
+    "slug": "wheat-rust",
+    "tags": [
+      "wheat",
+      "fungal",
+      "common",
+      "rabi"
+    ],
+    "weatherConditions": "Cool and humid weather 15-22°C with morning dew",
+    "weather_hi": "सुबह की ओस के साथ 15-22°C का ठंडा और आर्द्र मौसम",
+    "weather_guj": "સવારના ઝાકળ સાથે 15-22°C ઠંડુ અને ભેજવાળું વાતાવરણ",
+    "firstAidTip": "Remove infected leaves immediately to slow spread",
+    "firstAid_hi": "प्रसार को धीमा करने के लिए संक्रमित पत्तियों को तुरंत हटा दें",
+    "firstAid_guj": "ફેલાવો ધીમો કરવા માટે ચેપગ્રસ્ત પાંદડા તરત જ દૂર કરો",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "wheat-smut",
+    "name": "Wheat Smut (Karnal Bunt)",
+    "name_hi": "गेहूं का कंडवा (करनाल बंट)",
+    "name_guj": "ઘઉંનો અંગારિયો (કર્નાલ બંટ)",
+    "localName": "Gehun ka Kand",
+    "cropName": "Wheat",
+    "cropEmoji": "🌾",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "fruit"
+    ],
+    "season": [
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "Punjab",
+      "Haryana",
+      "UP"
+    ],
+    "symptoms": [
+      "Partially bunted grains with fishy smell",
+      "Blackish-brown spore masses in grain",
+      "Reduced grain weight and quality"
+    ],
+    "symptoms_hi": [
+      "मछली जैसी गंध वाले आंशिक रूप से सड़े हुए दाने",
+      "अनाज में काले-भूरे रंग के बीजाणु समूह",
+      "अनाज के वजन और गुणवत्ता में कमी"
+    ],
+    "symptoms_guj": [
+      "માછલી જેવી ગંધવાળા આંશિક રીતે સડેલા દાણા",
+      "દાણામાં કાળા-ભૂરા રંગના બીજાણુઓ",
+      "દાણાના વજન અને ગુણવત્તામાં ઘટાડો"
+    ],
+    "causes": [
+      "Seed-borne fungal infection",
+      "Cool moist conditions at flowering",
+      "Infected seed use"
+    ],
+    "causes_hi": [
+      "बीज जनित कवक संक्रमण",
+      "फूल आने के समय ठंडी और नम स्थिति",
+      "संक्रमित बीज का उपयोग"
+    ],
+    "causes_guj": [
+      "બીજજન્ય ફૂગનો ચેપ",
+      "ફૂલ આવતી વખતે ઠંડુ અને ભેજવાળું વાતાવરણ",
+      "ચેપગ્રસ્ત બીજનો ઉપયોગ"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Seed treatment with Carboxin",
+        "detail": "Treat seeds with Carboxin 37.5% + Thiram 37.5% at 3g/kg",
+        "timing": "Before sowing",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Deep plowing",
+        "detail": "Plow infected fields deep to bury infected debris",
+        "timing": "After harvest",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Trichoderma seed treatment",
+        "detail": "Apply Trichoderma viride at 4g/kg seed as bio-control",
+        "timing": "Before sowing",
+        "type": "organic"
+      }
+    ],
+    "treatments_hi": [
+      {
+        "step": 1,
+        "action": "कार्बोक्सिन के साथ बीज उपचार",
+        "detail": "बीजों को कार्बोक्सिन 37.5% + थिरम 37.5% (3 ग्राम/किग्रा) से उपचारित करें",
+        "timing": "बुवाई से पहले",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "गहरी जुताई",
+        "detail": "संक्रमित कचरे को दबाने के लिए खेतों की गहरी जुताई करें",
+        "timing": "कटाई के बाद",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "ट्राइकोडर्मा बीज उपचार",
+        "detail": "जैव-नियंत्रण के रूप में ट्राइकोडर्मा विरिडी (4 ग्राम/किग्रा बीज) लगाएं",
+        "timing": "बुवाई से पहले",
+        "type": "organic"
+      }
+    ],
+    "treatments_guj": [
+      {
+        "step": 1,
+        "action": "કાર્બોક્સિન સાથે બીજ માવજત",
+        "detail": "બીજને કાર્બોક્સિન 37.5% + થીરમ 37.5% (3 ગ્રામ/કિલો) થી માવજત આપો",
+        "timing": "વાવણી પહેલા",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "ઊંડી ખેડ",
+        "detail": "ચેપગ્રસ્ત કચરાને દાટી દેવા માટે ખેતરોમાં ઊંડી ખેડ કરો",
+        "timing": "લણણી પછી",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "ટ્રાઈકોડર્મા બીજ માવજત",
+        "detail": "જૈવિક-નિયંત્રણ તરીકે ટ્રાઈકોડર્મા વિરીડી (4 ગ્રામ/કિલો બીજ) નો ઉપયોગ કરો",
+        "timing": "વાવણી પહેલા",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Use certified disease-free seeds",
+      "Treat seeds before every sowing",
+      "Remove and burn infected plants",
+      "Avoid water-logging"
+    ],
+    "preventionTips_hi": [
+      "प्रमाणित रोगमुक्त बीजों का उपयोग करें",
+      "प्रत्येक बुवाई से पहले बीजों का उपचार करें",
+      "संक्रमित पौधों को हटा दें और जला दें",
+      "जलभराव से बचें"
+    ],
+    "preventionTips_guj": [
+      "પ્રમાણિત રોગમુક્ત બીજ વાપરો",
+      "દરેક વાવણી પહેલા બીજની માવજત કરો",
+      "ચેપગ્રસ્ત છોડને દૂર કરી બાળી નાખો",
+      "પાણી ભરાઈ રહેવાની સમસ્યા ટાળો"
+    ],
+    "organicAlternative": "Trichoderma viride seed treatment (4g/kg) prevents infection",
+    "organicAlternative_hi": "ट्राइकोडर्मा विरिडी बीज उपचार (4 ग्राम/किग्रा) संक्रमण को रोकता है",
+    "organicAlternative_guj": "ટ્રાઈકોડર્મા વિરીડી બીજ માવજત (4 ગ્રામ/કિલો) ચેપ અટકાવે છે",
+    "estimatedYieldLoss": "15-35%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600",
+    "thumbnailImage": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300",
+    "slug": "wheat-smut",
+    "tags": [
+      "wheat",
+      "fungal",
+      "rabi",
+      "seed-borne"
+    ],
+    "weatherConditions": "Cool moist weather during flowering stage",
+    "weather_hi": "फूल आने के दौरान ठंडा और नम मौसम",
+    "weather_guj": "ફૂલ આવવા સમયે ઠંડુ અને ભેજવાળું વાતાવરણ",
+    "firstAidTip": "Do not use infected grain as seed next season",
+    "firstAid_hi": "अगले सीजन में संक्रमित अनाज को बीज के रूप में उपयोग न करें",
+    "firstAid_guj": "પછીની સિઝનમાં ચેપગ્રસ્ત દાણાનો બીજ તરીકે ઉપયોગ ન કરો",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "wheat-powdery-mildew",
+    "name": "Wheat Powdery Mildew",
+    "localName": "Gehun ki Safed Chhatal",
+    "cropName": "Wheat",
+    "cropEmoji": "🌾",
+    "diseaseType": "fungal",
+    "severity": "mild",
+    "affectedParts": [
+      "leaf",
+      "stem"
+    ],
+    "season": [
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "Punjab",
+      "HP",
+      "J&K"
+    ],
+    "symptoms": [
+      "White powdery coating on leaf surface",
+      "Leaves turn yellow underneath coating",
+      "Reduced photosynthesis and growth"
+    ],
+    "causes": [
+      "Erysiphe graminis fungal spores",
+      "High humidity with moderate temperature",
+      "Dense crop canopy"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Apply Sulphur dust",
+        "detail": "Dust wettable sulphur 25kg/ha on infected plants",
+        "timing": "At first sign",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Spray Propiconazole",
+        "detail": "Spray Propiconazole 25 EC at 1ml/L water",
+        "timing": "Within 3 days",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Baking soda spray",
+        "detail": "Spray 1 tsp baking soda + 1 drop soap per liter water",
+        "timing": "Weekly",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Maintain crop spacing",
+      "Avoid excessive nitrogen fertilizer",
+      "Use resistant varieties",
+      "Monitor regularly in humid conditions"
+    ],
+    "organicAlternative": "Dilute baking soda spray weekly prevents powdery coating",
+    "estimatedYieldLoss": "5-20%",
+    "spreadRate": "moderate",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600",
+    "thumbnailImage": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300",
+    "slug": "wheat-powdery-mildew",
+    "tags": [
+      "wheat",
+      "fungal",
+      "mild",
+      "rabi"
+    ],
+    "weatherConditions": "High humidity 70-80% with 15-20°C temperature",
+    "firstAidTip": "Remove heavily infected leaves and improve air circulation",
+    "difficultToTreat": false,
+    "commonInGujarat": false
+  },
+  {
+    "id": "wheat-leaf-blight",
+    "name": "Wheat Leaf Blight",
+    "localName": "Gehun ki Patti Jhulsa",
+    "cropName": "Wheat",
+    "cropEmoji": "🌾",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "MP",
+      "Rajasthan",
+      "Maharashtra"
+    ],
+    "symptoms": [
+      "Brown oval spots with yellow margins on leaves",
+      "Spots enlarge and merge causing leaf death",
+      "Premature leaf drop reducing yield"
+    ],
+    "causes": [
+      "Alternaria triticina fungal infection",
+      "Warm moist weather after rain",
+      "Infected crop debris in soil"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Remove crop debris",
+        "detail": "Collect and burn all infected plant debris after harvest",
+        "timing": "Post harvest",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Spray Mancozeb",
+        "detail": "Apply Mancozeb 75% WP at 2.5g/L water every 10 days",
+        "timing": "At disease onset",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Neem cake soil application",
+        "detail": "Apply neem cake 250kg/ha to suppress soil-borne inoculum",
+        "timing": "Before sowing",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Destroy infected crop residues",
+      "Use fungicide-treated seeds",
+      "Grow resistant varieties",
+      "Avoid overhead irrigation"
+    ],
+    "organicAlternative": "Neem cake soil treatment reduces fungal spores in soil",
+    "estimatedYieldLoss": "10-30%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=50",
+    "thumbnailImage": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&q=50",
+    "slug": "wheat-leaf-blight",
+    "tags": [
+      "wheat",
+      "fungal",
+      "rabi",
+      "blight"
+    ],
+    "weatherConditions": "Warm moist conditions after rain, 25-30°C",
+    "firstAidTip": "Remove infected leaves and avoid wetting foliage",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "cotton-boll-rot",
+    "name": "Cotton Boll Rot",
+    "localName": "Kapas ki Ghol Sadhan",
+    "cropName": "Cotton",
+    "cropEmoji": "🫘",
+    "diseaseType": "fungal",
+    "severity": "severe",
+    "affectedParts": [
+      "fruit"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "Maharashtra",
+      "AP",
+      "Telangana"
+    ],
+    "symptoms": [
+      "Water-soaked lesions on bolls turning brown",
+      "Bolls fail to open, remain hard and rotted",
+      "White or pink fungal growth on boll surface"
+    ],
+    "causes": [
+      "High humidity and rainfall during boll formation",
+      "Injury to bolls by insects",
+      "Dense canopy trapping moisture"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Remove rotted bolls",
+        "detail": "Hand pick all infected bolls and destroy them away from field",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Spray Copper oxychloride",
+        "detail": "Apply Copper oxychloride 50% WP at 3g/L water",
+        "timing": "Within 48 hours",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Improve drainage",
+        "detail": "Open drainage channels to reduce standing water and humidity",
+        "timing": "Immediately",
+        "type": "cultural"
+      }
+    ],
+    "preventionTips": [
+      "Ensure proper plant spacing for air circulation",
+      "Control bollworm insects promptly",
+      "Avoid excessive irrigation during boll stage",
+      "Pick bolls early when ripe"
+    ],
+    "organicAlternative": "Copper-based Bordeaux mixture (1%) spray as organic fungicide",
+    "estimatedYieldLoss": "20-50%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1594639906380-f7f0b1f2d4f2?w=600",
+    "thumbnailImage": "https://images.unsplash.com/photo-1594639906380-f7f0b1f2d4f2?w=300",
+    "slug": "cotton-boll-rot",
+    "tags": [
+      "cotton",
+      "fungal",
+      "kharif",
+      "severe"
+    ],
+    "weatherConditions": "High humidity above 80% with frequent rain",
+    "firstAidTip": "Remove infected bolls before fungus spreads to healthy ones",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "cotton-leaf-curl",
+    "name": "Cotton Leaf Curl Virus",
+    "localName": "Kapas Patti Murdan",
+    "cropName": "Cotton",
+    "cropEmoji": "🫘",
+    "diseaseType": "viral",
+    "severity": "severe",
+    "affectedParts": [
+      "leaf",
+      "stem"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "Punjab",
+      "Haryana",
+      "Rajasthan"
+    ],
+    "symptoms": [
+      "Leaves curl upward and thicken",
+      "Veins thicken and darken becoming prominent",
+      "Plant stunted with severe yield loss"
+    ],
+    "causes": [
+      "Whitefly (Bemisia tabaci) transmits virus",
+      "Virus spreads from infected surrounding crops",
+      "No direct soil or seed transmission"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Control whiteflies immediately",
+        "detail": "Spray Imidacloprid 17.8 SL at 0.5ml/L water to kill vector",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Remove severely infected plants",
+        "detail": "Uproot and burn plants with more than 50% infection",
+        "timing": "Within 3 days",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Yellow sticky traps",
+        "detail": "Place 10-15 yellow sticky traps per acre to monitor and trap whiteflies",
+        "timing": "Immediately",
+        "type": "cultural"
+      }
+    ],
+    "preventionTips": [
+      "Use whitefly-resistant cotton varieties",
+      "Apply systemic insecticides at planting",
+      "Install yellow sticky traps early",
+      "Rogue out infected plants promptly"
+    ],
+    "organicAlternative": "Neem seed kernel extract 5% spray repels whitefly vectors",
+    "estimatedYieldLoss": "50-80%",
+    "spreadRate": "fast",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1594639906380-f7f0b1f2d4f2?w=600&q=80",
+    "thumbnailImage": "https://images.unsplash.com/photo-1594639906380-f7f0b1f2d4f2?w=300&q=80",
+    "slug": "cotton-leaf-curl",
+    "tags": [
+      "cotton",
+      "viral",
+      "whitefly",
+      "severe",
+      "kharif"
+    ],
+    "weatherConditions": "Hot dry conditions favor whitefly population explosion",
+    "firstAidTip": "Spray insecticide to kill whiteflies and stop virus spread",
+    "difficultToTreat": true,
+    "commonInGujarat": true
+  },
+  {
+    "id": "cotton-wilt",
+    "name": "Cotton Fusarium Wilt",
+    "localName": "Kapas Murjhana",
+    "cropName": "Cotton",
+    "cropEmoji": "🫘",
+    "diseaseType": "fungal",
+    "severity": "severe",
+    "affectedParts": [
+      "root",
+      "stem"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "AP",
+      "Maharashtra",
+      "Karnataka"
+    ],
+    "symptoms": [
+      "Leaves turn yellow and wilt suddenly",
+      "Brown discoloration inside stem when cut",
+      "Plant collapses and dies within days"
+    ],
+    "causes": [
+      "Fusarium oxysporum in soil",
+      "Poorly drained, acidic soils",
+      "Infected transplants or tools"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Soil drench with Carbendazim",
+        "detail": "Apply Carbendazim 50% WP at 2g/L water around plant base",
+        "timing": "At first sign",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Improve soil drainage",
+        "detail": "Make raised beds and open drainage channels",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Trichoderma soil application",
+        "detail": "Apply Trichoderma harzianum at 2.5kg/ha mixed with FYM",
+        "timing": "Before planting",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Use wilt-resistant cotton varieties",
+      "Avoid water-logging",
+      "Sterilize farming tools between fields",
+      "Practice 3-year crop rotation"
+    ],
+    "organicAlternative": "Trichoderma harzianum bio-agent suppresses Fusarium in soil",
+    "estimatedYieldLoss": "30-60%",
+    "spreadRate": "slow",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&q=90",
+    "thumbnailImage": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300&q=90",
+    "slug": "cotton-wilt",
+    "tags": [
+      "cotton",
+      "fungal",
+      "soil-borne",
+      "severe",
+      "kharif"
+    ],
+    "weatherConditions": "Warm temperatures 28-32°C with excess soil moisture",
+    "firstAidTip": "Remove wilted plants with roots and avoid spreading soil",
+    "difficultToTreat": true,
+    "commonInGujarat": true
+  },
+  {
+    "id": "cotton-alternaria",
+    "name": "Cotton Alternaria Blight",
+    "localName": "Kapas ki Patti Jhari",
+    "cropName": "Cotton",
+    "cropEmoji": "🫘",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf",
+      "fruit"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "Maharashtra",
+      "MP"
+    ],
+    "symptoms": [
+      "Circular to irregular dark brown spots on leaves",
+      "Spots have concentric rings like a target",
+      "Premature defoliation in severe cases"
+    ],
+    "causes": [
+      "Alternaria macrospora fungal infection",
+      "High humidity and frequent rains",
+      "Overcrowded plants"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Apply Mancozeb spray",
+        "detail": "Spray Mancozeb 75% WP at 2g/L water every 10 days",
+        "timing": "At disease onset",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Improve plant spacing",
+        "detail": "Thin out plants to improve air circulation and reduce humidity",
+        "timing": "Within a week",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Garlic extract spray",
+        "detail": "Spray 5% garlic extract solution as organic fungicide",
+        "timing": "Weekly",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Use disease-free seeds",
+      "Reduce plant density",
+      "Avoid overhead irrigation",
+      "Remove infected leaves promptly"
+    ],
+    "organicAlternative": "5% garlic extract spray acts as natural fungicide weekly",
+    "estimatedYieldLoss": "10-25%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80",
+    "thumbnailImage": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&q=80",
+    "slug": "cotton-alternaria",
+    "tags": [
+      "cotton",
+      "fungal",
+      "kharif",
+      "blight"
+    ],
+    "weatherConditions": "High relative humidity above 75% with warm temperatures",
+    "firstAidTip": "Remove and destroy spotted leaves before spores spread",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "cotton-pink-bollworm",
+    "name": "Cotton Pink Bollworm",
+    "localName": "Kapas Gulabi Borer",
+    "cropName": "Cotton",
+    "cropEmoji": "🫘",
+    "diseaseType": "pest",
+    "severity": "severe",
+    "affectedParts": [
+      "fruit",
+      "flower"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "Maharashtra",
+      "AP",
+      "Telangana"
+    ],
+    "symptoms": [
+      "Flowers fail to open (rosette formation)",
+      "Entry holes in bolls with pink caterpillars inside",
+      "Damaged seeds and lint quality reduction"
+    ],
+    "causes": [
+      "Pectinophora gossypiella moth larvae",
+      "Carryover from previous infested crop",
+      "Pest reaches peak in September-October"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Spray Spinosad",
+        "detail": "Apply Spinosad 45 SC at 0.3ml/L water targeting bolls",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Install pheromone traps",
+        "detail": "Set 5 pheromone traps per acre to trap male moths",
+        "timing": "Start of season",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Neem oil spray",
+        "detail": "Spray neem oil 3ml/L water as deterrent on cotton bolls",
+        "timing": "Every 10 days",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Use Bt cotton varieties",
+      "Install pheromone traps early",
+      "Pick and destroy infested bolls",
+      "Practice clean plowing after harvest"
+    ],
+    "organicAlternative": "Neem oil 3ml/L spray plus pheromone traps reduces infestation",
+    "estimatedYieldLoss": "30-70%",
+    "spreadRate": "fast",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1594639906380-f7f0b1f2d4f2?w=600&sat=-50",
+    "thumbnailImage": "https://images.unsplash.com/photo-1594639906380-f7f0b1f2d4f2?w=300&sat=-50",
+    "slug": "cotton-pink-bollworm",
+    "tags": [
+      "cotton",
+      "pest",
+      "bollworm",
+      "severe",
+      "kharif"
+    ],
+    "weatherConditions": "Warm dry weather favors moth flight and egg laying",
+    "firstAidTip": "Install pheromone traps immediately to monitor moth population",
+    "difficultToTreat": true,
+    "commonInGujarat": true
+  },
+  {
+    "id": "groundnut-tikka",
+    "name": "Groundnut Tikka Disease",
+    "localName": "Mungfali Tikka Rog",
+    "cropName": "Groundnut",
+    "cropEmoji": "🥜",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "AP",
+      "Tamil Nadu",
+      "Karnataka"
+    ],
+    "symptoms": [
+      "Circular brown spots with yellow halos on leaves",
+      "Both early (yellow halo) and late blight spots",
+      "Premature defoliation reduces pod fill"
+    ],
+    "causes": [
+      "Cercospora arachidicola and C. personatum fungi",
+      "High humidity and frequent rainfall",
+      "Dense plant populations"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Spray Chlorothalonil",
+        "detail": "Apply Chlorothalonil 75% WP at 2g/L water",
+        "timing": "At first spot appearance",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Collect and burn debris",
+        "detail": "Remove infected leaves and plant debris from field",
+        "timing": "During and after crop",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Spray Sour whey",
+        "detail": "Apply fermented sour whey diluted 1:5 as organic treatment",
+        "timing": "Weekly",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Plant resistant groundnut varieties",
+      "Maintain proper plant spacing",
+      "Rotate with cereals or pulses",
+      "Apply fungicide preventively in humid seasons"
+    ],
+    "organicAlternative": "Sour whey spray (1:5 dilution) weekly inhibits fungal growth",
+    "estimatedYieldLoss": "20-50%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&sat=20",
+    "thumbnailImage": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300&sat=20",
+    "slug": "groundnut-tikka",
+    "tags": [
+      "groundnut",
+      "fungal",
+      "kharif",
+      "common"
+    ],
+    "weatherConditions": "Humid conditions above 80% RH with temperatures 25-30°C",
+    "firstAidTip": "Remove heavily spotted leaves at first sign to slow spread",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "groundnut-rust",
+    "name": "Groundnut Rust",
+    "localName": "Mungfali Zang",
+    "cropName": "Groundnut",
+    "cropEmoji": "🥜",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "AP",
+      "Tamil Nadu",
+      "Maharashtra"
+    ],
+    "symptoms": [
+      "Small orange-brown pustules on lower leaf surface",
+      "Yellowing of leaves around pustules",
+      "Premature leaf drop weakening plant"
+    ],
+    "causes": [
+      "Puccinia arachidis airborne spores",
+      "High humidity after rains",
+      "Dense plant canopy"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Spray Propiconazole",
+        "detail": "Apply Propiconazole 25 EC at 1ml/L water fortnightly",
+        "timing": "At first sign",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Reduce plant density",
+        "detail": "Remove alternate rows to improve air circulation",
+        "timing": "Early season",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Neem + Turmeric spray",
+        "detail": "Mix 5ml neem oil + 1tsp turmeric powder per liter water",
+        "timing": "Every 10 days",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Plant rust-resistant varieties",
+      "Optimize plant density",
+      "Monitor regularly after rain",
+      "Apply preventive fungicide before peak humidity"
+    ],
+    "organicAlternative": "Neem oil 5ml + turmeric 2g per liter water weekly spray",
+    "estimatedYieldLoss": "15-35%",
+    "spreadRate": "moderate",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&sat=30",
+    "thumbnailImage": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&sat=30",
+    "slug": "groundnut-rust",
+    "tags": [
+      "groundnut",
+      "fungal",
+      "kharif",
+      "rust"
+    ],
+    "weatherConditions": "Humid above 80% RH with 25-30°C after rain",
+    "firstAidTip": "Remove and burn infected leaves at first orange spot",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "groundnut-stem-rot",
+    "name": "Groundnut Stem Rot",
+    "name_hi": "मूंगफली का तना सड़न",
+    "name_guj": "મગફળીના થડનો સડો",
+    "localName": "Mungfali Tana Sadhan",
+    "cropName": "Groundnut",
+    "cropEmoji": "🥜",
+    "diseaseType": "fungal",
+    "severity": "severe",
+    "affectedParts": [
+      "stem",
+      "root"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "AP",
+      "Karnataka",
+      "Tamil Nadu"
+    ],
+    "symptoms": [
+      "Water-soaked lesions at stem base near soil",
+      "White mycelium with mustard-seed sclerotia",
+      "Entire plant collapses and dies"
+    ],
+    "symptoms_hi": [
+      "मिट्टी के पास तने के निचले हिस्से पर पानी से भीगे हुए धब्बे",
+      "सफेद कवक (माइसेलियम) और सरसों के दाने जैसे दाने (स्क्लेरोटिया)",
+      "पूरा पौधा मुरझाकर गिर जाता है और मर जाता है"
+    ],
+    "symptoms_guj": [
+      "જમીનની નજીક થડના તળિયે પાણી જેવા ડાઘા",
+      "સફેદ ફૂગ (માયસેલિયમ) અને રાઈના દાણા જેવા સફેદ ટપકા (સ્ક્લેરોશિયા)",
+      "આખો છોડ કરમાઈને ઢળી પડે છે અને સુકાઈ જાય છે"
+    ],
+    "causes": [
+      "Sclerotium rolfsii soil fungus",
+      "Water-logging and high soil temperature",
+      "Infected plant debris in soil"
+    ],
+    "causes_hi": [
+      "स्क्लेरोटियम रोल्फसी नामक मिट्टी का कवक",
+      "जलभराव और मिट्टी का उच्च तापमान",
+      "मिट्टी में संक्रमित फसल अवशेष"
+    ],
+    "causes_guj": [
+      "સ્ક્લેરોશિયમ રોલ્ફસી નામની જમીનની ફૂગ",
+      "પાણી ભરાઈ રહેવું અને જમીનનું ઊંચું તાપમાન",
+      "જમીનમાં પાકના ચેપગ્રસ્ત અવશેષો"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Apply Carbendazim soil drench",
+        "detail": "Drench soil with Carbendazim 50% WP 2g/L around plant base",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Remove infected plants",
+        "detail": "Uproot all collapsed plants with surrounding soil and destroy",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Mustard cake soil treatment",
+        "detail": "Incorporate mustard cake 500kg/ha into soil before planting",
+        "timing": "Before sowing",
+        "type": "organic"
+      }
+    ],
+    "treatments_hi": [
+      {
+        "step": 1,
+        "action": "कार्बेंडाजिम से मिट्टी का उपचार",
+        "detail": "पौधे के आधार के पास मिट्टी में 2 ग्राम/लीटर कार्बेंडाजिम 50% WP डालें",
+        "timing": "तुरंत",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "संक्रमित पौधों को निकालें",
+        "detail": "सभी मुरझाए हुए पौधों को आसपास की मिट्टी के साथ उखाड़कर नष्ट कर दें",
+        "timing": "तुरंत",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "सरसों की खली का उपचार",
+        "detail": "बुवाई से पहले 500 किग्रा/हेक्टेयर सरसों की खली मिट्टी में मिलाएं",
+        "timing": "बुवाई से पहले",
+        "type": "organic"
+      }
+    ],
+    "treatments_guj": [
+      {
+        "step": 1,
+        "action": "કાર્બેન્ડાઝીમથી જમીન પલાળવી",
+        "detail": "છોડના થડ પાસે જમીનમાં 2 ગ્રામ/લિટર કાર્બેન્ડાઝીમ 50% WP નાખો",
+        "timing": "તરત જ",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "ચેપગ્રસ્ત છોડ દૂર કરો",
+        "detail": "ઢળી પડેલા બધા છોડને આસપાસની માટી સાથે ઉખાડી નાશ કરો",
+        "timing": "તરત જ",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "રાઈના ખોળની માવજત",
+        "detail": "વાવણી પહેલા 500 કિગ્રા/હેક્ટર રાઈનો ખોળ જમીનમાં ભેળવો",
+        "timing": "વાવણી પહેલા",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Avoid water-logging",
+      "Deep plow to expose and destroy sclerotia",
+      "Use Trichoderma-enriched compost",
+      "Practice 2-year rotation with cereals"
+    ],
+    "preventionTips_hi": [
+      "जलभराव से बचें",
+      "बीजाणुओं को नष्ट करने के लिए गहरी जुताई करें",
+      "ट्राइकोडर्मा-युक्त कंपोस्ट का उपयोग करें",
+      "अनाज के साथ 2 साल का फसल चक्र अपनाएं"
+    ],
+    "preventionTips_guj": [
+      "પાણી ભરાઈ રહેવાની સમસ્યા ટાળો",
+      "ફૂગના દાણા (સ્ક્લેરોશિયા) નાશ કરવા ઊંડી ખેડ કરો",
+      "ટ્રાઈકોડર્મા-યુક્ત ખાતર વાપરો",
+      "ધાન્ય પાકો સાથે 2 વર્ષનું પાક ચક્ર અપનાવો"
+    ],
+    "organicAlternative": "Trichoderma viride 2.5kg/ha in FYM suppresses Sclerotium in soil",
+    "organicAlternative_hi": "गोबर की खाद में 2.5 किग्रा/हेक्टेयर ट्राइकोडर्मा विरिडी मिट्टी में संक्रमण रोकती है",
+    "organicAlternative_guj": "છાણિયા ખાતર સાથે 2.5 કિગ્રા/હેક્ટર ટ્રાઈકોડર્મા વિરીડી જમીનમાં ચેપ અટકાવે છે",
+    "estimatedYieldLoss": "25-60%",
+    "spreadRate": "slow",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&flip=v",
+    "thumbnailImage": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300&flip=v",
+    "slug": "groundnut-stem-rot",
+    "tags": [
+      "groundnut",
+      "fungal",
+      "severe",
+      "soil-borne",
+      "kharif"
+    ],
+    "weatherConditions": "Hot humid soil above 30°C with water-logging",
+    "firstAidTip": "Remove collapsed plants with all soil and avoid spreading",
+    "difficultToTreat": true,
+    "commonInGujarat": true
+  },
+  {
+    "id": "groundnut-bud-necrosis",
+    "name": "Groundnut Bud Necrosis Virus",
+    "localName": "Mungfali Kali Ankur",
+    "cropName": "Groundnut",
+    "cropEmoji": "🥜",
+    "diseaseType": "viral",
+    "severity": "severe",
+    "affectedParts": [
+      "leaf",
+      "stem",
+      "flower"
+    ],
+    "season": [
+      "kharif",
+      "summer"
+    ],
+    "states": [
+      "Gujarat",
+      "AP",
+      "Karnataka",
+      "Tamil Nadu"
+    ],
+    "symptoms": [
+      "Necrotic (dead) buds and growing tips",
+      "Ring spots and line patterns on leaves",
+      "Severe stunting and no pod formation"
+    ],
+    "causes": [
+      "Thrips transmit Tomato Spotted Wilt Virus",
+      "Peak infestation during dry hot periods",
+      "Infected weed hosts nearby"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Control thrips immediately",
+        "detail": "Spray Imidacloprid 17.8 SL at 0.5ml/L or Spinosad at 0.3ml/L",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Remove infected plants",
+        "detail": "Rogue out all symptomatic plants from field",
+        "timing": "Within 3 days",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Reflective mulch",
+        "detail": "Use silver reflective plastic mulch to repel thrips",
+        "timing": "At planting",
+        "type": "cultural"
+      }
+    ],
+    "preventionTips": [
+      "Use tolerant groundnut varieties",
+      "Install blue sticky traps",
+      "Remove weeds that harbor thrips",
+      "Plant border crops like maize"
+    ],
+    "organicAlternative": "Kaolin clay spray 5% repels thrips without chemicals",
+    "estimatedYieldLoss": "50-90%",
+    "spreadRate": "fast",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&auto=enhance",
+    "thumbnailImage": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&auto=enhance",
+    "slug": "groundnut-bud-necrosis",
+    "tags": [
+      "groundnut",
+      "viral",
+      "thrips",
+      "severe",
+      "kharif"
+    ],
+    "weatherConditions": "Hot dry conditions favor thrips population buildup",
+    "firstAidTip": "Immediately spray insecticide to stop thrips and roguing infected plants",
+    "difficultToTreat": true,
+    "commonInGujarat": true
+  },
+  {
+    "id": "rice-blast",
+    "name": "Rice Blast",
+    "localName": "Dhan Jhulsa Rog",
+    "cropName": "Rice",
+    "cropEmoji": "🍚",
+    "diseaseType": "fungal",
+    "severity": "severe",
+    "affectedParts": [
+      "leaf",
+      "stem",
+      "fruit"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "WB",
+      "UP",
+      "Bihar",
+      "Odisha"
+    ],
+    "symptoms": [
+      "Diamond-shaped gray lesions with dark borders on leaves",
+      "Neck rot causing panicles to snap",
+      "Empty or partially filled grains"
+    ],
+    "causes": [
+      "Magnaporthe oryzae airborne spores",
+      "High humidity and nitrogen excess",
+      "Temperature 24-28°C with dew or rain"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Spray Tricyclazole",
+        "detail": "Apply Tricyclazole 75% WP at 0.6g/L water on leaves and panicles",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Reduce nitrogen",
+        "detail": "Stop nitrogen fertilizer and do not apply during humid periods",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Pseudomonas spray",
+        "detail": "Apply Pseudomonas fluorescens 10g/L water as bio-control agent",
+        "timing": "Weekly for 3 weeks",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Use blast-resistant varieties",
+      "Balance nitrogen fertilization",
+      "Avoid dense planting",
+      "Apply silicon-based fertilizers"
+    ],
+    "organicAlternative": "Pseudomonas fluorescens foliar spray induces plant resistance",
+    "estimatedYieldLoss": "30-80%",
+    "spreadRate": "fast",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1536657301463-b19e0c5b3d9d?w=600",
+    "thumbnailImage": "https://images.unsplash.com/photo-1536657301463-b19e0c5b3d9d?w=300",
+    "slug": "rice-blast",
+    "tags": [
+      "rice",
+      "fungal",
+      "severe",
+      "kharif",
+      "common"
+    ],
+    "weatherConditions": "High humidity with cool nights and warm days 24-28°C",
+    "firstAidTip": "Stop nitrogen fertilizer and spray fungicide at neck emergence",
+    "difficultToTreat": false,
+    "commonInGujarat": false
+  },
+  {
+    "id": "rice-bacterial-blight",
+    "name": "Rice Bacterial Leaf Blight",
+    "localName": "Dhan Patta Jhari",
+    "cropName": "Rice",
+    "cropEmoji": "🍚",
+    "diseaseType": "bacterial",
+    "severity": "severe",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "Punjab",
+      "Haryana",
+      "WB"
+    ],
+    "symptoms": [
+      "Water-soaked yellow stripes along leaf margins",
+      "Leaves dry from tip turning straw-colored",
+      "Bacterial ooze visible on cut stem in water"
+    ],
+    "causes": [
+      "Xanthomonas oryzae bacteria",
+      "Flooding and strong winds spread bacteria",
+      "Excessive nitrogen fertilization"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Drain standing water",
+        "detail": "Drain field completely and avoid re-flooding for 7 days",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Spray Copper hydroxide",
+        "detail": "Apply Copper hydroxide 77% WP at 2g/L water",
+        "timing": "Within 48 hours",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Spray Streptomycin + Copper",
+        "detail": "Mix Streptomycin sulfate 0.5g + Copper oxychloride 2g per liter",
+        "timing": "Every 10 days",
+        "type": "chemical"
+      }
+    ],
+    "preventionTips": [
+      "Use resistant rice varieties",
+      "Avoid excess nitrogen",
+      "Drain field before severe weather",
+      "Use clean certified seeds"
+    ],
+    "organicAlternative": "Copper sulfate 0.2% spray acts as natural bactericide",
+    "estimatedYieldLoss": "20-50%",
+    "spreadRate": "fast",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1536657301463-b19e0c5b3d9d?w=600&q=70",
+    "thumbnailImage": "https://images.unsplash.com/photo-1536657301463-b19e0c5b3d9d?w=300&q=70",
+    "slug": "rice-bacterial-blight",
+    "tags": [
+      "rice",
+      "bacterial",
+      "severe",
+      "kharif",
+      "flood"
+    ],
+    "weatherConditions": "Flooding and strong winds during warm humid weather",
+    "firstAidTip": "Drain the field immediately and stop nitrogen fertilizer",
+    "difficultToTreat": false,
+    "commonInGujarat": false
+  },
+  {
+    "id": "rice-sheath-blight",
+    "name": "Rice Sheath Blight",
+    "localName": "Dhan Khol Jhulsa",
+    "cropName": "Rice",
+    "cropEmoji": "🍚",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "stem",
+      "leaf"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "AP",
+      "Tamil Nadu",
+      "Karnataka"
+    ],
+    "symptoms": [
+      "Oval greenish-gray lesions on leaf sheath near water",
+      "Lesions enlarge with brown borders",
+      "Entire sheath and leaves die in severe cases"
+    ],
+    "causes": [
+      "Rhizoctonia solani soil fungus",
+      "Dense planting trapping humidity",
+      "High nitrogen and warm stagnant water"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Spray Hexaconazole",
+        "detail": "Apply Hexaconazole 5% EC at 2ml/L water on lower stem and water surface",
+        "timing": "At first lesion",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Reduce plant density",
+        "detail": "Thin overcrowded areas to allow air movement",
+        "timing": "Early if possible",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Apply Trichoderma to water",
+        "detail": "Mix Trichoderma harzianum 250g/ha into irrigation water",
+        "timing": "Early season",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Maintain wider row spacing",
+      "Avoid excess nitrogen",
+      "Use resistant varieties",
+      "Drain field periodically"
+    ],
+    "organicAlternative": "Trichoderma harzianum in irrigation water reduces soil inoculum",
+    "estimatedYieldLoss": "15-30%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1536657301463-b19e0c5b3d9d?w=600&q=60",
+    "thumbnailImage": "https://images.unsplash.com/photo-1536657301463-b19e0c5b3d9d?w=300&q=60",
+    "slug": "rice-sheath-blight",
+    "tags": [
+      "rice",
+      "fungal",
+      "moderate",
+      "kharif"
+    ],
+    "weatherConditions": "Warm temperatures 28-34°C with high relative humidity",
+    "firstAidTip": "Drain field to reduce water surface contact with stem",
+    "difficultToTreat": false,
+    "commonInGujarat": false
+  },
+  {
+    "id": "rice-brown-spot",
+    "name": "Rice Brown Spot",
+    "localName": "Dhan Bura Dhabba",
+    "cropName": "Rice",
+    "cropEmoji": "🍚",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf",
+      "fruit"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "WB",
+      "Odisha",
+      "AP"
+    ],
+    "symptoms": [
+      "Circular to oval brown spots on leaves",
+      "Spots have yellow halos and gray centers",
+      "Infected grains show dark brown discoloration"
+    ],
+    "causes": [
+      "Helminthosporium oryzae fungus",
+      "Nutrient-deficient soils especially potassium",
+      "Water stress during growing season"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Apply potassium fertilizer",
+        "detail": "Apply MOP (Muriate of Potash) at 40kg/ha to correct deficiency",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Spray Mancozeb",
+        "detail": "Apply Mancozeb 75% WP at 2g/L water on diseased plants",
+        "timing": "Within 3 days",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Seed treatment before sowing",
+        "detail": "Treat seeds with hot water 53°C for 10 minutes then dry before planting",
+        "timing": "Before sowing",
+        "type": "cultural"
+      }
+    ],
+    "preventionTips": [
+      "Maintain balanced soil nutrition",
+      "Use clean certified seeds",
+      "Apply potassium and phosphorus fertilizers",
+      "Avoid water stress"
+    ],
+    "organicAlternative": "Wood ash soil application improves potassium and reduces disease",
+    "estimatedYieldLoss": "10-25%",
+    "spreadRate": "slow",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1536657301463-b19e0c5b3d9d?w=600&q=50",
+    "thumbnailImage": "https://images.unsplash.com/photo-1536657301463-b19e0c5b3d9d?w=300&q=50",
+    "slug": "rice-brown-spot",
+    "tags": [
+      "rice",
+      "fungal",
+      "moderate",
+      "nutrient",
+      "kharif"
+    ],
+    "weatherConditions": "Hot humid conditions with nutrient-poor or water-stressed soil",
+    "firstAidTip": "Apply potassium fertilizer immediately as most cases are deficiency-related",
+    "difficultToTreat": false,
+    "commonInGujarat": false
+  },
+  {
+    "id": "tomato-early-blight",
+    "name": "Tomato Early Blight",
+    "localName": "Tamatar Ageti Jhulsa",
+    "cropName": "Tomato",
+    "cropEmoji": "🍅",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf",
+      "stem",
+      "fruit"
+    ],
+    "season": [
+      "kharif",
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "MP",
+      "Maharashtra",
+      "UP"
+    ],
+    "symptoms": [
+      "Dark brown spots with concentric rings on lower leaves",
+      "Yellow area around spots causing leaf drop",
+      "Collar rot at soil level on stem"
+    ],
+    "causes": [
+      "Alternaria solani airborne spores",
+      "Wet weather followed by drying",
+      "Older leaves infected first"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Remove infected lower leaves",
+        "detail": "Prune all infected lower leaves and dispose away from field",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Spray Chlorothalonil",
+        "detail": "Apply Chlorothalonil 75% WP at 2g/L water every 7-10 days",
+        "timing": "At first sign",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Baking soda spray",
+        "detail": "Apply 1 tbsp baking soda + 1 tsp dish soap per gallon water weekly",
+        "timing": "Weekly prevention",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Stake plants to improve air circulation",
+      "Mulch around base to prevent soil splash",
+      "Rotate tomato with non-solanaceous crops",
+      "Water at base not overhead"
+    ],
+    "organicAlternative": "Copper-based Bordeaux mixture (1%) spray every 10 days",
+    "estimatedYieldLoss": "15-40%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=600",
+    "thumbnailImage": "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=300",
+    "slug": "tomato-early-blight",
+    "tags": [
+      "tomato",
+      "fungal",
+      "moderate",
+      "common"
+    ],
+    "weatherConditions": "Warm humid weather 24-30°C with alternating wet and dry periods",
+    "firstAidTip": "Remove infected lower leaves immediately and mulch the base",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "tomato-late-blight",
+    "name": "Tomato Late Blight",
+    "localName": "Tamatar Pichheti Jhulsa",
+    "cropName": "Tomato",
+    "cropEmoji": "🍅",
+    "diseaseType": "fungal",
+    "severity": "severe",
+    "affectedParts": [
+      "leaf",
+      "stem",
+      "fruit"
+    ],
+    "season": [
+      "rabi",
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "HP",
+      "Maharashtra",
+      "WB"
+    ],
+    "symptoms": [
+      "Water-soaked gray-green lesions on leaves",
+      "White mold on leaf underside in humid conditions",
+      "Greasy brown rot on fruits spreading rapidly"
+    ],
+    "causes": [
+      "Phytophthora infestans oomycete",
+      "Cool humid weather 10-20°C with rain",
+      "Spreads extremely fast in favorable conditions"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Spray Metalaxyl + Mancozeb",
+        "detail": "Apply Metalaxyl 8% + Mancozeb 64% WP at 2.5g/L immediately",
+        "timing": "Immediately at first sign",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Remove and destroy infected plants",
+        "detail": "Pull up all heavily infected plants and bury or burn",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Copper spray",
+        "detail": "Apply Copper hydroxide 77% WP at 2g/L as protective fungicide",
+        "timing": "Preventively every 7 days",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Plant resistant hybrids",
+      "Avoid overhead irrigation",
+      "Increase plant spacing",
+      "Apply fungicide preventively before cool humid weather"
+    ],
+    "organicAlternative": "Copper hydroxide spray every 7 days provides good protection",
+    "estimatedYieldLoss": "40-90%",
+    "spreadRate": "fast",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=600&q=70",
+    "thumbnailImage": "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=300&q=70",
+    "slug": "tomato-late-blight",
+    "tags": [
+      "tomato",
+      "fungal",
+      "severe",
+      "fast-spreading"
+    ],
+    "weatherConditions": "Cool humid weather 10-20°C with prolonged leaf wetness",
+    "firstAidTip": "Spray systemic fungicide IMMEDIATELY — can destroy entire crop in 3 days",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "tomato-leaf-curl",
+    "name": "Tomato Leaf Curl Virus",
+    "localName": "Tamatar Patti Murdan",
+    "cropName": "Tomato",
+    "cropEmoji": "🍅",
+    "diseaseType": "viral",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf",
+      "stem"
+    ],
+    "season": [
+      "kharif",
+      "summer"
+    ],
+    "states": [
+      "Gujarat",
+      "AP",
+      "Karnataka",
+      "Maharashtra"
+    ],
+    "symptoms": [
+      "Leaves curl upward and become thick leathery",
+      "Yellowing of leaf margins between veins",
+      "Severe stunting with no or poor fruit set"
+    ],
+    "causes": [
+      "Tomato Yellow Leaf Curl Virus via whitefly",
+      "Rapid spread in hot dry conditions",
+      "Infected neighboring plants"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Control whiteflies",
+        "detail": "Spray Imidacloprid 17.8 SL at 0.5ml/L to control whitefly vector",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Remove infected plants",
+        "detail": "Rogue out all severely infected plants from field",
+        "timing": "Within 3 days",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Reflective mulch",
+        "detail": "Use silver polyethylene mulch to repel whiteflies",
+        "timing": "At transplanting",
+        "type": "cultural"
+      }
+    ],
+    "preventionTips": [
+      "Plant virus-resistant varieties",
+      "Install yellow sticky traps",
+      "Apply neem oil to repel whitefly",
+      "Remove infected plants early"
+    ],
+    "organicAlternative": "Neem oil 5ml/L spray every 7 days repels whitefly vectors",
+    "estimatedYieldLoss": "30-60%",
+    "spreadRate": "fast",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=600&q=60",
+    "thumbnailImage": "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=300&q=60",
+    "slug": "tomato-leaf-curl",
+    "tags": [
+      "tomato",
+      "viral",
+      "whitefly",
+      "kharif"
+    ],
+    "weatherConditions": "Hot dry conditions 35-40°C favor whitefly outbreak",
+    "firstAidTip": "Control whitefly immediately, no cure exists for virus once infected",
+    "difficultToTreat": true,
+    "commonInGujarat": true
+  },
+  {
+    "id": "tomato-fusarium-wilt",
+    "name": "Tomato Fusarium Wilt",
+    "localName": "Tamatar Murjhana",
+    "cropName": "Tomato",
+    "cropEmoji": "🍅",
+    "diseaseType": "fungal",
+    "severity": "severe",
+    "affectedParts": [
+      "root",
+      "stem"
+    ],
+    "season": [
+      "kharif",
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "Maharashtra",
+      "Karnataka",
+      "AP"
+    ],
+    "symptoms": [
+      "One side or all leaves wilt during the day and may recover at night",
+      "Brown discoloration of vascular tissue when stem is cut",
+      "Plant progressively yellows and dies"
+    ],
+    "causes": [
+      "Fusarium oxysporum f.sp. lycopersici in soil",
+      "Warm soil temperature 25-30°C",
+      "Acidic and poorly drained soils"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Apply Carbendazim drench",
+        "detail": "Drench soil with Carbendazim 50% WP 2g/L around plant base",
+        "timing": "At first wilt sign",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Remove infected plants",
+        "detail": "Uproot entire plant with roots and soil, do not compost",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Solarize soil",
+        "detail": "Cover moist soil with clear plastic for 6 weeks in summer to kill fungus",
+        "timing": "Pre-planting",
+        "type": "cultural"
+      }
+    ],
+    "preventionTips": [
+      "Use Fusarium-resistant hybrid varieties",
+      "Raise soil pH with lime",
+      "Practice 4-year crop rotation",
+      "Sterilize tools and transplanting trays"
+    ],
+    "organicAlternative": "Trichoderma viride soil application 2.5kg/ha in compost before planting",
+    "estimatedYieldLoss": "40-70%",
+    "spreadRate": "slow",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=600&q=50",
+    "thumbnailImage": "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=300&q=50",
+    "slug": "tomato-fusarium-wilt",
+    "tags": [
+      "tomato",
+      "fungal",
+      "severe",
+      "soil-borne"
+    ],
+    "weatherConditions": "Warm soil 25-30°C with poor drainage and low soil pH",
+    "firstAidTip": "Remove plant immediately with roots — no cure, prevent spread",
+    "difficultToTreat": true,
+    "commonInGujarat": true
+  },
+  {
+    "id": "tomato-mosaic-virus",
+    "name": "Tomato Mosaic Virus",
+    "localName": "Tamatar Mozek Rog",
+    "cropName": "Tomato",
+    "cropEmoji": "🍅",
+    "diseaseType": "viral",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf",
+      "fruit"
+    ],
+    "season": [
+      "kharif",
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "MP",
+      "Maharashtra",
+      "UP"
+    ],
+    "symptoms": [
+      "Mosaic light and dark green patches on leaves",
+      "Leaves become crinkled and distorted",
+      "Fruits show internal browning and poor color"
+    ],
+    "causes": [
+      "ToMV and TMV viruses spread by contact and tools",
+      "Infected seeds and transplants",
+      "Workers touching infected then healthy plants"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Remove infected plants",
+        "detail": "Uproot all symptomatic plants immediately and dispose",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Disinfect tools",
+        "detail": "Wash tools and hands with 10% bleach or soap between plants",
+        "timing": "Ongoing",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Apply reflective mulch",
+        "detail": "Silver mulch reduces aphid vectors that spread some strains",
+        "timing": "At planting",
+        "type": "cultural"
+      }
+    ],
+    "preventionTips": [
+      "Use virus-free certified seeds",
+      "Disinfect tools frequently",
+      "Control aphids as vectors",
+      "Avoid smoking near tomato plants (TMV)"
+    ],
+    "organicAlternative": "Skimmed milk spray (1:10) on tools and hands inactivates TMV virus",
+    "estimatedYieldLoss": "20-40%",
+    "spreadRate": "moderate",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=600&q=40",
+    "thumbnailImage": "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=300&q=40",
+    "slug": "tomato-mosaic-virus",
+    "tags": [
+      "tomato",
+      "viral",
+      "contact-spread",
+      "tools"
+    ],
+    "weatherConditions": "Any season — spread by mechanical contact not weather-dependent",
+    "firstAidTip": "Wash hands with soap immediately after touching infected plants",
+    "difficultToTreat": true,
+    "commonInGujarat": false
+  },
+  {
+    "id": "onion-purple-blotch",
+    "name": "Onion Purple Blotch",
+    "localName": "Pyaj Jamunia Dhabba",
+    "cropName": "Onion",
+    "cropEmoji": "🧅",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf",
+      "stem"
+    ],
+    "season": [
+      "rabi",
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "Maharashtra",
+      "Rajasthan",
+      "MP"
+    ],
+    "symptoms": [
+      "Water-soaked white lesions that turn purple-brown",
+      "Lesions have yellow borders and cause leaf tip die-back",
+      "Severe infection collapses leaves and reduces bulb size"
+    ],
+    "causes": [
+      "Alternaria porri fungus in humid conditions",
+      "Prolonged leaf wetness after rain or dew",
+      "Dense planting and poor air circulation"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Spray Iprodione",
+        "detail": "Apply Iprodione 50% WP at 2g/L water every 7-10 days",
+        "timing": "At first lesion",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Improve drainage",
+        "detail": "Ensure raised beds and good drainage to reduce leaf wetness",
+        "timing": "Ongoing",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Garlic-neem spray",
+        "detail": "Mix garlic extract 3% + neem oil 5ml/L as organic fungicide",
+        "timing": "Weekly",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Maintain proper plant spacing",
+      "Avoid overhead irrigation",
+      "Use disease-free sets or seeds",
+      "Remove plant debris after harvest"
+    ],
+    "organicAlternative": "Garlic extract 3% + neem oil 5ml per liter water weekly spray",
+    "estimatedYieldLoss": "15-35%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&rot=180",
+    "thumbnailImage": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300&rot=180",
+    "slug": "onion-purple-blotch",
+    "tags": [
+      "onion",
+      "fungal",
+      "moderate",
+      "rabi"
+    ],
+    "weatherConditions": "Humid conditions above 70% with morning dew on leaves",
+    "firstAidTip": "Remove infected leaf tips and avoid wetting leaves when irrigating",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "onion-stemphylium",
+    "name": "Onion Stemphylium Blight",
+    "localName": "Pyaj Patti Jalna",
+    "cropName": "Onion",
+    "cropEmoji": "🧅",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "Maharashtra",
+      "Rajasthan"
+    ],
+    "symptoms": [
+      "Small yellow to tan spots that turn brown",
+      "Spots have water-soaked to dry texture",
+      "Tip blighting and eventual leaf death"
+    ],
+    "causes": [
+      "Stemphylium vesicarium spores",
+      "High humidity and rain",
+      "Thrips feeding wounds allowing infection"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Control thrips first",
+        "detail": "Spray Spinosad 0.3ml/L to reduce thrips which create infection entry points",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Spray Mancozeb + Carbendazim",
+        "detail": "Apply Mancozeb 1.5g + Carbendazim 0.5g per liter water",
+        "timing": "Every 7 days after thrips control",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Neem oil spray",
+        "detail": "Spray neem oil 5ml/L to repel thrips and reduce fungal spreading",
+        "timing": "Weekly",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Control thrips as vectors",
+      "Maintain proper spacing",
+      "Avoid excessive nitrogen",
+      "Use resistant onion varieties"
+    ],
+    "organicAlternative": "Neem oil 5ml/L spray controls thrips and reduces Stemphylium risk",
+    "estimatedYieldLoss": "10-25%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=40",
+    "thumbnailImage": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&q=40",
+    "slug": "onion-stemphylium",
+    "tags": [
+      "onion",
+      "fungal",
+      "moderate",
+      "rabi",
+      "thrips"
+    ],
+    "weatherConditions": "Humid weather with frequent rain and thrips activity",
+    "firstAidTip": "Control thrips immediately as they create entry wounds for the fungus",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "onion-downy-mildew",
+    "name": "Onion Downy Mildew",
+    "localName": "Pyaj Mridula Phatka",
+    "cropName": "Onion",
+    "cropEmoji": "🧅",
+    "diseaseType": "fungal",
+    "severity": "mild",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "Maharashtra",
+      "Rajasthan",
+      "HP"
+    ],
+    "symptoms": [
+      "Pale green to yellow areas on leaves",
+      "Violet-gray fuzzy growth under humid conditions",
+      "Leaves collapse and dry out in warm weather"
+    ],
+    "causes": [
+      "Peronospora destructor airborne spores",
+      "Cool moist nights 10-15°C with warm days",
+      "High humidity and dew"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Spray Metalaxyl",
+        "detail": "Apply Metalaxyl 8% + Mancozeb 64% WP at 2.5g/L water",
+        "timing": "At first sign",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Reduce humidity",
+        "detail": "Improve drainage and air circulation in field",
+        "timing": "Ongoing",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Avoid night irrigation",
+        "detail": "Irrigate only during morning so leaves dry before night",
+        "timing": "Change schedule",
+        "type": "cultural"
+      }
+    ],
+    "preventionTips": [
+      "Avoid overhead irrigation at night",
+      "Maintain good spacing",
+      "Apply preventive fungicide before cool humid weather",
+      "Use healthy transplants"
+    ],
+    "organicAlternative": "Copper sulfate 0.3% spray as protective treatment in cool weather",
+    "estimatedYieldLoss": "5-20%",
+    "spreadRate": "slow",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=40",
+    "thumbnailImage": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&q=40",
+    "slug": "onion-downy-mildew",
+    "tags": [
+      "onion",
+      "fungal",
+      "mild",
+      "rabi",
+      "humidity"
+    ],
+    "weatherConditions": "Cool nights below 15°C with high humidity and morning dew",
+    "firstAidTip": "Irrigate in morning only and ensure good air flow through canopy",
+    "difficultToTreat": false,
+    "commonInGujarat": false
+  },
+  {
+    "id": "potato-late-blight",
+    "name": "Potato Late Blight",
+    "localName": "Aloo Pichheti Jhulsa",
+    "cropName": "Potato",
+    "cropEmoji": "🥔",
+    "diseaseType": "fungal",
+    "severity": "severe",
+    "affectedParts": [
+      "leaf",
+      "stem",
+      "fruit"
+    ],
+    "season": [
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "UP",
+      "Bihar",
+      "WB",
+      "HP"
+    ],
+    "symptoms": [
+      "Dark water-soaked lesions on leaves turning brown",
+      "White fuzzy mold on undersides of leaves",
+      "Tubers show brown rotted patches internally"
+    ],
+    "causes": [
+      "Phytophthora infestans oomycete",
+      "Cool moist weather 10-20°C with rain",
+      "Infected seed tubers and crop debris"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Spray Metalaxyl-M + Mancozeb",
+        "detail": "Apply Ridomil Gold 68 WG at 2.5g/L water immediately",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Destroy infected plants",
+        "detail": "Remove all infected haulms and dispose off-field",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Copper oxychloride spray",
+        "detail": "Apply Copper oxychloride 50% WP at 3g/L as protectant",
+        "timing": "Every 7 days preventively",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Use certified blight-free seed tubers",
+      "Plant resistant varieties",
+      "Avoid overhead irrigation",
+      "Apply fungicide before cool humid weather arrives"
+    ],
+    "organicAlternative": "Copper oxychloride 50% WP spray every 7 days provides good organic protection",
+    "estimatedYieldLoss": "50-100%",
+    "spreadRate": "fast",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=60",
+    "thumbnailImage": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&q=60",
+    "slug": "potato-late-blight",
+    "tags": [
+      "potato",
+      "fungal",
+      "severe",
+      "rabi",
+      "fast-spreading"
+    ],
+    "weatherConditions": "Cool humid weather 10-20°C with >90% humidity and rain",
+    "firstAidTip": "Spray systemic fungicide IMMEDIATELY — can wipe out crop in one week",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "potato-early-blight",
+    "name": "Potato Early Blight",
+    "localName": "Aloo Ageti Jhulsa",
+    "cropName": "Potato",
+    "cropEmoji": "🥔",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "UP",
+      "MP",
+      "Punjab"
+    ],
+    "symptoms": [
+      "Dark brown spots with concentric rings on lower leaves",
+      "Yellowing around spots causing leaf drop",
+      "Reduces leaf area and tuber fill"
+    ],
+    "causes": [
+      "Alternaria solani spores in soil",
+      "Warm 25-30°C and alternating wet-dry weather",
+      "Older nutrient-stressed plants"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Remove lower leaves",
+        "detail": "Remove and destroy all spotted lower leaves",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Spray Chlorothalonil",
+        "detail": "Apply Chlorothalonil 75% WP at 2g/L every 10 days",
+        "timing": "At first sign",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Compost boost",
+        "detail": "Apply compost or farmyard manure to strengthen plant immunity",
+        "timing": "Preventive",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Rotate potato with cereals",
+      "Maintain adequate nutrition",
+      "Remove crop debris post harvest",
+      "Avoid overhead irrigation"
+    ],
+    "organicAlternative": "Strong compost application improves plant health and resistance",
+    "estimatedYieldLoss": "10-30%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&q=40",
+    "thumbnailImage": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300&q=40",
+    "slug": "potato-early-blight",
+    "tags": [
+      "potato",
+      "fungal",
+      "moderate",
+      "rabi"
+    ],
+    "weatherConditions": "Warm humid weather 25-30°C with alternating wet and dry spells",
+    "firstAidTip": "Remove all spotted lower leaves to significantly slow spread",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "potato-black-scurf",
+    "name": "Potato Black Scurf",
+    "localName": "Aloo Kala Khed",
+    "cropName": "Potato",
+    "cropEmoji": "🥔",
+    "diseaseType": "fungal",
+    "severity": "mild",
+    "affectedParts": [
+      "root",
+      "fruit"
+    ],
+    "season": [
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "UP",
+      "Punjab",
+      "HP"
+    ],
+    "symptoms": [
+      "Black irregular sclerotia stuck on tuber skin",
+      "Stem canker causing stem base browning",
+      "Reduced emergence of sprouts"
+    ],
+    "causes": [
+      "Rhizoctonia solani soil fungus",
+      "High soil moisture and cool temperatures",
+      "Infected seed tubers"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Seed tuber treatment",
+        "detail": "Soak seed tubers in Carbendazim 0.1% solution for 30 minutes before planting",
+        "timing": "Before planting",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Delay planting",
+        "detail": "Allow soil to warm above 10°C before planting to reduce disease",
+        "timing": "Planting time",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Trichoderma seed treatment",
+        "detail": "Apply Trichoderma viride as seed piece dust before planting",
+        "timing": "Before sowing",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Use certified clean seed tubers",
+      "Treat seed before every planting",
+      "Avoid water-logging",
+      "Rotate with non-solanaceous crops"
+    ],
+    "organicAlternative": "Trichoderma viride seed piece treatment suppresses Rhizoctonia naturally",
+    "estimatedYieldLoss": "5-15%",
+    "spreadRate": "slow",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&q=30",
+    "thumbnailImage": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300&q=30",
+    "slug": "potato-black-scurf",
+    "tags": [
+      "potato",
+      "fungal",
+      "mild",
+      "soil-borne",
+      "rabi"
+    ],
+    "weatherConditions": "Cool moist soil below 15°C with high moisture",
+    "firstAidTip": "Treat seed tubers with fungicide before planting — best prevention",
+    "difficultToTreat": false,
+    "commonInGujarat": false
+  },
+  {
+    "id": "corn-downy-mildew",
+    "name": "Corn Downy Mildew",
+    "localName": "Makka Mridula Phatka",
+    "cropName": "Corn",
+    "cropEmoji": "🌽",
+    "diseaseType": "fungal",
+    "severity": "severe",
+    "affectedParts": [
+      "leaf",
+      "stem"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "Maharashtra",
+      "Rajasthan",
+      "MP"
+    ],
+    "symptoms": [
+      "Pale green to yellow stripes on young leaves",
+      "White downy growth on both leaf surfaces",
+      "Plants stunted with poor ear development"
+    ],
+    "causes": [
+      "Peronosclerospora sorghi airborne spores",
+      "Wet weather during early plant growth",
+      "Oospores in infected soil and seed"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Seed treatment with Metalaxyl",
+        "detail": "Treat seeds with Metalaxyl 35 WS at 6g/kg seed before sowing",
+        "timing": "Before sowing",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Remove infected plants",
+        "detail": "Uproot all infected young plants to stop spread",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Spray Metalaxyl",
+        "detail": "Apply Metalaxyl 8% + Mancozeb 64% WP at 2.5g/L on remaining plants",
+        "timing": "Immediately",
+        "type": "chemical"
+      }
+    ],
+    "preventionTips": [
+      "Use resistant hybrid varieties",
+      "Treat seeds every season",
+      "Remove infected plants promptly",
+      "Rotate corn with other crops"
+    ],
+    "organicAlternative": "Trichoderma harzianum seed + soil treatment reduces Peronosclerospora",
+    "estimatedYieldLoss": "30-80%",
+    "spreadRate": "fast",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=60",
+    "thumbnailImage": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&q=60",
+    "slug": "corn-downy-mildew",
+    "tags": [
+      "corn",
+      "fungal",
+      "severe",
+      "kharif",
+      "common"
+    ],
+    "weatherConditions": "Wet rainy weather during seedling and early vegetative stage",
+    "firstAidTip": "Remove all infected seedlings immediately before spores spread",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "corn-leaf-blight",
+    "name": "Corn Northern Leaf Blight",
+    "localName": "Makka Patti Jhulsa",
+    "cropName": "Corn",
+    "cropEmoji": "🌽",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "Maharashtra",
+      "Karnataka",
+      "AP"
+    ],
+    "symptoms": [
+      "Long tan to gray elliptical lesions 2-15cm on leaves",
+      "Lesions have wavy margins feeling soft and papery",
+      "Starts on lower leaves moving upward"
+    ],
+    "causes": [
+      "Exserohilum turcicum spores",
+      "Moderate temperatures 18-27°C with humid weather",
+      "Infected crop debris in field"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Spray Propiconazole",
+        "detail": "Apply Propiconazole 25 EC at 1ml/L water at tassel emergence",
+        "timing": "At tassel stage",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Destroy crop residue",
+        "detail": "Plow deep after harvest to bury infected cobs and stalks",
+        "timing": "Post harvest",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Spray Neem",
+        "detail": "Apply neem oil 5ml/L water as preventive foliar spray",
+        "timing": "Every 10 days",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Plant resistant hybrid varieties",
+      "Destroy infected debris post harvest",
+      "Avoid planting corn after corn",
+      "Apply fungicide at tassel stage in humid years"
+    ],
+    "organicAlternative": "Neem oil 5ml/L spray as preventive foliar treatment",
+    "estimatedYieldLoss": "15-35%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=70",
+    "thumbnailImage": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&q=70",
+    "slug": "corn-leaf-blight",
+    "tags": [
+      "corn",
+      "fungal",
+      "moderate",
+      "kharif",
+      "blight"
+    ],
+    "weatherConditions": "Moderate humid weather 18-27°C with heavy dew",
+    "firstAidTip": "Apply fungicide at tassel stage to protect ear for maximum yield protection",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "corn-smut",
+    "name": "Corn Smut",
+    "localName": "Makka Kand",
+    "cropName": "Corn",
+    "cropEmoji": "🌽",
+    "diseaseType": "fungal",
+    "severity": "mild",
+    "affectedParts": [
+      "fruit",
+      "stem",
+      "leaf"
+    ],
+    "season": [
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "Maharashtra",
+      "MP",
+      "Rajasthan"
+    ],
+    "symptoms": [
+      "Large grayish-white galls on ears, tassels, and leaves",
+      "Galls rupture releasing black powdery spores",
+      "Infected ears fail to develop properly"
+    ],
+    "causes": [
+      "Ustilago maydis soil-borne spores",
+      "Injuries to plant from hail, insects, or cultivation",
+      "Warm dry weather with intermittent rain"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Remove galls before they rupture",
+        "detail": "Cut off all galls before they turn black and dispose in plastic bags",
+        "timing": "Immediately on seeing galls",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Seed treatment",
+        "detail": "Treat seeds with Carboxin + Thiram 3g/kg to reduce soil-borne inoculum",
+        "timing": "Before sowing",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Minimize plant injury",
+        "detail": "Avoid cultivation injuries near plants especially at tasseling",
+        "timing": "During season",
+        "type": "cultural"
+      }
+    ],
+    "preventionTips": [
+      "Remove galls before spores release",
+      "Use resistant hybrid varieties",
+      "Avoid over-application of nitrogen",
+      "Minimize plant wounds during cultivation"
+    ],
+    "organicAlternative": "Remove galls promptly — most effective non-chemical management",
+    "estimatedYieldLoss": "5-15%",
+    "spreadRate": "slow",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&q=60",
+    "thumbnailImage": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300&q=60",
+    "slug": "corn-smut",
+    "tags": [
+      "corn",
+      "fungal",
+      "mild",
+      "kharif"
+    ],
+    "weatherConditions": "Warm dry conditions with occasional rain causing plant stress",
+    "firstAidTip": "Remove galls in plastic bags before they turn black and release spores",
+    "difficultToTreat": false,
+    "commonInGujarat": false
+  },
+  {
+    "id": "mustard-white-rust",
+    "name": "Mustard White Rust",
+    "localName": "Sarson Safed Zang",
+    "cropName": "Mustard",
+    "cropEmoji": "🌿",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf",
+      "stem",
+      "flower"
+    ],
+    "season": [
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "Rajasthan",
+      "UP",
+      "Haryana"
+    ],
+    "symptoms": [
+      "White blister-like pustules on lower leaf surface",
+      "Distorted flowers and siliqua malformation",
+      "Leaves yellow and eventually drop"
+    ],
+    "causes": [
+      "Albugo candida airborne spores",
+      "Cool humid weather 10-18°C",
+      "High dew with foggy conditions"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Spray Metalaxyl + Mancozeb",
+        "detail": "Apply Metalaxyl 8% + Mancozeb 64% WP at 2g/L water",
+        "timing": "At bud stage",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Remove infected flower stalks",
+        "detail": "Remove and destroy all infected flower stalks showing white pustules",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 3,
+        "action": "Copper spray",
+        "detail": "Apply Copper oxychloride 50% WP 3g/L as protective spray",
+        "timing": "Every 10 days",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Plant early sown varieties",
+      "Use resistant varieties",
+      "Ensure proper spacing",
+      "Monitor fields in cool humid weather"
+    ],
+    "organicAlternative": "Copper oxychloride 3g/L spray every 10 days during vulnerable stage",
+    "estimatedYieldLoss": "15-40%",
+    "spreadRate": "moderate",
+    "contagious": true,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&sat=-20",
+    "thumbnailImage": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&sat=-20",
+    "slug": "mustard-white-rust",
+    "tags": [
+      "mustard",
+      "fungal",
+      "moderate",
+      "rabi"
+    ],
+    "weatherConditions": "Cool foggy mornings 10-18°C with high humidity",
+    "firstAidTip": "Spray fungicide at bud formation stage before white pustules appear",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "mustard-alternaria",
+    "name": "Mustard Alternaria Blight",
+    "localName": "Sarson Jhulsa Rog",
+    "cropName": "Mustard",
+    "cropEmoji": "🌿",
+    "diseaseType": "fungal",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf",
+      "stem",
+      "fruit"
+    ],
+    "season": [
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "Rajasthan",
+      "UP",
+      "MP"
+    ],
+    "symptoms": [
+      "Dark brown circular spots with concentric rings on leaves",
+      "Infected siliqua (pods) turn brown and shriveled",
+      "Premature shattering of infected siliqua"
+    ],
+    "causes": [
+      "Alternaria brassicae and A. brassicicola spores",
+      "Warm humid conditions after pod formation",
+      "Infected seeds carry the pathogen"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Seed treatment",
+        "detail": "Treat seeds with Thiram 75% WS at 3g/kg seed",
+        "timing": "Before sowing",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Spray Iprodione",
+        "detail": "Apply Iprodione 50% WP at 2g/L water at flowering and pod stage",
+        "timing": "Flowering and pod fill",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Spray fermented butter milk",
+        "detail": "Apply diluted butter milk 1:5 with water as organic preventive",
+        "timing": "Weekly",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Use certified disease-free seeds",
+      "Apply two sprays at flowering and pod stage",
+      "Maintain field sanitation",
+      "Rotate with non-brassica crops for 2 years"
+    ],
+    "organicAlternative": "Butter milk 1:5 dilution spray weekly reduces Alternaria infection",
+    "estimatedYieldLoss": "15-35%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=30",
+    "thumbnailImage": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&q=30",
+    "slug": "mustard-alternaria",
+    "tags": [
+      "mustard",
+      "fungal",
+      "moderate",
+      "rabi",
+      "seed-borne"
+    ],
+    "weatherConditions": "Warm humid conditions during flowering and pod filling stage",
+    "firstAidTip": "Apply fungicide at flowering to protect pods at most critical stage",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "nitrogen-deficiency",
+    "name": "Nitrogen Deficiency",
+    "localName": "Naitrojan ki Kami",
+    "cropName": "All Crops",
+    "cropEmoji": "🌱",
+    "diseaseType": "nutrient",
+    "severity": "mild",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "kharif",
+      "rabi",
+      "summer"
+    ],
+    "states": [
+      "Gujarat",
+      "Rajasthan",
+      "MP",
+      "Maharashtra"
+    ],
+    "symptoms": [
+      "Uniform yellowing of older lower leaves first",
+      "Yellowing moves upward as deficiency worsens",
+      "Stunted growth with pale green overall color"
+    ],
+    "causes": [
+      "Sandy soils with low organic matter",
+      "Heavy rainfall leaching nutrients",
+      "Insufficient basal fertilizer application"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Apply Urea",
+        "detail": "Top-dress with Urea at 50-65 kg/ha in evening or on cloudy days",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Apply FYM",
+        "detail": "Incorporate well-decomposed farmyard manure 10t/ha before sowing",
+        "timing": "Before sowing",
+        "type": "organic"
+      },
+      {
+        "step": 3,
+        "action": "Foliar urea spray",
+        "detail": "Spray 2% urea solution on leaves for quick uptake",
+        "timing": "Immediately as quick fix",
+        "type": "chemical"
+      }
+    ],
+    "preventionTips": [
+      "Conduct soil testing before each season",
+      "Apply recommended NPK fertilizers",
+      "Add compost to improve soil organic matter",
+      "Use slow-release nitrogen fertilizers"
+    ],
+    "organicAlternative": "Green manure crops or compost application maintains long-term nitrogen",
+    "estimatedYieldLoss": "10-40%",
+    "spreadRate": "slow",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&q=70",
+    "thumbnailImage": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300&q=70",
+    "slug": "nitrogen-deficiency",
+    "tags": [
+      "nutrient",
+      "soil",
+      "common",
+      "all-crops",
+      "deficiency"
+    ],
+    "weatherConditions": "Sandy soils during heavy rain season with leaching",
+    "firstAidTip": "Apply 2% urea foliar spray for immediate uptake response in 3 days",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "iron-deficiency",
+    "name": "Iron / Zinc Deficiency",
+    "localName": "Loha / Zinc ki Kami",
+    "cropName": "All Crops",
+    "cropEmoji": "🌱",
+    "diseaseType": "nutrient",
+    "severity": "mild",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "kharif",
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "Rajasthan",
+      "Punjab",
+      "Haryana"
+    ],
+    "symptoms": [
+      "Yellowing between veins on young upper leaves (interveinal chlorosis)",
+      "Young leaves turn pale yellow-white while veins stay green",
+      "Stunted growth and small leaves"
+    ],
+    "causes": [
+      "Alkaline high-pH soils above 7.5",
+      "Calcareous soils in Gujarat and Rajasthan",
+      "Flooded conditions limiting iron availability"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Apply Ferrous sulfate",
+        "detail": "Drench soil with Ferrous sulfate 0.5% solution around plants (for Fe)",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Apply Zinc sulfate",
+        "detail": "Apply Zinc sulfate 25kg/ha to soil or spray 0.5% foliar (for Zn)",
+        "timing": "Before sowing or at symptom",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Acidify soil",
+        "detail": "Apply sulfur 200kg/ha to lower pH in alkaline soils",
+        "timing": "Before sowing",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Test soil pH every 2 years",
+      "Apply zinc sulfate regularly in alkaline soils",
+      "Use acidifying fertilizers",
+      "Check micronutrient status annually"
+    ],
+    "organicAlternative": "Compost with neem leaves improves micronutrient availability in soil",
+    "estimatedYieldLoss": "10-30%",
+    "spreadRate": "slow",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=20",
+    "thumbnailImage": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&q=20",
+    "slug": "iron-deficiency",
+    "tags": [
+      "nutrient",
+      "micronutrient",
+      "common",
+      "all-crops",
+      "alkaline-soil"
+    ],
+    "weatherConditions": "High pH alkaline soils common in Gujarat arid zones",
+    "firstAidTip": "Spray 0.5% Zinc sulfate or Ferrous sulfate foliar for quick green-up",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "potassium-deficiency",
+    "name": "Potassium Deficiency",
+    "localName": "Potash ki Kami",
+    "cropName": "All Crops",
+    "cropEmoji": "🌱",
+    "diseaseType": "nutrient",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf",
+      "fruit"
+    ],
+    "season": [
+      "kharif",
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "MP",
+      "Maharashtra",
+      "Karnataka"
+    ],
+    "symptoms": [
+      "Scorching or burning of leaf tips and margins turning brown",
+      "Older leaves affected first, brown edge with green center",
+      "Weak stems, poor fruit quality and small size"
+    ],
+    "causes": [
+      "Sandy light soils with low potassium",
+      "Continuous intensive cropping without replenishment",
+      "High rainfall leaching potassium"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Apply MOP or SOP",
+        "detail": "Apply Muriate of Potash (KCl) 40-60 kg K2O/ha to soil",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Foliar potassium spray",
+        "detail": "Spray 1% KNO3 or K2SO4 solution on leaves for fast response",
+        "timing": "Immediately as foliar fix",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Apply wood ash",
+        "detail": "Incorporate wood ash 500kg/ha which is rich in potassium",
+        "timing": "Before sowing or immediately",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Include potassium in base fertilizer every season",
+      "Conduct soil testing annually",
+      "Add organic matter to improve potassium retention",
+      "Use slow-release potassium fertilizers"
+    ],
+    "organicAlternative": "Wood ash 500kg/ha supplies significant potassium naturally",
+    "estimatedYieldLoss": "15-35%",
+    "spreadRate": "slow",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&q=20",
+    "thumbnailImage": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300&q=20",
+    "slug": "potassium-deficiency",
+    "tags": [
+      "nutrient",
+      "soil",
+      "moderate",
+      "all-crops",
+      "sandy-soil"
+    ],
+    "weatherConditions": "Sandy soils in heavy rainfall areas prone to potassium leaching",
+    "firstAidTip": "Apply foliar 1% KNO3 spray for immediate response within a week",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "magnesium-deficiency",
+    "name": "Magnesium Deficiency",
+    "localName": "Magnesium ki Kami",
+    "cropName": "All Crops",
+    "cropEmoji": "🌱",
+    "diseaseType": "nutrient",
+    "severity": "mild",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "kharif",
+      "rabi"
+    ],
+    "states": [
+      "Gujarat",
+      "Karnataka",
+      "AP",
+      "Tamil Nadu"
+    ],
+    "symptoms": [
+      "Interveinal chlorosis on older middle-age leaves",
+      "Green veins surrounded by yellow tissue in a fish-bone pattern",
+      "Leaves may turn purple or red in some crops"
+    ],
+    "causes": [
+      "Sandy acid soils low in magnesium",
+      "High potassium application blocking magnesium uptake",
+      "Acidic soils below pH 5.5"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Apply Magnesium sulfate",
+        "detail": "Apply Epsom salt (MgSO4) 10-15kg/ha to soil or 2% foliar spray",
+        "timing": "Immediately",
+        "type": "chemical"
+      },
+      {
+        "step": 2,
+        "action": "Lime application",
+        "detail": "Apply dolomitic limestone which contains calcium and magnesium",
+        "timing": "Before sowing",
+        "type": "organic"
+      },
+      {
+        "step": 3,
+        "action": "Reduce excess potassium",
+        "detail": "Avoid excess potassium fertilizer which locks out magnesium",
+        "timing": "Next season",
+        "type": "cultural"
+      }
+    ],
+    "preventionTips": [
+      "Use dolomite lime instead of regular lime",
+      "Maintain soil pH above 6.0",
+      "Apply Mg sulfate as annual top-dressing",
+      "Avoid excess potassium fertilization"
+    ],
+    "organicAlternative": "Dolomitic lime application provides sustained magnesium release",
+    "estimatedYieldLoss": "5-20%",
+    "spreadRate": "slow",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&sat=-40",
+    "thumbnailImage": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&sat=-40",
+    "slug": "magnesium-deficiency",
+    "tags": [
+      "nutrient",
+      "micronutrient",
+      "mild",
+      "all-crops",
+      "sandy-soil"
+    ],
+    "weatherConditions": "Sandy acid soils with high rainfall promoting leaching",
+    "firstAidTip": "Spray 2% Epsom salt (MgSO4) on leaves for visible response in 5-7 days",
+    "difficultToTreat": false,
+    "commonInGujarat": false
+  },
+  {
+    "id": "aphid-infestation",
+    "name": "Aphid Infestation",
+    "localName": "Mahoo ka Hamla",
+    "cropName": "All Crops",
+    "cropEmoji": "🐛",
+    "diseaseType": "pest",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf",
+      "stem",
+      "flower"
+    ],
+    "season": [
+      "kharif",
+      "rabi",
+      "summer"
+    ],
+    "states": [
+      "Gujarat",
+      "Punjab",
+      "Haryana",
+      "MP"
+    ],
+    "symptoms": [
+      "Clusters of tiny green, black or yellow insects on new growth",
+      "Leaves curl and distort",
+      "Sticky honeydew secretion causing sooty mold growth"
+    ],
+    "causes": [
+      "Warm dry weather with soft new growth",
+      "Ants farming aphid colonies",
+      "Natural enemies absent due to pesticide use"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Strong water spray",
+        "detail": "Dislodge aphids from plants using strong jet of water",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Spray Imidacloprid",
+        "detail": "Apply Imidacloprid 17.8 SL at 0.5ml/L water covering undersides of leaves",
+        "timing": "If numbers high",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Neem oil spray",
+        "detail": "Spray neem oil 5ml/L + few drops dish soap per liter water",
+        "timing": "Every 5-7 days",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Encourage natural predators like ladybugs",
+      "Avoid excess nitrogen fertilizer",
+      "Check plants regularly at tips",
+      "Use reflective mulch to disorient aphids"
+    ],
+    "organicAlternative": "Neem oil 5ml/L + soap spray every 5 days effectively controls aphids",
+    "estimatedYieldLoss": "10-30%",
+    "spreadRate": "fast",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=80",
+    "thumbnailImage": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&q=80",
+    "slug": "aphid-infestation",
+    "tags": [
+      "pest",
+      "aphid",
+      "moderate",
+      "all-crops",
+      "common"
+    ],
+    "weatherConditions": "Warm dry weather 22-30°C with high plant nitrogen content",
+    "firstAidTip": "Blast aphids off with strong water jet — simple but very effective",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "whitefly-infestation",
+    "name": "Whitefly Infestation",
+    "localName": "Safed Makhi ka Hamla",
+    "cropName": "All Crops",
+    "cropEmoji": "🐛",
+    "diseaseType": "pest",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf",
+      "stem"
+    ],
+    "season": [
+      "kharif",
+      "summer"
+    ],
+    "states": [
+      "Gujarat",
+      "AP",
+      "Karnataka",
+      "Maharashtra"
+    ],
+    "symptoms": [
+      "Clouds of tiny white flies disturb when plants shaken",
+      "Yellowing and upward curling of leaves",
+      "Honeydew secretion leading to black sooty mold"
+    ],
+    "causes": [
+      "Bemisia tabaci population explosion in hot dry weather",
+      "Lack of natural predators",
+      "Vector for many viral diseases"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Yellow sticky traps",
+        "detail": "Install 10-15 yellow sticky traps per acre immediately for monitoring and trapping",
+        "timing": "Immediately",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Spray Diafenthiuron",
+        "detail": "Apply Diafenthiuron 50% WP at 1g/L water on leaf undersides",
+        "timing": "If population above threshold",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Neem oil spray",
+        "detail": "Spray neem oil 5ml/L water targeting leaf undersides every 7 days",
+        "timing": "Every 7 days",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Install yellow sticky traps early",
+      "Use reflective silver mulch",
+      "Spray neem oil preventively",
+      "Remove alternate host weeds from field borders"
+    ],
+    "organicAlternative": "Neem oil 5ml/L spray every 7 days significantly reduces whitefly populations",
+    "estimatedYieldLoss": "15-40% (plus indirect virus damage)",
+    "spreadRate": "fast",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&q=80",
+    "thumbnailImage": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300&q=80",
+    "slug": "whitefly-infestation",
+    "tags": [
+      "pest",
+      "whitefly",
+      "moderate",
+      "all-crops",
+      "virus-vector"
+    ],
+    "weatherConditions": "Hot dry conditions 35-45°C with low rainfall",
+    "firstAidTip": "Install yellow sticky traps immediately and check every 2 days",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  },
+  {
+    "id": "spider-mite",
+    "name": "Spider Mite Infestation",
+    "localName": "Makdi Kide ka Hamla",
+    "cropName": "All Crops",
+    "cropEmoji": "🐛",
+    "diseaseType": "pest",
+    "severity": "moderate",
+    "affectedParts": [
+      "leaf"
+    ],
+    "season": [
+      "summer",
+      "kharif"
+    ],
+    "states": [
+      "Gujarat",
+      "Rajasthan",
+      "AP",
+      "Maharashtra"
+    ],
+    "symptoms": [
+      "Tiny yellow or white speck dots on leaf surface from feeding",
+      "Fine webbing visible on undersides of leaves",
+      "Leaves turn bronze, yellow and drop — plant dehydrates"
+    ],
+    "causes": [
+      "Tetranychus urticae thriving in hot dry conditions",
+      "Suppression of natural predators by pesticides",
+      "Water-stressed plants are more susceptible"
+    ],
+    "treatments": [
+      {
+        "step": 1,
+        "action": "Water spray",
+        "detail": "Spray strong water jet on leaf undersides to dislodge and kill mites",
+        "timing": "Immediately daily for 3 days",
+        "type": "cultural"
+      },
+      {
+        "step": 2,
+        "action": "Apply Abamectin",
+        "detail": "Spray Abamectin 1.8 EC at 0.5ml/L water as specific miticide",
+        "timing": "If population very high",
+        "type": "chemical"
+      },
+      {
+        "step": 3,
+        "action": "Neem oil spray",
+        "detail": "Apply neem oil 5ml/L water targeting leaf undersides every 5 days",
+        "timing": "Every 5 days for 3 weeks",
+        "type": "organic"
+      }
+    ],
+    "preventionTips": [
+      "Maintain plant hydration — stressed plants attract mites",
+      "Avoid pyrethroid pesticides that kill natural predators",
+      "Apply overhead irrigation in hot dry weather",
+      "Maintain field humidity by mulching"
+    ],
+    "organicAlternative": "Neem oil 5ml/L spray every 5 days effectively controls spider mites",
+    "estimatedYieldLoss": "10-30%",
+    "spreadRate": "moderate",
+    "contagious": false,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=70",
+    "thumbnailImage": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&q=70",
+    "slug": "spider-mite",
+    "tags": [
+      "pest",
+      "mite",
+      "moderate",
+      "all-crops",
+      "hot-dry"
+    ],
+    "weatherConditions": "Very hot dry weather above 35°C with low humidity—peak conditions for mites",
+    "firstAidTip": "Spray strong water jets on leaf undersides daily for 3 days to break lifecycle",
+    "difficultToTreat": false,
+    "commonInGujarat": true
+  }
+]

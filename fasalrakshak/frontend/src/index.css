@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Laila:wght@400;500;600;700&family=Nunito:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-nunito bg-background-cream text-text-charcoal antialiased selection:bg-[#10b981] selection:text-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-jakarta tracking-tight;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Premium dark scrollbar for the site */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FAFAF9; /* matches cream */
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #10b981; 
+  }
+}
+
+@layer utilities {
+  .clip-path-slant {
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  }
+  .glassmorphism {
+    @apply bg-white/60 backdrop-blur-lg border border-white/40;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+  }
+  .glassmorphism-dark {
+    @apply bg-black/40 backdrop-blur-lg border border-white/10;
+  }
+}
