@@ -1,5 +1,4 @@
-import React from 'react';
-import { Camera, Search, HeartPulse } from 'lucide-react';
+import { Camera, Search, HeartPulse, Smartphone, ShieldCheck, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { useLanguage } from '../context/LanguageContext';
@@ -11,33 +10,12 @@ import heroScan   from '../images/hero_scan.png';
 import lushGreen  from '../images/lush_green.png';
 import smilingFarmer   from '../images/smiling_farmer.png';
 
-const steps = [
-  {
-    number: '1', emoji: '📸',
-    title: 'Take a Photo',
-    desc: 'Click a clear photo of the diseased leaf using your mobile camera, or choose from your gallery.',
-    img: heroScan, imgAlt: 'Farmer analyzing field'
-  },
-  {
-    number: '2', emoji: '🤖',
-    title: 'AI Analyzes Instantly',
-    desc: 'Our AI model identifies the crop disease in just 2 seconds with 94% accuracy.',
-    img: lushGreen, imgAlt: 'Healthy lush green crops'
-  },
-  {
-    number: '3', emoji: '💊',
-    title: 'Get Treatment Advice',
-    desc: 'Disease name, severity, medicine & dosage ΓÇö shown in English, Hindi or Gujarati.',
-    img: smilingFarmer, imgAlt: 'Smiling farmer getting treatment'
-  }
-];
-
 const HowItWorks = () => {
   const { t } = useLanguage();
   const steps = [
-    { number: '1', emoji: '📸', img: heroScan, imgAlt: 'Farmer analyzing field', ...( (Array.isArray(t('how.steps')) && t('how.steps')[0]) || { title: 'Take a Photo', desc: 'Click a clear photo of the diseased leaf.' }) },
-    { number: '2', emoji: '🤖', img: lushGreen, imgAlt: 'Healthy lush green crops', ...( (Array.isArray(t('how.steps')) && t('how.steps')[1]) || { title: 'AI Analyzes Instantly', desc: 'Our AI identifies disease in 2 seconds.' }) },
-    { number: '3', emoji: '💊', img: smilingFarmer, imgAlt: 'Smiling farmer', ...( (Array.isArray(t('how.steps')) && t('how.steps')[2]) || { title: 'Get Treatment Advice', desc: 'Shown in your language.' }) },
+    { number: '1', icon: <Smartphone className="w-7 h-7 text-[#10b981]" />, img: heroScan, imgAlt: 'Farmer analyzing field', ...( (Array.isArray(t('how.steps')) && t('how.steps')[0]) || { title: 'Open App', desc: 'Launch the FasalRakshak app.' }) },
+    { number: '2', icon: <Camera className="w-7 h-7 text-[#10b981]" />, img: lushGreen, imgAlt: 'Healthy lush green crops', ...( (Array.isArray(t('how.steps')) && t('how.steps')[1]) || { title: 'Snap Photo', desc: 'Take a clear picture of the leaf.' }) },
+    { number: '3', icon: <ShieldCheck className="w-7 h-7 text-[#10b981]" />, img: smilingFarmer, imgAlt: 'Smiling farmer', ...( (Array.isArray(t('how.steps')) && t('how.steps')[2]) || { title: 'Get Results', desc: 'View disease details instantly.' }) },
   ];
   const crops = Array.isArray(t('how.crops')) ? t('how.crops') : [];
   return (
@@ -92,8 +70,8 @@ const HowItWorks = () => {
               </Tilt>
               <div className="p-8">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-[16px] bg-[#10b981]/10 flex items-center justify-center text-2xl border border-[#10b981]/20 group-hover:scale-110 group-hover:bg-[#10b981]/20 transition-all duration-300">
-                    {step.emoji}
+                  <div className="w-12 h-12 rounded-[16px] bg-[#10b981]/10 flex items-center justify-center border border-[#10b981]/20 group-hover:scale-110 group-hover:bg-[#10b981]/20 transition-all duration-300">
+                    {step.icon}
                   </div>
                   <h3 className="font-playfair font-bold text-text-charcoal text-xl leading-tight">{step.title}</h3>
                 </div>

@@ -25,24 +25,24 @@ const SearchFilterBar = ({ filters, setFilters, categories, cartCount, onCartOpe
   };
 
   return (
-    <div className="sticky top-0 z-20 mb-6 border-b border-[#edf0e8] bg-[#fbfcf8]/95 py-4 shadow-sm backdrop-blur-md">
+    <div className="sticky top-0 z-20 mb-3 border-b border-[#edf0e8] bg-[#fbfcf8]/95 py-2.5 shadow-sm backdrop-blur-md">
       <div className="container mx-auto px-4">
-        <div className="mb-4 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+        <div className="mb-2.5 flex flex-col gap-2 xl:flex-row xl:items-center xl:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary-green">{t('store.catalog')}</p>
-            <h2 className="text-2xl font-bold text-gray-900">{t('store.catalogDesc')}</h2>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-primary-green">{t('store.catalog')}</p>
+            <h2 className="text-lg font-bold text-gray-900 leading-snug">{t('store.catalogDesc')}</h2>
           </div>
           <button
             onClick={onCartOpen}
-            className="hidden items-center gap-2 rounded-2xl bg-primary-green px-4 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-green-700 xl:flex"
+            className="hidden items-center gap-2 rounded-xl bg-primary-green px-3.5 py-2 text-sm font-bold text-white shadow-sm transition-colors hover:bg-green-700 xl:flex"
           >
             <ShoppingCart className="h-4 w-4" />
             {t('store.cart')} ({cartCount})
           </button>
         </div>
 
-        <div className="rounded-[24px] border border-[#e5eadc] bg-white p-4 shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center">
+        <div className="rounded-2xl border border-[#e5eadc] bg-white p-3 shadow-[0_6px_20px_rgba(15,23,42,0.04)]">
+          <div className="flex flex-col gap-2.5 md:flex-row md:items-center">
             <div className="relative w-full md:flex-1">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <Search className="h-5 w-5 text-gray-400" />
@@ -50,17 +50,17 @@ const SearchFilterBar = ({ filters, setFilters, categories, cartCount, onCartOpe
               <input
                 type="text"
                 placeholder={t('store.searchPlaceholder')}
-                className="w-full rounded-2xl border border-gray-200 bg-[#fafcf8] py-3 pl-10 pr-4 outline-none focus:border-transparent focus:ring-2 focus:ring-primary-green"
+                className="w-full rounded-xl border border-gray-200 bg-[#fafcf8] py-2 pl-10 pr-4 text-sm outline-none focus:border-transparent focus:ring-2 focus:ring-primary-green"
                 value={filters.search}
                 onChange={handleSearchChange}
               />
             </div>
 
             <div className="flex w-full items-center gap-2 overflow-x-auto md:w-auto">
-              <div className="flex items-center gap-2 rounded-2xl border border-gray-200 bg-[#fafcf8] px-3 py-3">
+              <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-[#fafcf8] px-3 py-2">
                 <Filter className="h-5 w-5 flex-shrink-0 text-primary-green" />
                 <select
-                  className="min-w-[140px] bg-transparent outline-none"
+                  className="min-w-[120px] bg-transparent text-sm outline-none"
                   value={filters.category}
                   onChange={handleCategoryChange}
                 >
@@ -75,9 +75,9 @@ const SearchFilterBar = ({ filters, setFilters, categories, cartCount, onCartOpe
             </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-700">
-            <div className="flex items-center gap-2 rounded-full bg-[#f4f8ee] px-3 py-2">
-              <label className="whitespace-nowrap font-semibold">{t('store.maxPrice')} Rs.{filters.maxPrice}</label>
+          <div className="mt-2 flex flex-wrap items-center gap-2.5 text-sm text-gray-700">
+            <div className="flex items-center gap-2 rounded-full bg-[#f4f8ee] px-3 py-1.5">
+              <label className="whitespace-nowrap text-xs font-semibold">{t('store.maxPrice')} Rs.{filters.maxPrice}</label>
               <input
                 type="range"
                 min="0"
@@ -89,7 +89,7 @@ const SearchFilterBar = ({ filters, setFilters, categories, cartCount, onCartOpe
               />
             </div>
 
-            <label className="flex items-center gap-2 rounded-full bg-[#f4f8ee] px-3 py-2">
+            <label className="flex items-center gap-2 rounded-full bg-[#f4f8ee] px-3 py-1.5">
               <input
                 type="checkbox"
                 id="highRated"
@@ -97,13 +97,13 @@ const SearchFilterBar = ({ filters, setFilters, categories, cartCount, onCartOpe
                 onChange={handleRatingChange}
                 className="h-4 w-4 rounded text-primary-green accent-primary-green focus:ring-primary-green"
               />
-              <span>{t('store.starAbove')}</span>
+              <span className="text-xs">{t('store.starAbove')}</span>
             </label>
 
-            <div className="flex items-center gap-2 rounded-full bg-[#f4f8ee] px-3 py-2">
-              <label className="font-semibold">{t('store.location')}</label>
+            <div className="flex items-center gap-2 rounded-full bg-[#f4f8ee] px-3 py-1.5">
+              <label className="text-xs font-semibold">{t('store.location')}</label>
               <select
-                className="bg-transparent outline-none"
+                className="bg-transparent text-xs outline-none"
                 value={filters.location}
                 onChange={handleLocationChange}
               >
