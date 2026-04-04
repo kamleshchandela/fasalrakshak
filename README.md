@@ -1,8 +1,6 @@
 <div align="center">
-  <img src="https://via.placeholder.com/150?text=FourZero" alt="FourZero Logo" width="120" />
+  <h1>🌱 FourZero • FasalRakshak</h1>
 </div>
-
-<h1 align="center">FourZero • FasalRakshak</h1>
 
 <p align="center">
   <strong>Bridging the Gap Between Advanced AI and Real-World Agriculture.</strong>
@@ -21,12 +19,12 @@
 </p>
 
 <div align="center">
-  <img src="https://via.placeholder.com/1000x500?text=FasalRakshak+Platform+Preview" alt="FourZero Preview" width="100%" />
+  <em>Screenshots to be added soon.</em>
 </div>
 
 ---
 
-## 🤝 WHY FASALRAKSHAK? (BUILDING FARMER TRUST)
+## 🤝 WHY FASALRAKSHAK? 
 
 At our core, FasalRakshak is driven by a "**Farmer-First**" philosophy. We understand that modern agriculture is fraught with risks: unpredictable weather, predatory pesticide marketing, and isolation in times of crisis. 
 
@@ -34,58 +32,58 @@ We built this platform to earn and protect your trust:
 - 🛡️ **No Corporate Spam:** We never push unnecessary chemicals or spam your inbox. Our recommendations strictly prioritize organic, sustainable practices.
 - 🆓 **Always Free to Use:** The core intelligence engines—weather prediction, disease detection, and expert community access—are completely free, forever.
 - 🔒 **Data Privacy:** Your farm data, locations, and queries are encrypted and anonymized. FasalRakshak works for *you*, not data brokers.
-- 🇮🇳 **Native Roots:** Built for the Indian ecosystem, with deep integrations for Gujarati, Hindi, and regional farming nuances.
+- 🇮🇳 **Native Roots:** Built for the Indian ecosystem, with deep integrations for multiple regional farming nuances.
 
 ---
 
 ## 💬 THE KISAN WHATSAPP COMMUNITY
 
-Farming is a collective effort. That's why we don't just provide an app—we provide a massive, hyper-active support network directly integrated into the FasalRakshak ecosystem.
+Farming is a collective effort. That's why we don't just provide an app—we provide an active support network completely integrated into the FasalRakshak ecosystem.
 
 Our **WhatsApp Community System** is the beating heart of our platform:
-- **👨‍🌾 10,000+ Active Members:** Join thousands of fellow farmers across 50+ districts (heavily active in Gujarat and Rajasthan).
+- **👨‍🌾 Growing Regional Network:** Join rapidly expanding regional groups of fellow farmers across multiple states to share knowledge globally and locally.
 - **🌾 Peer-to-Peer Wisdom:** Share immediate crop tips, locally verify pest outbreaks, and get real-world advice from people farming the exact same soil you are.
-- **🛡️ 24/7 Expert Moderation:** Groups are heavily moderated by vetted agricultural experts to ensure zero spam, zero misinformation, and high-quality organic farming advice.
-- **🚀 One-Click Join:** Integrated seamlessly into our landing page and footer, joining is as simple as tapping the FasalRakshak WhatsApp card.
+- **🛡️ Quality Moderation:** Groups are kept completely clean to ensure zero spam, zero misinformation, and strict adherence to high-quality agricultural discussions.
+- **🚀 One-Click Join:** Integrated seamlessly into our app, joining is as simple as tapping the WhatsApp card.
 
 ---
 
-## ⚡ FLAGSHIP FEATURES (MAXIMUM DETAIL)
+## ⚡ FLAGSHIP FEATURES
 
 FasalRakshak operates through specialized, high-performance modules designed to handle every facet of agricultural management.
 
-### 🤖 1. Drishti AI: The Diagnostic Vision Engine
-Don't guess what's ruining your crop. Upload or snap a photo of a struggling leaf, and **Drishti AI** takes over. Powered by Gemini / Groq Vision APIs, the engine instantly identifies the exact pathogen or nutrient deficiency. 
-- **Detailed Pathology:** Identifies exact biological threats.
+### 🤖 1. Advanced Crop Pathology Engine
+Don't guess what's ruining your crop. Upload or snap a photo of a struggling leaf, and our vision models take over. Powered by robust Gemini / Groq Vision APIs, the engine identifies exact pathogens or nutrient deficiencies in seconds. 
+- **Detailed Pathology:** Rapidly diagnoses biological threats without requiring a lab test.
 - **Organic Cures:** Prioritizes accessible, natural remedies over expensive chemical interventions.
-- **Preventative Frameworks:** Tells you exactly how to stop the spread to neighboring plants.
+- **Preventative Frameworks:** Delivers actionable, step-by-step guides to halt disease spread in the surrounding field.
 
-### 🌤️ 2. Hyper-Local Weather & Crop AI
-Traditional weather apps tell you it's 32°C. FasalRakshak tells you if 32°C is going to destroy your upcoming harvest.
-- **Pinpoint Accuracy:** Utilizes `OpenMeteo` data specifically dialed into your geolocation.
-- **Crop Suitability Scoring:** Running an internal algorithm that severely penalizes (or boosts) specific crops based on temperature variances and seasonal appropriateness (e.g., dynamically scoring Wheat vs. Sugarcane based on real-time soil moisture predictions).
+### 🌤️ 2. Hyper-Local Weather & Advisory AI
+Traditional weather apps tell you it's 32°C. FasalRakshak tells you if 32°C is going to damage your upcoming harvest.
+- **Pinpoint Accuracy:** Utilizes deeply localized open meteorological data modeled for your specific coordinates.
+- **Crop Suitability Scoring:** An internal algorithm automatically penalizes or boosts specific organic crops based on current temperature variances and soil assumptions, adapting directly to seasonality.
 
 ### 🛒 3. The AgriStore Ecosystem
-A premium, highly-vetted marketplace built directly into the app for sourcing essential organic materials.
-- **Smart Filtering:** Filter by Seed, Tool, Fertilizer, or Equipment instantaneously.
-- **Detail Modals & WhatsApp Purchasing:** Instantly connect to vetted suppliers via WhatsApp direct-messaging to negotiate and purchase—empowering local commerce without transaction fees.
+A polished, dedicated marketplace built directly into the app for sourcing essential organic materials.
+- **Smart Filtering:** Find seeds, organic fertilizers, tools, or expert literature instantaneously.
+- **Direct WhatsApp Procurement:** Bypass complex digital checkouts by connecting directly to vetted local suppliers via WhatsApp.
 
-### 🌍 4. Seamless Multi-Lingual Architecture
-Language should never be a technical barrier. FasalRakshak features a globally managed state (`i18next`) that instantly flips the entire application between:
-- English (EN)
-- Hindi (HI)
-- Gujarati (GUJ)
+### 🌍 4. Unified Multilingual Architecture
+Technology must speak your language. FasalRakshak is engineered with a scalable global state (`i18next`) that instantly localizes UI context across:
+- **English (EN)**
+- **Hindi (HI)**
+- **Gujarati (GUJ)**
 
 ---
 
 ## 🧠 SYSTEM WORKFLOW
 
-Behind the polished, dark-themed UI lies a highly efficient, real-time processing pipeline:
+Behind the polished, dark-themed UI lies a highly efficient, real-time pipeline:
 
-1. **Input:** Farmers interact via cross-platform voice commands, image uploads (Drishti leaf analysis), or localized geographical queries.
-2. **AI Processing:** The data hits our Express.js backends and instantly interfaces with advanced Computer Vision Models.
-3. **Synthesis:** Vision data is securely merged with open meteorological sets to cross-reference plant vulnerabilities against upcoming weather patterns.
-4. **Output:** A visually rich, highly digestible action plan is presented—delivered in the farmer's native tongue.
+1. **Input:** Farmers interact via fluid interface tools, image uploads (leaf analysis), or localized geographical queries.
+2. **AI Processing:** The data hits our Node.js gateways and interfaces with advanced vision and text LLMs.
+3. **Synthesis:** Data is systematically evaluated against localized conditions to ensure contextually accurate responses.
+4. **Actionable Output:** A detailed, visually accessible action plan is presented directly in the farmer's native language.
 
 ---
 
@@ -99,29 +97,11 @@ Built for speed, scale, and extremely low latency on mobile networks.
 - 🏃‍♂️ **Framer Motion** (Fluid micro-interactions and route sequencing)
 - 📍 **Lucide React** (Premium, consistent iconography)
 
-**Backend & Integrations:**
+**Backend & Data Services:**
 - 🟢 **Node.js / Express** (Scalable API gateways)
 - 🧠 **Groq & Gemini APIs** (Real-time AI analysis & vision routing)
 - ☁️ **MongoDB / JWT** (Secure Auth & Stateful Data Partitioning)
 - 💬 **WhatsApp API / Formspree** (Direct community links & serverless interactions)
-
----
-
-## 📸 INTERFACE SHOWCASE
-
-*(Replace these placeholders with your high-res FasalRakshak screenshots)*
-
-<p align="center">
-  <img src="https://via.placeholder.com/800x400?text=FourZero+Landing+&+WhatsApp+CTA" alt="Landing Page Preview" width="100%" />
-  <br />
-  <em>The FasalRakshak Interface — Focused heavily on community networking and expert access.</em>
-</p>
-
-<p align="center">
-  <img src="https://via.placeholder.com/800x400?text=Drishti+AI+Disease+Detection+Running" alt="Dashboard Preview" width="100%" />
-  <br />
-  <em>Drishti AI Dashboard — Real-time diagnosis algorithms in action.</em>
-</p>
 
 ---
 
@@ -156,7 +136,7 @@ Access the application at `http://localhost:5173`.
 This is just V1. What we are focused on shipping next:
 
 - [ ] **Predictive Yield Analytics:** AI-driven dashboard estimating total harvest efficiency based on historical weather.
-- [ ] **Drishti Voice:** Expanding our voice-command infrastructure to allow totally hands-free, multilingual app navigation while in the field.
+- [ ] **Expanded Pathology Library:** Scaling the diagnostic engine to support regional cash crops with hyper-specific cure catalogs.
 - [ ] **Mandi Price Sync:** Real-time API integration fetching government market prices to prevent farmers from being exploited by middlemen.
 
 ---
