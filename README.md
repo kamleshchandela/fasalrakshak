@@ -19,7 +19,7 @@
 </p>
 
 <div align="center">
-  <em>Screenshots to be added soon.</em>
+  <img src="assets/landing_preview.png" alt="FasalRakshak Landing Preview" width="100%" />
 </div>
 
 ---
