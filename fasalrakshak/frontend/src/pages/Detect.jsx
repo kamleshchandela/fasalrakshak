@@ -151,6 +151,9 @@ const Detect = () => {
   };
 
   const handleManualAnalyze = async () => {
+    const ph = parseFloat(document.getElementById('input-pH').value) || 7;
+    const n = parseFloat(document.getElementById('input-Nitrogen').value) || 0;
+    const p = parseFloat(document.getElementById('input-Phosphorus').value) || 0;
     const k = parseFloat(document.getElementById('input-Potassium').value) || 0;
     const crop = document.getElementById('input-Crop').value || "Wheat";
 
@@ -215,13 +218,13 @@ const Detect = () => {
         return (
           <div className="flex flex-col gap-8">
             <div className="text-center mb-4">
-              <h2 className="font-playfair font-black text-2xl md:text-3xl text-primary-darkGreen">🧪 Manual Soil Input</h2>
-              <p className="font-nunito font-bold text-gray-500 mt-2">Enter your soil report values for instant recommendations</p>
+              <h2 className="font-playfair font-black text-2xl md:text-3xl text-primary-darkGreen">{t('organic.features.fert_title')}</h2>
+              <p className="font-nunito font-bold text-gray-500 mt-2">{t('organic.features.fert_desc')}</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="font-nunito font-black text-[15px] text-gray-700 ml-1 uppercase tracking-wider">🌿 Target Crop</label>
+                <label className="font-nunito font-black text-[15px] text-gray-700 ml-1 uppercase tracking-wider">🌿 {t('disease.crop')}</label>
                 <select
                   id="input-Crop"
                   className="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-6 py-4 font-nunito font-bold text-xl text-gray-900 outline-none focus:border-[#10b981] focus:ring-4 focus:ring-[#10b981]/5 transition-all shadow-sm appearance-none cursor-pointer"
@@ -260,7 +263,7 @@ const Detect = () => {
               className="w-full h-[64px] bg-primary-green text-white rounded-[14px] font-nunito font-bold text-[20px] shadow-[0_4px_20px_rgba(26,107,47,0.3)] hover:bg-[#155A26] transition-colors mt-4 flex justify-center items-center gap-2 relative overflow-hidden group"
             >
               <div className="absolute inset-0 bg-white/20 translate-x-[-100%] skew-x-[-15deg] group-hover:animate-[shimmer_1.5s_infinite]" />
-              🔬 Analyze Soil
+              🔬 {t('organic.features.analyze_btn')}
             </motion.button>
             <p className="text-center font-nunito font-semibold text-[13px] text-gray-400">Values are analyzed based on standard CLI standards</p>
           </div>
@@ -332,55 +335,35 @@ const Detect = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-green opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-green"></span>
             </span>
-<<<<<<< HEAD
             Soil Analysis Mode
-=======
-            {t('detect.tag')}
->>>>>>> main
           </motion.div>
           
           <motion.h1 
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2, duration: 0.5 }}
             className="font-playfair text-text-charcoal text-4xl md:text-6xl font-black mb-4 md:mb-5 tracking-tight drop-shadow-sm"
           >
-<<<<<<< HEAD
-            🔬 Analyze Soil & Recommend Fertilizer
-=======
-            {t('detect.title1')}<span className="text-primary-green">{t('detect.title2')}</span>
->>>>>>> main
+            🔬 {t('detect.title1')}<span className="text-primary-green">{t('detect.title2')}</span>
           </motion.h1>
           
           <motion.p 
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3, duration: 0.5 }}
             className="text-gray-700 text-[16px] md:text-xl max-w-2xl mb-10 leading-relaxed font-semibold drop-shadow-sm"
           >
-<<<<<<< HEAD
-            Enter your Nitrogen, Phosphorus, and Potassium levels. Our specialized soil logic will instantly analyze nutrient levels and provide a personalized fertilizer plan.
-=======
             {t('detect.desc')}
->>>>>>> main
           </motion.p>
           
           <motion.div 
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4, duration: 0.5 }}
             className="flex flex-wrap justify-center gap-4 sm:gap-6"
           >
-<<<<<<< HEAD
-            {['✅ Nutrient Precision', '🌿 Rule-Based Engine', '⚡ Instant Results'].map((stat, i) => (
-              <span key={i} className="bg-white/60 backdrop-blur-sm text-primary-darkGreen px-4 py-1.5 rounded-full text-[14px] md:text-[15px] font-bold border border-primary-green/20 shadow-sm flex items-center">
-                {stat}
-              </span>
-            ))}
-=======
             {(() => {
-               const statsArray = Array.isArray(t('detect.stats')) ? t('detect.stats') : ['✅ High Precision Models', '🌿 Offline Capable Engine', '⚡ Lightning Fast Output'];
+               const statsArray = Array.isArray(t('detect.stats')) ? t('detect.stats') : ['✅ Nutrient Precision', '🌿 Rule-Based Engine', '⚡ Instant Results'];
                return statsArray.map((stat, i) => (
                  <span key={i} className="bg-white/60 backdrop-blur-sm text-primary-darkGreen px-4 py-1.5 rounded-full text-[14px] md:text-[15px] font-bold border border-primary-green/20 shadow-sm flex items-center">
                    {stat}
                  </span>
                ));
             })()}
->>>>>>> main
           </motion.div>
         </div>
       </motion.div>

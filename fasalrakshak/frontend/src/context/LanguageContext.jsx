@@ -71,7 +71,7 @@ export const translations = {
     'testimonials.tag': 'Farmer Stories',
     'testimonials.title': 'Loved by Farmers',
     'testimonials.desc': 'See how FasalRakshak is changing lives across India.',
-    'testimonials.reviews': [
+    'testimonials.testimonials': [
       {
         name: "Rameshbhai Patel", location: "Anand, Gujarat",
         quote: "My groundnut crop was getting destroyed. FasalRakshak identified the disease in just 2 seconds. My crop is saved and I saved a lot of money!",
@@ -142,7 +142,6 @@ export const translations = {
     'login.designed': 'Designed with ❤️ for the Indian Farmer',
     'login.back': 'Back to Home',
 
-<<<<<<< HEAD
     'organic.hero.tag': 'AI-POWERED AGRICULTURAL INTELLIGENCE',
     'organic.hero.title1': 'Grow ',
     'organic.hero.title2': 'Smarter.',
@@ -152,83 +151,6 @@ export const translations = {
     'organic.hero.btn1': 'Make My Farm Organic',
     'organic.hero.btn2': 'Explore Organic HUB',
 
-    'organic.greenhouse.tag': 'Next-Gen Farming',
-    'organic.greenhouse.title': 'Smart Greenhouse Ecosystems',
-    'organic.greenhouse.desc': 'Precision environment control simulated by AI to guarantee year-round high-quality yields in any climate.',
-    'organic.greenhouse.console': 'Environment Console',
-    'organic.greenhouse.intensity': 'Target Intensity (°C)',
-    'organic.greenhouse.saturation': 'Relative Saturation (%)',
-    'organic.greenhouse.efficiency': 'Biological Efficiency',
-    'organic.greenhouse.correction': 'Correction Required',
-    'organic.greenhouse.automation': 'Automation',
-    'organic.greenhouse.drip': 'AI Drip Feed: ACTIVE',
-    'organic.greenhouse.metabolic': 'Metabolic Drive',
-    'organic.greenhouse.hyper': 'HYPER-DRIVE ⚡',
-    'organic.greenhouse.dormant': 'DORMANT',
-    'organic.greenhouse.hub': 'Ecosystem Hub',
-    'organic.greenhouse.cultivars': 'Suggested Cultivars',
-    'organic.greenhouse.harvest': 'Expected Harvest',
-    'organic.greenhouse.sensor': 'Sensor Grade Accuracy',
-    'organic.greenhouse.yield': 'YIELD',
-
-    'organic.diff.title': 'The Conversion Differential',
-    'organic.diff.desc': 'Precision Ecosystem Audit Impact',
-    'organic.diff.organic': 'Organic Protocol',
-    'organic.diff.chemical': 'Chemical Protocol',
-    'organic.diff.sustainable': 'Sustainable Standard',
-    'organic.diff.legacy': 'Industry Legacy',
-    'organic.diff.validation': 'Clinical validation ensures 98.4% biological accuracy.',
-    'organic.diff.soil': 'Soil Integrity index',
-    'organic.diff.hydration': 'Hydration Recall',
-    'organic.diff.viability': 'Long-term Viability',
-    'organic.diff.nutrient': 'Nutrient Strip Vector',
-    'organic.diff.dependency': 'Chemical Dependency',
-    'organic.diff.toxicity': 'Biodiversity Loss',
-
-    'organic.features.tag': 'Biological Intelligence',
-    'organic.features.title': "Nature's Biological Shield",
-    'organic.features.fert_title': 'Fertility Optimization',
-    'organic.features.fert_desc': 'Analyzing soil deficiency vectors to suggest precise biological inputs.',
-    'organic.features.analyze_btn': 'Analyze My Soil Needs',
-    'organic.features.analyzing': 'Analyzing Cellular Data...',
-    'organic.features.complete': 'Analysis Generated',
-    'organic.features.pest_title': 'Natural Remedies',
-    'organic.features.pest_desc': 'Eradicating invasive vectors via traditional bio-pharmacology.',
-    'organic.features.rating': 'Bio-Security Rating',
-    'organic.features.safe': '96% ORGANIC-SAFE',
-
-    'organic.toggle.active': 'MODE ACTIVE',
-    'organic.toggle.switch': 'SECURE SWITCH',
-    'organic.toggle.standard': 'Standard View',
-    'organic.toggle.hub': 'Organic Hub',
-
-    'organic.schemes.tag': 'Institutional Support 🇮🇳',
-    'organic.schemes.title': 'Empowering Your Organic Growth',
-    'organic.schemes.desc': 'Comprehensive financial grants and logistical support frameworks curated for the next generation of sustainable Indian agriculture.',
-    'organic.schemes.apply': 'Apply Now',
-    'organic.schemes.learn': 'Learn More',
-    'organic.schemes.grant': 'Grant Coverage',
-    'organic.schemes.pkvy': 'Paramparagat Krishi Vikas Yojana (PKVY)',
-    'organic.schemes.nmsa': 'Sustainable Agriculture Mission (NMSA)',
-    'organic.schemes.shc': 'Soil Health Card Scheme',
-    'organic.schemes.rkvy': 'Rashtriya Krishi Vikas Yojana (RKVY)',
-
-    'organic.rotation.tag': 'Smart Rotation',
-    'organic.rotation.title': 'Intelligent Crop Lifecycle Timeline',
-    'organic.rotation.desc': 'Our AI analyzes soil exhaustion patterns to suggest a rotation path that restores natural microbiology while maximizing harvest value.',
-    'organic.rotation.state': 'Current State',
-    'organic.rotation.next': 'Next Rotation',
-    'organic.rotation.why': 'Why rotate with',
-    'organic.rotation.roi': 'ROI Estimate',
-
-    'organic.roadmap.tag': 'Conversion Strategy',
-    'organic.roadmap.title': 'Your 12-Week Organic Roadmap',
-    'organic.roadmap.week': 'Week',
-    'organic.roadmap.prec_tag': 'Conversion Tip',
-    'organic.roadmap.prec_desc': 'Most soils take 3 years for certification, but chemical-free benefits start in 3 months.',
-    'organic.roadmap.bio_title': 'Precision Bio-Seeding Intelligence',
-    'organic.roadmap.bio_desc': 'Our AI maps your regional microbial signatures to suggest exactly which bio-fertilizers will colonize your soil the fastest.'
-=======
     'store.badge': 'Premium Agri Inputs Store',
     'store.title': 'FasalRakshak',
     'store.titleHighlight': 'Store',
@@ -384,7 +306,6 @@ export const translations = {
     'weather.location_verified': 'Location Verified',
     'weather.current_selection': 'Current Selection',
     'weather.fetch_failed': 'Failed to fetch weather for this location.'
->>>>>>> main
   },
   HI: {
     ...hi,
@@ -450,7 +371,7 @@ export const translations = {
     'testimonials.tag': 'किसान की कहानियाँ',
     'testimonials.title': 'किसानों की पसंद',
     'testimonials.desc': 'देखें कैसे फसलरक्षक पूरे भारत में किसानों की ज़िंदगी बदल रहा है।',
-    'testimonials.reviews': [
+    'testimonials.testimonials': [
       {
         name: "रमेशभाई पटेल", location: "आणंद, गुजरात",
         quote: "मेरी मूंगफली की फसल खराब हो रही थी। फसलरक्षक ने सिर्फ 2 सेकंड में बीमारी पहचान ली। मेरी फसल भी बच गई और काफी पैसे भी बचे!",
@@ -521,7 +442,6 @@ export const translations = {
     'login.designed': 'भारतीय किसानों के लिए ❤️ के साथ डिज़ाइन किया गया',
     'login.back': 'मुख्य पृष्ठ पर वापस',
 
-<<<<<<< HEAD
     'organic.hero.tag': 'एआई-संचालित कृषि खुफिया',
     'organic.hero.title1': 'समझदारी से ',
     'organic.hero.title2': 'उगाएं।',
@@ -530,84 +450,7 @@ export const translations = {
     'organic.hero.desc': 'एक संपूर्ण स्मार्ट कृषि पारिस्थितिकी तंत्र के साथ अपने खेत को बदलें। एक क्लिक में गहन एआई अंतर्दृष्टि, भारत सरकार की सहायता और भविष्य के ग्रीनहाउस लॉजिक को जोड़ें।',
     'organic.hero.btn1': 'खेती को जैविक बनाएं',
     'organic.hero.btn2': 'ऑर्गेनिक हब देखें',
-
-    'organic.greenhouse.tag': 'अगली पीढ़ी की खेती',
-    'organic.greenhouse.title': 'स्मार्ट ग्रीनहाउस पारिस्थितिकी तंत्र',
-    'organic.greenhouse.desc': 'किसी भी जलवायु में साल भर उच्च गुणवत्ता वाली उपज की गारंटी के लिए एआई द्वारा सिम्युलेटेड सटीक वातावरण नियंत्रण।',
-    'organic.greenhouse.console': 'पर्यावरण कंसोल',
-    'organic.greenhouse.intensity': 'लक्षित तीव्रता (°C)',
-    'organic.greenhouse.saturation': 'सापेक्ष संतृप्ति (%)',
-    'organic.greenhouse.efficiency': 'जैविक दक्षता',
-    'organic.greenhouse.correction': 'सुधार आवश्यक',
-    'organic.greenhouse.automation': 'स्वचालन',
-    'organic.greenhouse.drip': 'एआई ड्रिप फीड: सक्रिय',
-    'organic.greenhouse.metabolic': 'मेटाबॉलिक ड्राइव',
-    'organic.greenhouse.hyper': 'हाइपर-ड्राइव ⚡',
-    'organic.greenhouse.dormant': 'सुप्त',
-    'organic.greenhouse.hub': 'इकोसिस्टम हब',
-    'organic.greenhouse.cultivars': 'सुझाए गए कल्टीवर्स',
-    'organic.greenhouse.harvest': 'अपेक्षित उपज',
-    'organic.greenhouse.sensor': 'सेंसर ग्रेड सटीकता',
-    'organic.greenhouse.yield': 'उपज',
-
-    'organic.diff.title': 'परिवर्तन का अंतर',
-    'organic.diff.desc': 'सटीक इकोसिस्टम ऑडिट प्रभाव',
-    'organic.diff.organic': 'जैविक प्रोटोकॉल',
-    'organic.diff.chemical': 'रासायनिक प्रोटोकॉल',
-    'organic.diff.sustainable': 'सतत मानक',
-    'organic.diff.legacy': 'उद्योग विरासत',
-    'organic.diff.validation': 'क्लिनिकल सत्यापन 98.4% जैविक सटीकता सुनिश्चित करता है।',
-    'organic.diff.soil': 'मृदा अखंडता सूचकांक',
-    'organic.diff.hydration': 'हाइड्रेशन रिकॉल',
-    'organic.diff.viability': 'दीर्घकालिक व्यवहार्यता',
-    'organic.diff.nutrient': 'पोषक तत्व स्ट्रिप वेक्टर',
-    'organic.diff.dependency': 'रासायनिक निर्भरता',
-    'organic.diff.toxicity': 'जैव विविधता हानि',
-
-    'organic.features.tag': 'जैविक खुफिया',
-    'organic.features.title': "प्रकृति की जैविक ढाल",
-    'organic.features.fert_title': 'उर्वरता अनुकूलन',
-    'organic.features.fert_desc': 'सटीक जैविक इनपुट का सुझाव देने के लिए मिट्टी की कमी के वेक्टरों का विश्लेषण।',
-    'organic.features.analyze_btn': 'मिट्टी की जरूरत जांचें',
-    'organic.features.analyzing': 'कोशिकीय डेटा का विश्लेषण...',
-    'organic.features.complete': 'विश्लेषण तैयार',
-    'organic.features.pest_title': 'प्राकृतिक उपचार',
-    'organic.features.pest_desc': 'पारंपरिक बायो-फार्माकोलॉजी के माध्यम से कीट नियंत्रण।',
-    'organic.features.rating': 'बायो-सिक्योरिटी रेटिंग',
-    'organic.features.safe': '96% जैविक-सुरक्षित',
-
-    'organic.toggle.active': 'मोड सक्रिय',
-    'organic.toggle.switch': 'सुरक्षित स्विच',
-    'organic.toggle.standard': 'मानक दृश्य',
-    'organic.toggle.hub': 'जैविक हब',
-
-    'organic.schemes.tag': 'संस्थागत सहायता 🇮🇳',
-    'organic.schemes.title': 'आपकी जैविक प्रगति को सशक्त बनाना',
-    'organic.schemes.desc': 'सतत भारतीय कृषि की अगली पीढ़ी के लिए क्यूरेट किए गए व्यापक वित्तीय अनुदान और रसद सहायता ढांचे।',
-    'organic.schemes.apply': 'अभी आवेदन करें',
-    'organic.schemes.learn': 'अधिक जानें',
-    'organic.schemes.grant': 'अनुदान कवरेज',
-    'organic.schemes.pkvy': 'परंपरागत कृषि विकास योजना (PKVY)',
-    'organic.schemes.nmsa': 'सतत कृषि मिशन (NMSA)',
-    'organic.schemes.shc': 'मृदा स्वास्थ्य कार्ड योजना',
-    'organic.schemes.rkvy': 'राष्ट्रीय कृषि विकास योजना (RKVY)',
-
-    'organic.rotation.tag': 'स्मार्ट रोटेशन',
-    'organic.rotation.title': 'इंटेलिजेंट क्रॉप लाइफसाइकिल टाइमलाइन',
-    'organic.rotation.desc': 'हमारा एआई मिट्टी की थकावट के पैटर्न का विश्लेषण करता है ताकि फसल चक्र का सुझाव दिया जा सके जो उपज मूल्य को अधिकतम करते हुए प्राकृतिक सूक्ष्म जीव विज्ञान को बहाल करता है।',
-    'organic.rotation.state': 'वर्तमान स्थिति',
-    'organic.rotation.next': 'अगला रोटेशन',
-    'organic.rotation.why': 'रोटेशन क्यों जरूरी है',
-    'organic.rotation.roi': 'अनुमानित आरओआई',
-
-    'organic.roadmap.tag': 'रूपांतरण रणनीति',
-    'organic.roadmap.title': 'आपका 12-सप्ताह का जैविक रोडमैप',
-    'organic.roadmap.week': 'सप्ताह',
-    'organic.roadmap.prec_tag': 'रूपांतरण टिप',
-    'organic.roadmap.prec_desc': 'अधिकांश मिट्टी को प्रमाणीकरण के लिए 3 वर्ष लगते हैं, लेकिन रासायनिक मुक्त लाभ 3 महीनों में शुरू हो जाते हैं।',
-    'organic.roadmap.bio_title': 'सटीक बायो-सीडिंग इंटेलिजेंस',
-    'organic.roadmap.bio_desc': 'हमारा एआई आपके क्षेत्रीय सूक्ष्मजैविक हस्ताक्षरों का नक्शा बनाता है ताकि यह सुझाव दिया जा सके कि कौन से जैव-उर्वरक मिट्टी में सबसे तेजी से बसेंगे।'
-=======
+    
     'store.badge': 'प्रीमियम कृषि इनपुट स्टोर',
     'store.title': 'फसलरक्षक',
     'store.titleHighlight': 'स्टोर',
@@ -669,7 +512,7 @@ export const translations = {
     'store.season': 'मौसम',
     'store.addedToCartFull': 'कार्ट में जोड़ा!',
     'store.buyOnWhatsapp': 'WhatsApp पर खरीदें',
-    'store.contactSeller': 'विक्रेता से संपर्क करें',
+    'store.contactSeller': 'विक્રેતા से संपर्क करें',
     'store.paymentNote': 'भुगतान और डिलीवरी WhatsApp पर सीधे विक्रेता के साथ होती है।',
     'store.productOverview': 'उत्पाद अवलोकन',
     'store.composition': 'संरचना',
@@ -732,7 +575,7 @@ export const translations = {
     'weather.soil_humidity': 'मिट्टी की नमी',
     'weather.wind_speed': 'हवा की गति',
     'weather.rain_prob': 'बारिश की संभावना',
-    'weather.air_soil_sat': 'वायु-मृदा संतृप्ति',
+    'weather.air_soil_sat': 'वायु-मृदा संतૃप्ति',
     'weather.avg_wind': 'औसत वर्तमान गति',
     'weather.precip_risk': 'वर्षा का जोखिम',
     'weather.radar_title': 'इंटरएक्टिव कृषि रडार',
@@ -763,7 +606,6 @@ export const translations = {
     'weather.location_verified': 'स्थान सत्यापित',
     'weather.current_selection': 'वर्तमान चयन',
     'weather.fetch_failed': 'इस स्थान की मौसम जानकारी नहीं मिली।'
->>>>>>> main
   },
   GUJ: {
     ...gu,
@@ -836,7 +678,7 @@ export const translations = {
     'testimonials.tag': 'ખેડૂતોની વાર્તાઓ',
     'testimonials.title': 'ખેડૂતોની પસંદ',
     'testimonials.desc': 'જુઓ ફસલરક્ષક સમગ્ર ભારતમાં ખેડૂતોનું જીવન કેવી રીતે બદલી રહ્યું છે.',
-    'testimonials.reviews': [
+    'testimonials.testimonials': [
       {
         name: "રમેશભાઈ પટેલ", location: "આણંદ, ગુજરાત",
         quote: "મારો મગફળીનો પાક બગડી રહ્યો હતો. ફસલરક્ષકે 2 સેકન્ડમાં રોગ ઓળખી કાઢ્યો. મારો પાક પણ બચી ગયો અને મારા ઘણા પૈસા પણ બચ્યા!",
@@ -902,103 +744,20 @@ export const translations = {
 
     'login.slogan': 'વધુ સારી ખેતી માટે તમારો Digital સાથી.',
     'login.googleBtn': 'Google સાથે લૉગિન કરો',
-    'soil.manual': '✍️ મેન્યુઅલ એન્ટ્રી',
-    'soil.upload': '📄 PDF અપલોડ',
-    'soil.scan': '📸 ફોટો સ્કેન',
     'login.secure': 'સુરક્ષિત લૉગિન',
     'login.free': 'મફત ઉપયોગ',
     'login.trusted': '10,000+ ખેડૂતોનો વિશ્વાસ',
     'login.designed': 'ભારતીય ખેડૂતો માટે ❤️ સાથે ડિઝાઈન કરેલ',
-<<<<<<< HEAD
     'login.back': 'મુખ્ય પૃષ્ઠ પર પાછા',
 
     'organic.hero.tag': 'એઆઈ-સંચાલિત કૃષિ બુદ્ધિ',
-    'organic.hero.title1': 'સમજદારીથી ',
+    'organic.hero.title1': 'સમજદારી થી ',
     'organic.hero.title2': 'ઉગાડો.',
     'organic.hero.title3': 'જૈવિક ',
     'organic.hero.title4': 'અપનાવો.',
     'organic.hero.desc': 'સંપૂર્ણ સ્માર્ટ ફાર્મિંગ ઇકોસિસ્ટમ સાથે તમારા ખેતરને બદલો. એક ક્લિકમાં ઊંડી AI આંતરદૃષ્ટિ, ભારત સરકારની સહાય અને ભવિષ્યવાદી ગ્રીનહાઉસ લોજિકને જોડો.',
     'organic.hero.btn1': 'ખેતીને જૈવિક બનાવો',
     'organic.hero.btn2': 'ઓર્ગેનિક હબ જુઓ',
-
-    'organic.greenhouse.tag': 'આગામી પેઢીની ખેતી',
-    'organic.greenhouse.title': 'સ્માર્ટ ગ્રીનહાઉસ ઇકોસિસ્ટમ',
-    'organic.greenhouse.desc': 'કોઈપણ હવામાનમાં આખા વર્ષ દરમિયાન શ્રેષ્ઠ ગુણવત્તાના પાકની ખાતરી આપવા માટે એઆઈ દ્વારા સંચાલિત સચોટ વાતાવરણ નિયંત્રણ.',
-    'organic.greenhouse.console': 'વાતાવરણ કન્સોલ',
-    'organic.greenhouse.intensity': 'ટાર્ગેટ તીવ્રતા (°C)',
-    'organic.greenhouse.saturation': 'સંબંધિત સંતૃપ્તિ (%)',
-    'organic.greenhouse.efficiency': 'જૈવિક કાર્યક્ષમતા',
-    'organic.greenhouse.correction': 'સુધારણા જરૂરી',
-    'organic.greenhouse.automation': 'ઓટોમેશન',
-    'organic.greenhouse.drip': 'એઆઈ ડ્રીપ ફીડ: સક્રિય',
-    'organic.greenhouse.metabolic': 'મેટાબોલિક ડ્રાઇવ',
-    'organic.greenhouse.hyper': 'હાઇપર-ડ્રાઇવ ⚡',
-    'organic.greenhouse.dormant': 'સુષુપ્ત',
-    'organic.greenhouse.hub': 'ઇકોસિસ્ટમ હબ',
-    'organic.greenhouse.cultivars': 'સૂચવેલ કલ્ટીવર્સ',
-    'organic.greenhouse.harvest': 'અપેક્ષિત લણણી',
-    'organic.greenhouse.sensor': 'સેન્સર ગ્રેડ ચોકસાઈ',
-    'organic.greenhouse.yield': 'ઉપજ',
-
-    'organic.diff.title': 'પરિવર્તનનો તફાવત',
-    'organic.diff.desc': 'ચોકસાઇ ઇકોસિસ્ટમ ઓડિટ અસર',
-    'organic.diff.organic': 'જૈવિક પ્રોટોકોલ',
-    'organic.diff.chemical': 'રાસાયણિક પ્રોટોકોલ',
-    'organic.diff.sustainable': 'ટકાઉ ધોરણ',
-    'organic.diff.legacy': 'ઉદ્યોગ વારસો',
-    'organic.diff.validation': 'ક્લિનિકલ વેરિફિકેશન 98.4% જૈવિક ચોકસાઈની ખાતરી આપે છે.',
-    'organic.diff.soil': 'જમીન અખંડિતતા ઇન્ડેક્સ',
-    'organic.diff.hydration': 'હાઇડ્રેશન રિકોલ',
-    'organic.diff.viability': 'લાંબા ગાળાની વ્યવહારક્ષમતા',
-    'organic.diff.nutrient': 'પોષક તત્વોનો તફાવત',
-    'organic.diff.dependency': 'રાસાયણિક નિર્ભરતા',
-    'organic.diff.toxicity': 'જૈવવિવિધતા નુકસાન',
-
-    'organic.features.tag': 'જૈવિક બુદ્ધિ',
-    'organic.features.title': "કુદરતની જૈવિક ઢાલ",
-    'organic.features.fert_title': 'ફળદ્રુપતા ઑપ્ટિમાઇઝેશન',
-    'organic.features.fert_desc': 'સચોટ જૈવિક ઇનપુટ્સ સૂચવવા માટે જમીનની ઉણપનું વિશ્લેષણ.',
-    'organic.features.analyze_btn': 'જમીનની જરૂરિયાત તપાસો',
-    'organic.features.analyzing': 'સેલ્યુલર ડેટાનું વિશ્લેષણ...',
-    'organic.features.complete': 'વિશ્લેષણ તૈયાર',
-    'organic.features.pest_title': 'કુદરતી ઉપાયો',
-    'organic.features.pest_desc': 'પરંપરાગત બાયો-ફાર્માકોલોજી દ્વારા જંતુ નિયંત્રણ.',
-    'organic.features.rating': 'બાયો-સિક્યોરિટી રેટિંગ',
-    'organic.features.safe': '96% જૈવિક-સુરક્ષિત',
-
-    'organic.toggle.active': 'મોડ સક્રિય',
-    'organic.toggle.switch': 'સુરક્ષિત સ્વીચ',
-    'organic.toggle.standard': 'સ્ટાન્ડર્ડ વ્યૂ',
-    'organic.toggle.hub': 'જૈવિક હબ',
-
-    'organic.schemes.tag': 'સંસ્થાકીય સહાય 🇮🇳',
-    'organic.schemes.title': 'તમારી જૈવિક વૃદ્ધિને સશક્ત બનાવવી',
-    'organic.schemes.desc': 'ટકાઉ ભારતીય કૃષિની આગામી પેઢી માટે ક્યૂરેટ કરેલ વ્યાપક નાણાકીય અનુદાન અને લોજિસ્ટિક સપોર્ટ ફ્રેમવર્ક.',
-    'organic.schemes.apply': 'અત્યારે જ અરજી કરો',
-    'organic.schemes.learn': 'વધુ જાણો',
-    'organic.schemes.grant': 'ગ્રાન્ટ કવરેજ',
-    'organic.schemes.pkvy': 'પરંપરાગત કૃષિ વિકાસ યોજના (PKVY)',
-    'organic.schemes.nmsa': 'ટકાઉ કૃષિ મિશન (NMSA)',
-    'organic.schemes.shc': 'સોઈલ હેલ્થ કાર્ડ યોજના',
-    'organic.schemes.rkvy': 'રાષ્ટ્રીય કૃષિ વિકાસ યોજના (RKVY)',
-
-    'organic.rotation.tag': 'સ્માર્ટ રોટેશન',
-    'organic.rotation.title': 'ઇન્ટેલિજન્ટ ક્રોપ લાઇફસાઇકલ ટાઇમલાઇન',
-    'organic.rotation.desc': 'અમારું AI જમીનની થાક નમૂનાઓનું વિશ્લેષણ કરે છે જેથી પાક રોટેશન સૂચવી શકાય જે ઉપજ મૂલ્ય વધારતી વખતે કુદરતી સૂક્ષ્મ જીવવિજ્ઞાનને પુનઃસ્થાપિત કરે છે.',
-    'organic.rotation.state': 'વર્તમાન સ્થિતિ',
-    'organic.rotation.next': 'આગામી રોટેશન',
-    'organic.rotation.why': 'રોટેશન શા માટે જરૂરી છે',
-    'organic.rotation.roi': 'અંદાજિત ROI',
-
-    'organic.roadmap.tag': 'રૂપાંતર વ્યૂહરચના',
-    'organic.roadmap.title': 'તમારો 12-અઠવાડિયાનો જૈવિક રોડમેપ',
-    'organic.roadmap.week': 'અઠવાડિયું',
-    'organic.roadmap.prec_tag': 'રૂપાંતર ટિપ',
-    'organic.roadmap.prec_desc': 'મોટાભાગની જમીનને પ્રમાણપત્ર માટે 3 વર્ષ લાગે છે, પરંતુ રાસાયણિક મુક્ત લાભ 3 મહિનામાં શરૂ થાય છે.',
-    'organic.roadmap.bio_title': 'ચોકસાઇ બાયો-સીડિંગ ઇન્ટેલિજન્સ',
-    'organic.roadmap.bio_desc': 'અમારું AI તમારા પ્રાદેશિક માઇક્રોબાયલ હસ્તાક્ષરોનો નકશો બનાવે છે તે સૂચવવા માટે કે કયા જૈવ-ખાતર તમારી જમીનમાં સૌથી ઝડપથી સ્થાન લેશે.'
-=======
-    'login.back': 'મુખ્ય પૃષ્ઠ પર પાછા ફરો',
 
     'store.badge': 'પ્રીમિયમ કૃષિ ઇનપુટ સ્ટોર',
     'store.title': 'ફસલરક્ષક',
@@ -1153,9 +912,8 @@ export const translations = {
     'weather.irrigation_heavy_rain': '⚠️ ભારે વરસાદની શક્યતા. જમીનનું ધોવાણ રોકવા માટે આગામી 24 કલાક પિયત બંધ રાખો.',
     'weather.irrigation_clear': '✅ ચોખ્ખું આકાશ. સવારે 6:00 થી 9:00 વચ્ચે સામાન્ય પિયત આપો.',
     'weather.location_verified': 'સ્થાન ચકાસણી સફળ',
-    'weather.current_selection': 'વર્તમાન પસંદગી',
+    'weather.current_selection': 'વરત્માન પસંદગી',
     'weather.fetch_failed': 'આ સ્થાન માટે હવામાનની માહિતી મળી નથી.'
->>>>>>> main
   }
 };
 
@@ -1183,7 +941,7 @@ export const LanguageProvider = ({ children }) => {
       } else {
         // Return key name if not found to help debugging
         // But for arrays, we should return an empty array to prevent .map() crashes
-        if (key.includes('Links') || key.includes('items') || key.includes('steps')) {
+        if (key.includes('Links') || key.includes('items') || key.includes('steps') || key.includes('stats') || key.includes('crops') || key.includes('testimonials')) {
           return [];
         }
         return key; 
