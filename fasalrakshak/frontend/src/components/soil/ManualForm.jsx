@@ -23,7 +23,7 @@ const ManualForm = ({ onDataChange, initialData }) => {
     const { name, value, type } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'number' ? parseFloat(value) : value
+      [name]: type === 'number' ? (parseFloat(value) || 0) : value
     }));
   };
 

@@ -6,17 +6,32 @@ import PdfUploader from '../components/soil/PdfUploader';
 import ImageScanner from '../components/soil/ImageScanner';
 import SoilInsights from '../components/soil/SoilInsights';
 import SoilVisualization from '../components/soil/SoilVisualization';
+import OrganicSwitchButton from '../components/organic/OrganicSwitchButton';
 import { useLanguage } from '../context/LanguageContext';
+import { useUser } from '@clerk/clerk-react';
 
 const SoilReport = () => {
   const [activeMode, setActiveMode] = useState('manual'); // 'manual', 'pdf', 'scan'
   const [reportData, setReportData] = useState(null);
+  const [stagedData, setStagedData] = useState(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [showReport, setShowReport] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
   const { t } = useLanguage();
+  const { user } = useUser();
 
   const handleDataChange = (data) => {
-    setReportData(data);
+    setStagedData(data);
+  };
+
+  const handlePredict = () => {
+    setIsAnalyzing(true);
+    setTimeout(() => {
+      setReportData(stagedData);
+      setShowReport(true);
+      setIsAnalyzing(false);
+    }, 2000);
   };
 
   const handleSave = async () => {
@@ -57,7 +72,7 @@ const SoilReport = () => {
           <motion.h1 
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className="text-4xl md:text-5xl font-black text-gray-900 font-playfair tracking-tight"
+            className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight"
           >
             Smart <span className="text-[#10b981]">Soil Health</span> Hub
           </motion.h1>
@@ -71,29 +86,11 @@ const SoilReport = () => {
           </motion.p>
         </section>
 
-        {/* Mode Selector */}
-        <div className="flex justify-center flex-wrap gap-4 pt-4">
-          {modes.map((mode) => (
-            <button
-              key={mode.id}
-              onClick={() => setActiveMode(mode.id)}
-              className={`relative px-8 py-5 rounded-3xl flex items-center gap-3 transition-all duration-500 font-bold text-lg overflow-hidden border ${
-                activeMode === mode.id 
-                ? 'bg-white text-[#166534] shadow-2xl shadow-green-900/10 border-green-200' 
-                : 'bg-white/40 text-gray-400 border-gray-100 hover:bg-white/60 hover:text-gray-600'
-              }`}
-            >
-              {activeMode === mode.id && (
-                <motion.div 
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-[#166534]/5 -z-10"
-                />
-              )}
-              {mode.icon}
-              {mode.label}
-              {activeMode === mode.id && <motion.div animate={{ scale: [1, 1.2, 1] }} className="w-2 h-2 rounded-full bg-[#10b981] ml-1" />}
-            </button>
-          ))}
+        {/* Manual Input Container */}
+        <div className="flex flex-col items-center gap-4 pt-4 mb-2">
+            <div className="bg-[#166534]/10 text-[#166534] px-6 py-2 rounded-full font-black text-sm tracking-widest uppercase border border-[#166534]/10 shadow-sm">
+               Clinical Data Entry
+            </div>
         </div>
 
         {/* Main Content Area */}
@@ -110,54 +107,80 @@ const SoilReport = () => {
                 transition={{ duration: 0.4, type: 'spring' }}
                 className="bg-white/80 backdrop-blur-xl border border-white/50 rounded-[40px] p-4 md:p-8 shadow-2xl shadow-gray-200/50"
               >
-                {activeMode === 'manual' && <ManualForm onDataChange={handleDataChange} initialData={reportData} />}
-                {activeMode === 'pdf' && <PdfUploader onDataChange={handleDataChange} />}
-                {activeMode === 'scan' && <ImageScanner onDataChange={handleDataChange} />}
+                <ManualForm onDataChange={handleDataChange} initialData={stagedData} />
+                
+                <div className="mt-10 pt-8 border-t border-gray-100 flex justify-center">
+                   <motion.button
+                     whileHover={{ scale: 1.02 }}
+                     whileTap={{ scale: 0.98 }}
+                     onClick={handlePredict}
+                     disabled={isAnalyzing || !stagedData}
+                     className="px-10 py-5 bg-[#166534] text-white rounded-3xl font-black text-xl shadow-xl shadow-green-900/10 flex items-center gap-3 disabled:opacity-50"
+                   >
+                      {isAnalyzing ? (
+                        <>
+                          <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1 }} className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full" />
+                          Analyzing soil...
+                        </>
+                      ) : (
+                        <>
+                          <TrendingUp className="w-6 h-6" /> Analyze Soil & Recommend Fertilizer
+                        </>
+                      )}
+                   </motion.button>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
           {/* Unified Intelligence Dashboard */}
-          <AnimatePresence>
-            {reportData && (
-              <motion.div 
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="lg:col-span-12 space-y-8"
-              >
-                {/* Result Header & Global Health Score */}
-                <div className="bg-white/90 backdrop-blur-2xl border border-white/60 rounded-[40px] p-8 md:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
-                   <div className="absolute top-0 left-0 w-1.5 h-full bg-[#10b981]"></div>
-                   <div className="space-y-2 text-center md:text-left">
-                      <h2 className="text-3xl font-black text-gray-900 font-playfair tracking-tight">Intelligence <span className="text-[#10b981]">Report</span></h2>
-                      <p className="text-gray-500 font-nunito font-bold max-w-md">Comprehensive analysis based on your laboratory parameters and regional soil signatures.</p>
-                   </div>
-                   
-                   <div className="flex items-center gap-6 bg-[#f0f9f1] px-8 py-5 rounded-[32px] border border-green-100 shadow-inner">
-                      <div className="text-center">
-                         <p className="text-[10px] font-black text-green-700/60 uppercase tracking-widest mb-1">Health index</p>
-                         <p className="text-4xl font-black text-[#166534]">84<span className="text-lg opacity-50">/100</span></p>
-                      </div>
-                      <div className="h-10 w-px bg-green-200"></div>
-                      <div className="bg-[#10b981] text-white px-5 py-2 rounded-full font-black text-xs tracking-widest uppercase shadow-lg shadow-green-900/10">EXCELLENT</div>
-                   </div>
-                </div>
+          <div className="lg:col-span-12">
+            <AnimatePresence mode="wait">
+              {showReport && reportData && (
+                <motion.div 
+                  key="report"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  className="space-y-8 mt-12"
+                >
+                  {/* Result Header & Global Health Score */}
+                  <div className="bg-white/90 backdrop-blur-2xl border border-white/60 rounded-[40px] p-8 md:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-1.5 h-full bg-[#10b981]"></div>
+                    <div className="space-y-2 text-center md:text-left">
+                        <h2 className="text-3xl font-black text-gray-900 tracking-tight">Soil Analysis <span className="text-[#10b981]">Result 🌿</span></h2>
+                        <p className="text-gray-500 font-nunito font-bold max-w-md">Comprehensive analysis based on your laboratory parameters and regional soil signatures.</p>
+                    </div>
+                    <div className="flex flex-col items-center md:items-end gap-6 relative z-10">
+                        <OrganicSwitchButton soilData={reportData} userId={user?.id} />
+                        
+                        <div className="flex items-center gap-6 bg-[#f0f9f1] px-8 py-5 rounded-[32px] border border-green-100 shadow-inner">
+                          <div className="text-center">
+                              <p className="text-[10px] font-black text-green-700/60 uppercase tracking-widest mb-1">Health index</p>
+                              <p className="text-4xl font-black text-[#166534]">84<span className="text-lg opacity-50">/100</span></p>
+                          </div>
+                          <div className="h-10 w-px bg-green-200"></div>
+                          <div className="bg-[#10b981] text-white px-5 py-2 rounded-full font-black text-xs tracking-widest uppercase shadow-lg shadow-green-900/10">EXCELLENT</div>
+                        </div>
+                    </div>
+                  </div>
 
-                {/* Performance Grid */}
-                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
-                  {/* Left Column: Deep Visuals */}
-                  <div className="xl:col-span-7">
-                    <SoilVisualization data={reportData} />
+                  {/* Performance Grid */}
+                  <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+                    {/* Left Column: Deep Visuals */}
+                    <div className="xl:col-span-7">
+                      <SoilVisualization data={reportData} />
+                    </div>
+                    
+                    {/* Right Column: AI Action Lane */}
+                    <div className="xl:col-span-5">
+                      <SoilInsights data={reportData} />
+                    </div>
                   </div>
-                  
-                  {/* Right Column: AI Action Lane */}
-                  <div className="xl:col-span-5">
-                    <SoilInsights data={reportData} />
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
           {/* Action Footer */}
           {reportData && (

@@ -10,7 +10,7 @@
     @apply font-nunito bg-background-cream text-text-charcoal antialiased selection:bg-[#10b981] selection:text-white;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair tracking-tight;
+    @apply font-jakarta tracking-tight;
   }
   html {
     scroll-behavior: smooth;
