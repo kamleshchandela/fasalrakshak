@@ -20,7 +20,7 @@ const RecommendedBanner = ({ recommendedProducts, onProductSelect }) => {
               className="flex cursor-pointer gap-4 rounded-lg border border-green-100 bg-white p-3 transition-shadow hover:shadow-md"
               onClick={() => onProductSelect(product)}
             >
-              <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+              <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
                 <img
                   src={product.imageUrl || product.image}
                   alt={product.name}
@@ -33,9 +33,9 @@ const RecommendedBanner = ({ recommendedProducts, onProductSelect }) => {
                 />
               </div>
               <div>
-                <h3 className="line-clamp-1 text-sm font-semibold text-gray-800">{product.name}</h3>
-                <p className="text-xs text-gray-500">{product.category}</p>
-                <p className="text-sm font-bold text-primary-green">Rs.{product.price}</p>
+                <h3 className="line-clamp-1 text-base font-bold text-gray-800">{product.name}</h3>
+                <p className="text-sm text-gray-500">{product.category}</p>
+                <p className="text-base font-bold text-primary-green">Rs.{product.price}</p>
               </div>
             </div>
           ))}

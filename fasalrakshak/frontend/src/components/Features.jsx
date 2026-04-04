@@ -1,5 +1,4 @@
-import React from 'react';
-import { WifiOff, Languages, Zap, Heart, History, Cloud } from 'lucide-react';
+import { WifiOff, Languages, Zap, Heart, History, Cloud, Pill, ClipboardList, CloudRain } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { useLanguage } from '../context/LanguageContext';
@@ -13,44 +12,44 @@ import smilingFarmer from '../images/smiling_farmer.png';
 
 const features = [
   {
-    emoji: '📶',
+    icon: <WifiOff className="w-8 h-8 text-white" />,
     title: 'Offline Mode',
     desc: 'Internet nahi? Koi baat nahi. App offline bhi kaam karta khet mein!',
     img: featOffline,
     color: 'from-blue-900/90'
   },
   {
-    emoji: '🗣️',
-    title: 'Gujarati & Hindi',
-    desc: 'Apni bhasha mein results pao ΓÇö Gujarati, Hindi ya English!',
+    icon: <Languages className="w-8 h-8 text-white" />,
+    title: 'Local Languages',
+    desc: 'Apni bhasha mein results pao — Gujarati, Hindi ya English!',
     img: lushGreen,
     color: 'from-indigo-900/90'
   },
   {
-    emoji: '⚡',
-    title: '2-Second Detection',
+    icon: <Zap className="w-8 h-8 text-white" />,
+    title: '2-Second AI',
     desc: 'Hamara AI model sirf 2 second mein bimari pehchaan leta hai.',
     img: heroScan,
     color: 'from-green-900/90'
   },
   {
-    emoji: '💊',
+    icon: <Pill className="w-8 h-8 text-white" />,
     title: 'Treatment Guide',
     desc: 'Sahi dawai ka naam, matra, aur kab daalni hai, screen pe aayega.',
     img: heroFarmer,
     color: 'from-red-900/90'
   },
   {
-    emoji: '📋',
+    icon: <ClipboardList className="w-8 h-8 text-white" />,
     title: 'Scan History',
-    desc: 'Aapki saari purani scans save rehti hain ΓÇö jab chahein dekhein.',
+    desc: 'Aapki saari purani scans save rehti hain — jab chahein dekhein.',
     img: heroLandscape,
     color: 'from-amber-900/90'
   },
   {
-    emoji: '⛈️',
+    icon: <CloudRain className="w-8 h-8 text-white" />,
     title: 'Weather Risk',
-    desc: 'Aaj ke mausam se bimari ka risk kya hai, app bata dega.',
+    desc: 'Aaj ke mausam se bimari ka risk kya hai, app bata deगा.',
     img: smilingFarmer,
     color: 'from-sky-900/90'
   }
@@ -117,8 +116,8 @@ const Features = () => {
 
                   {/* Content inside card */}
                   <div className="relative z-20 h-full p-6 flex flex-col justify-end text-white">
-                    <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-[16px] flex items-center justify-center mb-4 text-2xl border border-white/30 shadow-glass group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">
-                      <span>{f.emoji}</span>
+                    <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-[16px] flex items-center justify-center mb-4 border border-white/30 shadow-glass group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">
+                      {f.icon}
                     </div>
                     <h3 className="font-playfair font-black text-2xl mb-2 drop-shadow-md">
                       {title}

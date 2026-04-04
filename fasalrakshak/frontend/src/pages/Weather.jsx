@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Cloud, Sun, CloudRain, Wind, Droplets, MapPin, Search, AlertTriangle,
   Sprout, Droplet, Thermometer, Calendar, Navigation, RefreshCw, TrendingUp,
-  Map as MapIcon, Eye
+  Map as MapIcon, Eye, Wheat, Leaf, ArrowRight
 } from 'lucide-react';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
@@ -250,6 +250,90 @@ const Weather = () => {
     if (advice.length === 0) advice.push({ type: 'info', text: t('weather.advice_optimal'), icon: <Sprout className="w-5 h-5 text-green-500" /> });
     return advice;
   })();
+
+  // ── Crop Recommendation Engine ──
+  const CROP_DATABASE = [
+    { name: 'Rice (धान)', emoji: '🌾', season: 'Kharif', months: [5,6,7,8,9], tempMin: 20, tempMax: 42, humidityMin: 60, rainMin: 40, tip: 'Needs standing water; transplant when monsoon stabilizes' },
+    { name: 'Wheat (गेहूँ)', emoji: '🌾', season: 'Rabi', months: [10,11,12,1,2], tempMin: 10, tempMax: 28, humidityMin: 30, rainMin: 0, tip: 'Sow after first cold spell; avoid waterlogging' },
+    { name: 'Maize (मक्का)', emoji: '🌽', season: 'Kharif', months: [5,6,7,8], tempMin: 21, tempMax: 38, humidityMin: 50, rainMin: 30, tip: 'Well-drained soil; spacing 60cm between rows' },
+    { name: 'Cotton (कपास)', emoji: '🏵️', season: 'Kharif', months: [4,5,6,7,8,9], tempMin: 25, tempMax: 42, humidityMin: 40, rainMin: 20, tip: 'Avoid heavy rain during boll opening stage' },
+    { name: 'Soybean (सोयाबीन)', emoji: '🫘', season: 'Kharif', months: [6,7,8,9], tempMin: 20, tempMax: 35, humidityMin: 50, rainMin: 30, tip: 'Inoculate seeds with Rhizobium for better yield' },
+    { name: 'Groundnut (मूंगफली)', emoji: '🥜', season: 'Kharif', months: [5,6,7,8], tempMin: 22, tempMax: 38, humidityMin: 40, rainMin: 20, tip: 'Sandy loam soil is ideal; calcium-rich soil preferred' },
+    { name: 'Mustard (सरसों)', emoji: '🌼', season: 'Rabi', months: [10,11,12,1,2], tempMin: 10, tempMax: 25, humidityMin: 30, rainMin: 0, tip: 'Cool dry weather ideal; irrigate at flowering stage' },
+    { name: 'Gram (चना)', emoji: '🫛', season: 'Rabi', months: [10,11,12,1], tempMin: 10, tempMax: 28, humidityMin: 25, rainMin: 0, tip: 'Drought tolerant; minimal irrigation needed' },
+    { name: 'Sugarcane (गन्ना)', emoji: '🎋', season: 'Year-round', months: [1,2,3,10,11], tempMin: 20, tempMax: 40, humidityMin: 50, rainMin: 20, tip: 'Planting in spring gives best ratoon; needs heavy watering' },
+    { name: 'Tomato (टमाटर)', emoji: '🍅', season: 'Rabi/Zaid', months: [1,2,3,8,9,10,11,12], tempMin: 15, tempMax: 30, humidityMin: 40, rainMin: 10, tip: 'Stake plants early; protect from late blight in humid weather' },
+    { name: 'Onion (प्याज)', emoji: '🧅', season: 'Rabi', months: [10,11,12,1], tempMin: 13, tempMax: 28, humidityMin: 30, rainMin: 0, tip: 'Transplant seedlings at 6 weeks; stop irrigation before harvest' },
+    { name: 'Potato (आलू)', emoji: '🥔', season: 'Rabi', months: [10,11,12], tempMin: 12, tempMax: 25, humidityMin: 60, rainMin: 0, tip: 'Avoid frost; earth up tubers to prevent greening' },
+    { name: 'Watermelon (तरबूज)', emoji: '🍉', season: 'Zaid', months: [2,3,4,5], tempMin: 25, tempMax: 42, humidityMin: 30, rainMin: 0, tip: 'Sandy soil with drip irrigation; avoid excess moisture near harvest' },
+    { name: 'Cucumber (खीरा)', emoji: '🥒', season: 'Zaid', months: [2,3,4,5,6], tempMin: 20, tempMax: 38, humidityMin: 40, rainMin: 10, tip: 'Trellis for vine support; pick fruits young for tenderness' },
+    { name: 'Mung Bean (मूंग)', emoji: '🌱', season: 'Zaid', months: [3,4,5,6], tempMin: 25, tempMax: 40, humidityMin: 40, rainMin: 10, tip: 'Short duration crop; ideal between Rabi and Kharif seasons' },
+    { name: 'Turmeric (हल्दी)', emoji: '🟡', season: 'Kharif', months: [5,6,7], tempMin: 20, tempMax: 35, humidityMin: 60, rainMin: 40, tip: 'Shade tolerant; harvest after 8-9 months when leaves dry' },
+    { name: 'Chilli (मिर्च)', emoji: '🌶️', season: 'Year-round', months: [1,2,3,6,7,8,9], tempMin: 18, tempMax: 35, humidityMin: 40, rainMin: 10, tip: 'Transplant after 40 days; regular picking increases yield' },
+    { name: 'Bajra (बाजरा)', emoji: '🌿', season: 'Kharif', months: [6,7,8], tempMin: 25, tempMax: 42, humidityMin: 30, rainMin: 15, tip: 'Drought resistant; thrives in arid sandy soil regions' },
+    { name: 'Pea (मटर)', emoji: '🫛', season: 'Rabi', months: [10,11,12,1,2,3], tempMin: 5, tempMax: 22, humidityMin: 40, rainMin: 10, tip: 'Keep soil moist; provide trellis for tall varieties' },
+    { name: 'Cabbage (पत्ता गोभी)', emoji: '🥬', season: 'Rabi', months: [8,9,10,11,12], tempMin: 10, tempMax: 24, humidityMin: 50, rainMin: 10, tip: 'Requires consistent moisture; watch for cabbage worms' },
+    { name: 'Cauliflower (फूल गोभी)', emoji: '🥦', season: 'Rabi', months: [8,9,10,11], tempMin: 12, tempMax: 25, humidityMin: 50, rainMin: 10, tip: 'Tie inner leaves over the head to keep it white (blanching)' },
+    { name: 'Spinach (पालक)', emoji: '🥬', season: 'Rabi', months: [9,10,11,12,1,2,3,4], tempMin: 5, tempMax: 24, humidityMin: 40, rainMin: 10, tip: 'Harvest outer leaves regularly to encourage new growth' },
+    { name: 'Carrot (गाजर)', emoji: '🥕', season: 'Rabi', months: [8,9,10,11,12], tempMin: 7, tempMax: 24, humidityMin: 50, rainMin: 10, tip: 'Needs deep, loose sandy soil for straight roots' },
+    { name: 'Radish (मूली)', emoji: '🌱', season: 'Year-round', months: [1,2,3,4,8,9,10,11,12], tempMin: 10, tempMax: 25, humidityMin: 50, rainMin: 10, tip: 'Quick growing; harvest before roots become woody' },
+    { name: 'Apple (सेब)', emoji: '🍎', season: 'Year-round', months: [1,2,3,10,11,12], tempMin: -5, tempMax: 25, humidityMin: 50, rainMin: 30, tip: 'Needs chilling hours in winter; regular pruning essential' },
+  ];
+
+  const getCropRecommendations = () => {
+    if (!weather) return [];
+    const temp = weather.main.temp;
+    const humidity = weather.main.humidity;
+    const rain = weather.rain_prob || 0;
+    const currentMonth = new Date().getMonth() + 1; // 1-12
+    const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
+
+    return CROP_DATABASE.map(crop => {
+      let score = 0;
+
+      // 1. Month suitability (+40 for correct sowing month, severe penalty for off-season)
+      if (crop.months.includes(currentMonth)) {
+        score += 40;
+      } else if (crop.months.includes(nextMonth)) {
+        score += 20;
+      } else {
+        score -= 40; // Heavy penalty for out-of-season
+      }
+
+      // 2. Temperature match (Most critical vector)
+      if (temp >= crop.tempMin && temp <= crop.tempMax) {
+        const mid = (crop.tempMin + crop.tempMax) / 2;
+        const dist = Math.abs(temp - mid) / ((crop.tempMax - crop.tempMin) / 2);
+        score += Math.round(30 * (1 - dist * 0.4)); // Up to +30 for perfect temp
+      } else {
+        // Punish severely if temperature is outside survivable limits
+        const overshoot = temp < crop.tempMin ? crop.tempMin - temp : temp - crop.tempMax;
+        score -= overshoot * 10; // -10 points per degree! A 3 deg difference = -30.
+      }
+
+      // 3. Humidity match
+      if (humidity >= crop.humidityMin) {
+        score += 15;
+      } else {
+        score -= (crop.humidityMin - humidity) * 0.5;
+      }
+
+      // 4. Rain match
+      if (rain >= crop.rainMin) {
+        score += 15;
+      } else {
+        score -= (crop.rainMin - rain) * 0.5;
+      }
+
+      const finalScore = Math.max(0, Math.min(100, Math.round(score)));
+      return { ...crop, score: finalScore };
+    })
+    .filter(c => c.score > 0) // Hide completely unviable crops
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 6);
+  };
+
+  const recommendedCrops = getCropRecommendations();
 
   const chartData = forecast.map((f) => ({ name: f.day, temp: f.temp, rain: f.rain }));
 
@@ -524,6 +608,129 @@ const Weather = () => {
 
             </div>
 
+            {/* ── Crop Suitability Advisor ── */}
+            {weather && recommendedCrops.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="bg-white rounded-[2.5rem] p-8 shadow-xl shadow-gray-200/40 border border-gray-50"
+              >
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 bg-[#1A6B2F] rounded-2xl shadow-lg shadow-[#1A6B2F]/20">
+                      <Wheat className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-playfair font-bold text-[#0D3D1A]">Crop Suitability Advisor</h3>
+                      <p className="text-sm text-gray-500 font-nunito mt-0.5">Based on current weather &amp; seasonal calendar</p>
+                    </div>
+                  </div>
+
+                  {/* Weather snapshot used for scoring */}
+                  <div className="flex flex-wrap items-center gap-2">
+                    <div className="flex items-center gap-1.5 bg-orange-50 border border-orange-100 text-orange-700 px-3 py-1.5 rounded-full text-xs font-bold">
+                      <Thermometer className="w-3.5 h-3.5" />{weather.main.temp}°C
+                    </div>
+                    <div className="flex items-center gap-1.5 bg-blue-50 border border-blue-100 text-blue-700 px-3 py-1.5 rounded-full text-xs font-bold">
+                      <Droplets className="w-3.5 h-3.5" />{weather.main.humidity}% RH
+                    </div>
+                    <div className="flex items-center gap-1.5 bg-indigo-50 border border-indigo-100 text-indigo-700 px-3 py-1.5 rounded-full text-xs font-bold">
+                      <CloudRain className="w-3.5 h-3.5" />{weather.rain_prob}% Rain
+                    </div>
+                    <div className="flex items-center gap-1.5 bg-green-50 border border-green-100 text-green-700 px-3 py-1.5 rounded-full text-xs font-bold">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {new Date().toLocaleString('default', { month: 'long' })}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Crop Cards Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {recommendedCrops.map((crop, idx) => {
+                    const scoreColor =
+                      crop.score >= 70 ? 'bg-green-500' :
+                      crop.score >= 45 ? 'bg-amber-400' : 'bg-rose-400';
+                    const scoreBg =
+                      crop.score >= 70 ? 'bg-green-50 border-green-100' :
+                      crop.score >= 45 ? 'bg-amber-50 border-amber-100' : 'bg-rose-50 border-rose-100';
+                    const scoreText =
+                      crop.score >= 70 ? 'text-green-700' :
+                      crop.score >= 45 ? 'text-amber-700' : 'text-rose-600';
+                    const seasonColor =
+                      crop.season === 'Kharif' ? 'bg-blue-100 text-blue-700' :
+                      crop.season === 'Rabi'   ? 'bg-yellow-100 text-yellow-700' :
+                      crop.season === 'Zaid'   ? 'bg-purple-100 text-purple-700' :
+                                                 'bg-gray-100 text-gray-600';
+
+                    return (
+                      <motion.div
+                        key={crop.name}
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: idx * 0.07 }}
+                        className={`group relative rounded-3xl border p-5 hover:shadow-md transition-all cursor-default ${scoreBg}`}
+                      >
+                        {/* Top row */}
+                        <div className="flex items-start justify-between mb-3">
+                          <div className="flex items-center gap-2.5">
+                            <span className="text-3xl">{crop.emoji}</span>
+                            <div>
+                              <p className="font-bold text-[#0D3D1A] text-sm leading-snug">{crop.name}</p>
+                              <span className={`inline-block text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full mt-0.5 ${seasonColor}`}>
+                                {crop.season}
+                              </span>
+                            </div>
+                          </div>
+                          {/* Rank badge for top 3 */}
+                          {idx < 3 && (
+                            <span className="text-lg">{['🥇','🥈','🥉'][idx]}</span>
+                          )}
+                        </div>
+
+                        {/* Suitability score bar */}
+                        <div className="mb-3">
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-[10px] font-black uppercase tracking-wider text-gray-400">Suitability</span>
+                            <span className={`text-xs font-black ${scoreText}`}>{crop.score}%</span>
+                          </div>
+                          <div className="h-1.5 w-full bg-white/70 rounded-full overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              animate={{ width: `${crop.score}%` }}
+                              transition={{ duration: 0.8, delay: idx * 0.07 + 0.3 }}
+                              className={`h-full rounded-full ${scoreColor}`}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Ideal conditions */}
+                        <div className="flex gap-2 mb-3 flex-wrap">
+                          <span className="flex items-center gap-1 text-[10px] font-semibold text-gray-500 bg-white/70 px-2 py-1 rounded-full">
+                            <Thermometer className="w-3 h-3" />{crop.tempMin}–{crop.tempMax}°C
+                          </span>
+                          <span className="flex items-center gap-1 text-[10px] font-semibold text-gray-500 bg-white/70 px-2 py-1 rounded-full">
+                            <Droplets className="w-3 h-3" />&gt;{crop.humidityMin}% RH
+                          </span>
+                        </div>
+
+                        {/* Growing tip */}
+                        <div className="flex items-start gap-1.5 bg-white/60 rounded-2xl px-3 py-2">
+                          <Leaf className="w-3 h-3 text-[#1A6B2F] mt-0.5 shrink-0" />
+                          <p className="text-[11px] text-gray-600 font-medium leading-snug">{crop.tip}</p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+
+                {/* Footer note */}
+                <p className="mt-5 text-center text-xs text-gray-400 font-nunito">
+                  Recommendations are based on current temperature, humidity, rain probability &amp; planting calendar. Consult a local agronomist for final decisions.
+                </p>
+              </motion.div>
+            )}
           </div>
         )}
       </div>

@@ -75,9 +75,9 @@ export const en = {
     title: "How It Works — Just 3 Steps",
     desc: "Take a photo. We do the rest.",
     steps: [
-      { title: 'Take a Photo', desc: 'Click a clear photo of the diseased leaf using your mobile camera, or choose from your gallery.' },
-      { title: 'AI Analyzes Instantly', desc: 'Our AI model identifies the crop disease in just 2 seconds with 94% accuracy.' },
-      { title: 'Get Treatment Advice', desc: 'Disease name, severity, medicine & dosage — shown in English, Hindi or Gujarati.' }
+      { title: 'Open App', desc: 'Launch the FasalRakshak app on your smartphone to begin.' },
+      { title: 'Snap Photo', desc: 'Take a clear picture of the affected crop leaf using the in-app camera.' },
+      { title: 'Get Results', desc: 'Instantly view disease details and a professional treatment guide.' }
     ],
     supportTag: "Regional Support",
     supportTitle: "Gujarat's 3 Major Crops We Support",
@@ -88,17 +88,17 @@ export const en = {
     ]
   },
   story: {
-    tag: "Our Story",
+    tag: "Our Mission",
     title1: "Built For Farmers,",
     title2: "By Farmers",
     p1: "Understanding the real needs of our farmers, we built FasalRakshak — a tool that is fast, accurate, and completely free.",
     p2: "Whether you grow <strong class='text-[#064e3b] font-bold bg-[#10b981]/10 px-2 py-0.5 rounded'>Groundnut in Anand</strong>, <strong class='text-[#064e3b] font-bold bg-[#10b981]/10 px-2 py-0.5 rounded'>Wheat in North Gujarat</strong>, or <strong class='text-[#064e3b] font-bold bg-[#10b981]/10 px-2 py-0.5 rounded'>Cotton in Saurashtra</strong> — FasalRakshak protects your crop like family.",
     points: [
-      'Free for all farmers — forever',
+      'Free for now — Early Access',
       'Works in Gujarati, Hindi & English',
       'No internet needed in offline mode'
     ],
-    readMore: "Read Our Story"
+    readMore: "Learn More"
   },
   testimonials: {
     tag: "Farmer Reviews",
