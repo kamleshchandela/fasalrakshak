@@ -12,7 +12,7 @@ const quickActions = [
   { id: 'schemes', icon: <HandCoins className="w-4 h-4 text-emerald-600" />, label: "Govt Schemes" },
 ];
 
-const AISahayikBot = ({ isOpen, onClose }) => {
+const AISahayikBot = ({ isOpen, onClose, initialPosition }) => {
   const [messages, setMessages] = useState([
     { 
       role: 'assistant', 
@@ -86,13 +86,25 @@ const AISahayikBot = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
+  const isTooHigh = initialPosition?.y < 400; // If trigger is in the top 400px
+
+  const dynamicStyle = initialPosition?.y > 0 ? {
+    ...(isTooHigh ? { top: `calc(${initialPosition.y}px + 60px)` } : { bottom: `calc(100vh - ${initialPosition.y}px + 10px)` }),
+    left: `calc(clamp(20px, ${initialPosition.x}px - 190px, 100vw - 400px))`, // clamp to handle edges
+    transform: 'none'
+  } : {
+    bottom: '100px',
+    right: '24px'
+  };
+
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0, y: 50, scale: 0.9, x: 20 }}
-        animate={{ opacity: 1, y: 0, scale: 1, x: 0 }}
-        exit={{ opacity: 0, y: 50, scale: 0.9, x: 20 }}
-        className="fixed bottom-24 right-4 md:right-8 w-[380px] h-[600px] max-h-[85vh] bg-[#F7F9F5] rounded-[32px] shadow-[0_20px_60px_rgba(0,0,0,0.15)] flex flex-col z-[1000] border border-green-100/50 overflow-hidden"
+        initial={{ opacity: 0, y: isTooHigh ? -20 : 20, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: isTooHigh ? -20 : 20, scale: 0.9 }}
+        style={{ ...dynamicStyle, position: 'fixed' }}
+        className="w-[380px] h-[600px] max-h-[85vh] bg-[#F7F9F5] rounded-[32px] shadow-[0_20px_60px_rgba(0,0,0,0.15)] flex flex-col z-[1000] border border-green-100/50 overflow-hidden"
       >
         {/* Header */}
         <div className="bg-[#4D9D53] p-5 flex justify-between items-center text-white shrink-0 shadow-lg relative z-20">

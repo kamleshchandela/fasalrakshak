@@ -28,6 +28,8 @@ import AISahayikBot from './components/chatbot/AISahayikBot';
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [botPosition, setBotPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
   const location = useLocation();
   const { isLoading, isLoggedIn } = React.useContext(AuthContext);
 
@@ -192,9 +194,18 @@ function App() {
           <motion.button
             drag
             dragMomentum={false}
+            dragElastic={0}
+            onDragStart={() => setIsDragging(true)}
+            onDragEnd={(_, info) => {
+              setBotPosition({ x: info.point.x, y: info.point.y });
+              // Small timeout to prevent immediate click trigger after drag
+              setTimeout(() => setIsDragging(false), 50);
+            }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95, cursor: "grabbing" }}
-            onClick={() => setIsChatOpen(true)}
+            onClick={() => {
+              if (!isDragging) setIsChatOpen(true);
+            }}
             className="bg-[#4D9D53] text-white px-3 py-2.5 rounded-full shadow-2xl flex items-center gap-2 border border-white/20 whitespace-nowrap hover:bg-[#3d8343] transition-colors cursor-grab active:cursor-grabbing"
           >
             <div className="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center shrink-0">
@@ -209,7 +220,11 @@ function App() {
       </div>
       
       {/* The actual Chatbot Component */}
-      <AISahayikBot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+      <AISahayikBot 
+        isOpen={isChatOpen} 
+        onClose={() => setIsChatOpen(false)} 
+        initialPosition={botPosition}
+      />
     </div>
   );
 }
