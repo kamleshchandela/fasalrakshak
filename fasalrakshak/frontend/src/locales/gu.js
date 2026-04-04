@@ -7,7 +7,14 @@ export const gu = {
     about: "અમારા વિશે",
     contact: "સંપર્ક કરો",
     login: "લોગીન",
-    store: "સ્ટોર"
+    store: "સ્ટોર",
+    organic: {
+      dashboard: "ડેશબોર્ડ",
+      market: "માર્કેટ માહિતી",
+      crop_path: "પાક માર્ગ",
+      engine: "એન્જિન",
+      greenhouse: "ગ્રીનહાઉસ"
+    }
   },
   hero: {
     title1: "ખેડૂતની દરેક જરૂરિયાત",

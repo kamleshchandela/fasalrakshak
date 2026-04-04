@@ -38,6 +38,19 @@ const Navbar = () => {
     };
   }, []);
 
+  // Smooth scroll handler for hash links
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [location.pathname, location.hash]);
+
   const isOrganicMode = location.pathname === '/organic';
 
   const navLinks = [
@@ -50,11 +63,11 @@ const Navbar = () => {
   ];
 
   const organicLinks = [
-    { name: 'Dashboard', href: '/', icon: <Leaf className="w-4 h-4 text-emerald-400" /> },
-    { name: 'Market Info', href: '#schemes', icon: <Landmark className="w-4 h-4 text-orange-400" /> },
-    { name: 'Crop Path', href: '#timeline', icon: <Users className="w-4 h-4 text-emerald-400" /> },
-    { name: 'Engine', href: '#features', icon: <FlaskConical className="w-4 h-4 text-emerald-400" /> },
-    { name: 'Greenhouse', href: '#greenhouse', icon: <Globe className="w-4 h-4 text-sky-400" /> },
+    { name: t('nav.organic.dashboard'), href: '/organic#hero', icon: <Leaf className="w-4 h-4 text-emerald-400" /> },
+    { name: t('nav.organic.market'), href: '/organic#schemes', icon: <Landmark className="w-4 h-4 text-orange-400" /> },
+    { name: t('nav.organic.crop_path'), href: '/organic#timeline', icon: <Users className="w-4 h-4 text-emerald-400" /> },
+    { name: t('nav.organic.engine'), href: '/organic#features', icon: <FlaskConical className="w-4 h-4 text-emerald-400" /> },
+    { name: t('nav.organic.greenhouse'), href: '/organic#greenhouse', icon: <Globe className="w-4 h-4 text-sky-400" /> },
   ];
 
   const activeLinks = isOrganicMode ? organicLinks : navLinks;

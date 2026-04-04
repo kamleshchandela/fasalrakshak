@@ -7,7 +7,14 @@ export const hi = {
     about: "हमारे बारे में",
     contact: "संपर्क करें",
     login: "लॉगिन",
-    store: "स्टोर"
+    store: "स्टोर",
+    organic: {
+      dashboard: "डैशबोर्ड",
+      market: "मार्केट जानकारी",
+      crop_path: "फसल पथ",
+      engine: "इंजन",
+      greenhouse: "ग्रीनहाउस"
+    }
   },
   hero: {
     title1: "किसान की हर ज़रूरत",
