@@ -1,6 +1,7 @@
-﻿import React from 'react';
+import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
 import kisan1  from '../images/kisan1.png';
@@ -82,10 +83,10 @@ const StorySection = () => {
               ))}
             </div>
 
-            <a href="#about" className="inline-flex items-center gap-2 group text-[#059669] font-nunito font-extrabold text-lg hover:text-[#047857] transition-colors mt-4">
+            <Link to="/organic" className="inline-flex items-center gap-2 group text-[#059669] font-nunito font-extrabold text-lg hover:text-[#047857] transition-colors mt-4">
               <span className="border-b-2 border-[#10b981]/30 group-hover:border-[#059669] pb-0.5 transition-colors">{t('story.readMore')}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>
