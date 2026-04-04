@@ -71,7 +71,7 @@ export const translations = {
     'testimonials.tag': 'Farmer Stories',
     'testimonials.title': 'Loved by Farmers',
     'testimonials.desc': 'See how FasalRakshak is changing lives across India.',
-    'testimonials.reviews': [
+    'testimonials.testimonials': [
       {
         name: "Rameshbhai Patel", location: "Anand, Gujarat",
         quote: "My groundnut crop was getting destroyed. FasalRakshak identified the disease in just 2 seconds. My crop is saved and I saved a lot of money!",
@@ -141,6 +141,15 @@ export const translations = {
     'login.trusted': 'TRUSTED BY 10K+ FARMERS',
     'login.designed': 'Designed with ❤️ for the Indian Farmer',
     'login.back': 'Back to Home',
+
+    'organic.hero.tag': 'AI-POWERED AGRICULTURAL INTELLIGENCE',
+    'organic.hero.title1': 'Grow ',
+    'organic.hero.title2': 'Smarter.',
+    'organic.hero.title3': 'Grow ',
+    'organic.hero.title4': 'Organic.',
+    'organic.hero.desc': 'Transform your farm with a complete smart farming ecosystem. Combine deep AI insights, Indian government support, and futuristic greenhouse logic in one click.',
+    'organic.hero.btn1': 'Make My Farm Organic',
+    'organic.hero.btn2': 'Explore Organic HUB',
 
     'store.badge': 'Premium Agri Inputs Store',
     'store.title': 'FasalRakshak',
@@ -362,7 +371,7 @@ export const translations = {
     'testimonials.tag': 'किसान की कहानियाँ',
     'testimonials.title': 'किसानों की पसंद',
     'testimonials.desc': 'देखें कैसे फसलरक्षक पूरे भारत में किसानों की ज़िंदगी बदल रहा है।',
-    'testimonials.reviews': [
+    'testimonials.testimonials': [
       {
         name: "रमेशभाई पटेल", location: "आणंद, गुजरात",
         quote: "मेरी मूंगफली की फसल खराब हो रही थी। फसलरक्षक ने सिर्फ 2 सेकंड में बीमारी पहचान ली। मेरी फसल भी बच गई और काफी पैसे भी बचे!",
@@ -433,6 +442,15 @@ export const translations = {
     'login.designed': 'भारतीय किसानों के लिए ❤️ के साथ डिज़ाइन किया गया',
     'login.back': 'मुख्य पृष्ठ पर वापस',
 
+    'organic.hero.tag': 'एआई-संचालित कृषि खुफिया',
+    'organic.hero.title1': 'समझदारी से ',
+    'organic.hero.title2': 'उगाएं।',
+    'organic.hero.title3': 'जैविक ',
+    'organic.hero.title4': 'अपनाएं।',
+    'organic.hero.desc': 'एक संपूर्ण स्मार्ट कृषि पारिस्थितिकी तंत्र के साथ अपने खेत को बदलें। एक क्लिक में गहन एआई अंतर्दृष्टि, भारत सरकार की सहायता और भविष्य के ग्रीनहाउस लॉजिक को जोड़ें।',
+    'organic.hero.btn1': 'खेती को जैविक बनाएं',
+    'organic.hero.btn2': 'ऑर्गेनिक हब देखें',
+    
     'store.badge': 'प्रीमियम कृषि इनपुट स्टोर',
     'store.title': 'फसलरक्षक',
     'store.titleHighlight': 'स्टोर',
@@ -494,7 +512,7 @@ export const translations = {
     'store.season': 'मौसम',
     'store.addedToCartFull': 'कार्ट में जोड़ा!',
     'store.buyOnWhatsapp': 'WhatsApp पर खरीदें',
-    'store.contactSeller': 'विक्रेता से संपर्क करें',
+    'store.contactSeller': 'विक્રેતા से संपर्क करें',
     'store.paymentNote': 'भुगतान और डिलीवरी WhatsApp पर सीधे विक्रेता के साथ होती है।',
     'store.productOverview': 'उत्पाद अवलोकन',
     'store.composition': 'संरचना',
@@ -557,7 +575,7 @@ export const translations = {
     'weather.soil_humidity': 'मिट्टी की नमी',
     'weather.wind_speed': 'हवा की गति',
     'weather.rain_prob': 'बारिश की संभावना',
-    'weather.air_soil_sat': 'वायु-मृदा संतृप्ति',
+    'weather.air_soil_sat': 'वायु-मृदा संतૃप्ति',
     'weather.avg_wind': 'औसत वर्तमान गति',
     'weather.precip_risk': 'वर्षा का जोखिम',
     'weather.radar_title': 'इंटरएक्टिव कृषि रडार',
@@ -660,7 +678,7 @@ export const translations = {
     'testimonials.tag': 'ખેડૂતોની વાર્તાઓ',
     'testimonials.title': 'ખેડૂતોની પસંદ',
     'testimonials.desc': 'જુઓ ફસલરક્ષક સમગ્ર ભારતમાં ખેડૂતોનું જીવન કેવી રીતે બદલી રહ્યું છે.',
-    'testimonials.reviews': [
+    'testimonials.testimonials': [
       {
         name: "રમેશભાઈ પટેલ", location: "આણંદ, ગુજરાત",
         quote: "મારો મગફળીનો પાક બગડી રહ્યો હતો. ફસલરક્ષકે 2 સેકન્ડમાં રોગ ઓળખી કાઢ્યો. મારો પાક પણ બચી ગયો અને મારા ઘણા પૈસા પણ બચ્યા!",
@@ -726,14 +744,20 @@ export const translations = {
 
     'login.slogan': 'વધુ સારી ખેતી માટે તમારો Digital સાથી.',
     'login.googleBtn': 'Google સાથે લૉગિન કરો',
-    'soil.manual': '✍️ મેન્યુઅલ એન્ટ્રી',
-    'soil.upload': '📄 PDF અપલોડ',
-    'soil.scan': '📸 ફોટો સ્કેન',
     'login.secure': 'સુરક્ષિત લૉગિન',
     'login.free': 'મફત ઉપયોગ',
     'login.trusted': '10,000+ ખેડૂતોનો વિશ્વાસ',
     'login.designed': 'ભારતીય ખેડૂતો માટે ❤️ સાથે ડિઝાઈન કરેલ',
-    'login.back': 'મુખ્ય પૃષ્ઠ પર પાછા ફરો',
+    'login.back': 'મુખ્ય પૃષ્ઠ પર પાછા',
+
+    'organic.hero.tag': 'એઆઈ-સંચાલિત કૃષિ બુદ્ધિ',
+    'organic.hero.title1': 'સમજદારી થી ',
+    'organic.hero.title2': 'ઉગાડો.',
+    'organic.hero.title3': 'જૈવિક ',
+    'organic.hero.title4': 'અપનાવો.',
+    'organic.hero.desc': 'સંપૂર્ણ સ્માર્ટ ફાર્મિંગ ઇકોસિસ્ટમ સાથે તમારા ખેતરને બદલો. એક ક્લિકમાં ઊંડી AI આંતરદૃષ્ટિ, ભારત સરકારની સહાય અને ભવિષ્યવાદી ગ્રીનહાઉસ લોજિકને જોડો.',
+    'organic.hero.btn1': 'ખેતીને જૈવિક બનાવો',
+    'organic.hero.btn2': 'ઓર્ગેનિક હબ જુઓ',
 
     'store.badge': 'પ્રીમિયમ કૃષિ ઇનપુટ સ્ટોર',
     'store.title': 'ફસલરક્ષક',
@@ -888,7 +912,7 @@ export const translations = {
     'weather.irrigation_heavy_rain': '⚠️ ભારે વરસાદની શક્યતા. જમીનનું ધોવાણ રોકવા માટે આગામી 24 કલાક પિયત બંધ રાખો.',
     'weather.irrigation_clear': '✅ ચોખ્ખું આકાશ. સવારે 6:00 થી 9:00 વચ્ચે સામાન્ય પિયત આપો.',
     'weather.location_verified': 'સ્થાન ચકાસણી સફળ',
-    'weather.current_selection': 'વર્તમાન પસંદગી',
+    'weather.current_selection': 'વરત્માન પસંદગી',
     'weather.fetch_failed': 'આ સ્થાન માટે હવામાનની માહિતી મળી નથી.'
   }
 };
@@ -917,7 +941,7 @@ export const LanguageProvider = ({ children }) => {
       } else {
         // Return key name if not found to help debugging
         // But for arrays, we should return an empty array to prevent .map() crashes
-        if (key.includes('Links') || key.includes('items') || key.includes('steps')) {
+        if (key.includes('Links') || key.includes('items') || key.includes('steps') || key.includes('stats') || key.includes('crops') || key.includes('testimonials')) {
           return [];
         }
         return key; 

@@ -18,12 +18,18 @@ import AgriStore from './pages/Store';
 import Weather from './pages/Weather';
 import Ecosystem from './pages/Ecosystem';
 import SoilReport from './pages/SoilReport';
+import LandingPage from './pages/LandingPage';
+import OrganicToggle from './components/organic/OrganicToggle';
 
 import { AuthContext } from './context/AuthContext';
 import { useLanguage } from './context/LanguageContext';
+import AISahayikBot from './components/chatbot/AISahayikBot';
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [botPosition, setBotPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
   const location = useLocation();
   const { isLoading, isLoggedIn } = React.useContext(AuthContext);
 
@@ -165,28 +171,60 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route 
+              path="/organic" 
+              element={
+                <ProtectedRoute>
+                  <LandingPage />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </AnimatePresence>
       </div>
 
       {!isAuthPage && <Footer />}
 
-      {/* Global AI Chatbot Floating */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="bg-[#2d5a27] text-white p-4 rounded-full shadow-2xl flex items-center gap-3 border border-white/20 whitespace-nowrap"
-        >
-          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-            <Leaf className="w-5 h-5 text-green-200" />
-          </div>
-          <div className="flex flex-col items-start pr-2">
-            <span className="text-[10px] font-black uppercase tracking-tighter opacity-70">FasalRakshak AI</span>
-            <span className="text-sm font-bold">Quick Chat</span>
-          </div>
-        </motion.button>
+      {/* Global Organic Farming Switch Toggle */}
+      <OrganicToggle />
+
+      {/* Global AI Chatbot Floating Trigger */}
+      <div className="fixed bottom-6 right-6 z-[600]">
+        {!isChatOpen && (
+          <motion.button
+            drag
+            dragMomentum={false}
+            dragElastic={0}
+            onDragStart={() => setIsDragging(true)}
+            onDragEnd={(_, info) => {
+              setBotPosition({ x: info.point.x, y: info.point.y });
+              // Small timeout to prevent immediate click trigger after drag
+              setTimeout(() => setIsDragging(false), 50);
+            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95, cursor: "grabbing" }}
+            onClick={() => {
+              if (!isDragging) setIsChatOpen(true);
+            }}
+            className="bg-[#4D9D53] text-white px-3 py-2.5 rounded-full shadow-2xl flex items-center gap-2 border border-white/20 whitespace-nowrap hover:bg-[#3d8343] transition-colors cursor-grab active:cursor-grabbing"
+          >
+            <div className="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center shrink-0">
+              <Leaf className="w-4 h-4 text-green-100" />
+            </div>
+            <div className="flex flex-col items-start pr-1">
+              <span className="text-[8px] font-black uppercase tracking-tighter opacity-80 leading-none">KisanDost AI</span>
+              <span className="text-[12px] font-bold leading-tight">Sahayak</span>
+            </div>
+          </motion.button>
+        )}
       </div>
+      
+      {/* The actual Chatbot Component */}
+      <AISahayikBot 
+        isOpen={isChatOpen} 
+        onClose={() => setIsChatOpen(false)} 
+        initialPosition={botPosition}
+      />
     </div>
   );
 }

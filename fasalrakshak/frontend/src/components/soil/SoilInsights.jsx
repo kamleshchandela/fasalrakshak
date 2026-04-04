@@ -1,21 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Lightbulb, Info, AlertCircle, CheckCircle2, TrendingUp, TrendingDown, Target, Zap, ChevronRight, MessageSquareCode, ShieldCheck } from 'lucide-react';
+import { Lightbulb, Info, AlertCircle, CheckCircle2, TrendingUp, TrendingDown, Target, Zap, ChevronRight, MessageSquareCode, ShieldCheck, Microscope } from 'lucide-react';
+import SoilAnalysisComparisonModal from './SoilAnalysisComparisonModal';
 
 const SoilInsights = ({ data }) => {
+  const [isVeracityModalOpen, setIsVeracityModalOpen] = React.useState(false);
+
   const getInsights = () => {
     let list = [];
+    const ph = parseFloat(data?.pH) || 7.0;
+    const n = parseFloat(data?.Nitrogen) || 0;
+    const k = parseFloat(data?.Potassium) || 0;
     
     // pH logic
-    if (data.pH < 6.5) list.push({ type: 'warning', title: 'Slightly Acidic Soil', desc: 'Add agricultural lime (CaCO3) to neutralize for optimal nutrient uptake.', icon: <AlertCircle className="text-red-500 w-5 h-5 shadow-red-500/10" />, category: 'IMMEDIATE' });
-    else if (data.pH > 7.5) list.push({ type: 'warning', title: 'Alkaline Soil', desc: 'Add gypsum or sulfur to lower pH levels back to the target range.', icon: <AlertCircle className="text-orange-500 w-5 h-5 shadow-orange-500/10" />, category: 'URGENT' });
+    if (ph < 6.5) list.push({ type: 'warning', title: 'Slightly Acidic Soil', desc: 'Add agricultural lime (CaCO3) to neutralize for optimal nutrient uptake.', icon: <AlertCircle className="text-red-500 w-5 h-5 shadow-red-500/10" />, category: 'IMMEDIATE' });
+    else if (ph > 7.5) list.push({ type: 'warning', title: 'Alkaline Soil', desc: 'Add gypsum or sulfur to lower pH levels back to the target range.', icon: <AlertCircle className="text-orange-500 w-5 h-5 shadow-orange-500/10" />, category: 'URGENT' });
     else list.push({ type: 'success', title: 'Ideal pH Level', desc: 'Great work! Maintain organic matter to keep this balance stable.', icon: <CheckCircle2 className="text-green-500 w-5 h-5" />, category: 'MAINTENANCE' });
 
     // Nitrogen
-    if (data.Nitrogen < 100) list.push({ type: 'danger', title: 'Low Nitrogen (N)', desc: 'Add urea or organic manure immediately to boost leafy growth.', icon: <Zap className="text-[#10b981] w-5 h-5 animate-pulse" />, category: 'CRITICAL' });
+    if (n < 100) list.push({ type: 'danger', title: 'Low Nitrogen (N)', desc: 'Add urea or organic manure immediately to boost leafy growth.', icon: <Zap className="text-[#10b981] w-5 h-5 animate-pulse" />, category: 'CRITICAL' });
     
     // Potassium
-    if (data.Potassium < 200) list.push({ type: 'warning', title: 'Potassium Boost Need', desc: 'Enhance plant disease resistance with MOP during mid-stage.', icon: <ShieldCheck className="text-blue-500 w-5 h-5" />, category: 'PLANNED' });
+    if (k < 200) list.push({ type: 'warning', title: 'Potassium Boost Need', desc: 'Enhance plant disease resistance with MOP during mid-stage.', icon: <ShieldCheck className="text-blue-500 w-5 h-5" />, category: 'PLANNED' });
 
     // Crop Suggestions
     if (data.SoilType === 'Alluvial' || !data.SoilType) list.push({ type: 'crop', title: 'Best for Rice & Wheat', desc: 'Your current NPK balance is ideal for high-yield cereal crops.', icon: <TrendingUp className="text-blue-500 w-5 h-5" />, category: 'YIELD' });
@@ -33,8 +39,8 @@ const SoilInsights = ({ data }) => {
     >
       <div className="flex justify-between items-center mb-10">
         <div>
-          <h3 className="text-2xl font-black text-gray-900 font-playfair tracking-tight">AI <span className="text-[#10b981]">Soil Strategies</span></h3>
-          <p className="text-gray-400 font-nunito font-bold text-sm">Targeted recommendations for your field</p>
+          <h3 className="text-2xl font-black text-gray-900 tracking-tight text-left">AI <span className="text-[#10b981]">Soil Strategies</span></h3>
+          <p className="text-gray-400 font-nunito font-bold text-sm text-left">Targeted recommendations for your field</p>
         </div>
         <div className="bg-[#f0fdf4] p-3 rounded-2xl shadow-inner border border-green-50">
            <Lightbulb className="w-6 h-6 text-[#166534]" />
@@ -97,20 +103,33 @@ const SoilInsights = ({ data }) => {
          <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:rotate-12 transition-transform h-full">
             <TrendingUp className="w-32 h-32 text-white" />
          </div>
-         <div className="relative z-10">
+          <div className="relative z-10">
             <div className="flex items-center gap-3 mb-4">
                <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center shrink-0 border border-white/10">
                   <TrendingUp className="text-white w-5 h-5" />
                </div>
-               <p className="text-white font-playfair font-black text-xl tracking-tight">Yield Potential</p>
+               <p className="text-white font-black text-xl tracking-tight">Yield Potential</p>
             </div>
             <div className="flex items-baseline gap-2 mb-2">
                <span className="text-3xl font-black text-emerald-400 tracking-tighter">+12.4%</span>
                <span className="text-xs font-bold text-white/50 uppercase tracking-widest">Growth Forecast</span>
             </div>
-            <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] leading-normal">Optimised by FasalRakshak Core AI Engine</p>
+            
+            <button 
+               onClick={() => setIsVeracityModalOpen(true)}
+               className="mt-4 w-full py-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-2xl flex items-center justify-center gap-2 text-white text-[10px] font-black uppercase tracking-widest transition-all"
+            >
+               <Microscope className="w-3 h-3" /> Launch Veracity Check
+            </button>
          </div>
       </motion.div>
+
+      <SoilAnalysisComparisonModal 
+         isOpen={isVeracityModalOpen}
+         onClose={() => setIsVeracityModalOpen(false)}
+         userInputs={data}
+         aiAnalysis={insights}
+      />
     </motion.div>
   );
 };
