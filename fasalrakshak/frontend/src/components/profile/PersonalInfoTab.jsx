@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AuthContext } from '../../context/AuthContext';
-import { Lock } from 'lucide-react';
 
 const PersonalInfoTab = () => {
   const { user, updateUser } = useContext(AuthContext);
@@ -11,9 +10,10 @@ const PersonalInfoTab = () => {
   const [formData, setFormData] = useState({
     name: '',
     gender: 'male',
+    mobile: '',
     village: '',
     district: '',
-    state: ''
+    state: 'Gujarat'
   });
   
   const [error, setError] = useState(null);
@@ -24,6 +24,7 @@ const PersonalInfoTab = () => {
       setFormData({
         name: user.name || '',
         gender: user.gender || 'male',
+        mobile: user.mobile || '',
         village: user.village || '',
         district: user.district || '',
         state: user.state || 'Gujarat'
@@ -47,6 +48,10 @@ const PersonalInfoTab = () => {
   const handleSave = async () => {
     if (formData.name.trim().length < 2) {
       showError("Name must be at least 2 characters.");
+      return;
+    }
+    if (formData.mobile && formData.mobile.length !== 10) {
+      showError("Mobile number must be exactly 10 digits.");
       return;
     }
     
@@ -128,21 +133,20 @@ const PersonalInfoTab = () => {
                 </span>
               } />
               
-              {/* Mobile row gets custom rendering */}
+              {/* Mobile number view */}
               <div className="flex justify-between items-center py-4 border-b border-primary-sage relative">
-                <span className="font-nunito text-gray-400 font-bold text-[14px]">Mobile Number</span>
+                <span className="font-nunito text-gray-400 font-bold text-[14px]">📱 Mobile Number</span>
                 <span className="font-nunito font-extrabold text-[16px] text-text-charcoal flex items-center gap-2">
-                  +91 XXXXXX{user?.mobile?.slice(-4)}
+                  {user?.mobile
+                    ? `🇮🇳 +91 ••••••${user.mobile.slice(-4)}`
+                    : <span className="text-gray-300 font-medium text-[14px]">Not set — tap ✏️ to add</span>
+                  }
                 </span>
               </div>
 
               <ViewRow label="Village / Town" value={user?.village} />
               <ViewRow label="District" value={user?.district} />
               <ViewRow label="State" value={user?.state} />
-              
-              <p className="mt-8 text-center text-gray-400 font-bold text-[12px] bg-gray-50 p-3 rounded-lg border border-gray-100">
-                🔒 Mobile number cannot be changed. Contact support if needed.
-              </p>
             </div>
           ) : (
             <div className="flex flex-col gap-5">
@@ -196,16 +200,42 @@ const PersonalInfoTab = () => {
                 </div>
               </div>
 
-              <div className="space-y-1 relative">
-                <label className="text-[14px] font-nunito font-bold text-gray-500 ml-1">Mobile Number</label>
-                <div className="relative">
-                  <input 
-                    type="text" disabled 
-                    value={`+91 ${user?.mobile}`}
-                    className="w-full h-[52px] bg-gray-50 border-[1.5px] border-gray-200 rounded-xl pl-12 font-nunito font-bold text-[16px] text-gray-400 cursor-not-allowed"
+              {/* Editable Mobile Number */}
+              <div className="space-y-1">
+                <label className="text-[14px] font-nunito font-bold text-gray-500 ml-1">
+                  📱 Mobile Number <span className="text-primary-green font-semibold">(for SMS crop alerts)</span>
+                </label>
+                <div className="flex items-center border-[1.5px] border-primary-sage rounded-xl overflow-hidden focus-within:border-primary-green focus-within:ring-4 focus-within:ring-primary-lightGreen transition-all bg-white">
+                  <span className="h-[52px] px-4 bg-gray-50 border-r border-primary-sage flex items-center font-nunito font-bold text-[15px] text-gray-600 shrink-0 select-none">
+                    🇮🇳 +91
+                  </span>
+                  <input
+                    type="tel"
+                    name="mobile"
+                    inputMode="numeric"
+                    maxLength={10}
+                    placeholder="Enter 10-digit number"
+                    value={formData.mobile}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                      setFormData({ ...formData, mobile: val });
+                    }}
+                    className="flex-1 h-[52px] px-4 font-nunito font-bold text-[16px] text-text-charcoal outline-none bg-transparent"
                   />
-                  <Lock className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                  <AnimatePresence>
+                    {formData.mobile?.length === 10 && (
+                      <motion.span
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0, opacity: 0 }}
+                        className="px-4 text-green-500 text-xl"
+                      >✓</motion.span>
+                    )}
+                  </AnimatePresence>
                 </div>
+                <p className="text-[12px] font-nunito text-gray-400 ml-1 flex items-center gap-1">
+                  🔒 Used for crop disease SMS alerts only. Never shared with third parties.
+                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

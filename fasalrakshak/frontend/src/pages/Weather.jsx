@@ -5,9 +5,10 @@ import {
   Map as MapIcon, Eye
 } from 'lucide-react';
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 // Reliable Open APIs (No Keys Required)
 const WEATHER_API = "https://api.open-meteo.com/v1/forecast";
@@ -32,26 +33,25 @@ L.Icon.Default.mergeOptions({
 });
 
 const Weather = () => {
+  const { t, lang } = useLanguage();
   const [cityInput, setCityInput] = useState("");
   const [weather, setWeather] = useState(null);
   const [location, setLocation] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [forecast, setForecast] = useState([]);
-  const [selectedCrop, setSelectedCrop] = useState('Wheat');
-  const [isSearching, setIsSearching] = useState(false);
   const [showWindyMap, setShowWindyMap] = useState(true);
   const [mapMode, setMapMode] = useState('satellite'); // 'satellite' or 'windy'
 
   // WMO Weather Codes Mapping
   const interpretWeatherCode = (code) => {
-    if (code === 0) return { label: "Clear sky", main: "Sunny", iconId: "01d" };
-    if (code >= 1 && code <= 3) return { label: "Partly cloudy", main: "Cloudy", iconId: "03d" };
-    if (code >= 45 && code <= 48) return { label: "Foggy", main: "Fog", iconId: "50d" };
-    if (code >= 51 && code <= 67) return { label: "Rainy", main: "Rain", iconId: "10d" };
-    if (code >= 80 && code <= 82) return { label: "Showers", main: "Showers", iconId: "09d" };
-    if (code >= 95) return { label: "Thunderstorm", main: "Storm", iconId: "11d" };
-    return { label: "Clear sky", main: "Sunny", iconId: "01d" };
+    if (code === 0) return { label: t('weather.clear'), main: t('weather.sunny'), iconId: "01d" };
+    if (code >= 1 && code <= 3) return { label: t('weather.p_cloudy'), main: t('weather.cloudy'), iconId: "03d" };
+    if (code >= 45 && code <= 48) return { label: t('weather.foggy'), main: t('weather.foggy'), iconId: "50d" };
+    if (code >= 51 && code <= 67) return { label: t('weather.rainy'), main: t('weather.rainy'), iconId: "10d" };
+    if (code >= 80 && code <= 82) return { label: t('weather.showers'), main: t('weather.showers'), iconId: "09d" };
+    if (code >= 95) return { label: t('weather.storm'), main: t('weather.storm'), iconId: "11d" };
+    return { label: t('weather.clear'), main: t('weather.sunny'), iconId: "01d" };
   };
 
   const fetchWeather = async (lat, lon, cityName) => {
@@ -86,11 +86,13 @@ const Weather = () => {
         rain_prob: data.current.precipitation_probability || 0
       });
 
+      const locale = lang === 'GUJ' ? 'gu-IN' : lang === 'HI' ? 'hi-IN' : 'en-US';
+
       const processedForecast = data.daily.time.map((time, i) => {
         const date = new Date(time);
         const dayMain = interpretWeatherCode(data.daily.weather_code[i]);
         return {
-          day: date.toLocaleDateString('en-US', { weekday: 'short' }),
+          day: date.toLocaleDateString(locale, { weekday: 'short' }),
           temp: Math.round(data.daily.temperature_2m_max[i]),
           rain: data.daily.precipitation_probability_max[i],
           condition: dayMain.main,
@@ -125,7 +127,6 @@ const Weather = () => {
 
       const { latitude, longitude, name } = geoData.results[0];
       await fetchWeather(latitude, longitude, name);
-      setIsSearching(false);
     } catch (err) {
       setError(err.message || "Search failed");
     } finally {
@@ -146,11 +147,11 @@ const Weather = () => {
       const name = 
         addr.village || addr.hamlet || addr.suburb || addr.town || 
         addr.quarter || addr.city_district || addr.city || addr.district || 
-        data.display_name.split(',')[0] || "Location Verified";
+        data.display_name.split(',')[0] || t('weather.location_verified');
       
       return name;
     } catch (err) {
-      return "Current Selection";
+      return t('weather.current_selection');
     }
   };
 
@@ -158,17 +159,14 @@ const Weather = () => {
     const map = useMapEvents({
       click: async (e) => {
         const { lat, lng } = e.latlng;
-        console.log("Map Clicked:", lat, lng);
         setLoading(true);
-        // Instant visual feedback: Move the map to the click
         map.flyTo([lat, lng], map.getZoom(), { animate: true });
         
         try {
           const name = await fetchCityFromCoords(lat, lng);
           await fetchWeather(lat, lng, name);
         } catch (err) {
-          console.error("Map Update Error:", err);
-          setError("Failed to fetch weather for this location.");
+          setError(t('weather.fetch_failed'));
         } finally {
           setLoading(false);
         }
@@ -208,11 +206,9 @@ const Weather = () => {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
-          console.log("Browser Geolocation Successful:", latitude, longitude);
-          await fetchWeather(latitude, longitude, "My Location");
+          await fetchWeather(latitude, longitude, lang === 'HI' ? 'मेरा स्थान' : lang === 'GUJ' ? 'મારું સ્થાન' : "My Location");
         },
         async (err) => {
-          console.warn("Browser Location Failed, switching to IP-API...");
           await fallbackToIPLocation();
         },
         { timeout: 5000 }
@@ -222,19 +218,16 @@ const Weather = () => {
     }
   };
 
-  // Method 2: Reliable IP-based Geolocation (No Key Required)
   const fallbackToIPLocation = async () => {
     try {
       const res = await fetch(IP_LOCATION_API);
       const data = await res.json();
-      console.log("IP-based Location Detected:", data.city);
       if (data.latitude && data.longitude) {
-        await fetchWeather(data.latitude, data.longitude, data.city || "My City");
+        await fetchWeather(data.latitude, data.longitude, data.city || (lang === 'HI' ? 'मेरा शहर' : lang === 'GUJ' ? 'મારું શહેર' : "My City"));
       } else {
         await handleSearch("Ahmedabad");
       }
     } catch (err) {
-      console.error("Critical Location Error:", err);
       await handleSearch("Ahmedabad");
     }
   };
@@ -249,12 +242,12 @@ const Weather = () => {
     const { temp, humidity } = weather.main;
     const rain = forecast[0]?.rain || 0;
 
-    if (humidity > 80) advice.push({ type: 'warning', text: "Very high humidity. Risk of Leaf Rust disease.", icon: <AlertTriangle className="w-5 h-5 text-red-500" /> });
-    if (rain > 60) advice.push({ type: 'caution', text: "High rain probability. Do not apply solid fertilizers.", icon: <CloudRain className="w-5 h-5 text-blue-500" /> });
-    if (temp > 38) advice.push({ type: 'danger', text: "Critical heatwave warning. Double irrigation immediately.", icon: <Thermometer className="w-5 h-5 text-red-600" /> });
-    if (weather.wind.speed > 25) advice.push({ type: 'warning', text: "Strong winds detected. Secure tall plants.", icon: <Wind className="w-5 h-5 text-gray-400" /> });
+    if (humidity > 80) advice.push({ type: 'warning', text: t('weather.advice_humidity'), icon: <AlertTriangle className="w-5 h-5 text-red-500" /> });
+    if (rain > 60) advice.push({ type: 'caution', text: t('weather.advice_rain'), icon: <CloudRain className="w-5 h-5 text-blue-500" /> });
+    if (temp > 38) advice.push({ type: 'danger', text: t('weather.advice_heat'), icon: <Thermometer className="w-5 h-5 text-red-600" /> });
+    if (weather.wind.speed > 25) advice.push({ type: 'warning', text: t('weather.advice_wind'), icon: <Wind className="w-5 h-5 text-gray-400" /> });
 
-    if (advice.length === 0) advice.push({ type: 'info', text: "Optimal agricultural conditions today.", icon: <Sprout className="w-5 h-5 text-green-500" /> });
+    if (advice.length === 0) advice.push({ type: 'info', text: t('weather.advice_optimal'), icon: <Sprout className="w-5 h-5 text-green-500" /> });
     return advice;
   })();
 
@@ -268,12 +261,12 @@ const Weather = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6 pt-16 lg:pt-24 animate-in fade-in slide-in-from-top duration-700">
           <div>
             <h1 className="text-4xl font-playfair font-black text-[#0D3D1A] tracking-tight">
-              Agri-Weather Center
+              {t('weather.title')}
             </h1>
             <div className="flex items-center gap-2 mt-2 px-3 py-1 bg-white rounded-full shadow-sm border border-primary-sage/30 w-fit">
               <MapPin className="w-4 h-4 text-[#1A6B2F] animate-pulse" />
               <span className="text-sm font-semibold text-gray-600">
-                {location ? `${location.name} (${location.lat.toFixed(2)}, ${location.lon.toFixed(2)})` : 'Locating field...'}
+                {location ? `${location.name} (${location.lat.toFixed(2)}, ${location.lon.toFixed(2)})` : t('weather.locating')}
               </span>
             </div>
           </div>
@@ -282,7 +275,7 @@ const Weather = () => {
             <div className="relative group w-full md:w-80">
               <input
                 type="text"
-                placeholder="Search village or city..."
+                placeholder={t('weather.search_placeholder')}
                 className="w-full pl-5 pr-12 py-3.5 bg-white border border-gray-200 rounded-3xl outline-none focus:ring-2 focus:ring-[#1A6B2F]/20 focus:border-[#1A6B2F] transition-all font-nunito text-gray-700 shadow-sm"
                 value={cityInput}
                 onChange={(e) => setCityInput(e.target.value)}
@@ -298,7 +291,7 @@ const Weather = () => {
             <button
               onClick={() => detectLiveLocation()}
               className="p-3.5 bg-white border border-gray-100 rounded-2xl text-[#1A6B2F] shadow-sm hover:bg-[#F0F7EC] active:rotate-12 transition-all flex items-center justify-center min-w-[50px]"
-              title="Detect Live Location"
+              title={t('weather.detect_location')}
             >
               <Navigation className="w-5 h-5" />
             </button>
@@ -318,7 +311,7 @@ const Weather = () => {
               <RefreshCw className="w-16 h-16 text-[#1A6B2F] animate-spin mb-6" />
               <Cloud className="absolute inset-0 m-auto w-6 h-6 text-[#1A6B2F]/40" />
             </div>
-            <p className="text-[#1A6B2F] font-bold text-2xl tracking-tighter animate-pulse uppercase">Syncing with Weather Satellites...</p>
+            <p className="text-[#1A6B2F] font-bold text-2xl tracking-tighter animate-pulse uppercase">{t('weather.syncing')}</p>
           </div>
         ) : (
           <div className="space-y-8">
@@ -326,24 +319,24 @@ const Weather = () => {
             {/* Top Stat Cards - MOVED TO TOP OF PAGE */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-in fade-in slide-in-from-top duration-700">
               <WeatherCard 
-                title="Current Temp" value={`${weather?.main.temp || '--'}°C`} 
+                title={t('weather.current_temp')} value={`${weather?.main.temp || '--'}°C`} 
                 icon={<Sun className="w-8 h-8 text-orange-400" />} 
                 label={weather?.weather[0].description} hero={true}
                 loading={loading}
               />
               <WeatherCard 
-                title="Soil Humidity" value={`${weather?.main.humidity || '--'}%`} 
-                icon={<Droplets className="w-8 h-8 text-blue-400" />} label="Air-Soil Saturation"
+                title={t('weather.soil_humidity')} value={`${weather?.main.humidity || '--'} %`} 
+                icon={<Droplets className="w-8 h-8 text-blue-400" />} label={t('weather.air_soil_sat')}
                 loading={loading}
               />
               <WeatherCard 
-                title="Wind Speed" value={`${weather?.wind.speed || '--'} km/h`} 
-                icon={<Wind className="w-8 h-8 text-emerald-400" />} label="Avg Current Speed"
+                title={t('weather.wind_speed')} value={`${weather?.wind.speed || '--'} km/h`} 
+                icon={<Wind className="w-8 h-8 text-emerald-400" />} label={t('weather.avg_wind')}
                 loading={loading}
               />
               <WeatherCard 
-                title="Rain Probability" value={`${weather?.rain_prob || '0'}%`} 
-                icon={<CloudRain className="w-8 h-8 text-indigo-400" />} label="Precipitation Risk"
+                title={t('weather.rain_prob')} value={`${weather?.rain_prob || '0'} %`} 
+                icon={<CloudRain className="w-8 h-8 text-indigo-400" />} label={t('weather.precip_risk')}
                 loading={loading}
               />
             </div>
@@ -356,7 +349,7 @@ const Weather = () => {
                     <MapIcon className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-2xl font-playfair font-bold text-[#0D3D1A]">
-                    {mapMode === 'satellite' ? 'Interactive Agricultural Radar' : 'Windy Global Visualization'}
+                    {mapMode === 'satellite' ? t('weather.radar_title') : t('weather.windy_title')}
                   </h3>
                 </div>
 
@@ -365,19 +358,19 @@ const Weather = () => {
                     onClick={() => setMapMode('satellite')}
                     className={`px-6 py-2.5 rounded-full text-xs font-black transition-all ${mapMode === 'satellite' ? 'bg-[#1A6B2F] text-white shadow-md' : 'text-gray-400 hover:text-[#1A6B2F]'}`}
                   >
-                    Satellite (Interactive)
+                    {t('weather.satellite_mode')}
                   </button>
                   <button
                     onClick={() => setMapMode('windy')}
                     className={`px-6 py-2.5 rounded-full text-xs font-black transition-all ${mapMode === 'windy' ? 'bg-[#1A6B2F] text-white shadow-md' : 'text-gray-400 hover:text-[#1A6B2F]'}`}
                   >
-                    Windy (Visuals)
+                    {t('weather.windy_mode')}
                   </button>
                   <div className="w-[1px] h-6 bg-gray-100 mx-1"></div>
                   <button
                     onClick={() => setShowWindyMap(!showWindyMap)}
                     className="p-2.5 text-[#1A6B2F] hover:bg-[#F0F7EC] rounded-full transition-colors"
-                    title={showWindyMap ? "Hide Map" : "Show Map"}
+                    title={showWindyMap ? t('weather.hide_map') : t('weather.view_full_map')}
                   >
                     {showWindyMap ? <Eye className="w-4 h-4" /> : <Eye className="w-4 h-4 opacity-30" />}
                   </button>
@@ -421,7 +414,7 @@ const Weather = () => {
                                <div className="p-3 text-center min-w-[120px]">
                                   <h4 className="font-bold text-[#1A6B2F] mb-1">{location.name}</h4>
                                   <div className="text-2xl font-black text-[#0D3D1A]">{weather?.main.temp}°C</div>
-                                  <p className="text-[10px] font-bold text-gray-400 mt-2">Anywhere Clicked → Updated</p>
+                                  <p className="text-[10px] font-bold text-gray-400 mt-2">{t('weather.view_full_map')} → {t('weather.syncing')}</p>
                                </div>
                             </Popup>
                           </Marker>
@@ -438,7 +431,7 @@ const Weather = () => {
                           className="relative z-0"
                         ></iframe>
                         <div className="absolute top-6 right-6 bg-black/60 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10 pointer-events-none">
-                            <span className="text-[10px] font-black text-white uppercase tracking-widest">Wind Animation Mode (Non-interactive)</span>
+                            <span className="text-[10px] font-black text-white uppercase tracking-widest">{t('weather.wind_animation_note')}</span>
                         </div>
                       </div>
                     )}
@@ -455,7 +448,7 @@ const Weather = () => {
                 <div className="bg-white rounded-[2.5rem] p-8 shadow-xl shadow-gray-200/40 border border-gray-50 h-full">
                   <h3 className="text-2xl font-playfair font-bold text-[#0D3D1A] mb-6 flex items-center gap-3">
                     <Sprout className="w-6 h-6 text-[#1A6B2F]" />
-                    AI Intelligence Advice
+                    {t('weather.ai_advice_title')}
                   </h3>
                   <div className="space-y-4">
                     {farmerAdvice.map((advice, idx) => (
@@ -469,10 +462,10 @@ const Weather = () => {
                   <div className="mt-8 p-5 bg-[#F0F7EC] rounded-[2rem] border border-[#1A6B2F]/10 relative overflow-hidden">
                     <Droplet className="absolute -right-4 -bottom-4 w-24 h-24 text-[#1A6B2F]/5" />
                     <h4 className="text-sm font-black text-[#1A6B2F] uppercase tracking-widest mb-2 flex items-center gap-2">
-                      Irrigation Log
+                      {t('weather.irrigation_log')}
                     </h4>
                     <p className="text-sm text-gray-700 font-bold leading-relaxed relative z-10 font-nunito">
-                      {forecast[0]?.rain > 40 ? "⚠️ Heavy rain detected. Pause irrigation for next 24 hours to prevent soil erosion." : "✅ Clear skies. Proceed with standard irrigation cycles between 6:00 AM - 9:00 AM."}
+                      {forecast[0]?.rain > 40 ? t('weather.irrigation_heavy_rain') : t('weather.irrigation_clear')}
                     </p>
                   </div>
                 </div>
@@ -484,7 +477,7 @@ const Weather = () => {
                   <div className="flex justify-between items-center mb-10">
                     <h3 className="text-2xl font-playfair font-bold text-[#0D3D1A] flex items-center gap-3">
                       <TrendingUp className="w-6 h-6 text-[#1A6B2F]" />
-                      Climate Trends (7-Day)
+                      {t('weather.climate_trends')}
                     </h3>
                   </div>
                   <div className="h-72 w-full">
@@ -504,8 +497,8 @@ const Weather = () => {
                         <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fontWeight: 700, fill: '#666' }} dy={10} />
                         <YAxis hide domain={['dataMin - 5', 'dataMax + 5']} />
                         <Tooltip contentStyle={{ borderRadius: '24px', border: 'none', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', padding: '15px' }} />
-                        <Area type="monotone" dataKey="temp" name="Temperature (°C)" stroke="#1A6B2F" fillOpacity={1} fill="url(#colorTemp)" strokeWidth={4} />
-                        <Area type="monotone" dataKey="rain" name="Rain Prob (%)" stroke="#2563EB" fillOpacity={1} fill="url(#colorRain)" strokeWidth={4} />
+                        <Area type="monotone" dataKey="temp" name={t('weather.temp_unit')} stroke="#1A6B2F" fillOpacity={1} fill="url(#colorTemp)" strokeWidth={4} />
+                        <Area type="monotone" dataKey="rain" name={t('weather.rain_unit')} stroke="#2563EB" fillOpacity={1} fill="url(#colorRain)" strokeWidth={4} />
                       </AreaChart>
                     </ResponsiveContainer>
                   </div>

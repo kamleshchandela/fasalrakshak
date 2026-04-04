@@ -1,12 +1,19 @@
 import React from 'react';
 import { Bot, User, HelpCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
 
 const ExpertHelpBanner = () => {
   const navigate = useNavigate();
+  const { t, lang } = useLanguage();
 
   const handleConsultExpert = () => {
-    const encodedMessage = encodeURIComponent("Hi, I'm unsure about which product to use. Can you help me?");
+    const expertMessages = {
+      EN: "Hi, I'm unsure about which product to use for my crop. Can you help me?",
+      HI: "नमस्ते, मुझे अपनी फसल के लिए सही उत्पाद चुनने में मदद चाहिए। क्या आप मदद कर सकते हैं?",
+      GUJ: "નમસ્તે, મારા પાક માટે કયો ઉત્પાદ ઉપયોગ કરવો તે અંગે મને સહાય જોઈએ છે. શું તમે સહાય કરી શકો?",
+    };
+    const encodedMessage = encodeURIComponent(expertMessages[lang] || expertMessages.EN);
     window.open(`https://wa.me/919979265140?text=${encodedMessage}`, '_blank');
   };
 
@@ -19,10 +26,10 @@ const ExpertHelpBanner = () => {
           </div>
           <div>
             <h2 className="text-xl md:text-2xl font-bold text-gray-800 flex items-center gap-2">
-              🌿 Unsure what to buy?
+              {t('store.unsureBuy')}
             </h2>
             <p className="text-gray-600 font-medium mt-1">
-              Get instant help from AI or talk to a real expert.
+              {t('store.expertDesc')}
             </p>
           </div>
         </div>
@@ -33,7 +40,7 @@ const ExpertHelpBanner = () => {
             className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-800 px-6 py-3 rounded-xl font-bold border border-gray-200 shadow-sm transition-all whitespace-nowrap"
           >
             <Bot className="w-5 h-5 text-blue-500" />
-            Ask AI
+            {t('store.askAI')}
           </button>
           
           <button 
@@ -41,7 +48,7 @@ const ExpertHelpBanner = () => {
             className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1fb355] text-white px-6 py-3 rounded-xl font-bold shadow-sm transition-all whitespace-nowrap"
           >
             <User className="w-5 h-5" />
-            Consult Expert
+            {t('store.consultExpert')}
           </button>
         </div>
       </div>

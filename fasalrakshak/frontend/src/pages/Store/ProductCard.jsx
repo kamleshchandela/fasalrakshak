@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Minus, Plus, ShoppingCart, Star, Leaf, Droplets, Bug, Shield } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 const WhatsappIcon = ({ className }) => (
   <svg
@@ -38,6 +39,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
   const [imageError, setImageError] = useState(false);
   const [added, setAdded] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState(null);
+  const { t, lang } = useLanguage();
 
   const generateVariants = (weight, basePrice) => {
     if (!weight) return null;
@@ -92,9 +94,12 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
     event.stopPropagation();
     if (!product.inStock) return;
 
-    const message = encodeURIComponent(
-      `Hi, I would like to order ${quantity}x ${product.name}. Total: Rs.${product.price * quantity}.`
-    );
+    const waMessages = {
+      EN: `Hi, I would like to order ${quantity}x ${product.name}. Total: Rs.${product.price * quantity}.`,
+      HI: `नमस्ते, मैं ${quantity}x ${product.name} ऑर्डर करना चाहता/चाहती हूँ। कुल: ₹${product.price * quantity}.`,
+      GUJ: `નમસ્તે, હું ${quantity}x ${product.name} ઓર્ડર કરવા ઇચ્છું છું. કુલ: ₹${product.price * quantity}.`,
+    };
+    const message = encodeURIComponent(waMessages[lang] || waMessages.EN);
     window.open(`https://wa.me/${product.sellerPhone}?text=${message}`, '_blank');
   };
 
@@ -140,7 +145,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
             product.inStock ? 'bg-green-600 text-white' : 'bg-red-500 text-white'
           }`}
         >
-          {product.inStock ? 'In Stock' : 'Out of Stock'}
+          {product.inStock ? t('store.inStock') : t('store.outOfStock')}
         </div>
       </div>
 
@@ -193,7 +198,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
         {/* Compact Pack Size selector */}
         {variants && (
           <div className="mt-3" onClick={e => e.stopPropagation()}>
-            <p className="mb-1.5 text-[9px] font-bold uppercase tracking-widest text-gray-400">Pack Size</p>
+            <p className="mb-1.5 text-[9px] font-bold uppercase tracking-widest text-gray-400">{t('store.packSize')}</p>
             <div className="flex flex-wrap gap-1.5">
               {variants.map(v => (
                 <button
@@ -214,10 +219,10 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
 
         <div className="mt-auto pt-4">
           <div className="rounded-2xl bg-gradient-to-r from-gray-50 to-green-50/50 px-4 py-3 border border-gray-100">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-400">Price</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-400">{t('store.price')}</p>
             <div className="mt-1 flex items-baseline gap-1">
               <span className="text-[32px] font-bold leading-none text-gray-900">₹{activePrice * quantity}</span>
-              {quantity > 1 && <span className="text-sm text-gray-500">/ {quantity} units</span>}
+              {quantity > 1 && <span className="text-sm text-gray-500">/ {quantity} {t('store.units')}</span>}
             </div>
           </div>
 
@@ -233,7 +238,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
               <span className="truncate">{product.sellerLocation}</span>
             </div>
             <span className="text-gray-300">|</span>
-            <span className="text-gray-500">{product.reviewCount} reviews</span>
+            <span className="text-gray-500">{product.reviewCount} {t('store.reviews')}</span>
           </div>
 
           <div className="mt-4 flex items-center gap-2 rounded-2xl bg-gray-50 px-2 py-2" onClick={event => event.stopPropagation()}>
@@ -267,12 +272,12 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
               {added ? (
                 <>
                   <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  Added!
+                  {t('store.added')}
                 </>
               ) : (
                 <>
                   <ShoppingCart className="h-4 w-4" />
-                  Add to Cart
+                  {t('store.addToCart')}
                 </>
               )}
             </button>
@@ -282,7 +287,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 py-3 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-[#1fb355] hover:scale-[1.02] disabled:cursor-not-allowed disabled:bg-gray-300 disabled:hover:scale-100"
             >
               <WhatsappIcon className="h-4 w-4" />
-              Buy Now
+              {t('store.buyNow')}
             </button>
           </div>
         </div>

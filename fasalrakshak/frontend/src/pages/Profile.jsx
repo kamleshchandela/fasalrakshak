@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AuthContext } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 import heroLandscape from '../images/hero_landscape.png';
 import Navbar from '../components/Navbar';
 import ProfileHeader from '../components/profile/ProfileHeader';
@@ -14,6 +15,7 @@ import AccountSettingsTab from '../components/profile/AccountSettingsTab';
 const Profile = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { t, lang } = useLanguage();
   const [activeTab, setActiveTab] = useState('personal');
   const [stats, setStats] = useState({ totalScans: 0, diseasesFound: 0, daysActive: 0 });
   
@@ -72,19 +74,19 @@ const Profile = () => {
              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
              className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm mb-6"
           >
-            👤 Kisan Profile
+            {lang === 'HI' ? '👤 किसान प्रोफ़ाइल' : lang === 'GUJ' ? '👤 ખેડૂત પ્રોફાઇલ' : '👤 Kisan Profile'}
           </motion.span>
           <motion.h1 
              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
              className="font-playfair text-5xl lg:text-6xl font-black mb-4 drop-shadow-md tracking-tight"
           >
-            My Profile
+            {lang === 'HI' ? 'मेरी प्रोफ़ाइल' : lang === 'GUJ' ? 'મારી પ્રોફાઇલ' : 'My Profile'}
           </motion.h1>
           <motion.p 
              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
              className="text-white/90 text-lg lg:text-xl font-medium tracking-wide max-w-xl mx-auto leading-relaxed drop-shadow"
           >
-            Manage your farm details, review your scan history, and update your personal settings securely.
+            {lang === 'HI' ? 'अपने फार्म की जानकारी प्रबंधित करें, स्कैन इतिहास देखें और अपनी सेटिंग्स अपडेट करें।' : lang === 'GUJ' ? 'ફાર્મ વિગતો, સ્કેન ઇતિહાસ અને તમારી સેટિંગ્સ અહીં સંચાલિત કરો.' : 'Manage your farm details, review your scan history, and update your personal settings securely.'}
           </motion.p>
         </div>
       </motion.div>
@@ -121,12 +123,12 @@ const Profile = () => {
 
       {/* Logout Footer Section */}
       <section className="bg-white py-12 px-6 border-t border-primary-sage text-center mt-auto">
-        <p className="font-nunito font-bold text-gray-500 text-sm mb-4">Done for today?</p>
+        <p className="font-nunito font-bold text-gray-500 text-sm mb-4">{lang === 'HI' ? 'आज के लिए बस?' : lang === 'GUJ' ? 'આજ માટે પૂર્ણ?' : 'Done for today?'}</p>
         <button 
           onClick={handleLogout}
           className="w-full sm:w-auto min-w-[280px] h-[52px] border-2 border-red-500 text-red-500 font-nunito font-bold text-[18px] rounded-xl hover:bg-red-50 transition-colors shadow-sm"
         >
-          🚪 Logout from FasalRakshak
+          🚪 {lang === 'HI' ? 'FasalRakshak से लॉगआउट करें' : lang === 'GUJ' ? 'FasalRakshak માંથી લૉગઆઉટ કરો' : 'Logout from FasalRakshak'}
         </button>
       </section>
 

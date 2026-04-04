@@ -7,6 +7,7 @@ import ProductCard from './ProductCard';
 import ProductModal from './ProductModal';
 import StoreCart from './StoreCart';
 import useStoreProducts from '../../hooks/useStoreProducts';
+import { useLanguage } from '../../context/LanguageContext';
 
 const CART_STORAGE_KEY = 'fasalrakshak_store_cart';
 const WHATSAPP_NUMBER = '919979265140';
@@ -40,6 +41,7 @@ const AgriStore = () => {
   const [visibleCount, setVisibleCount] = useState(12);
   const [showStatusBanner, setShowStatusBanner] = useState(true);
   const [toast, setToast] = useState(null);
+  const { t } = useLanguage();
   const [cartItems, setCartItems] = useState(() => {
     if (typeof window === 'undefined') return [];
 
@@ -126,14 +128,17 @@ const AgriStore = () => {
     const itemsList = cartItems
       .map(
         (item) =>
-          `• ${item.name}\n  Qty: ${item.quantity} | Price: ₹${item.price * item.quantity}`
+          `• ${item.name}\n  ${lang === 'HI' ? 'मात्रा' : lang === 'GUJ' ? 'જથ્થો' : 'Qty'}: ${item.quantity} | ${lang === 'HI' ? 'कीमत' : lang === 'GUJ' ? 'કિંમત' : 'Price'}: ₹${item.price * item.quantity}`
       )
       .join('\n\n');
 
-    const message = encodeURIComponent(
-      `NAMASTE FasalRakshak! 🙏\n\nI want to place an order for the following items:\n\n${itemsList}\n\n━━━━━━━━━━━━━━━━━━━━\nTOTAL AMOUNT: ₹${cartTotal}\n━━━━━━━━━━━━━━━━━━━━\n\nPlease confirm my order and let me know the delivery details.`
-    );
+    const messages = {
+      EN: `NAMASTE FasalRakshak! 🙏\n\nI want to place an order for the following items:\n\n${itemsList}\n\n━━━━━━━━━━━━━━━━━━━━\nTOTAL AMOUNT: ₹${cartTotal}\n━━━━━━━━━━━━━━━━━━━━\n\nPlease confirm my order and let me know the delivery details.`,
+      HI: `नमस्ते FasalRakshak! 🙏\n\nमैं निम्नलिखित वस्तुओं का ऑर्डर देना चाहता/चाहती हूँ:\n\n${itemsList}\n\n━━━━━━━━━━━━━━━━━━━━\nकुल राशि: ₹${cartTotal}\n━━━━━━━━━━━━━━━━━━━━\n\nकृपया मेरा ऑर्डर कन्फर्म करें और डिलीवरी की जानकारी दें।`,
+      GUJ: `નમસ્તે FasalRakshak! 🙏\n\nહું નીચેની વસ્તુઓ ઓર્ડર કરવા ઇચ્છું છું:\n\n${itemsList}\n\n━━━━━━━━━━━━━━━━━━━━\nકુલ રકમ: ₹${cartTotal}\n━━━━━━━━━━━━━━━━━━━━\n\nકૃપા કરીને મારા ઓર્ડરની પુષ્ટિ કરો અને ડિલિવરીની માહિતી આપો.`,
+    };
 
+    const message = encodeURIComponent(messages[lang] || messages.EN);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
   };
 
@@ -151,7 +156,7 @@ const AgriStore = () => {
           </svg>
         </div>
         <div>
-          <p className="text-xs font-semibold text-green-400 uppercase tracking-wider">Added to Cart</p>
+          <p className="text-xs font-semibold text-green-400 uppercase tracking-wider">{t('store.addedToCart')}</p>
           <p className="text-sm font-bold text-white truncate max-w-[200px]">{toast?.name}</p>
         </div>
       </div>
@@ -163,10 +168,10 @@ const AgriStore = () => {
           <div className="flex items-center justify-between rounded-2xl bg-gradient-to-r from-green-50 to-emerald-50 px-4 py-3 text-sm font-semibold border border-green-200">
             <span className="flex items-center gap-2">
               <span className="flex h-2 w-2 animate-pulse rounded-full bg-green-500"></span>
-              Live market prices available
+              {t('store.livePrice')}
             </span>
             <button onClick={() => setShowStatusBanner(false)} className="text-xs font-bold uppercase text-green-600 hover:text-green-800">
-              Dismiss
+              {t('store.dismiss')}
             </button>
           </div>
         </div>
@@ -212,10 +217,10 @@ const AgriStore = () => {
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
             <div>
               <h2 className="text-xl font-bold text-gray-800">
-                {filters.search || filters.category !== 'All' ? 'Search Results' : 'All Products'}
+                {filters.search || filters.category !== 'All' ? t('store.searchResults') : t('store.allProducts')}
               </h2>
               <p className="text-sm text-gray-500">
-                Showing {filteredProducts.length} of {products.length} products
+                {t('store.showing')} {filteredProducts.length} {t('store.of')} {products.length} {t('store.products')}
               </p>
             </div>
           </div>
@@ -246,7 +251,7 @@ const AgriStore = () => {
                       onClick={() => setVisibleCount(count => count + 12)}
                       className="rounded-xl bg-primary-green px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-green-700"
                     >
-                      Load More
+                    {t('store.loadMore')}
                     </button>
                   </div>
                 )}
@@ -269,13 +274,13 @@ const AgriStore = () => {
           ) : (
             <div className="rounded-xl border border-gray-100 bg-white py-16 text-center">
               <div className="mb-3 text-5xl text-gray-400">Search</div>
-              <h3 className="mb-2 text-lg font-bold text-gray-700">No products found</h3>
-              <p className="text-gray-500">Try adjusting your filters or search terms.</p>
+              <h3 className="mb-2 text-lg font-bold text-gray-700">{t('store.noProducts')}</h3>
+              <p className="text-gray-500">{t('store.noProductsDesc')}</p>
               <button
                 onClick={() => setFilters(defaultFilters)}
                 className="mt-4 font-medium text-primary-green hover:underline"
               >
-                Clear all filters
+                {t('store.clearFilters')}
               </button>
             </div>
           )}
