@@ -325,7 +325,7 @@ const Weather = () => {
                 loading={loading}
               />
               <WeatherCard 
-                title={t('weather.soil_humidity')} value={`${weather?.main.humidity || '--'} %`} 
+                title={t('weather.soil_humidity')} value={`${weather?.main.humidity || '--'}%`} 
                 icon={<Droplets className="w-8 h-8 text-blue-400" />} label={t('weather.air_soil_sat')}
                 loading={loading}
               />
@@ -335,7 +335,7 @@ const Weather = () => {
                 loading={loading}
               />
               <WeatherCard 
-                title={t('weather.rain_prob')} value={`${weather?.rain_prob || '0'} %`} 
+                title={t('weather.rain_prob')} value={`${weather?.rain_prob || '0'}%`} 
                 icon={<CloudRain className="w-8 h-8 text-indigo-400" />} label={t('weather.precip_risk')}
                 loading={loading}
               />
@@ -511,7 +511,7 @@ const Weather = () => {
                       <span className="font-bold text-gray-400 text-xs uppercase tracking-widest">{day.day}</span>
                       <img src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`} className="w-16 h-16 drop-shadow-lg group-hover:scale-110 transition-transform" alt="weather icon" />
                       <div className="text-center">
-                        <span className="text-2xl font-black text-[#0D3D1A]">{day.temp}°C</span>
+                        <span className="font-jakarta font-extrabold text-[#0D3D1A] text-2xl">{day.temp}°C</span>
                         <div className="flex items-center justify-center gap-1.5 mt-1">
                           <CloudRain className="w-3.5 h-3.5 text-blue-500" />
                           <span className="text-xs font-black text-blue-600">{day.rain}%</span>
@@ -524,7 +524,6 @@ const Weather = () => {
 
             </div>
 
-
           </div>
         )}
       </div>
@@ -532,34 +531,49 @@ const Weather = () => {
   );
 };
 
-const WeatherCard = ({ title, value, icon, label, hero = false, loading = false }) => (
-  <div className={`bg-white rounded-[2.5rem] p-7 shadow-xl shadow-gray-200/40 border border-gray-50 flex flex-col justify-between hover:shadow-2xl transition-all duration-500 group relative overflow-hidden ${hero ? 'bg-gradient-to-br from-white to-[#F0F7EC]' : ''}`}>
-    
-    {/* Shimmer loading overlay */}
-    {loading && (
-      <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] z-20 flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-[#1A6B2F] border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    )}
+const WeatherCard = ({ title, value, icon, label, hero = false, loading = false }) => {
+  // Extract number and unit for high-end typography (e.g., "23°C" -> ["23", "°C"])
+  const valueMatch = value.match(/(\d+)(.*)/);
+  const number = valueMatch ? valueMatch[1] : value;
+  const unit = valueMatch ? valueMatch[2] : "";
 
-    <div className="flex justify-between items-start mb-6">
-      <div className="p-4 rounded-[1.8rem] bg-[#fcfdfa] shadow-inner group-hover:scale-110 transition-transform duration-500">
-        {icon}
+  return (
+    <div className={`bg-white rounded-[2.5rem] p-7 shadow-xl shadow-gray-200/40 border border-gray-50 flex flex-col justify-between hover:shadow-2xl transition-all duration-500 group relative overflow-hidden ${hero ? 'bg-gradient-to-br from-white to-[#F0F7EC]' : ''}`}>
+      
+      {loading && (
+        <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] z-20 flex items-center justify-center">
+          <div className="w-12 h-12 border-4 border-[#1A6B2F] border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
+
+      <div className="flex justify-between items-start mb-6">
+        <div className="p-4 rounded-[1.8rem] bg-[#fcfdfa] shadow-inner group-hover:scale-110 transition-transform duration-500">
+          {icon}
+        </div>
+        <div>
+          <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">{title}</span>
+          <div className="h-0.5 w-6 bg-[#1A6B2F]/20 mt-1 rounded-full ml-auto"></div>
+        </div>
       </div>
-      <div>
-        <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">{title}</span>
-        <div className="h-0.5 w-6 bg-[#1A6B2F]/20 mt-1 rounded-full ml-auto"></div>
+
+      <div className="group-hover:translate-x-1 transition-transform duration-500">
+        <h4 className={`font-jakarta font-extrabold leading-none tracking-tighter transition-all flex items-baseline gap-0.5 ${hero ? 'text-6xl' : 'text-5xl'} ${loading ? 'opacity-20 translate-y-2' : 'opacity-100'}`}>
+          <span className="bg-gradient-to-b from-[#0D3D1A] to-[#2D6A4F] bg-clip-text text-transparent">
+            {number}
+          </span>
+          <span className={`text-[#1A6B2F]/40 font-bold ${hero ? 'text-2xl' : 'text-xl'}`}>
+            {unit}
+          </span>
+        </h4>
+        <p className="text-sm text-gray-500 font-bold mt-3 font-nunito opacity-80 group-hover:opacity-100 transition-opacity">
+          {label}
+        </p>
       </div>
+
+      {/* Modern subtle accent line */}
+      <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-transparent via-[#1A6B2F]/10 to-transparent w-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
     </div>
-    <div>
-      <h4 className={`font-black text-[#0D3D1A] leading-none tracking-tighter transition-all ${hero ? 'text-5xl' : 'text-4xl'} ${loading ? 'opacity-20 translate-y-2' : 'opacity-100'}`}>
-        {value}
-      </h4>
-      <p className="text-sm text-gray-500 font-bold mt-3 font-nunito opacity-80 group-hover:opacity-100 transition-opacity">
-        {label}
-      </p>
-    </div>
-  </div>
-);
+  );
+};
 
 export default Weather;
