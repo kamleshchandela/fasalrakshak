@@ -18,7 +18,7 @@ const LandingPage = () => {
     <div className="min-h-screen bg-[#f8fbfa] selection:bg-emerald-500 overflow-x-hidden text-slate-800">
       
       {/* 🚀 HERO SECTION: GROW SMARTER. GROW ORGANIC. */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 overflow-hidden bg-[#f8fbfa]">
+      <section id="hero" className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 overflow-hidden bg-[#f8fbfa]">
          <div className="absolute inset-0 -z-10">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.06),transparent_40%)]"></div>
             <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(56,189,248,0.04),transparent_40%)]"></div>

@@ -7,7 +7,14 @@ export const en = {
     about: "About Us",
     contact: "Contact",
     login: "Login",
-    store: "Store"
+    store: "Store",
+    organic: {
+      dashboard: "Dashboard",
+      market: "Market Info",
+      crop_path: "Crop Path",
+      engine: "Engine",
+      greenhouse: "Greenhouse"
+    }
   },
   hero: {
     title1: "Everything a farmer needs,",
