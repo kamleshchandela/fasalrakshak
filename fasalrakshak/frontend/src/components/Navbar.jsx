@@ -91,7 +91,7 @@ const Navbar = () => {
                <Leaf className="text-white w-5 h-5 md:w-6 md:h-6" />
             </div>
             <span className={`font-sans text-[20px] md:text-[24px] font-bold tracking-tight ${isOrganicMode ? 'text-white' : 'text-[#1a2e1a]'} hidden sm:flex gap-0`}>
-              Fasal<span className={isOrganicMode ? 'text-emerald-400' : 'text-[#2d5a27]'}>Organic</span>
+              Fasal<span className={isOrganicMode ? 'text-emerald-400' : 'text-[#2d5a27]'}>{isOrganicMode ? 'Organic' : 'Rakshak'}</span>
             </span>
           </Link>
         </div>

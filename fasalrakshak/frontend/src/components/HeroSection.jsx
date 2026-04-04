@@ -20,17 +20,17 @@ const HeroSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-[100vh] lg:min-h-0 lg:min-h-[90vh] flex items-center pt-32 md:pt-40 lg:pt-32 pb-16 overflow-hidden bg-white"
+      className="relative w-full min-h-[100vh] lg:min-h-0 lg:min-h-[90vh] flex items-center pt-20 md:pt-28 lg:pt-24 pb-16 overflow-hidden bg-white"
     >
       {/* Absolute minimal background texture, ensuring clean pure layout */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30"></div>
 
-      <div className="container relative z-10 mx-auto px-6 md:px-10 lg:px-16 flex flex-col lg:flex-row-reverse items-center justify-between gap-12 lg:gap-16 mt-8 md:mt-4 lg:mt-0">
+      <div className="container relative z-10 mx-auto px-6 md:px-10 lg:px-16 flex flex-col-reverse lg:flex-row-reverse items-center justify-between gap-12 lg:gap-16 mt-0">
 
         {/* --- TEXT CONTENT (RIGHT SIDE) --- */}
         <motion.div
            style={{ opacity: opacityText }}
-           className="flex-1 w-full lg:w-[55%] flex flex-col items-start xl:pl-12 lg:pl-6 z-20 pb-10 lg:pb-0"
+           className="flex-1 w-full lg:w-[55%] flex flex-col items-start xl:pl-12 lg:pl-6 z-20 pt-10 lg:pt-0"
            initial="hidden"
            animate="visible"
            variants={{
@@ -129,7 +129,7 @@ const HeroSection = () => {
             <motion.img
               src={heroImage}
               alt="Farmer Hero Concept"
-              className="w-full h-auto object-contain max-h-[55vh] lg:max-h-[75vh] 2xl:max-h-[850px] drop-shadow-[0_30px_35px_rgba(0,0,0,0.1)] origin-bottom"
+              className="w-full h-auto object-contain max-h-[55vh] lg:max-h-[75vh] 2xl:max-h-[850px] drop-shadow-[0_30px_35px_rgba(0,0,0,0.1)] origin-bottom rounded-[40px] md:rounded-[60px]"
             />
           </motion.div>
         </motion.div>
