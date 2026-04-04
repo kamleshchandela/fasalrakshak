@@ -46,11 +46,11 @@ const OrganicToggle = () => {
              <span className={`text-[9px] font-black uppercase tracking-[0.2em] leading-none mb-1 whitespace-nowrap
                 ${isOrganic ? 'text-emerald-100' : 'text-emerald-600'}
              `}>
-                {isOrganic ? "Active Mode" : "Secure Switch"}
+                {isOrganic ? t('organic.toggle.active') : t('organic.toggle.secure')}
              </span>
              <div className="flex items-center gap-2">
                 <span className="text-xs font-black tracking-tight whitespace-nowrap">
-                   {isOrganic ? "Standard View" : "Organic Hub"}
+                   {isOrganic ? t('organic.toggle.standard') : t('organic.toggle.hub')}
                 </span>
                 {!isOrganic && (
                   <Sparkles className="w-3 h-3 text-emerald-500 group-hover:animate-pulse" />

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sprout, Sparkles, AlertCircle } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 import OrganicDiagnosisModal from './OrganicDiagnosisModal';
 
 const OrganicSwitchButton = ({ soilData, userId }) => {
+  const { t } = useLanguage();
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
 
@@ -30,7 +32,7 @@ const OrganicSwitchButton = ({ soilData, userId }) => {
           <Sprout className="w-6 h-6 text-emerald-200" />
         </motion.div>
         
-        <span className="tracking-tight">🌿 Make My Farm Organic</span>
+        <span className="tracking-tight">{t('organic.switch.btn')}</span>
         
         <Sparkles className="w-5 h-5 text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity" />
 
