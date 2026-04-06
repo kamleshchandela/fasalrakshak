@@ -25,9 +25,9 @@
 
 ## 📸 Application Preview
 
-| Landing Page | Weather Dashboard | Disease Detection |
-|:---:|:---:|:---:|
-| ![Landing](assets/landing_preview.png) | ![Weather](assets/weather_preview.png) | ![Detect](assets/detect_preview.png) |
+| Landing Page | Weather Dashboard | 
+|:---:|:---:|
+| ![Landing](assets/landing_preview.png) | ![Weather](assets/weather_preview.png) | 
 
 > _The application features a modern, dark-themed UI with fluid animations, glassmorphism cards, and AI-powered intelligence modules._
 

@@ -1,34 +1,52 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useUser, useAuth } from '@clerk/clerk-react';
 
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const hasClerk = PUBLISHABLE_KEY?.startsWith('pk_');
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const { user: clerkUser, isLoaded } = useUser();
-  const { signOut } = useAuth();
   const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    if (isLoaded) {
-      if (clerkUser) {
-        // Map Clerk user to our local user format for premium consistency
-        const userData = {
-          id: clerkUser.id,
-          firstName: clerkUser.firstName,
-          lastName: clerkUser.lastName,
-          email: clerkUser.primaryEmailAddress?.emailAddress,
-          imageUrl: clerkUser.imageUrl,
-          fullName: clerkUser.fullName,
-          totalScans: 0, 
-        };
-        setUser(userData);
-        localStorage.setItem('fasalrakshak_user', JSON.stringify(userData));
-      } else {
-        setUser(null);
-        localStorage.removeItem('fasalrakshak_user');
+  const [isLoading, setIsLoading] = useState(true);
+  
+  let clerkUser = null;
+  let signOut = null;
+  
+  if (hasClerk) {
+    const { user: clerk, isLoaded } = useUser();
+    const { signOut: clerkSignOut } = useAuth();
+    clerkUser = clerk;
+    signOut = clerkSignOut;
+    
+    useEffect(() => {
+      if (isLoaded) {
+        if (clerk) {
+          const userData = {
+            id: clerk.id,
+            firstName: clerk.firstName,
+            lastName: clerk.lastName,
+            email: clerk.primaryEmailAddress?.emailAddress,
+            imageUrl: clerk.imageUrl,
+            fullName: clerk.fullName,
+            totalScans: 0, 
+          };
+          setUser(userData);
+          localStorage.setItem('fasalrakshak_user', JSON.stringify(userData));
+        } else {
+          const stored = localStorage.getItem('fasalrakshak_user');
+          if (stored) setUser(JSON.parse(stored));
+        }
+        setIsLoading(false);
       }
-    }
-  }, [clerkUser, isLoaded]);
+    }, [clerk, isLoaded]);
+  } else {
+    useEffect(() => {
+      const stored = localStorage.getItem('fasalrakshak_user');
+      if (stored) setUser(JSON.parse(stored));
+      setIsLoading(false);
+    }, []);
+  }
 
   const loginContext = (userData) => {
     setUser(userData);
@@ -36,10 +54,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logoutContext = async () => {
-    try {
-      await signOut();
-    } catch (err) {
-      console.error('Logout error:', err);
+    if (signOut) {
+      try { await signOut(); } catch (err) { console.error('Logout error:', err); }
     }
     setUser(null);
     localStorage.removeItem('fasalrakshak_user');
@@ -65,7 +81,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{
       user,
-      isLoading: !isLoaded || (clerkUser && !user),
+      isLoading,
       isLoggedIn: !!user,
       login: loginContext,
       logout: logoutContext,
