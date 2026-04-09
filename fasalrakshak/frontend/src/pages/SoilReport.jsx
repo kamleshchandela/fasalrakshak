@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Leaf, FileText, Camera, Edit3, ChevronRight, Info, Save, AlertCircle, CheckCircle2, TrendingUp } from 'lucide-react';
+import { Leaf, FileText, Camera, Edit3, ChevronRight, Info, Save, AlertCircle, CheckCircle2, TrendingUp, Sparkles } from 'lucide-react';
 import ManualForm from '../components/soil/ManualForm';
 import PdfUploader from '../components/soil/PdfUploader';
 import ImageScanner from '../components/soil/ImageScanner';
@@ -87,9 +87,31 @@ const SoilReport = () => {
         </section>
 
         {/* Manual Input Container */}
-        <div className="flex flex-col items-center gap-4 pt-4 mb-2">
+        <div className="flex flex-col items-center gap-6 pt-4 mb-2">
             <div className="bg-[#166534]/10 text-[#166534] px-6 py-2 rounded-full font-black text-sm tracking-widest uppercase border border-[#166534]/10 shadow-sm">
                Clinical Data Entry
+            </div>
+
+            {/* Mode Selector Tabs */}
+            <div className="flex bg-white/50 backdrop-blur-md p-1.5 rounded-[24px] border border-white/50 shadow-inner">
+               {modes.map(mode => (
+                 <button
+                   key={mode.id}
+                   onClick={() => {
+                     setActiveMode(mode.id);
+                     setStagedData(null);
+                     setShowReport(false);
+                   }}
+                   className={`flex items-center gap-3 px-6 py-3 rounded-[20px] font-black text-sm transition-all ${
+                     activeMode === mode.id 
+                     ? 'bg-[#166534] text-white shadow-lg shadow-green-900/20' 
+                     : 'text-gray-400 hover:text-gray-600'
+                   }`}
+                 >
+                   {mode.icon}
+                   {mode.label}
+                 </button>
+               ))}
             </div>
         </div>
 
@@ -97,7 +119,7 @@ const SoilReport = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Input Panel */}
-          <div className="lg:col-span-12 xl:col-span-8">
+          <div className="lg:col-span-12 max-w-4xl mx-auto w-full">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeMode}
@@ -107,7 +129,15 @@ const SoilReport = () => {
                 transition={{ duration: 0.4, type: 'spring' }}
                 className="bg-white/80 backdrop-blur-xl border border-white/50 rounded-[40px] p-4 md:p-8 shadow-2xl shadow-gray-200/50"
               >
-                <ManualForm onDataChange={handleDataChange} initialData={stagedData} />
+                {activeMode === 'manual' && (
+                  <ManualForm onDataChange={handleDataChange} initialData={stagedData} />
+                )}
+                {activeMode === 'pdf' && (
+                  <PdfUploader onDataChange={handleDataChange} />
+                )}
+                {activeMode === 'scan' && (
+                  <ImageScanner onDataChange={handleDataChange} />
+                )}
                 
                 <div className="mt-10 pt-8 border-t border-gray-100 flex justify-center">
                    <motion.button
@@ -145,7 +175,7 @@ const SoilReport = () => {
                   className="space-y-8 mt-12"
                 >
                   {/* Result Header & Global Health Score */}
-                  <div className="bg-white/90 backdrop-blur-2xl border border-white/60 rounded-[40px] p-8 md:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+                  <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-2xl border border-white/60 rounded-[40px] p-8 md:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-1.5 h-full bg-[#10b981]"></div>
                     <div className="space-y-2 text-center md:text-left">
                         <h2 className="text-3xl font-black text-gray-900 tracking-tight">Soil Analysis <span className="text-[#10b981]">Result 🌿</span></h2>
@@ -159,8 +189,15 @@ const SoilReport = () => {
                               <p className="text-[10px] font-black text-green-700/60 uppercase tracking-widest mb-1">Health index</p>
                               <p className="text-4xl font-black text-[#166534]">84<span className="text-lg opacity-50">/100</span></p>
                           </div>
-                          <div className="h-10 w-px bg-green-200"></div>
-                          <div className="bg-[#10b981] text-white px-5 py-2 rounded-full font-black text-xs tracking-widest uppercase shadow-lg shadow-green-900/10">EXCELLENT</div>
+                           <div className="h-10 w-px bg-green-200"></div>
+                          <div className="flex flex-col items-center gap-1">
+                            <div className="bg-[#10b981] text-white px-5 py-2 rounded-full font-black text-xs tracking-widest uppercase shadow-lg shadow-green-900/10">EXCELLENT</div>
+                            {reportData?.isVisualEstimate && (
+                              <div className="text-[9px] font-black text-emerald-600 uppercase tracking-tighter bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100 flex items-center gap-1">
+                                <Sparkles className="w-2.5 h-2.5" /> Visual Estimate
+                              </div>
+                            )}
+                          </div>
                         </div>
                     </div>
                   </div>

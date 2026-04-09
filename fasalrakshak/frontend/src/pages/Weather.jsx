@@ -564,8 +564,8 @@ const Weather = () => {
                       {t('weather.climate_trends')}
                     </h3>
                   </div>
-                  <div className="h-72 w-full">
-                    <ResponsiveContainer width="100%" height="100%">
+                  <div className="h-72 w-full" style={{ minHeight: '300px' }}>
+                    <ResponsiveContainer width="100%" height="100%" minHeight={300}>
                       <AreaChart data={chartData}>
                         <defs>
                           <linearGradient id="colorTemp" x1="0" y1="0" x2="0" y2="1">

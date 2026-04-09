@@ -2,12 +2,15 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, RefreshCcw, Scan, CheckCircle2, AlertCircle, Sparkles, UploadCloud } from 'lucide-react';
 import Tesseract from 'tesseract.js';
+import { validateSoilReportImage, analyzeVisualSoil } from '../../lib/gemini';
 
 const ImageScanner = ({ onDataChange }) => {
   const [image, setImage] = useState(null);
   const [isScanning, setIsScanning] = useState(false);
   const [progress, setProgress] = useState(0);
   const [scanStatus, setScanStatus] = useState('');
+  const [error, setError] = useState(null);
+  const [scanMode, setScanMode] = useState('REPORT'); // 'REPORT' or 'SOIL'
   const fileInputRef = useRef(null);
 
   const handleImageUpload = (e) => {
@@ -16,9 +19,46 @@ const ImageScanner = ({ onDataChange }) => {
       const reader = new FileReader();
       reader.onload = (event) => {
         setImage(event.target.result);
-        performOCR(event.target.result);
+        if (scanMode === 'SOIL') {
+          performVisualScan(event.target.result);
+        } else {
+          performOCR(event.target.result);
+        }
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  const performVisualScan = async (imageSrc) => {
+    setIsScanning(true);
+    setProgress(20);
+    setScanStatus('Analyzing soil texture & color...');
+
+    try {
+      const result = await analyzeVisualSoil(imageSrc);
+      
+      if (!result.isValid) {
+        setIsScanning(false);
+        setError('Invalid Image: Not a soil sample. Please upload a clear photo of soil (mud/dirt).');
+        setImage(null);
+        return;
+      }
+
+      setProgress(80);
+      setScanStatus('Estimating nutrient profile...');
+      
+      setTimeout(() => {
+        setIsScanning(false);
+        onDataChange({
+          ...result,
+          OrganicCarbon: result.OrganicCarbon || 0.5
+        });
+      }, 1000);
+
+    } catch (error) {
+      console.error('Visual Scan Error:', error);
+      setIsScanning(false);
+      setError('AI Analysis failed. Please ensure a clear photo and try again.');
     }
   };
 
@@ -28,13 +68,25 @@ const ImageScanner = ({ onDataChange }) => {
     setScanStatus('Analyzing text layers...');
 
     try {
-      const { data: { text } } = await Tesseract.recognize(
-        imageSrc,
-        'eng',
-        { logger: m => {
-          if (m.status === 'recognizing text') setProgress(m.progress * 100);
-        }}
-      );
+      setScanStatus('Verifying document type...');
+      const isValid = await validateSoilReportImage(imageSrc);
+      
+      if (!isValid) {
+        setIsScanning(false);
+        setError('Invalid Document: Not a soil report. Please upload a clear photo of a laboratory report.');
+        setImage(null);
+        return;
+      }
+
+      // Refactored for stability to avoid Vite/Oxc parse errors
+      const options = {
+        logger: m => {
+          if (m.status === 'recognizing text') setProgress(Math.floor(m.progress * 100));
+        }
+      };
+
+      const workerRes = await Tesseract.recognize(imageSrc, 'eng', options);
+      const text = workerRes.data.text;
 
       setScanStatus('Extracting nutrient data...');
       
@@ -66,26 +118,65 @@ const ImageScanner = ({ onDataChange }) => {
 
   return (
     <div className="flex flex-col items-center justify-center space-y-8 min-h-[400px]">
+      {/* Mode Switcher */}
+      {!image && !isScanning && (
+        <div className="bg-gray-100/50 p-1.5 rounded-[24px] border border-gray-100 flex gap-2">
+           <button 
+             onClick={() => setScanMode('REPORT')}
+             className={`px-6 py-2.5 rounded-[20px] text-xs font-black uppercase tracking-widest transition-all ${
+               scanMode === 'REPORT' ? 'bg-[#166534] text-white shadow-md' : 'text-gray-400 hover:text-gray-600'
+             }`}
+           >
+             Lab Report Scan
+           </button>
+           <button 
+             onClick={() => setScanMode('SOIL')}
+             className={`px-6 py-2.5 rounded-[20px] text-xs font-black uppercase tracking-widest transition-all ${
+               scanMode === 'SOIL' ? 'bg-[#10b981] text-white shadow-md' : 'text-gray-400 hover:text-gray-600'
+             }`}
+           >
+             Direct Soil Photo
+           </button>
+        </div>
+      )}
+
       {!image ? (
         <motion.div 
           onClick={() => fileInputRef.current.click()}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full max-w-lg border-4 border-dashed border-green-100 rounded-[40px] p-20 flex flex-col items-center justify-center gap-6 cursor-pointer hover:border-[#10b981]/40 hover:bg-green-50/50 transition-all group"
+          className={`w-full max-w-lg border-4 border-dashed rounded-[40px] p-20 flex flex-col items-center justify-center gap-6 cursor-pointer transition-all group ${
+            scanMode === 'SOIL' ? 'border-emerald-100 hover:border-emerald-400/40 hover:bg-emerald-50/50' : 'border-green-100 hover:border-[#10b981]/40 hover:bg-green-50/50'
+          }`}
         >
-          <div className="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner">
-             <UploadCloud className="text-[#10b981] w-12 h-12" />
+          <div className={`w-24 h-24 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner ${
+            scanMode === 'SOIL' ? 'bg-emerald-50' : 'bg-green-50'
+          }`}>
+             {scanMode === 'SOIL' ? <Camera className="text-emerald-500 w-12 h-12" /> : <UploadCloud className="text-[#10b981] w-12 h-12" />}
           </div>
           <div className="text-center">
-            <h3 className="text-2xl font-black text-gray-800 font-playfair mb-2 tracking-tight">Upload Report Image</h3>
-            <p className="text-gray-400 font-nunito font-bold">PNG, JPG or Screenshot of your soil lab report</p>
+            <h3 className="text-2xl font-black text-gray-800 font-playfair mb-2 tracking-tight">
+              {scanMode === 'SOIL' ? 'Analyze Soil Photo' : 'Upload Lab Report'}
+            </h3>
+            <p className="text-gray-400 font-nunito font-bold">
+              {scanMode === 'SOIL' ? 'Take a clear photo of actual soil / dirt' : 'PNG, JPG or Screenshot of your soil lab report'}
+            </p>
+            {error && (
+              <div className="mt-4 flex items-center gap-2 text-red-500 bg-red-50 px-4 py-2 rounded-xl border border-red-100 animate-bounce">
+                <AlertCircle className="w-4 h-4" />
+                <span className="text-xs font-bold">{error}</span>
+              </div>
+            )}
           </div>
           <input 
             type="file" 
             className="hidden" 
             ref={fileInputRef} 
             accept="image/*" 
-            onChange={handleImageUpload} 
+            onChange={(e) => {
+              setError(null);
+              handleImageUpload(e);
+            }} 
           />
         </motion.div>
       ) : (
