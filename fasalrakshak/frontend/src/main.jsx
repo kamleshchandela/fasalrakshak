@@ -10,19 +10,32 @@ import App from './App.jsx'
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
 if (!PUBLISHABLE_KEY) {
-  console.warn("Clerk Publishable Key is missing! Add VITE_CLERK_PUBLISHABLE_KEY to your .env file.")
+  console.warn("Clerk Publishable Key is missing! App will run without auth.")
+}
+
+const AppProviders = ({ children }) => {
+  if (PUBLISHABLE_KEY?.startsWith('pk_')) {
+    return (
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+        <AuthProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </AuthProvider>
+      </ClerkProvider>
+    )
+  }
+  return (
+    <AuthProvider>
+      <LanguageProvider>{children}</LanguageProvider>
+    </AuthProvider>
+  )
 }
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-        <AuthProvider>
-          <LanguageProvider>
-            <App />
-          </LanguageProvider>
-        </AuthProvider>
-      </ClerkProvider>
+      <AppProviders>
+        <App />
+      </AppProviders>
     </BrowserRouter>
   </StrictMode>,
 )

@@ -9,6 +9,7 @@ import GreenhouseSection from '../components/organic/premium/GreenhouseSection';
 import FeaturesSection from '../components/organic/premium/FeaturesSection';
 import OrganicSwitchButton from '../components/organic/OrganicSwitchButton';
 import { useLanguage } from '../context/LanguageContext';
+import farmerMontage from '../images/farmer_montage.png';
 
 const LandingPage = () => {
   const { t, lang } = useLanguage();
@@ -17,7 +18,7 @@ const LandingPage = () => {
     <div className="min-h-screen bg-[#f8fbfa] selection:bg-emerald-500 overflow-x-hidden text-slate-800">
       
       {/* 🚀 HERO SECTION: GROW SMARTER. GROW ORGANIC. */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 overflow-hidden bg-[#f8fbfa]">
+      <section id="hero" className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 overflow-hidden bg-[#f8fbfa]">
          <div className="absolute inset-0 -z-10">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.06),transparent_40%)]"></div>
             <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(56,189,248,0.04),transparent_40%)]"></div>
@@ -74,9 +75,9 @@ const LandingPage = () => {
                  className="flex flex-wrap justify-center lg:justify-start gap-10 pt-8 border-t border-slate-100"
                >
                   {[
-                    { label: 'Conversion Success', val: '98%' },
-                    { label: 'Market Value Uplift', val: '2.4x' },
-                    { label: 'Active Farmers', val: '12k+' }
+                    { label: t('organic.hero.stats.conversion'), val: '98%' },
+                    { label: t('organic.hero.stats.market'), val: '2.4x' },
+                    { label: t('organic.hero.stats.farmers'), val: '12k+' }
                   ].map((stat, i) => (
                     <div key={i}>
                        <p className="text-2xl font-bold text-slate-800 font-playfair">{stat.val}</p>
@@ -88,35 +89,19 @@ const LandingPage = () => {
 
             {/* Right: Immersive Sprout Animation */}
             <div className="hidden lg:col-span-12 xl:col-span-5 relative lg:flex items-center justify-center">
-                <motion.div
-                   animate={{ y: [0, -20, 0] }}
-                   transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
-                   className="w-[400px] h-[400px] bg-white rounded-[60px] shadow-2xl flex items-center justify-center relative border border-emerald-50"
-                >
-                   <motion.div 
-                     initial={{ scale: 0.8, opacity: 0 }}
-                     animate={{ scale: 1, opacity: 1 }}
-                     className="text-[160px] filter drop-shadow-[0_20px_40px_rgba(16,185,129,0.2)]"
-                   >
-                     🌱
-                   </motion.div>
-                   
-                   {[
-                      { icon: <Target className="text-orange-500 w-8 h-8" />, pos: 'top-6 left-6' },
-                      { icon: <Globe className="text-sky-500 w-8 h-8" />, pos: 'bottom-6 right-6' },
-                      { icon: <Landmark className="text-amber-500 w-8 h-8" />, pos: 'top-6 right-6' },
-                      { icon: <Sprout className="text-emerald-500 w-8 h-8" />, pos: 'bottom-6 left-6' }
-                   ].map((orb, i) => (
-                      <motion.div
-                        key={i}
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ repeat: Infinity, duration: 3, delay: i * 0.5 }}
-                        className={`absolute ${orb.pos} w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center border border-slate-50 z-20`}
-                      >
-                         {orb.icon}
-                      </motion.div>
-                   ))}
-                </motion.div>
+               <motion.div
+                  animate={{ y: [0, -20, 0] }}
+                  transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+                  className="w-[400px] h-[400px] bg-white rounded-[60px] shadow-2xl flex items-center justify-center relative border border-emerald-50 overflow-hidden"
+               >
+                  <motion.img 
+                    src={farmerMontage}
+                    initial={{ scale: 1.1, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="w-full h-full object-cover rounded-[60px]"
+                    alt="Agricultural Montage"
+                  />
+               </motion.div>
             </div>
          </div>
       </section>
@@ -155,12 +140,12 @@ const LandingPage = () => {
             className="max-w-7xl mx-auto h-[400px] bg-[#064e3b] rounded-[60px] relative overflow-hidden flex flex-col items-center justify-center text-center px-10 shadow-2xl"
          >
             <div className="space-y-4 relative z-10 mb-8">
-               <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Ready to Certify Your Future?</h2>
-               <p className="text-emerald-50/70 font-medium text-lg max-w-xl mx-auto">Join the organic movement today and secure higher premiums while preserving your land for generations.</p>
+               <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">{t('organic.cta.title')}</h2>
+               <p className="text-emerald-50/70 font-medium text-lg max-w-xl mx-auto">{t('organic.cta.desc')}</p>
             </div>
             
             <button className="relative z-10 px-12 py-5 bg-white rounded-full font-bold text-xl text-[#064e3b] hover:pr-16 transition-all group/last">
-               Begin Conversion <Leaf className="inline-block w-6 h-6 ml-2 group-hover/last:rotate-45 transition-transform" />
+               {t('organic.cta.btn')} <Leaf className="inline-block w-6 h-6 ml-2 group-hover/last:rotate-45 transition-transform" />
             </button>
             <div className="absolute w-[400px] h-[400px] border-[40px] border-white/5 rounded-full -bottom-32 -right-32"></div>
          </motion.div>

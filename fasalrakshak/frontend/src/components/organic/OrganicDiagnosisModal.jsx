@@ -7,8 +7,10 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { analyzeCropImage } from '../../lib/gemini';
 import imageCompression from 'browser-image-compression';
+import { useLanguage } from '../../context/LanguageContext';
 
 const OrganicDiagnosisModal = ({ onClose }) => {
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const [step, setStep] = useState('CHOOSING'); // CHOOSING, MANUAL, AI_SCAN, RESULT
   const [image, setImage] = useState(null);
@@ -102,8 +104,8 @@ const OrganicDiagnosisModal = ({ onClose }) => {
                  <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />
               </div>
               <div>
-                 <h2 className="text-lg md:text-2xl font-black text-white tracking-tight">Certification Portal</h2>
-                 <p className="text-slate-500 text-[8px] md:text-xs font-bold uppercase tracking-[2px]">Audit System v2.0</p>
+                 <h2 className="text-lg md:text-2xl font-black text-white tracking-tight">{t('organic.modal.title')}</h2>
+                 <p className="text-slate-500 text-[8px] md:text-xs font-bold uppercase tracking-[2px]">{t('organic.modal.subtitle')}</p>
               </div>
            </div>
            <button onClick={onClose} className="p-2 text-slate-500 hover:text-white transition-colors">
@@ -125,8 +127,8 @@ const OrganicDiagnosisModal = ({ onClose }) => {
                       <FileText className="w-8 h-8 md:w-12 md:h-12" />
                    </div>
                    <div className="space-y-2">
-                      <h3 className="text-xl md:text-2xl font-black text-white">Manual Report</h3>
-                      <p className="text-slate-400 text-sm font-bold">Declare field conditions through a guided form.</p>
+                      <h3 className="text-xl md:text-2xl font-black text-white">{t('organic.modal.manualTitle')}</h3>
+                      <p className="text-slate-400 text-sm font-bold">{t('organic.modal.manualDesc')}</p>
                    </div>
                 </motion.div>
 
@@ -140,8 +142,8 @@ const OrganicDiagnosisModal = ({ onClose }) => {
                       <Camera className="w-8 h-8 md:w-12 md:h-12" />
                    </div>
                    <div className="space-y-2">
-                      <h3 className="text-xl md:text-2xl font-black text-white">AI Vision Check</h3>
-                      <p className="text-slate-400 text-sm font-bold">Upload a photo for instant cellular anomaly detection.</p>
+                      <h3 className="text-xl md:text-2xl font-black text-white">{t('organic.modal.aiTitle')}</h3>
+                      <p className="text-slate-400 text-sm font-bold">{t('organic.modal.aiDesc')}</p>
                    </div>
                 </motion.div>
              </div>
@@ -150,26 +152,26 @@ const OrganicDiagnosisModal = ({ onClose }) => {
            {step === 'MANUAL' && (
              <form onSubmit={handleManualSubmit} className="space-y-8 max-w-2xl mx-auto">
                 <div className="space-y-4">
-                   <label className="text-[10px] font-black text-slate-500 uppercase tracking-[2px]">Primary Crop Type</label>
+                   <label className="text-[10px] font-black text-slate-500 uppercase tracking-[2px]">{t('organic.modal.formCrop')}</label>
                    <input 
                       type="text" required
                       className="w-full p-5 bg-slate-800/50 border border-slate-700 rounded-2xl text-white focus:outline-none focus:border-emerald-500 transition-colors font-bold placeholder:text-slate-600"
-                      placeholder="e.g., Tomato"
+                      placeholder={t('organic.modal.formPlaceholder')}
                       value={manualData.crop}
                       onChange={(e) => setManualData({...manualData, crop: e.target.value})}
                    />
                 </div>
                 <div className="space-y-4">
-                   <label className="text-[10px] font-black text-slate-500 uppercase tracking-[2px]">Field Observations</label>
+                   <label className="text-[10px] font-black text-slate-500 uppercase tracking-[2px]">{t('organic.modal.formSigns')}</label>
                    <textarea 
                       className="w-full p-5 bg-slate-800/50 border border-slate-700 rounded-2xl text-white focus:outline-none focus:border-emerald-500 transition-colors font-bold min-h-[120px] placeholder:text-slate-600"
-                      placeholder="List any spots or pest sightings..."
+                      placeholder={t('organic.modal.formSignsPlaceholder')}
                       value={manualData.signs}
                       onChange={(e) => setManualData({...manualData, signs: e.target.value})}
                    />
                 </div>
                 <button type="submit" className="w-full p-5 bg-emerald-600 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-emerald-500 transition-all shadow-xl shadow-emerald-900/20">
-                   Generate Integrity Report
+                   {t('organic.modal.formSubmit')}
                 </button>
              </form>
            )}
@@ -181,13 +183,13 @@ const OrganicDiagnosisModal = ({ onClose }) => {
                    {isAnalyzing && (
                      <div className="absolute inset-0 bg-black/40 rounded-3xl flex flex-col items-center justify-center">
                         <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mb-4" />
-                        <span className="text-white text-[10px] font-black uppercase tracking-[3px]">Analyzing...</span>
+                        <span className="text-white text-[10px] font-black uppercase tracking-[3px]">{t('organic.modal.scanning')}</span>
                      </div>
                    )}
                 </div>
                 {!isAnalyzing && (
                   <button onClick={runAIScan} className="w-full max-w-xs p-5 bg-emerald-600 text-white rounded-2xl font-black uppercase tracking-[2px] transition-all">
-                     Run AI Diagnostics
+                     {t('organic.modal.scanBtn')}
                   </button>
                 )}
              </div>
@@ -201,7 +203,7 @@ const OrganicDiagnosisModal = ({ onClose }) => {
                    </div>
                    <div className="space-y-1">
                       <h4 className="text-2xl md:text-3xl font-black text-white leading-tight">
-                         {diagResult.status === 'ORGANIC_READY' ? 'Integrity Verified' : 'Risk Detected'}
+                         {diagResult.status === 'ORGANIC_READY' ? t('organic.modal.resVerified') : t('organic.modal.resRisk')}
                       </h4>
                       <p className="text-slate-400 font-bold">{diagResult.disease}</p>
                    </div>
@@ -213,21 +215,21 @@ const OrganicDiagnosisModal = ({ onClose }) => {
                         onClick={() => navigate('/organic#advisor')} 
                         className="w-full p-6 bg-slate-800 border border-slate-700 text-white rounded-2xl font-black uppercase tracking-[2px] flex items-center justify-center gap-4 hover:bg-slate-700 transition-all"
                      >
-                        Access 12-Week Roadmap <ChevronRight className="w-5 h-5 text-emerald-500" />
+                        {t('organic.modal.resRoadmap')} <ChevronRight className="w-5 h-5 text-emerald-500" />
                      </button>
                   ) : (
                      <div className="space-y-4">
                         <div className="p-6 bg-orange-500/10 border border-orange-500/20 rounded-2xl flex items-start gap-4">
                            <Bug className="w-6 h-6 text-orange-500 shrink-0" />
                            <p className="text-sm font-bold text-slate-300 leading-relaxed">
-                              Immediate bio-intervention required. To maintain organic status, use <span className="text-orange-400">{diagResult.bioPesticide}</span>. Avoid all chemical-based synthetic sprays.
+                              {t('organic.modal.resBioIntervention', { pesticide: diagResult.bioPesticide })}
                            </p>
                         </div>
                         <button 
                            onClick={() => navigate('/store')} 
                            className="w-full p-6 bg-emerald-600 text-white rounded-2xl font-black uppercase tracking-[2px] flex items-center justify-center gap-4 hover:bg-emerald-500 transition-all"
                         >
-                           Order Bio-Fulfillment <ShoppingBag className="w-5 h-5" />
+                           {t('organic.modal.resOrder')} <ShoppingBag className="w-5 h-5" />
                         </button>
                      </div>
                   )}
