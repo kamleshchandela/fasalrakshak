@@ -150,47 +150,6 @@ const Detect = () => {
     }
   };
 
-  const handleManualAnalyze = async () => {
-    const ph = parseFloat(document.getElementById('input-pH').value) || 7;
-    const n = parseFloat(document.getElementById('input-Nitrogen').value) || 0;
-    const p = parseFloat(document.getElementById('input-Phosphorus').value) || 0;
-    const k = parseFloat(document.getElementById('input-Potassium').value) || 0;
-    const crop = document.getElementById('input-Crop').value || "Wheat";
-
-    setCurrentState('ANALYZING');
-    
-    // Simulate high-speed analysis
-    setTimeout(() => {
-      let statusText = "Balanced Nutrients";
-      let health = "healthy";
-      let severity = "none";
-      let disease = "Soil Balance Optimal";
-      
-      if (n < 40) { statusText = "Nitrogen is Low"; health = "diseased"; severity = "moderate"; disease = "Nitrogen Deficient"; }
-      else if (p < 30) { statusText = "Phosphorus is Medium"; health = "diseased"; severity = "mild"; disease = "Phosphorus Deficiency"; }
-      else if (k < 30) { statusText = "Potassium is Low"; health = "diseased"; severity = "severe"; disease = "Potassium Deficiency"; }
-
-      const result = {
-        isPlantImage: true,
-        cropName: crop,
-        healthStatus: health,
-        diseaseName: statusText,
-        diseaseType: "Soil Analysis",
-        severity: severity,
-        confidencePercent: 99,
-        symptoms: [`N: ${n}, P: ${p}, K: ${k} detected in manual input.`],
-        treatments: [
-          { action: "Apply Urea", detail: "Apply 50kg Urea per acre.", type: "chemical" },
-          { action: "Use Compost", detail: "Use 2 tonnes Organic Compost.", type: "organic" }
-        ],
-        aiSource: "local_python_model"
-      };
-
-      setAnalysisResult(result);
-      setCurrentState('RESULTS');
-    }, 1200);
-  };
-
   const saveToDatabase = async (aiData, cloudData) => {
     try {
       const payload = {
@@ -215,73 +174,39 @@ const Detect = () => {
   const renderCardState = () => {
     switch(currentState) {
       case 'EMPTY':
+        return <UploadZone onFileSelect={handleFileSelect} errorStatus={errorStatus} onClearError={() => setErrorStatus(null)} />;
+      case 'PREVIEW':
         return (
-          <div className="flex flex-col gap-8">
-            <div className="text-center mb-4">
-              <h2 className="font-playfair font-black text-2xl md:text-3xl text-primary-darkGreen">{t('organic.features.fert_title')}</h2>
-              <p className="font-nunito font-bold text-gray-500 mt-2">{t('organic.features.fert_desc')}</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="font-nunito font-black text-[15px] text-gray-700 ml-1 uppercase tracking-wider">🌿 {t('disease.crop')}</label>
-                <select
-                  id="input-Crop"
-                  className="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-6 py-4 font-nunito font-bold text-xl text-gray-900 outline-none focus:border-[#10b981] focus:ring-4 focus:ring-[#10b981]/5 transition-all shadow-sm appearance-none cursor-pointer"
-                >
-                  <option value="Wheat">Wheat (Gahum)</option>
-                  <option value="Rice">Rice (Chokha)</option>
-                  <option value="Corn">Corn (Makai)</option>
-                  <option value="Tomato">Tomato</option>
-                  <option value="Cotton">Cotton (Kapas)</option>
-                </select>
-              </div>
-
-              {[
-                { name: 'pH', label: '⚗️ pH Level', placeholder: '7.0', min: 0, max: 14 },
-                { name: 'Nitrogen', label: 'N - Nitrogen', placeholder: 'e.g. 50', unit: 'mg/kg' },
-                { name: 'Phosphorus', label: 'P - Phosphorus', placeholder: 'e.g. 40', unit: 'mg/kg' },
-                { name: 'Potassium', label: 'K - Potassium', placeholder: 'e.g. 35', unit: 'mg/kg' }
-              ].map(field => (
-                <div key={field.name} className="flex flex-col gap-2">
-                  <label className="font-nunito font-black text-[15px] text-gray-700 ml-1 uppercase tracking-wider">{field.label} {field.unit && <span className="text-gray-400">({field.unit})</span>}</label>
-                  <input
-                    type="number"
-                    id={`input-${field.name}`}
-                    placeholder={field.placeholder}
-                    min={field.min}
-                    max={field.max}
-                    className="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-6 py-4 font-nunito font-bold text-xl text-gray-900 outline-none focus:border-[#10b981] focus:ring-4 focus:ring-[#10b981]/5 transition-all shadow-sm"
-                  />
-                </div>
-              ))}
-            </div>
-
-            <motion.button 
-              whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.98 }}
-              onClick={handleManualAnalyze}
-              className="w-full h-[64px] bg-primary-green text-white rounded-[14px] font-nunito font-bold text-[20px] shadow-[0_4px_20px_rgba(26,107,47,0.3)] hover:bg-[#155A26] transition-colors mt-4 flex justify-center items-center gap-2 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-white/20 translate-x-[-100%] skew-x-[-15deg] group-hover:animate-[shimmer_1.5s_infinite]" />
-              🔬 {t('organic.features.analyze_btn')}
-            </motion.button>
-            <p className="text-center font-nunito font-semibold text-[13px] text-gray-400">Values are analyzed based on standard CLI standards</p>
-          </div>
+          <ImagePreview 
+            fileUrl={previewUrl} 
+            selectedCrop={selectedCrop}
+            setSelectedCrop={setSelectedCrop}
+            onChangePhoto={() => document.getElementById('gallery-upload-input')?.click()}
+            onRemove={resetFlow}
+            onAnalyze={executeAnalysis}
+            errorStatus={errorStatus}
+            onClearError={() => setErrorStatus(null)}
+          />
         );
       case 'ANALYZING':
-        return <AnalyzingLoader onCancel={() => setCurrentState('EMPTY')} />;
+        return <AnalyzingLoader onCancel={() => setCurrentState('PREVIEW')} />;
       case 'RESULTS':
         return (
           <>
             <ResultStatusBanner result={analysisResult} />
             <div className="flex flex-col md:flex-row gap-6 mt-6 px-4 pb-4 md:px-8 md:pb-8">
               <div className="md:w-1/3 flex-shrink-0">
-                <div className="w-full h-[160px] md:h-full rounded-2xl overflow-hidden border-2 border-[#E0EDD5] relative shadow-sm flex items-center justify-center bg-gray-50">
-                   <span className="text-6xl">🧪</span>
+                <div className="w-full h-[160px] md:h-full rounded-2xl overflow-hidden border-2 border-[#E0EDD5] relative shadow-sm">
+                  <img src={previewUrl} alt="Crop" className="w-full h-full object-cover" />
+                  
                   {/* AI Source Badge */}
                   <div className="absolute top-3 right-3 z-10">
-                    <div className="px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border bg-blue-500/80 text-white border-blue-400">
-                       💻 Device AI
+                    <div className={`px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border ${
+                      analysisResult.aiSource === 'local' 
+                        ? 'bg-blue-500/80 text-white border-blue-400' 
+                        : 'bg-primary-green/80 text-white border-white/20'
+                    }`}>
+                      {analysisResult.aiSource === 'local' ? '💻 Device AI' : '☁️ Cloud AI'}
                     </div>
                   </div>
 
@@ -289,7 +214,13 @@ const Detect = () => {
                     <div className="bg-primary-green text-white font-nunito font-bold text-[14px] px-3 py-1 rounded-full shadow-sm">
                       🌿 {analysisResult.cropName}
                     </div>
+                    {analysisResult.isLocal && !selectedCrop && (
+                      <div className="bg-blue-600/90 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full self-start shadow-sm flex items-center gap-1">
+                        ✨ Auto-Detected
+                      </div>
+                    )}
                   </div>
+
                 </div>
               </div>
               <div className="md:w-2/3">
@@ -330,19 +261,18 @@ const Detect = () => {
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1, duration: 0.5 }}
             className="bg-white/70 backdrop-blur-md text-primary-darkGreen text-[12px] md:text-sm font-bold uppercase tracking-widest py-1.5 px-6 rounded-full mb-6 border border-primary-green/20 shadow-sm flex items-center gap-2"
           >
-            <span className="text-[18px] font-bold tracking-wide">Manual Intelligence</span>
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-green opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-green"></span>
             </span>
-            Soil Analysis Mode
+            {t('detect.tag')}
           </motion.div>
           
           <motion.h1 
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2, duration: 0.5 }}
             className="font-playfair text-text-charcoal text-4xl md:text-6xl font-black mb-4 md:mb-5 tracking-tight drop-shadow-sm"
           >
-            🔬 {t('detect.title1')}<span className="text-primary-green">{t('detect.title2')}</span>
+            {t('detect.title1')}<span className="text-primary-green">{t('detect.title2')}</span>
           </motion.h1>
           
           <motion.p 
@@ -357,7 +287,7 @@ const Detect = () => {
             className="flex flex-wrap justify-center gap-4 sm:gap-6"
           >
             {(() => {
-               const statsArray = Array.isArray(t('detect.stats')) ? t('detect.stats') : ['✅ Nutrient Precision', '🌿 Rule-Based Engine', '⚡ Instant Results'];
+               const statsArray = Array.isArray(t('detect.stats')) ? t('detect.stats') : ['✅ High Precision Models', '🌿 Offline Capable Engine', '⚡ Lightning Fast Output'];
                return statsArray.map((stat, i) => (
                  <span key={i} className="bg-white/60 backdrop-blur-sm text-primary-darkGreen px-4 py-1.5 rounded-full text-[14px] md:text-[15px] font-bold border border-primary-green/20 shadow-sm flex items-center">
                    {stat}

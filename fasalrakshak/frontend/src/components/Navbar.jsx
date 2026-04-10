@@ -60,6 +60,7 @@ const Navbar = () => {
     { name: t('nav.store'), href: '/store', icon: <ShoppingBag className="w-4 h-4 text-emerald-600" /> },
     { name: t('nav.library'), href: '/library', icon: <Package className="w-4 h-4 text-emerald-600" /> },
     { name: t('nav.weather'), href: '/weather', icon: <Globe className="w-4 h-4 text-blue-500" /> },
+    { name: t('nav.ecosystem'), href: '/ecosystem', icon: <Landmark className="w-4 h-4 text-purple-500" /> },
   ];
 
   const organicLinks = [
@@ -100,17 +101,17 @@ const Navbar = () => {
           )}
 
           <Link to={isOrganicMode ? "/organic" : "/"} className="flex items-center gap-2 group shrink-0">
-            <div className={`${isOrganicMode ? 'bg-[#10b981]' : 'bg-[#2d5a27]'} w-9 h-9 md:w-10 md:h-10 rounded-[12px] flex justify-center items-center group-hover:rotate-6 transition-transform shadow-md overflow-hidden`}>
-               <Leaf className="text-white w-5 h-5 md:w-6 md:h-6" />
+            <div className={`${isOrganicMode ? 'bg-[#10b981]' : 'bg-[#2d5a27]'} w-8 h-8 md:w-9 md:h-9 rounded-[10px] flex justify-center items-center group-hover:rotate-6 transition-transform shadow-md overflow-hidden`}>
+               <Leaf className="text-white w-4 h-4 md:w-5 h-5" />
             </div>
-            <span className={`font-sans text-[20px] md:text-[24px] font-bold tracking-tight ${isOrganicMode ? 'text-white' : 'text-[#1a2e1a]'} hidden sm:flex gap-0`}>
+            <span className={`font-sans text-[16px] md:text-[20px] font-bold tracking-tight ${isOrganicMode ? 'text-white' : 'text-[#1a2e1a]'} hidden sm:flex gap-0`}>
               Fasal<span className={isOrganicMode ? 'text-emerald-400' : 'text-[#2d5a27]'}>{isOrganicMode ? 'Organic' : 'Rakshak'}</span>
             </span>
           </Link>
         </div>
 
-        {/* Desktop Nav */}
-        <nav className={`hidden lg:flex flex-1 items-center ml-10 ${isOrganicMode ? 'gap-6 xl:gap-8' : 'gap-1 xl:gap-2'} transition-all duration-500`}>
+        {/* Desktop Nav - Optimized for overcrowding */}
+        <nav className={`hidden lg:flex flex-1 items-center ml-4 xl:ml-6 ${isOrganicMode ? 'gap-2 xl:gap-4' : 'gap-1 xl:gap-2'} transition-all duration-500`}>
           {activeLinks.map((link) => {
             const isActive = location.pathname === link.href;
             const itemColorClass = isOrganicMode 
@@ -123,8 +124,8 @@ const Navbar = () => {
                 to={link.href}
                 className={`group relative flex flex-col items-center gap-1 transition-all ${link.isNew ? 'hover:drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]' : ''}`}
               >
-                <div className={`flex items-center gap-1.5 transition-colors font-bold text-[13px] xl:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full ${itemColorClass}`}>
-                  {link.icon}
+                <div className={`flex items-center gap-1 transition-colors font-bold text-[11px] 2xl:text-[13px] whitespace-nowrap px-1.5 py-1.5 rounded-full ${itemColorClass}`}>
+                  <span>{link.icon}</span>
                   <span className={link.isOrganicTab && isOrganicMode ? 'text-emerald-400 drop-shadow-[0_0_8px_#10b981]' : ''}>{link.name}</span>
                 </div>
                 {/* Active Underline */}
@@ -175,11 +176,13 @@ const Navbar = () => {
           </div>
 
           {user ? (
-            <UserMenu isMobile={false} />
+            <div className="hidden lg:block">
+              <UserMenu isMobile={false} />
+            </div>
           ) : (
             <Link
               to="/login"
-              className={`${isOrganicMode ? 'bg-emerald-500 hover:bg-emerald-400 shadow-emerald-500/30' : 'bg-[#2d5a27] hover:bg-[#1a3818] shadow-green-900/10'} text-white font-bold h-11 px-6 md:px-8 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center text-[14px] md:text-[15px]`}
+              className={`hidden lg:flex ${isOrganicMode ? 'bg-emerald-500 hover:bg-emerald-400 shadow-emerald-500/30' : 'bg-[#2d5a27] hover:bg-[#1a3818] shadow-green-900/10'} text-white font-bold h-10 px-6 rounded-full shadow-lg hover:shadow-xl transition-all items-center justify-center text-[13px]`}
             >
               Log In
             </Link>
@@ -204,18 +207,39 @@ const Navbar = () => {
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            className={`lg:hidden fixed top-0 right-0 w-[80%] h-screen shadow-2xl z-[600] py-20 px-6 flex flex-col gap-6 ${isOrganicMode ? 'bg-emerald-950 text-white' : 'bg-white text-gray-800'}`}
+            className={`lg:hidden fixed top-0 right-0 w-[85%] sm:w-[350px] h-screen shadow-2xl z-[1000] py-10 px-6 flex flex-col gap-6 ${isOrganicMode ? 'bg-emerald-950 text-white' : 'bg-white text-gray-800'}`}
           >
-             <div className="flex justify-between items-center mb-4">
-                <span className="font-sans text-[20px] font-black">
-                  Fasal<span className={isOrganicMode ? 'text-emerald-400' : 'text-[#2d5a27]'}>{isOrganicMode ? 'Organic' : 'Rakshak'}</span>
+             <div className="flex justify-between items-center mb-4 border-b border-gray-100/10 pb-4">
+                <span className="font-sans text-lg font-black">
+                   Fasal<span className={isOrganicMode ? 'text-emerald-400' : 'text-[#2d5a27]'}>{isOrganicMode ? 'Organic' : 'Rakshak'}</span>
                 </span>
-                <button onClick={() => setIsMobileMenuOpen(false)} className="p-1 text-gray-500">
-                  <X className="w-7 h-7" />
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsMobileMenuOpen(false);
+                  }} 
+                  className={`p-2 rounded-xl transition-all ${isOrganicMode ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}
+                >
+                  <X className="w-6 h-6" />
                 </button>
               </div>
 
-            <nav className="flex flex-col gap-4 pt-4">
+             {/* Mobile Account Access */}
+             <div className="py-2">
+                {user ? (
+                  <UserMenu isMobile={true} />
+                ) : (
+                  <Link
+                    to="/login"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-black text-sm uppercase tracking-widest transition-all ${isOrganicMode ? 'bg-emerald-500 text-emerald-950 hover:bg-emerald-400' : 'bg-[#2d5a27] text-white shadow-xl shadow-green-900/20 hover:bg-[#1a3818]'}`}
+                  >
+                    Get Started / Log In
+                  </Link>
+                )}
+             </div>
+
+            <nav className="flex flex-col gap-3 pt-2">
               {activeLinks.map((link) => {
                 const isActive = location.pathname === link.href;
                 return (
@@ -224,28 +248,32 @@ const Navbar = () => {
                     to={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`flex items-center gap-4 p-3 rounded-2xl transition-all ${
-                      isActive ? (isOrganicMode ? 'bg-white/5 text-emerald-400 shadow-xl' : 'bg-green-50 text-[#2d5a27]') : (isOrganicMode ? 'text-emerald-100/70' : 'text-gray-800')
+                      isActive ? (isOrganicMode ? 'bg-white/5 text-emerald-400' : 'bg-green-50 text-[#2d5a27]') : (isOrganicMode ? 'text-emerald-100/70' : 'text-gray-800')
                     }`}
                   >
                      <div className={`p-2.5 rounded-xl transition-colors ${isActive ? (isOrganicMode ? 'bg-emerald-500 text-emerald-950' : 'bg-[#2d5a27] text-white') : (isOrganicMode ? 'bg-white/5 text-emerald-400' : 'bg-gray-100 text-gray-500')}`}>
                         {link.icon}
                       </div>
-                    <span className="font-bold text-[16px]">{link.name}</span>
+                    <span className="font-bold text-[15px]">{link.name}</span>
+                    {isActive && <div className={`ml-auto w-1.5 h-1.5 rounded-full ${isOrganicMode ? 'bg-emerald-400 shadow-[0_0_8px_#10b981]' : 'bg-[#2d5a27]'}`} />}
                   </Link>
                 );
               })}
             </nav>
 
             <div className="mt-auto pt-6 border-t border-gray-100/10">
-               <div className="text-sm font-bold opacity-40 mb-4 uppercase tracking-widest">Language</div>
+               <div className="text-[10px] font-black opacity-40 mb-4 uppercase tracking-[0.2em]">Language Settings</div>
                <div className="flex gap-2">
                   {languages.map(l => (
                     <button
                       key={l.code}
-                      onClick={() => { setLang(l.code); setIsMobileMenuOpen(false); }}
-                      className={`flex-1 py-3 rounded-xl border text-xs font-bold transition-all ${lang === l.code ? 'bg-emerald-500 border-emerald-400 text-white shadow-lg' : 'border-gray-200 text-gray-500'}`}
+                      onClick={() => { 
+                        setLang(l.code); 
+                        setIsMobileMenuOpen(false); 
+                      }}
+                      className={`flex-1 py-3 px-2 rounded-xl border text-[11px] font-black transition-all ${lang === l.code ? 'bg-emerald-500 border-emerald-400 text-white shadow-lg' : 'border-gray-200 text-gray-500 bg-gray-50'}`}
                     >
-                      {l.code}
+                      {l.name}
                     </button>
                   ))}
                 </div>

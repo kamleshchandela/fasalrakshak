@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Lightbulb, Info, AlertCircle, CheckCircle2, TrendingUp, TrendingDown, Target, Zap, ChevronRight, MessageSquareCode, ShieldCheck, Microscope } from 'lucide-react';
+import { Lightbulb, Info, AlertCircle, CheckCircle2, TrendingUp, TrendingDown, Target, Zap, ChevronRight, MessageSquareCode, ShieldCheck, Microscope, Sparkles } from 'lucide-react';
 import SoilAnalysisComparisonModal from './SoilAnalysisComparisonModal';
 
 const SoilInsights = ({ data }) => {
@@ -42,8 +42,15 @@ const SoilInsights = ({ data }) => {
           <h3 className="text-2xl font-black text-gray-900 tracking-tight text-left">AI <span className="text-[#10b981]">Soil Strategies</span></h3>
           <p className="text-gray-400 font-nunito font-bold text-sm text-left">Targeted recommendations for your field</p>
         </div>
-        <div className="bg-[#f0fdf4] p-3 rounded-2xl shadow-inner border border-green-50">
+        <div className="bg-[#f0fdf4] p-3 rounded-2xl shadow-inner border border-green-50 relative">
            <Lightbulb className="w-6 h-6 text-[#166534]" />
+           {data?.isVisualEstimate && (
+             <div className="absolute -top-2 -right-2">
+                <div className="bg-emerald-500 text-white p-1.5 rounded-full shadow-lg border-2 border-white animate-bounce">
+                   <Sparkles className="w-3 h-3" />
+                </div>
+             </div>
+           )}
         </div>
       </div>
 

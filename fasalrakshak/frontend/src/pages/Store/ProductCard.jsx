@@ -67,8 +67,13 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
       const base = parseFloat(w);
       if (!base) return null;
       const unit = isKg ? 'kg' : 'g';
+      
+      // Fixed: Use 1 decimal place for small values to avoid rounding to duplicates (e.g. 0.5kg rounding to 1kg)
+      const halfVal = base / 2;
+      const halfLabel = halfVal < 1 && isKg ? halfVal.toFixed(1) : Math.round(halfVal);
+
       return [
-        { label: `${Math.round(base / 2)}${unit}`, price: Math.round(basePrice * 0.55) },
+        { label: `${halfLabel}${unit}`, price: Math.round(basePrice * 0.55) },
         { label: `${base}${unit}`, price: basePrice },
         { label: `${base * 2}${unit}`, price: Math.round(basePrice * 1.75) },
       ];

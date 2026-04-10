@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import StoreHeader from './StoreHeader';
 import SearchFilterBar from './SearchFilterBar';
 import RecommendedBanner from './RecommendedBanner';
@@ -8,6 +9,7 @@ import ProductModal from './ProductModal';
 import StoreCart from './StoreCart';
 import useStoreProducts from '../../hooks/useStoreProducts';
 import { useLanguage } from '../../context/LanguageContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const CART_STORAGE_KEY = 'fasalrakshak_store_cart';
 const WHATSAPP_NUMBER = '919979265140';
@@ -41,7 +43,9 @@ const AgriStore = () => {
   const [visibleCount, setVisibleCount] = useState(12);
   const [showStatusBanner, setShowStatusBanner] = useState(true);
   const [toast, setToast] = useState(null);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const { isLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState(() => {
     if (typeof window === 'undefined') return [];
 
@@ -123,6 +127,10 @@ const AgriStore = () => {
   const clearCart = () => setCartItems([]);
 
   const handleCartCheckout = () => {
+    if (!isLoggedIn) {
+      navigate('/login');
+      return;
+    }
     if (cartItems.length === 0) return;
 
     const itemsList = cartItems

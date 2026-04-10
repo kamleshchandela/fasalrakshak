@@ -8,6 +8,7 @@ export const en = {
     contact: "Contact",
     login: "Login",
     store: "Store",
+    ecosystem: "Digital Farm",
     organic: {
       dashboard: "Dashboard",
       market: "Market Info",
@@ -52,12 +53,12 @@ export const en = {
     title: "Features Built for Farmers",
     desc: "Real visuals and powerful AI — an app built for the farmer's needs.",
     items: [
-      { title: 'Offline Mode', desc: 'No internet? No problem. The app works offline in the field!' },
-      { title: 'Gujarati & Hindi', desc: 'Get results in your language — Gujarati, Hindi, or English!' },
-      { title: '2-Second Detection', desc: 'Our AI model identifies diseases in just 2 seconds.' },
-      { title: 'Treatment Guide', desc: 'Right medicine name, dosage, and when to apply will appear on screen.' },
-      { title: 'Scan History', desc: 'All your old scans are saved — view them whenever you want.' },
-      { title: 'Weather Risk', desc: 'The app will tell you the disease risk based on today\'s weather.' }
+      { title: '2-Second AI', desc: 'Identify crop diseases instantly with our advanced AI vision model.' },
+      { title: 'AgriStore', desc: 'A premium marketplace for fertilizers, seeds, and modern farming tools.' },
+      { title: 'Soil Health Lab', desc: 'Get laboratory-grade soil analysis reports directly from your phone.' },
+      { title: '3D Ecosystem', desc: 'Experience your farm in an immersive 3D visualization and planning tool.' },
+      { title: 'Offline Mode', desc: 'No internet? No problem. The app works offline in remote fields.' },
+      { title: 'Weather Risk', desc: 'Predict disease risks based on real-time hyper-local weather alerts.' }
     ]
   },
   stats: {

@@ -1,4 +1,4 @@
-import { WifiOff, Languages, Zap, Heart, History, Cloud, Pill, ClipboardList, CloudRain } from 'lucide-react';
+import { WifiOff, Languages, Zap, Heart, History, Cloud, Pill, ClipboardList, CloudRain, ShoppingBag, Landmark, FlaskConical, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { useLanguage } from '../context/LanguageContext';
@@ -12,20 +12,6 @@ import smilingFarmer from '../images/smiling_farmer.png';
 
 const features = [
   {
-    icon: <WifiOff className="w-8 h-8 text-white" />,
-    title: 'Offline Mode',
-    desc: 'Internet nahi? Koi baat nahi. App offline bhi kaam karta khet mein!',
-    img: featOffline,
-    color: 'from-blue-900/90'
-  },
-  {
-    icon: <Languages className="w-8 h-8 text-white" />,
-    title: 'Local Languages',
-    desc: 'Apni bhasha mein results pao — Gujarati, Hindi ya English!',
-    img: lushGreen,
-    color: 'from-indigo-900/90'
-  },
-  {
     icon: <Zap className="w-8 h-8 text-white" />,
     title: '2-Second AI',
     desc: 'Hamara AI model sirf 2 second mein bimari pehchaan leta hai.',
@@ -33,23 +19,37 @@ const features = [
     color: 'from-green-900/90'
   },
   {
-    icon: <Pill className="w-8 h-8 text-white" />,
-    title: 'Treatment Guide',
-    desc: 'Sahi dawai ka naam, matra, aur kab daalni hai, screen pe aayega.',
-    img: heroFarmer,
-    color: 'from-red-900/90'
+    icon: <ShoppingBag className="w-8 h-8 text-white" />,
+    title: 'AgriStore',
+    desc: 'Fertilizers, beej aur modern farming tools ke liye premium marketplace.',
+    img: featOffline,
+    color: 'from-emerald-900/90'
   },
   {
-    icon: <ClipboardList className="w-8 h-8 text-white" />,
-    title: 'Scan History',
-    desc: 'Aapki saari purani scans save rehti hain — jab chahein dekhein.',
-    img: heroLandscape,
+    icon: <FlaskConical className="w-8 h-8 text-white" />,
+    title: 'Soil Health Lab',
+    desc: 'Apne phone se hi laboratory-grade mitti ki jaanch report paayein.',
+    img: lushGreen,
     color: 'from-amber-900/90'
+  },
+  {
+    icon: <Landmark className="w-8 h-8 text-white" />,
+    title: '3D Ecosystem',
+    desc: 'Apne khet ko immersive 3D visualization mein dekhein aur plan karein.',
+    img: heroLandscape,
+    color: 'from-purple-900/90'
+  },
+  {
+    icon: <WifiOff className="w-8 h-8 text-white" />,
+    title: 'Offline Mode',
+    desc: 'Internet nahi? Koi baat nahi. App offline bhi kaam karta khet mein!',
+    img: heroFarmer,
+    color: 'from-blue-900/90'
   },
   {
     icon: <CloudRain className="w-8 h-8 text-white" />,
     title: 'Weather Risk',
-    desc: 'Aaj ke mausam se bimari ka risk kya hai, app bata deगा.',
+    desc: 'Aaj ke mausam se bimari ka risk kya hai, app bata dega.',
     img: smilingFarmer,
     color: 'from-sky-900/90'
   }

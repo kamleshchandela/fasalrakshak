@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 import {
   Info,
   Leaf,
@@ -29,6 +31,8 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
   const [added, setAdded] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState(null);
   const { t, lang } = useLanguage();
+  const { isLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -73,8 +77,12 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
       const base = parseFloat(w);
       if (!base) return null;
       const unit = isKg ? 'kg' : 'g';
+      
+      const halfVal = base / 2;
+      const halfLabel = halfVal < 1 && isKg ? halfVal.toFixed(1) : Math.round(halfVal);
+
       return [
-        { label: `${Math.round(base / 2)} ${unit}`, price: Math.round(basePrice * 0.55) },
+        { label: `${halfLabel} ${unit}`, price: Math.round(basePrice * 0.55) },
         { label: `${base} ${unit}`, price: basePrice },
         { label: `${base * 2} ${unit}`, price: Math.round(basePrice * 1.75) },
       ];
@@ -90,6 +98,10 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
   const displayImage = imageError ? '/products/auth/naa.jpg' : (product.imageUrl || product.image);
 
   const handleBuyWhatsApp = () => {
+    if (!isLoggedIn) {
+      navigate('/login');
+      return;
+    }
     if (!product.inStock) return;
     const waMessages = {
       EN: `Hi, I would like to order ${quantity}x ${product.name}. Total: Rs.${total}.`,
@@ -101,6 +113,10 @@ const ProductModal = ({ product, onClose, onAddToCart }) => {
   };
 
   const handleContactSeller = () => {
+    if (!isLoggedIn) {
+      navigate('/login');
+      return;
+    }
     const waMessages = {
       EN: `Hi, I have a question about ${product.name}. Can you help me?`,
       HI: `नमस्ते, मुझे ${product.name} के बारे में एक सवाल है। क्या आप मेरी मदद कर सकते हैं?`,

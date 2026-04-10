@@ -99,85 +99,45 @@ function App() {
             />
             <Route
               path="/detect"
-              element={
-                <ProtectedRoute>
-                  <Detect />
-                </ProtectedRoute>
-              }
+              element={<Detect />}
             />
             <Route
               path="/library"
-              element={
-                <ProtectedRoute>
-                  <DiseaseLibrary />
-                </ProtectedRoute>
-              }
+              element={<DiseaseLibrary />}
             />
             <Route
               path="/library/:id"
-              element={
-                <ProtectedRoute>
-                  <DiseaseDetail />
-                </ProtectedRoute>
-              }
+              element={<DiseaseDetail />}
             />
             {/* Added fallback routes from Rishikesh merge */}
             <Route
               path="/diseases"
-              element={
-                <ProtectedRoute>
-                  <DiseaseLibrary />
-                </ProtectedRoute>
-              }
+              element={<DiseaseLibrary />}
             />
             <Route
               path="/diseases/:id"
-              element={
-                <ProtectedRoute>
-                  <DiseaseDetail />
-                </ProtectedRoute>
-              }
+              element={<DiseaseDetail />}
             />
             <Route
               path="/weather"
-              element={
-                <ProtectedRoute>
-                  <Weather />
-                </ProtectedRoute>
-              }
+              element={<Weather />}
             />
             <Route
               path="/ecosystem"
-              element={
-                <ProtectedRoute>
-                  <Ecosystem />
-                </ProtectedRoute>
-              }
+              element={<Ecosystem />}
             />
             <Route
               path="/soil-report"
-              element={
-                <ProtectedRoute>
-                  <SoilReport />
-                </ProtectedRoute>
-              }
+              element={<SoilReport />}
             />
             {/* New Store Feature from Rishikesh */}
             <Route
               path="/store"
-              element={
-                <ProtectedRoute>
-                  <AgriStore />
-                </ProtectedRoute>
-              }
+              element={<AgriStore />}
             />
             <Route 
               path="/organic" 
-              element={
-                <ProtectedRoute>
-                  <LandingPage />
-                </ProtectedRoute>
-              } 
+              element={<LandingPage />} 
             />
           </Routes>
         </AnimatePresence>
